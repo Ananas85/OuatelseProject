@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ouatelse
 {
-    public partial class InitialPage : Form
+    public partial class InitialForm : Form
     {
-        public InitialPage()
+        public InitialForm()
         {
             InitializeComponent();
         }

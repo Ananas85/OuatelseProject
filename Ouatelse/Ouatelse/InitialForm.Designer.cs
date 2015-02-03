@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse
 {
-    partial class InitialPage
+    partial class InitialForm
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

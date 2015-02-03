@@ -16,7 +16,7 @@ namespace Ouatelse
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InitialPage());
+            Application.Run(new InitialForm());
         }
     }
 }

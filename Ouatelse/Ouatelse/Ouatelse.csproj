@@ -44,16 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InitialPage.cs">
+    <Compile Include="InitialForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InitialPage.Designer.cs">
-      <DependentUpon>InitialPage.cs</DependentUpon>
+    <Compile Include="InitialForm.Designer.cs">
+      <DependentUpon>InitialForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="InitialPage.resx">
-      <DependentUpon>InitialPage.cs</DependentUpon>
+    <EmbeddedResource Include="InitialForm.resx">
+      <DependentUpon>InitialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
