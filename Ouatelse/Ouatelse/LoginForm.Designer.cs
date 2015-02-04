@@ -70,13 +70,13 @@
             // 
             // loginButton
             // 
-            this.loginButton.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.loginButton.Location = new System.Drawing.Point(145, 271);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Connexion";
             this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // LoginForm
             // 

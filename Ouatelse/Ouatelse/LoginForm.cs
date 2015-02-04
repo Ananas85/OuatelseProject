@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ouatelse.Managers;
 
 namespace Ouatelse
 {
@@ -15,6 +16,11 @@ namespace Ouatelse
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            EmployeeManager.Instance.All();
         }
     }
 }
