@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Classe abstraite permettant gérer quelques requêtes de bases
+    /// Classe abstraite permettant gérer quelques requêtes de bases en implémentant l'interface du manager
     /// </summary>
     /// <typeparam name="T">Le type de l'entité</typeparam>
     public abstract class BaseManager<T> : IManager<T>

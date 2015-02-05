@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Singleton qui gère les mouvement_stock
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class StockManager : BaseManager<Stock>
     {
-        private static EmployeeManager _instance = null;
+        private static StockManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static StockManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new StockManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        private StockManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "mouvement_stock";
         }
     }
 }

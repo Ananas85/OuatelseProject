@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Classe singleton qui permet de gérer les pays
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class CountryManager : BaseManager<Country>
     {
-        private static EmployeeManager _instance = null;
+        private static CountryManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static CountryManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new CountryManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        public CountryManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "pays";
         }
     }
 }

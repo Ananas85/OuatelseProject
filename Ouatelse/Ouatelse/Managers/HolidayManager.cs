@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Singleton qui gère les congés
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class HolidayManager : BaseManager<Holiday>
     {
-        private static EmployeeManager _instance = null;
+        private static HolidayManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static HolidayManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new HolidayManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        private HolidayManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "conge";
         }
     }
 }

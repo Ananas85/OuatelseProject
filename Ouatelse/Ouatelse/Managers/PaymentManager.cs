@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Singleton qui gère les Moyen de paiements
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class PaymentManager : BaseManager<Payment>
     {
-        private static EmployeeManager _instance = null;
+        private static PaymentManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static PaymentManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new PaymentManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        private PaymentManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "moyen_de_paiements";
         }
     }
 }

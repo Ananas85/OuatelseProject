@@ -7,10 +7,17 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Models
 {
-    public class Store : BaseModel
+    public class Holiday : BaseModel, IModel
     {
-        public string Address { get; set; }
-        public City City { get; set; }
+        public DateTime StartingDate { get; set; }
+        public DateTime EndingDate { get; set; }
+        public Employee Employee { get; set; }
+
+
+        public Holiday()
+        {
+
+        }
 
         /// <summary>
         /// Permet d'hydrater l'objet
@@ -20,8 +27,9 @@ namespace Ouatelse.Models
         {
             ArrayCursor<object> cursor = new ArrayCursor<object>(data);
             this.Id = Int32.Parse(cursor.Read().ToString());
-            this.Address = cursor.Read().ToString();
-            this.City = CityManager.Instance.Find(cursor.Read().ToString());
+            this.StartingDate = DateTime.Parse(cursor.Read().ToString());
+            this.EndingDate = DateTime.Parse(cursor.Read().ToString());
+            this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
         }
     }
 }

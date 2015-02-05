@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Managers
 {
+    /// <summary>
+    /// Classe singleton qui permet de gérér l'authentification
+    /// </summary>
     public class AuthManager : BaseManager<Employee>
     {
-
         private static AuthManager _instance = null;
 
         public static AuthManager Instance

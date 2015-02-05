@@ -8,12 +8,30 @@ using System.Data;
 
 namespace Ouatelse
 {
+    /// <summary>
+    /// Classe Singleton permettant de gérer la base de données
+    /// IDisposable permet de dire qu'il y a une méthode qui libère les ressources
+    /// </summary>
     public class Database : IDisposable
     {
-        
+        /// <summary>
+        /// instance static propriétaire de la classe pour le pattern Singleton
+        /// </summary>
         private static Database _instance = null;
+
+        /// <summary>
+        /// La query que l'on veut utiliser
+        /// </summary>
         private string runningQuery = "";
 
+        /// <summary>
+        /// Permet de gérer la connection MySQL
+        /// </summary>
+        private MySqlConnection connection = null;
+
+        /// <summary>
+        /// Methode indispensable pour le pattern singleton Database.Instance.function
+        /// </summary>
         public static Database Instance
         {
             get
@@ -24,8 +42,9 @@ namespace Ouatelse
             }
         }
 
-        private MySqlConnection connection = null;
-
+        /// <summary>
+        /// Constructeur privé qui permet de se connecter à la base de données grâce aux credentials.
+        /// </summary>
         private Database()
         {
             this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
@@ -95,6 +114,9 @@ namespace Ouatelse
             return null;
         }
 
+        /// <summary>
+        /// Libère les ressources ( ici ferme la connexion ) 
+        /// </summary>
         public void Dispose()
         {
             this.connection.Close();

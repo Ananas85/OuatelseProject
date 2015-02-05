@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Singleton qui gère les civilités
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class GenderManager : BaseManager<Gender>
     {
-        private static EmployeeManager _instance = null;
+        private static GenderManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static GenderManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new GenderManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        private GenderManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "civilite";
         }
     }
 }

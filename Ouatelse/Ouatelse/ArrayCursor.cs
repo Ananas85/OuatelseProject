@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Ouatelse
 {
+    /// <summary>
+    /// Classe générique qui permet de parcourir un liste d'objet
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ArrayCursor<T>
     {
         T[] items;
@@ -14,7 +18,7 @@ namespace Ouatelse
         public ArrayCursor(IEnumerable<T> items)
         {
             this.items = items.ToArray();
-            Index = 0;
+            this.Index = 0;
         }
 
         public T Read()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Models
 {
-    public class Employee : BaseModel, IModel
+    public class Customer : BaseModel, IModel
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -22,11 +22,9 @@ namespace Ouatelse.Models
         public string Comments { get; set; }
         public City City { get; set; }
         public Country Nationality { get; set; }
-        public Role Role { get; set; }
-        public Store Store { get; set; }
         public Gender Gender { get; set; }
 
-        public Employee()
+        public Customer()
         {
 
         }
@@ -41,8 +39,6 @@ namespace Ouatelse.Models
             this.Id = Int32.Parse(cursor.Read().ToString());
             this.LastName = cursor.Read().ToString();
             this.FirstName = cursor.Read().ToString();
-            this.Username = cursor.Read().ToString();
-            this.Password = cursor.Read().ToString();
             this.Address1 = cursor.Read().ToString();
             this.Address2 = cursor.Read().ToString();
             this.PhoneNumber = cursor.Read().ToString();
@@ -52,9 +48,8 @@ namespace Ouatelse.Models
             this.Comments = cursor.Read().ToString();
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Nationality = CountryManager.Instance.Find(cursor.Read().ToString());
-            this.Role = RoleManager.Instance.Find(cursor.Read().ToString());
-            this.Store = StoreManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
+
         }
     }
 }

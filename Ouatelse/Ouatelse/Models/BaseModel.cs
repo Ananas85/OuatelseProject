@@ -7,8 +7,14 @@ using System.Reflection;
 
 namespace Ouatelse.Models
 {
+    /// <summary>
+    /// Classe de base pour les modèles
+    /// </summary>
     public abstract class BaseModel
     {
+        /// <summary>
+        /// l'ID de notre modèle
+        /// </summary>
         public int Id { get; set; }
         protected bool exists = false;
 
@@ -19,7 +25,7 @@ namespace Ouatelse.Models
         {
             get
             {
-                return Exists;
+                return this.exists;
             }
         }
         

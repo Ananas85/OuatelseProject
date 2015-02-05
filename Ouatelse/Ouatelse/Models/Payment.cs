@@ -1,5 +1,4 @@
-﻿using Ouatelse.Managers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Models
 {
-    public class Store : BaseModel
+    public class Payment : BaseModel, IModel
     {
-        public string Address { get; set; }
-        public City City { get; set; }
+        public string Type { get; set; }
+
+        public Payment()
+        {
+
+        }
 
         /// <summary>
         /// Permet d'hydrater l'objet
@@ -20,8 +23,7 @@ namespace Ouatelse.Models
         {
             ArrayCursor<object> cursor = new ArrayCursor<object>(data);
             this.Id = Int32.Parse(cursor.Read().ToString());
-            this.Address = cursor.Read().ToString();
-            this.City = CityManager.Instance.Find(cursor.Read().ToString());
+            this.Type = cursor.Read().ToString();
         }
     }
 }

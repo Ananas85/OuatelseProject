@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Classe singleton qui permet de gérer les produits
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class ProductManager : BaseManager<Product>
     {
-        private static EmployeeManager _instance = null;
+        private static ProductManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static ProductManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new ProductManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        public ProductManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "produits";
         }
     }
 }

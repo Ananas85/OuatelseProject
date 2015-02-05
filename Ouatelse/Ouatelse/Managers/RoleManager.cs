@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace Ouatelse.Managers
 {
     /// <summary>
-    /// Singleton qui gère les employés
+    /// Classe singleton qui permet de gérer les roles
     /// </summary>
-    public class EmployeeManager : BaseManager<Employee>
+    public class RoleManager : BaseManager<Role>
     {
-        private static EmployeeManager _instance = null;
+        private static RoleManager _instance = null;
 
-        public static EmployeeManager Instance
+        public static RoleManager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new EmployeeManager();
+                    _instance = new RoleManager();
                 return _instance;
             }
         }
 
-        private EmployeeManager()
+        public RoleManager()
         {
-            this.tableName = "salaries";
+            this.tableName = "roles";
         }
     }
 }

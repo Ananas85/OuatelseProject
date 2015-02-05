@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Managers
 {
+    /// <summary>
+    /// Classe singleton qui permet de gérer les villes
+    /// </summary>
     public class CityManager : BaseManager<City>
     {
         private static CityManager _instance = null;
@@ -23,7 +26,7 @@ namespace Ouatelse.Managers
 
         public CityManager()
         {
-            tableName = "villes";
+            this.tableName = "villes";
         }
     }
 }
