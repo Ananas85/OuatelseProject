@@ -65,7 +65,7 @@ namespace Ouatelse.Managers
         }
 
         /// <summary>
-        /// Permet de récupérer une entité selon un filtre SQL.
+        /// Permet de récupérer la première entité selon un filtre SQL.
         /// </summary>
         /// <param name="filter">Filtre SQL, par ex . "WHERE id = 10".</param>
         /// <returns>Le premier objet trouvé dans la table</returns>
