@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Ouatelse.Models
-{-)
+{
     public class Product : BaseModel, IModel
     {
         public string Name { get; set; }
