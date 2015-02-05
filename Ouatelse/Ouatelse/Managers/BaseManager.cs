@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Managers
 {
+    /// <summary>
+    /// Classe abstraite permettant gérer quelques requêtes de bases
+    /// </summary>
+    /// <typeparam name="T">Le type de l'entité</typeparam>
     public abstract class BaseManager<T> : IManager<T>
     {
         Database db = Database.Instance;
@@ -92,13 +96,18 @@ namespace Ouatelse.Managers
         /// Retourne le nombre d'entité dans la table, selon un fitre SQL si nécessaire
         /// </summary>
         /// <param name="filter">Filtre SQL, par ex . "WHERE id = 10".</param>
-        /// <returns></returns>
+        /// <returns>Le nomre d'entité</returns>
         public int Count(string filter = "")
         {
             object resp = db.ExecuteScalar("SELECT count(*) FROM " + tableName + " " + filter);
             return Int32.Parse(resp.ToString());
         }
 
+        /// <summary>
+        /// Retourne une entité selon un id
+        /// </summary>
+        /// <param name="id">l'ID de l'entité à récupérer</param>
+        /// <returns>L'entité désirée</returns>
         public T Find(object id)
         {
             DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " WHERE id=" + id.ToString());
