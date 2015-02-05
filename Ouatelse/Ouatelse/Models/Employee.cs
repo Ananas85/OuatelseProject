@@ -46,6 +46,9 @@ namespace Ouatelse.Models
             DateOfBirth = DateTime.Parse(cursor.Read().ToString());
             Comments = cursor.Read().ToString();
             City = CityManager.Instance.Find(cursor.Read().ToString());
+
+            // TODO : Récupérer les autres relations (Nationality, Role, Store) via les managers (qu'ils faut créer eux aussi)
+
         }
     }
 }

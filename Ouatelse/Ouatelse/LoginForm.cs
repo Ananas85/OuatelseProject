@@ -20,7 +20,7 @@ namespace Ouatelse
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            EmployeeManager.Instance.All();
+            Utils.Info(EmployeeManager.Instance.Count().ToString());
         }
     }
 }

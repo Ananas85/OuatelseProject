@@ -9,23 +9,27 @@ namespace Ouatelse.Models
 {
     public abstract class BaseModel
     {
-        protected static string managerName = "";
         public int Id { get; set; }
+        protected bool exists = false;
 
-        public void ForeignKey(string propertyName, string fieldName)
-        {
-            Type fieldType = this.GetType().GetProperty(propertyName).GetType();
-            string managerName = fieldType.GetProperty("ManagerName").GetValue(this).ToString();
-            Type managerType = Type.GetType(managerName);
-
-        }
-
-        public string ManagerName
+        /// <summary>
+        /// Permet de savoir si l'entité existe dans la table.
+        /// </summary>
+        public bool Exists
         {
             get
             {
-                return managerName;
+                return Exists;
             }
         }
+        
+        /// <summary>
+        /// Permet de définir cette entité comme existante
+        /// </summary>
+        public void MakeExistant()
+        {
+            this.exists = true;
+        }
+
     }
 }
