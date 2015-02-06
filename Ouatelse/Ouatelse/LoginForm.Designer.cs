@@ -37,42 +37,47 @@
             // 
             // usernameEntry
             // 
-            this.usernameEntry.Location = new System.Drawing.Point(113, 164);
+            this.usernameEntry.Location = new System.Drawing.Point(226, 315);
+            this.usernameEntry.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.usernameEntry.Name = "usernameEntry";
-            this.usernameEntry.Size = new System.Drawing.Size(142, 20);
+            this.usernameEntry.Size = new System.Drawing.Size(280, 31);
             this.usernameEntry.TabIndex = 0;
             // 
             // passwordEntry
             // 
-            this.passwordEntry.Location = new System.Drawing.Point(113, 226);
+            this.passwordEntry.Location = new System.Drawing.Point(226, 435);
+            this.passwordEntry.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.passwordEntry.Name = "passwordEntry";
-            this.passwordEntry.PasswordChar = '%';
-            this.passwordEntry.Size = new System.Drawing.Size(142, 20);
+            this.passwordEntry.PasswordChar = '*';
+            this.passwordEntry.Size = new System.Drawing.Size(280, 31);
             this.passwordEntry.TabIndex = 1;
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(142, 148);
+            this.usernameLabel.Location = new System.Drawing.Point(284, 285);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(84, 13);
+            this.usernameLabel.Size = new System.Drawing.Size(171, 25);
             this.usernameLabel.TabIndex = 2;
             this.usernameLabel.Text = "Nom d\'utilisateur";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(149, 210);
+            this.passwordLabel.Location = new System.Drawing.Point(298, 404);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(71, 13);
+            this.passwordLabel.Size = new System.Drawing.Size(142, 25);
             this.passwordLabel.TabIndex = 3;
             this.passwordLabel.Text = "Mot de passe";
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(145, 271);
+            this.loginButton.Location = new System.Drawing.Point(290, 521);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 23);
+            this.loginButton.Size = new System.Drawing.Size(150, 44);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Connexion";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -80,14 +85,16 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.loginButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 372);
+            this.ClientSize = new System.Drawing.Size(750, 715);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.passwordEntry);
             this.Controls.Add(this.usernameEntry);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "LoginForm";
             this.Text = "Ouatelse";
             this.ResumeLayout(false);

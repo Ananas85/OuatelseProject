@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Models
 {
-    public class Store : BaseModel
+    public class Store : BaseModel, IModel
     {
         public string Address { get; set; }
         public City City { get; set; }
