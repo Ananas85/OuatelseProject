@@ -19,10 +19,26 @@ namespace Ouatelse
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private void forgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Employee employee = EmployeeManager.Instance.First("WHERE identifiant='" + this.usernameEntry.Text + "' AND mot_de_passe='" + this.passwordEntry.Text+"'");
-            Utils.Info("Bonjour " + employee.FirstName + " " + employee.LastName);            
+            LostPasswordForm lostpass = new LostPasswordForm();
+            lostpass.ShowDialog();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            Employee employee = EmployeeManager.Instance.First("WHERE identifiant='" + this.usernameEntry.Text + "' AND mot_de_passe='" + this.passwordEntry.Text + "'");
+            if (employee != null)
+            {
+                Utils.Info("Bonjour " + employee.FirstName + " " + employee.LastName);
+                HomeForm homeForm = new HomeForm(employee);
+                homeForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                Utils.Warning("Vos identifiants ne sont pas dans la base de données, réessayez.");
+            }
         }
     }
 }

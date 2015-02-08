@@ -16,7 +16,10 @@ namespace Ouatelse
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            LoginForm loginForm = new LoginForm();
+            Application.Run(loginForm);
+
         }
     }
 }
