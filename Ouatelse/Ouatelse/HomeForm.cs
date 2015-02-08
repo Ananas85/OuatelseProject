@@ -24,10 +24,12 @@ namespace Ouatelse
 
 
             this.username.Text = employee.FirstName + " " + employee.LastName;
+            this.roleLbl.Text = " (" + employee.Role.Name +") ";
 
-            //Centre du text de connexion
+            //Centre du texte de connexion
             int center = this.connexionText.Right - this.connexionText.Width / 2;
             this.username.Location = new Point(center - this.username.Width / 2, this.username.Top);
+            this.roleLbl.Location = new Point(center - this.roleLbl.Width / 2, this.roleLbl.Top);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -40,5 +42,6 @@ namespace Ouatelse
             this.date.Text = DateTime.Now.ToShortDateString();
             this.hour.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
     }
 }

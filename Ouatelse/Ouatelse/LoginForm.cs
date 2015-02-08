@@ -30,7 +30,6 @@ namespace Ouatelse
             Employee employee = EmployeeManager.Instance.First("WHERE identifiant='" + this.usernameEntry.Text + "' AND mot_de_passe='" + this.passwordEntry.Text + "'");
             if (employee != null)
             {
-                Utils.Info("Bonjour " + employee.FirstName + " " + employee.LastName);
                 HomeForm homeForm = new HomeForm(employee);
                 homeForm.Show();
                 this.Hide();

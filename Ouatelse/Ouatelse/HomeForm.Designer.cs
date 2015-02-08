@@ -34,12 +34,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnLock = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
             this.hour = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -47,13 +44,15 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.roleLbl = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // connexionText
             // 
             this.connexionText.AutoSize = true;
-            this.connexionText.Location = new System.Drawing.Point(583, 9);
+            this.connexionText.Location = new System.Drawing.Point(572, 9);
             this.connexionText.Name = "connexionText";
             this.connexionText.Size = new System.Drawing.Size(110, 13);
             this.connexionText.TabIndex = 0;
@@ -62,7 +61,7 @@
             // username
             // 
             this.username.AutoSize = true;
-            this.username.Location = new System.Drawing.Point(605, 31);
+            this.username.Location = new System.Drawing.Point(591, 29);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(68, 13);
             this.username.TabIndex = 1;
@@ -84,73 +83,50 @@
             // 
             // btnLock
             // 
-            this.btnLock.Location = new System.Drawing.Point(557, 47);
+            this.btnLock.BackColor = System.Drawing.Color.Transparent;
+            this.btnLock.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnLock.Location = new System.Drawing.Point(546, 64);
             this.btnLock.Name = "btnLock";
             this.btnLock.Size = new System.Drawing.Size(75, 23);
             this.btnLock.TabIndex = 3;
-            this.btnLock.Text = "Vérouiller";
-            this.btnLock.UseVisualStyleBackColor = true;
+            this.btnLock.Text = "Vérrouiller";
+            this.btnLock.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(638, 47);
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Location = new System.Drawing.Point(627, 64);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 23);
+            this.button2.Size = new System.Drawing.Size(93, 23);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Déconnection";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(276, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Date : ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Heure :";
+            this.button2.Text = "Se déconnecter";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // date
             // 
             this.date.AutoSize = true;
-            this.date.Location = new System.Drawing.Point(321, 18);
+            this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(342, 29);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(35, 13);
+            this.date.Size = new System.Drawing.Size(40, 13);
             this.date.TabIndex = 7;
-            this.date.Text = "label3";
+            this.date.Text = "DATE";
             // 
             // hour
             // 
             this.hour.AutoSize = true;
-            this.hour.Location = new System.Drawing.Point(321, 40);
+            this.hour.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hour.Location = new System.Drawing.Point(341, 48);
             this.hour.Name = "hour";
-            this.hour.Size = new System.Drawing.Size(35, 13);
+            this.hour.Size = new System.Drawing.Size(50, 13);
             this.hour.TabIndex = 8;
-            this.hour.Text = "label3";
+            this.hour.Text = "HEURE";
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 65);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
             // 
             // button9
             // 
@@ -247,11 +223,32 @@
             this.button8.Text = "Produits / Stock";
             this.button8.UseVisualStyleBackColor = false;
             // 
+            // roleLbl
+            // 
+            this.roleLbl.AutoSize = true;
+            this.roleLbl.Location = new System.Drawing.Point(601, 48);
+            this.roleLbl.Name = "roleLbl";
+            this.roleLbl.Size = new System.Drawing.Size(36, 13);
+            this.roleLbl.TabIndex = 23;
+            this.roleLbl.Text = "ROLE";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 511);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(732, 415);
+            this.Controls.Add(this.roleLbl);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -262,13 +259,12 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.hour);
             this.Controls.Add(this.date);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnLock);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.username);
             this.Controls.Add(this.connexionText);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "HomeForm";
             this.Text = "Ouatelse - Accueil";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -284,8 +280,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnLock;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Label hour;
         private System.Windows.Forms.Timer timer1;
@@ -297,5 +291,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label roleLbl;
     }
 }
