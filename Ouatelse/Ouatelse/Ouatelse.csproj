@@ -99,7 +99,6 @@
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MailSender.cs" />
-    <Compile Include="Models\ProductsForm.cs">
     <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
