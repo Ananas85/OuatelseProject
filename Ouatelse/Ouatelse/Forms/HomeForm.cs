@@ -95,7 +95,7 @@ namespace Ouatelse
 
         private void salarieBtn_Click(object sender, EventArgs e)
         {
-            EmployeesForm employeeForm = new EmployeesForm();
+            ManageEmployeesForm employeeForm = new ManageEmployeesForm();
             employeeForm.ShowDialog();
         }
 
