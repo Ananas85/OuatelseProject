@@ -43,5 +43,10 @@ namespace Ouatelse
             this.hour.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
+        private void HomeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
