@@ -54,14 +54,20 @@
     <Compile Include="ArrayCursor.cs" />
     <Compile Include="Bind.cs" />
     <Compile Include="Binding.cs" />
-    <Compile Include="Forms\CustomerForm.cs">
+    <Compile Include="Forms\CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomerForm.Designer.cs">
-      <DependentUpon>CustomerForm.cs</DependentUpon>
+    <Compile Include="Forms\CustomersForm.Designer.cs">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseCredentials.cs" />
+    <Compile Include="Forms\EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,10 +100,10 @@
     </Compile>
     <Compile Include="MailSender.cs" />
     <Compile Include="Models\ProductsForm.cs">
+    <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ProductsForm.Designer.cs">
-    <Compile Include="Models\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SalesForm.cs">
