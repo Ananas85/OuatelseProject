@@ -74,5 +74,25 @@ namespace Ouatelse
             }
             currentCustomer = (Customer)item.Tag;
         }
+
+        private void NewCustomer()
+        {
+
+        }
+
+        private void EditCustomer()
+        {
+
+        }
+
+        private void deletecustomer_Click(object sender, EventArgs e)
+        {
+            if (currentCustomer != null)
+            {
+                if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentCustomer.LastName + " " + currentCustomer.FirstName + " ? "))
+                    CustomerManager.Instance.Delete(currentCustomer);
+            }
+            Reload(CustomerManager.Instance.All());
+        }
     }
 }
