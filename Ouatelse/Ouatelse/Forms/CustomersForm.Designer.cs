@@ -39,7 +39,7 @@
             this.CodePostal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Ville = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
+            this.deletecustomer = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.clientsBtn = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -141,19 +141,20 @@
             this.Pays.Text = "Pays";
             this.Pays.Width = 89;
             // 
-            // button2
+            // deletecustomer
             // 
-            this.button2.BackColor = System.Drawing.Color.IndianRed;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(392, 143);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 41);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Supprimer un client";
-            this.button2.UseVisualStyleBackColor = false;
+            this.deletecustomer.BackColor = System.Drawing.Color.IndianRed;
+            this.deletecustomer.FlatAppearance.BorderSize = 0;
+            this.deletecustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletecustomer.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deletecustomer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.deletecustomer.Location = new System.Drawing.Point(392, 143);
+            this.deletecustomer.Name = "deletecustomer";
+            this.deletecustomer.Size = new System.Drawing.Size(191, 41);
+            this.deletecustomer.TabIndex = 23;
+            this.deletecustomer.Text = "Supprimer un client";
+            this.deletecustomer.UseVisualStyleBackColor = false;
+            this.deletecustomer.Click += new System.EventHandler(this.deletecustomer_Click);
             // 
             // button1
             // 
@@ -222,7 +223,7 @@
             this.ClientSize = new System.Drawing.Size(913, 505);
             this.Controls.Add(this.nbclients);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.deletecustomer);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.clientsBtn);
             this.Controls.Add(this.customerListView);
@@ -251,7 +252,7 @@
         private System.Windows.Forms.ColumnHeader Nom;
         private System.Windows.Forms.ColumnHeader Adresse;
         private System.Windows.Forms.ColumnHeader Ville;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button deletecustomer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button clientsBtn;
         private System.Windows.Forms.PictureBox pictureBox2;

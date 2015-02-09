@@ -31,7 +31,6 @@
             this.clientsBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView_employees = new System.Windows.Forms.ListView();
             this.reference_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,6 +39,9 @@
             this.mail_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.role_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.store_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.searchBoxEmployee = new System.Windows.Forms.TextBox();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,14 +50,13 @@
             this.clientsBtn.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.clientsBtn.FlatAppearance.BorderSize = 0;
             this.clientsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clientsBtn.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientsBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.clientsBtn.Location = new System.Drawing.Point(24, 193);
-            this.clientsBtn.Margin = new System.Windows.Forms.Padding(6);
+            this.clientsBtn.Location = new System.Drawing.Point(12, 101);
             this.clientsBtn.Name = "clientsBtn";
-            this.clientsBtn.Size = new System.Drawing.Size(368, 78);
+            this.clientsBtn.Size = new System.Drawing.Size(140, 41);
             this.clientsBtn.TabIndex = 18;
-            this.clientsBtn.Text = "Nouveau client";
+            this.clientsBtn.Text = "Nouveau salarié";
             this.clientsBtn.UseVisualStyleBackColor = false;
             // 
             // button1
@@ -63,14 +64,13 @@
             this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(404, 193);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Location = new System.Drawing.Point(158, 101);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(368, 78);
+            this.button1.Size = new System.Drawing.Size(149, 41);
             this.button1.TabIndex = 19;
-            this.button1.Text = "Modifier un client";
+            this.button1.Text = "Modifier un salarié";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -78,34 +78,23 @@
             this.button2.BackColor = System.Drawing.Color.IndianRed;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(784, 193);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
+            this.button2.Location = new System.Drawing.Point(313, 101);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(368, 78);
+            this.button2.Size = new System.Drawing.Size(167, 41);
             this.button2.TabIndex = 20;
-            this.button2.Text = "Supprimer un client";
+            this.button2.Text = "Supprimer un salarié";
             this.button2.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 17);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 125);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(231, 47);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(107, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(566, 67);
+            this.label1.Size = new System.Drawing.Size(267, 40);
             this.label1.TabIndex = 22;
             this.label1.Text = "Gestion des salariés";
             // 
@@ -121,9 +110,13 @@
             this.mail_column,
             this.role_column,
             this.store_column});
-            this.listView_employees.Location = new System.Drawing.Point(24, 310);
+            this.listView_employees.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView_employees.FullRowSelect = true;
+            this.listView_employees.GridLines = true;
+            this.listView_employees.Location = new System.Drawing.Point(12, 147);
+            this.listView_employees.Margin = new System.Windows.Forms.Padding(2);
             this.listView_employees.Name = "listView_employees";
-            this.listView_employees.Size = new System.Drawing.Size(1622, 522);
+            this.listView_employees.Size = new System.Drawing.Size(904, 235);
             this.listView_employees.TabIndex = 23;
             this.listView_employees.UseCompatibleStateImageBehavior = false;
             this.listView_employees.View = System.Windows.Forms.View.Details;
@@ -136,40 +129,72 @@
             // lastname_column
             // 
             this.lastname_column.Text = "Nom";
-            this.lastname_column.Width = 210;
+            this.lastname_column.Width = 117;
             // 
             // firstname_column
             // 
             this.firstname_column.Text = "Prénom";
-            this.firstname_column.Width = 246;
+            this.firstname_column.Width = 156;
             // 
             // mail_column
             // 
             this.mail_column.Text = "Adresse mail";
-            this.mail_column.Width = 306;
+            this.mail_column.Width = 150;
             // 
             // role_column
             // 
             this.role_column.Text = "Rôle";
-            this.role_column.Width = 239;
+            this.role_column.Width = 127;
             // 
             // store_column
             // 
             this.store_column.Text = "Magasin";
             this.store_column.Width = 232;
             // 
+            // searchBoxEmployee
+            // 
+            this.searchBoxEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBoxEmployee.Location = new System.Drawing.Point(756, 116);
+            this.searchBoxEmployee.Name = "searchBoxEmployee";
+            this.searchBoxEmployee.Size = new System.Drawing.Size(160, 26);
+            this.searchBoxEmployee.TabIndex = 24;
+            this.searchBoxEmployee.TextChanged += new System.EventHandler(this.Reload);
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSearch.Location = new System.Drawing.Point(753, 100);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(84, 13);
+            this.labelSearch.TabIndex = 25;
+            this.labelSearch.Text = "rechercheLabel";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
             // EmployeesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1697, 877);
+            this.ClientSize = new System.Drawing.Size(924, 417);
+            this.Controls.Add(this.labelSearch);
+            this.Controls.Add(this.searchBoxEmployee);
             this.Controls.Add(this.listView_employees);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.clientsBtn);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeesForm";
             this.Text = "Ouatelse - Gestion des salariés";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -192,5 +217,7 @@
         private System.Windows.Forms.ColumnHeader mail_column;
         private System.Windows.Forms.ColumnHeader role_column;
         private System.Windows.Forms.ColumnHeader store_column;
+        private System.Windows.Forms.TextBox searchBoxEmployee;
+        private System.Windows.Forms.Label labelSearch;
     }
 }
