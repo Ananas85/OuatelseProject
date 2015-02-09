@@ -126,5 +126,54 @@ namespace Ouatelse.Managers
 
             return entity;
         }
+
+        /// <summary>
+        /// Persiste une entité dans la base
+        /// </summary>
+        /// <param name="model">Entité à persister</param>
+        public void Save(BaseModel model)
+        {
+            StringBuilder query = new StringBuilder();
+            if (!model.Exists)
+            {
+                query.AppendFormat("INSERT INTO {0} (", tableName);
+                query.Append(String.Join(", ", ((IModel)model).Fetch().Keys));
+                query.Append(") VALUES('");
+                query.Append(String.Join("', '", ((IModel)model).Fetch().Values));
+                query.Append("')");
+            }
+            else
+            {
+                query.AppendFormat("UPDATE {0} SET", tableName);
+                Dictionary<string, string> dict = ((IModel)model).Fetch();
+                bool first = true;
+                foreach (string key in dict.Keys)
+                {
+                    if (!first)
+                        query.Append(",");
+                    query.AppendFormat(" {0} = '{1}'", key, dict[key]);
+                    first = false;
+                }
+
+                query.AppendFormat(" WHERE id={0}", model.Id);
+            }
+            Database.Instance.Execute(query.ToString());
+
+        }
+
+        /// <summary>
+        /// Supprime une entité de la base
+        /// </summary>
+        /// <param name="model">Entité à supprimer</param>
+        public void Delete(BaseModel model)
+        {
+            if (!model.Exists)
+            {
+                Utils.Error("Impossible de supprimer cette entité, elle n'est pas persisté dans la base");
+                return;
+            }
+            string query = String.Format("DELETE FROM {0} WHERE id={1}", tableName, model.Id);
+            Database.Instance.Execute(query.ToString());
+        }
     }
 }

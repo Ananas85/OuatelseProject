@@ -31,5 +31,14 @@ namespace Ouatelse.Models
             this.EndingDate = DateTime.Parse(cursor.Read().ToString());
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("date_debut", StartingDate.ToString("yyyy-MM-dd"));
+            res.Add("date_fin", EndingDate.ToString("yyyy-MM-dd"));
+            res.Add("salaries_id", Employee.Id.ToString());
+            return res;
+        }
     }
 }

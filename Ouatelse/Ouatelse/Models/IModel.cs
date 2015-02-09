@@ -14,5 +14,11 @@ namespace Ouatelse.Models
         /// <param name="data">Tableau d'objets représentant les champs de l'entité</param>
         void Hydrate(object[] data);
         void MakeExistant();
+
+        /// <summary>
+        /// Permet d'établir les relations entre les champs de la base et les propriétés de l'entité
+        /// </summary>
+        /// <returns></returns>
+        Dictionary<string, string> Fetch();
     }
 }
