@@ -34,7 +34,6 @@
             this.mailTB = new System.Windows.Forms.TextBox();
             this.phoneTB = new System.Windows.Forms.TextBox();
             this.mobilePhoneTB = new System.Windows.Forms.TextBox();
-            this.countryTB = new System.Windows.Forms.TextBox();
             this.cityTB = new System.Windows.Forms.TextBox();
             this.zipCodeTB = new System.Windows.Forms.TextBox();
             this.adress2TB = new System.Windows.Forms.TextBox();
@@ -56,14 +55,17 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.roleTB = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.storeBox = new System.Windows.Forms.ComboBox();
+            this.commentsTab = new System.Windows.Forms.TabControl();
+            this.statsTab = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.countryBox = new System.Windows.Forms.ComboBox();
+            this.commentsTB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.commentsTab.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -114,13 +116,6 @@
             this.mobilePhoneTB.Name = "mobilePhoneTB";
             this.mobilePhoneTB.Size = new System.Drawing.Size(111, 20);
             this.mobilePhoneTB.TabIndex = 29;
-            // 
-            // countryTB
-            // 
-            this.countryTB.Location = new System.Drawing.Point(436, 252);
-            this.countryTB.Name = "countryTB";
-            this.countryTB.Size = new System.Drawing.Size(120, 20);
-            this.countryTB.TabIndex = 30;
             // 
             // cityTB
             // 
@@ -309,12 +304,12 @@
             this.label13.TabIndex = 56;
             this.label13.Text = "Rôle: ";
             // 
-            // textBox2
+            // roleTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(385, 147);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(171, 20);
-            this.textBox2.TabIndex = 55;
+            this.roleTB.Location = new System.Drawing.Point(385, 147);
+            this.roleTB.Name = "roleTB";
+            this.roleTB.Size = new System.Drawing.Size(171, 20);
+            this.roleTB.TabIndex = 55;
             // 
             // label14
             // 
@@ -325,36 +320,37 @@
             this.label14.TabIndex = 58;
             this.label14.Text = "Magasin:  ";
             // 
-            // comboBox1
+            // storeBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(385, 173);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(171, 21);
-            this.comboBox1.TabIndex = 59;
+            this.storeBox.FormattingEnabled = true;
+            this.storeBox.Location = new System.Drawing.Point(385, 173);
+            this.storeBox.Name = "storeBox";
+            this.storeBox.Size = new System.Drawing.Size(171, 21);
+            this.storeBox.TabIndex = 59;
             // 
-            // tabControl1
+            // commentsTab
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(43, 345);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(513, 251);
-            this.tabControl1.TabIndex = 60;
+            this.commentsTab.Controls.Add(this.statsTab);
+            this.commentsTab.Controls.Add(this.tabPage2);
+            this.commentsTab.Location = new System.Drawing.Point(43, 345);
+            this.commentsTab.Name = "commentsTab";
+            this.commentsTab.SelectedIndex = 0;
+            this.commentsTab.Size = new System.Drawing.Size(513, 251);
+            this.commentsTab.TabIndex = 60;
             // 
-            // tabPage1
+            // statsTab
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(505, 245);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Statistiques";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.statsTab.Location = new System.Drawing.Point(4, 22);
+            this.statsTab.Name = "statsTab";
+            this.statsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.statsTab.Size = new System.Drawing.Size(505, 225);
+            this.statsTab.TabIndex = 0;
+            this.statsTab.Text = "Statistiques";
+            this.statsTab.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.commentsTB);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -362,6 +358,23 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notes";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // countryBox
+            // 
+            this.countryBox.FormattingEnabled = true;
+            this.countryBox.Location = new System.Drawing.Point(428, 252);
+            this.countryBox.Name = "countryBox";
+            this.countryBox.Size = new System.Drawing.Size(128, 21);
+            this.countryBox.TabIndex = 61;
+            // 
+            // commentsTB
+            // 
+            this.commentsTB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commentsTB.Location = new System.Drawing.Point(3, 3);
+            this.commentsTB.Multiline = true;
+            this.commentsTB.Name = "commentsTB";
+            this.commentsTB.Size = new System.Drawing.Size(499, 219);
+            this.commentsTB.TabIndex = 0;
             // 
             // EmployeeForm
             // 
@@ -371,11 +384,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(609, 616);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.countryBox);
+            this.Controls.Add(this.commentsTab);
+            this.Controls.Add(this.storeBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.roleTB);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cancelButton);
@@ -396,7 +410,6 @@
             this.Controls.Add(this.adress2TB);
             this.Controls.Add(this.zipCodeTB);
             this.Controls.Add(this.cityTB);
-            this.Controls.Add(this.countryTB);
             this.Controls.Add(this.mobilePhoneTB);
             this.Controls.Add(this.phoneTB);
             this.Controls.Add(this.mailTB);
@@ -408,7 +421,9 @@
             this.Text = "EmployeeForm";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.commentsTab.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,7 +437,6 @@
         private System.Windows.Forms.TextBox mailTB;
         private System.Windows.Forms.TextBox phoneTB;
         private System.Windows.Forms.TextBox mobilePhoneTB;
-        private System.Windows.Forms.TextBox countryTB;
         private System.Windows.Forms.TextBox cityTB;
         private System.Windows.Forms.TextBox zipCodeTB;
         private System.Windows.Forms.TextBox adress2TB;
@@ -444,11 +458,13 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox roleTB;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ComboBox storeBox;
+        private System.Windows.Forms.TabControl commentsTab;
+        private System.Windows.Forms.TabPage statsTab;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox countryBox;
+        private System.Windows.Forms.TextBox commentsTB;
     }
 }

@@ -54,5 +54,11 @@ namespace Ouatelse.Forms
                 labelSearch.Text = employeeArray.Length + " résultats";
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EmployeeForm ef = new EmployeeForm(EmployeeManager.Instance.Find(listView_employees.SelectedItems[0].Text));
+            ef.ShowDialog();
+        }
     }
 }
