@@ -19,14 +19,27 @@ namespace Ouatelse.Forms
             InitializeComponent();
                 
             //Reload items
-            ReloadData();
+            Reload(EmployeeManager.Instance.All());
         }
 
-       
-        private void ReloadData()
+        public void Reload(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(searchBoxEmployee.Text))
+            {
+                Reload(EmployeeManager.Instance.All());
+            }
+            else
+            {
+                string Search = "WHERE nom LIKE '" + searchBoxEmployee.Text + "%' OR prenom LIKE '" + searchBoxEmployee.Text + "%';";
+                Reload(EmployeeManager.Instance.Filter(Search));
+            }
+        }
+
+        private void Reload(Employee[] employeeArray)
         {
             this.listView_employees.Items.Clear();
-            foreach(Employee e in EmployeeManager.Instance.All()){
+            foreach (Employee e in employeeArray)
+            {
                 ListViewItem employee = this.listView_employees.Items.Add(e.Id.ToString());
                 employee.SubItems.Add(e.LastName.ToString());
                 employee.SubItems.Add(e.FirstName.ToString());
@@ -35,7 +48,11 @@ namespace Ouatelse.Forms
                 employee.SubItems.Add(e.Store.City.Name.ToString());
                 employee.Tag = e;
             }
-        }
+            if (employeeArray.Length <= 1)
+                labelSearch.Text = employeeArray.Length + " résultat";
+            else
+                labelSearch.Text = employeeArray.Length + " résultats";
 
+        }
     }
 }
