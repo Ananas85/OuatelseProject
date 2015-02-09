@@ -83,7 +83,7 @@ namespace Ouatelse
 
         private void clientsBtn_Click(object sender, EventArgs e)
         {
-            CustomerForm customerForm = new CustomerForm();
+            ManageCustomersForm customerForm = new ManageCustomersForm();
             customerForm.ShowDialog();
         }
 

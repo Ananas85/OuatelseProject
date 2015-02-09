@@ -60,7 +60,6 @@ namespace Ouatelse
             catch (Exception ex)
             {
                 Utils.Warning(ex.Message);
-                Console.ReadKey();
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ouatelse.Managers;
+using Ouatelse.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,35 @@ namespace Ouatelse.Forms
 {
     public partial class CustomerForm : Form
     {
-        public CustomerForm()
+        Customer obj = null;
+        Binding b = new Binding();
+        
+        public CustomerForm(Customer obj)
         {
             InitializeComponent();
+            this.obj = obj;
+        }
+
+
+        private void validateButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CustomerForm_Load(object sender, EventArgs e)
+        {
+            b.Bind(this.firstnameTB, "Text", obj, "LastName");
+            b.Bind(this.lastnameTB, "Text", obj, "FirstName");
+            //b.Bind();
+            // TODO: FINISH TO POPULATE...
+
+            b.Populate();
+        }
+
+        private void validateButton_Click_1(object sender, EventArgs e)
+        {
+            b.Hydrate();
+            CustomerManager.Instance.Save(obj);
         }
     }
 }
