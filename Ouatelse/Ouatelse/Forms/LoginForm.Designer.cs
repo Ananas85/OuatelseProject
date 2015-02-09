@@ -44,7 +44,7 @@
             this.usernameEntry.Name = "usernameEntry";
             this.usernameEntry.Size = new System.Drawing.Size(241, 22);
             this.usernameEntry.TabIndex = 0;
-            this.usernameEntry.Text = "Identifiant";
+            this.usernameEntry.Text = "test";
             // 
             // passwordEntry
             // 
@@ -54,7 +54,7 @@
             this.passwordEntry.PasswordChar = '*';
             this.passwordEntry.Size = new System.Drawing.Size(241, 22);
             this.passwordEntry.TabIndex = 1;
-            this.passwordEntry.Text = "password";
+            this.passwordEntry.Text = "test";
             // 
             // btnOk
             // 
