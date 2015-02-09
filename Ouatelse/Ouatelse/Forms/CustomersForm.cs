@@ -29,7 +29,7 @@ namespace Ouatelse
             }
             else
             {
-                string Search = "WHERE nom LIKE'" + searchBox.Text + "%' OR prenom LIKE'" + searchBox.Text + "%';";
+                string Search = "WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';";
                 Reload(CustomerManager.Instance.Filter(Search));
             }
         }
