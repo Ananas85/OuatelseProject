@@ -23,5 +23,13 @@ namespace Ouatelse.Models
             this.Address = cursor.Read().ToString();
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("adresse", Address);
+            res.Add("villes_id", City.Id.ToString());
+            return res;
+        }
     }
 }

@@ -16,5 +16,12 @@ namespace Ouatelse.Models
             this.Id = Int32.Parse(cursor.Read().ToString());
             this.Name = cursor.Read().ToString();
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("libelle", Name);
+            return res;
+        }
     }
 }

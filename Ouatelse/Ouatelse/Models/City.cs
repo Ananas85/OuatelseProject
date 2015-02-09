@@ -21,6 +21,15 @@ namespace Ouatelse.Models
             this.PostalCode = cursor.Read().ToString();
             this.Country = CountryManager.Instance.Find(cursor.Read().ToString());            
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("libelle", Name);
+            res.Add("code_postal", PostalCode);
+            res.Add("pays_id", Country.Id.ToString());
+            return res;
+        }
     }
 
 }

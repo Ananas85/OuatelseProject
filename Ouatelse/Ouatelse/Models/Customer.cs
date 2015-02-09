@@ -51,5 +51,23 @@ namespace Ouatelse.Models
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
 
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("nom", LastName);
+            res.Add("prenom", FirstName);
+            res.Add("adresse1", Address1);
+            res.Add("adresse2", Address2);
+            res.Add("fixe", PhoneNumber);
+            res.Add("mobile", MobilePhoneNumber);
+            res.Add("mail", Email);
+            res.Add("naissance", DateOfBirth.ToString("yyyy-MM-dd"));
+            res.Add("notes", Comments);
+            res.Add("villes_id", City.Id.ToString());
+            res.Add("pays_id", Nationality.Id.ToString());
+            res.Add("civilite_id", Gender.Id.ToString());
+            return res;
+        }
     }
 }
