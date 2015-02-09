@@ -22,5 +22,14 @@ namespace Ouatelse.Models
             this.Product = ProductManager.Instance.Find(cursor.Read().ToString());
             this.Store = StoreManager.Instance.Find(cursor.Read().ToString());
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("quantite", Quantity.ToString());
+            res.Add("produits_id", Product.Id.ToString());
+            res.Add("magasin_id", Store.Id.ToString());
+            return res;
+        }
     }
 }

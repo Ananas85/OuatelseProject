@@ -25,5 +25,12 @@ namespace Ouatelse.Models
             this.Id = Int32.Parse(cursor.Read().ToString());
             this.Type = cursor.Read().ToString();
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("type", Type);
+            return res;
+        }
     }
 }

@@ -21,5 +21,13 @@ namespace Ouatelse.Models
             if (!String.IsNullOrEmpty(cursor.Read().ToString()))
                 this.ParentRole = RoleManager.Instance.Find(cursor.Read().ToString());            
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("libelle_role", Name);
+            res.Add("parent_role_id", ParentRole.Id.ToString());
+            return res;
+        }
     }
 }

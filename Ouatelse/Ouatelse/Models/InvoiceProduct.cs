@@ -21,5 +21,14 @@ namespace Ouatelse.Models
             this.Invoice = InvoiceManager.Instance.Find(cursor.Read().ToString());
             this.Product = ProductManager.Instance.Find(cursor.Read().ToString());
         }
+
+        public Dictionary<string, string> Fetch()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+            res.Add("quantite", Quantity.ToString());
+            res.Add("factures_id", Invoice.Id.ToString());
+            res.Add("produits_id", Product.Id.ToString());
+            return res;
+        }
     }
 }
