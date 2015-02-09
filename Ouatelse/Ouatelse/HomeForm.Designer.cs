@@ -31,19 +31,19 @@
             this.components = new System.ComponentModel.Container();
             this.connexionText = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.factureBtn = new System.Windows.Forms.Button();
             this.btnLock = new System.Windows.Forms.Button();
             this.deconnexionBtn = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.Label();
             this.hour = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button9 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.clientsBtn = new System.Windows.Forms.Button();
+            this.salarieBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.assistanceBtn = new System.Windows.Forms.Button();
+            this.venteBtn = new System.Windows.Forms.Button();
+            this.produitBtn = new System.Windows.Forms.Button();
             this.roleLbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,19 +67,19 @@
             this.username.Text = "USERNAME";
             this.username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // factureBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(83, 109);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 174);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Nouvelle\r\nFacture";
-            this.button1.UseVisualStyleBackColor = false;
+            this.factureBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.factureBtn.FlatAppearance.BorderSize = 0;
+            this.factureBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.factureBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.factureBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.factureBtn.Location = new System.Drawing.Point(83, 109);
+            this.factureBtn.Name = "factureBtn";
+            this.factureBtn.Size = new System.Drawing.Size(184, 174);
+            this.factureBtn.TabIndex = 2;
+            this.factureBtn.Text = "Nouvelle\r\nFacture";
+            this.factureBtn.UseVisualStyleBackColor = false;
             // 
             // btnLock
             // 
@@ -89,8 +89,9 @@
             this.btnLock.Name = "btnLock";
             this.btnLock.Size = new System.Drawing.Size(75, 23);
             this.btnLock.TabIndex = 3;
-            this.btnLock.Text = "Vérrouiller";
+            this.btnLock.Text = "Verrouiller";
             this.btnLock.UseVisualStyleBackColor = false;
+            this.btnLock.Click += new System.EventHandler(this.btnLock_Click);
             // 
             // deconnexionBtn
             // 
@@ -132,6 +133,7 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button9.Enabled = false;
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,37 +144,38 @@
             this.button9.TabIndex = 16;
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // clientsBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Location = new System.Drawing.Point(273, 109);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(184, 84);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Clients";
-            this.button3.UseVisualStyleBackColor = false;
+            this.clientsBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.clientsBtn.FlatAppearance.BorderSize = 0;
+            this.clientsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clientsBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.clientsBtn.Location = new System.Drawing.Point(273, 109);
+            this.clientsBtn.Name = "clientsBtn";
+            this.clientsBtn.Size = new System.Drawing.Size(184, 84);
+            this.clientsBtn.TabIndex = 17;
+            this.clientsBtn.Text = "Clients";
+            this.clientsBtn.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // salarieBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.Location = new System.Drawing.Point(272, 199);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(184, 84);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Salariés";
-            this.button4.UseVisualStyleBackColor = false;
+            this.salarieBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.salarieBtn.FlatAppearance.BorderSize = 0;
+            this.salarieBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salarieBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salarieBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.salarieBtn.Location = new System.Drawing.Point(272, 199);
+            this.salarieBtn.Name = "salarieBtn";
+            this.salarieBtn.Size = new System.Drawing.Size(184, 84);
+            this.salarieBtn.TabIndex = 18;
+            this.salarieBtn.Text = "Salariés";
+            this.salarieBtn.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button5.Enabled = false;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,46 +186,47 @@
             this.button5.TabIndex = 19;
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // assistanceBtn
             // 
-            this.button6.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button6.Location = new System.Drawing.Point(462, 289);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(184, 84);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Assistance";
-            this.button6.UseVisualStyleBackColor = false;
+            this.assistanceBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.assistanceBtn.FlatAppearance.BorderSize = 0;
+            this.assistanceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.assistanceBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assistanceBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.assistanceBtn.Location = new System.Drawing.Point(462, 289);
+            this.assistanceBtn.Name = "assistanceBtn";
+            this.assistanceBtn.Size = new System.Drawing.Size(184, 84);
+            this.assistanceBtn.TabIndex = 20;
+            this.assistanceBtn.Text = "Assistance";
+            this.assistanceBtn.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // venteBtn
             // 
-            this.button7.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button7.Location = new System.Drawing.Point(462, 199);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(184, 84);
-            this.button7.TabIndex = 21;
-            this.button7.UseVisualStyleBackColor = false;
+            this.venteBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.venteBtn.FlatAppearance.BorderSize = 0;
+            this.venteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.venteBtn.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.venteBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.venteBtn.Location = new System.Drawing.Point(462, 199);
+            this.venteBtn.Name = "venteBtn";
+            this.venteBtn.Size = new System.Drawing.Size(184, 84);
+            this.venteBtn.TabIndex = 21;
+            this.venteBtn.Text = "Ventes";
+            this.venteBtn.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // produitBtn
             // 
-            this.button8.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button8.Location = new System.Drawing.Point(462, 109);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(184, 84);
-            this.button8.TabIndex = 22;
-            this.button8.Text = "Produits / Stock";
-            this.button8.UseVisualStyleBackColor = false;
+            this.produitBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.produitBtn.FlatAppearance.BorderSize = 0;
+            this.produitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.produitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.produitBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.produitBtn.Location = new System.Drawing.Point(462, 109);
+            this.produitBtn.Name = "produitBtn";
+            this.produitBtn.Size = new System.Drawing.Size(184, 84);
+            this.produitBtn.TabIndex = 22;
+            this.produitBtn.Text = "Produits / Stock";
+            this.produitBtn.UseVisualStyleBackColor = false;
             // 
             // roleLbl
             // 
@@ -250,19 +254,19 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(732, 415);
             this.Controls.Add(this.roleLbl);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.produitBtn);
+            this.Controls.Add(this.venteBtn);
+            this.Controls.Add(this.assistanceBtn);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.salarieBtn);
+            this.Controls.Add(this.clientsBtn);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.hour);
             this.Controls.Add(this.date);
             this.Controls.Add(this.deconnexionBtn);
             this.Controls.Add(this.btnLock);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.factureBtn);
             this.Controls.Add(this.username);
             this.Controls.Add(this.connexionText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -279,7 +283,7 @@
 
         private System.Windows.Forms.Label connexionText;
         private System.Windows.Forms.Label username;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button factureBtn;
         private System.Windows.Forms.Button btnLock;
         private System.Windows.Forms.Button deconnexionBtn;
         private System.Windows.Forms.Label date;
@@ -287,12 +291,12 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button clientsBtn;
+        private System.Windows.Forms.Button salarieBtn;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button assistanceBtn;
+        private System.Windows.Forms.Button venteBtn;
+        private System.Windows.Forms.Button produitBtn;
         private System.Windows.Forms.Label roleLbl;
     }
 }

@@ -74,5 +74,10 @@ namespace Ouatelse
                 ReloadUser();
             }
         }
+
+        private void btnLock_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

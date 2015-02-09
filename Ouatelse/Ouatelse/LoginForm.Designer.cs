@@ -62,7 +62,7 @@
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOk.ForeColor = System.Drawing.Color.White;
-            this.btnOk.Location = new System.Drawing.Point(192, 277);
+            this.btnOk.Location = new System.Drawing.Point(200, 279);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(118, 33);
             this.btnOk.TabIndex = 4;
@@ -101,7 +101,7 @@
             this.quitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.quitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quitBtn.ForeColor = System.Drawing.Color.White;
-            this.quitBtn.Location = new System.Drawing.Point(44, 277);
+            this.quitBtn.Location = new System.Drawing.Point(25, 279);
             this.quitBtn.Name = "quitBtn";
             this.quitBtn.Size = new System.Drawing.Size(118, 33);
             this.quitBtn.TabIndex = 8;
