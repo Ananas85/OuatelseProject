@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ArrayCursor.cs" />
     <Compile Include="Bind.cs" />
+    <Compile Include="Binding.cs" />
     <Compile Include="Forms\CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
