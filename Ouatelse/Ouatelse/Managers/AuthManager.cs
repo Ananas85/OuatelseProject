@@ -14,6 +14,8 @@ namespace Ouatelse.Managers
     {
         private static AuthManager _instance = null;
 
+        public static Employee User { get; set; }
+
         public static AuthManager Instance
         {
             get
@@ -22,6 +24,17 @@ namespace Ouatelse.Managers
                     _instance = new AuthManager();
                 return _instance;
             }
+        }
+
+        public bool Login(string username, string password)
+        {
+            Employee employee = EmployeeManager.Instance.First("WHERE identifiant='" + username + "' AND mot_de_passe='" + password + "'");
+            if (employee != null)
+            {
+                User = employee;
+                return true;
+            }
+            return false;
         }
     }
 }

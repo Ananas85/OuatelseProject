@@ -1,4 +1,5 @@
-﻿using Ouatelse.Models;
+﻿using Ouatelse.Managers;
+using Ouatelse.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,24 +14,19 @@ namespace Ouatelse
 {
     public partial class HomeForm : Form
     {
-        public Employee employee { get; set; }
-        public HomeForm(Employee employee)
+        public HomeForm()
         {
             InitializeComponent();
-            this.employee = employee;
 
             //Set the time and the hour
             setTime();
 
+            Employee employee = AuthManager.User;
 
             this.username.Text = employee.FirstName + " " + employee.LastName;
             this.roleLbl.Text = " (" + employee.Role.Name +") ";
 
-            //Centre du texte de connexion
-            int center = this.connexionText.Right - this.connexionText.Width / 2;
-            this.username.Location = new Point(center - this.username.Width / 2, this.username.Top);
-            this.roleLbl.Location = new Point(center - this.roleLbl.Width / 2, this.roleLbl.Top);
-        }
+           }
 
         private void timer1_Tick(object sender, EventArgs e)
         {

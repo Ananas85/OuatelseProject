@@ -27,10 +27,9 @@ namespace Ouatelse
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Employee employee = EmployeeManager.Instance.First("WHERE identifiant='" + this.usernameEntry.Text + "' AND mot_de_passe='" + this.passwordEntry.Text + "'");
-            if (employee != null)
+            if (AuthManager.Instance.Login(this.usernameEntry.Text, this.passwordEntry.Text))
             {
-                HomeForm homeForm = new HomeForm(employee);
+                HomeForm homeForm = new HomeForm();
                 homeForm.Show();
                 this.Hide();
             }

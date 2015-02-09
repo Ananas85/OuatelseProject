@@ -51,28 +51,28 @@
             // 
             // connexionText
             // 
-            this.connexionText.AutoSize = true;
-            this.connexionText.Location = new System.Drawing.Point(572, 9);
+            this.connexionText.Location = new System.Drawing.Point(549, 9);
             this.connexionText.Name = "connexionText";
-            this.connexionText.Size = new System.Drawing.Size(110, 13);
+            this.connexionText.Size = new System.Drawing.Size(171, 20);
             this.connexionText.TabIndex = 0;
             this.connexionText.Text = "Connecté en tant que";
+            this.connexionText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // username
             // 
-            this.username.AutoSize = true;
-            this.username.Location = new System.Drawing.Point(591, 29);
+            this.username.Location = new System.Drawing.Point(546, 29);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(68, 13);
+            this.username.Size = new System.Drawing.Size(174, 13);
             this.username.TabIndex = 1;
             this.username.Text = "USERNAME";
+            this.username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Location = new System.Drawing.Point(83, 109);
             this.button1.Name = "button1";
@@ -104,23 +104,23 @@
             // 
             // date
             // 
-            this.date.AutoSize = true;
             this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(342, 29);
+            this.date.Location = new System.Drawing.Point(108, 9);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(40, 13);
+            this.date.Size = new System.Drawing.Size(432, 33);
             this.date.TabIndex = 7;
             this.date.Text = "DATE";
+            this.date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // hour
             // 
-            this.hour.AutoSize = true;
             this.hour.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hour.Location = new System.Drawing.Point(341, 48);
+            this.hour.Location = new System.Drawing.Point(108, 42);
             this.hour.Name = "hour";
-            this.hour.Size = new System.Drawing.Size(50, 13);
+            this.hour.Size = new System.Drawing.Size(432, 26);
             this.hour.TabIndex = 8;
             this.hour.Text = "HEURE";
+            this.hour.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
@@ -146,7 +146,7 @@
             this.button3.BackColor = System.Drawing.Color.DodgerBlue;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button3.Location = new System.Drawing.Point(273, 109);
             this.button3.Name = "button3";
@@ -160,7 +160,7 @@
             this.button4.BackColor = System.Drawing.Color.DodgerBlue;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.Location = new System.Drawing.Point(272, 199);
             this.button4.Name = "button4";
@@ -187,7 +187,7 @@
             this.button6.BackColor = System.Drawing.Color.DodgerBlue;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button6.Location = new System.Drawing.Point(462, 289);
             this.button6.Name = "button6";
@@ -214,7 +214,7 @@
             this.button8.BackColor = System.Drawing.Color.DodgerBlue;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button8.Location = new System.Drawing.Point(462, 109);
             this.button8.Name = "button8";
@@ -225,12 +225,12 @@
             // 
             // roleLbl
             // 
-            this.roleLbl.AutoSize = true;
-            this.roleLbl.Location = new System.Drawing.Point(601, 48);
+            this.roleLbl.Location = new System.Drawing.Point(546, 42);
             this.roleLbl.Name = "roleLbl";
-            this.roleLbl.Size = new System.Drawing.Size(36, 13);
+            this.roleLbl.Size = new System.Drawing.Size(174, 19);
             this.roleLbl.TabIndex = 23;
             this.roleLbl.Text = "ROLE";
+            this.roleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -264,13 +264,14 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.username);
             this.Controls.Add(this.connexionText);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "HomeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ouatelse - Accueil";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
