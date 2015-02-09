@@ -94,21 +94,25 @@
             // Référence
             // 
             this.Référence.Text = "Référence";
+            this.Référence.Width = 74;
             // 
             // Nom
             // 
             this.Nom.Text = "Nom";
             this.Nom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Nom.Width = 172;
             // 
             // Adresse
             // 
             this.Adresse.Text = "Adresse";
             this.Adresse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Adresse.Width = 264;
             // 
             // Ville
             // 
             this.Ville.Text = "Ville";
             this.Ville.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Ville.Width = 203;
             // 
             // CustomerForm
             // 

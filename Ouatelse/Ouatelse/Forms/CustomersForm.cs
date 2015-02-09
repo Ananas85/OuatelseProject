@@ -28,7 +28,9 @@ namespace Ouatelse
             }
             else
             {
-                Reload(CustomerManager.Instance.Filter("WHERE nom='" + searchBox.Text + "' OR prenom='" + searchBox.Text + "'"));
+                string Search = "WHERE nom='" + searchBox.Text + "%' OR prenom='" + searchBox.Text + "%';";
+                Utils.Info(Search);
+                Reload(CustomerManager.Instance.Filter(Search));
             }
         }
 
@@ -38,9 +40,9 @@ namespace Ouatelse
             foreach (Customer cs in customerArray)
             {
                 ListViewItem customer = this.customerListView.Items.Add(cs.Id.ToString());
-                customer.SubItems.Add(cs.FirstName.ToString());
-                customer.SubItems.Add(cs.Address1.ToString());
-                customer.SubItems.Add(cs.City.Name.ToString());
+                customer.SubItems.Add(cs.FirstName + " " +  cs.LastName);
+                customer.SubItems.Add(cs.Address1 + " " + cs.Address2);
+                customer.SubItems.Add(cs.City.Name + " (" + cs.City.Country.Name + ")" );
                 customer.Tag = cs;
             }
         }
