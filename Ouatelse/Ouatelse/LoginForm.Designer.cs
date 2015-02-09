@@ -33,6 +33,7 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.forgetPassword = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.quitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +93,23 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // quitBtn
+            // 
+            this.quitBtn.BackColor = System.Drawing.Color.IndianRed;
+            this.quitBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.quitBtn.FlatAppearance.BorderSize = 0;
+            this.quitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.quitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quitBtn.ForeColor = System.Drawing.Color.White;
+            this.quitBtn.Location = new System.Drawing.Point(44, 277);
+            this.quitBtn.Name = "quitBtn";
+            this.quitBtn.Size = new System.Drawing.Size(118, 33);
+            this.quitBtn.TabIndex = 8;
+            this.quitBtn.TabStop = false;
+            this.quitBtn.Text = "Quitter";
+            this.quitBtn.UseVisualStyleBackColor = false;
+            this.quitBtn.Click += new System.EventHandler(this.quitBtn_Click);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnOk;
@@ -99,6 +117,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(353, 336);
+            this.ControlBox = false;
+            this.Controls.Add(this.quitBtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.forgetPassword);
             this.Controls.Add(this.btnOk);
@@ -121,6 +141,7 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.LinkLabel forgetPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button quitBtn;
     }
 }
 

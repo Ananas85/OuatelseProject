@@ -21,12 +21,36 @@ namespace Ouatelse
             //Set the time and the hour
             setTime();
 
-            Employee employee = AuthManager.User;
+            //Setup the login
+            DoLogin();
 
-            this.username.Text = employee.FirstName + " " + employee.LastName;
-            this.roleLbl.Text = " (" + employee.Role.Name +") ";
+            //Setup the User
+            ReloadUser();
 
            }
+
+        private static void DoLogin()
+        {
+            if (AuthManager.User == null)
+            {
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();
+                if (AuthManager.User == null)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+        private void ReloadUser()
+        {
+            Employee employee = AuthManager.User;
+            if (employee != null)
+            {
+                this.username.Text = employee.FirstName + " " + employee.LastName;
+                this.roleLbl.Text = " (" + employee.Role.Name + ") ";
+            }
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -39,10 +63,16 @@ namespace Ouatelse
             this.hour.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
-        private void HomeForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void deconnexionBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            AuthManager.User = null;
+            this.Hide();
+            DoLogin();
+            if (AuthManager.User != null)
+            {
+                this.Show();
+                ReloadUser();
+            }
         }
-
     }
 }

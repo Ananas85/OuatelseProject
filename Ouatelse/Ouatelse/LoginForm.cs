@@ -29,14 +29,18 @@ namespace Ouatelse
         {
             if (AuthManager.Instance.Login(this.usernameEntry.Text, this.passwordEntry.Text))
             {
-                HomeForm homeForm = new HomeForm();
-                homeForm.Show();
-                this.Hide();
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             else
             {
-                Utils.Warning("Vos identifiants ne sont pas dans la base de données, réessayez.");
+                Utils.Warning("Ce compte n'existe pas ou identifiants invalides.");
+                this.DialogResult = System.Windows.Forms.DialogResult.None;
             }
+        }
+
+        private void quitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -33,7 +33,7 @@
             this.username = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnLock = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.deconnexionBtn = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.Label();
             this.hour = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -92,15 +92,16 @@
             this.btnLock.Text = "Vérrouiller";
             this.btnLock.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // deconnexionBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(627, 64);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Se déconnecter";
-            this.button2.UseVisualStyleBackColor = false;
+            this.deconnexionBtn.BackColor = System.Drawing.Color.Transparent;
+            this.deconnexionBtn.Location = new System.Drawing.Point(627, 64);
+            this.deconnexionBtn.Name = "deconnexionBtn";
+            this.deconnexionBtn.Size = new System.Drawing.Size(93, 23);
+            this.deconnexionBtn.TabIndex = 4;
+            this.deconnexionBtn.Text = "Se déconnecter";
+            this.deconnexionBtn.UseVisualStyleBackColor = false;
+            this.deconnexionBtn.Click += new System.EventHandler(this.deconnexionBtn_Click);
             // 
             // date
             // 
@@ -259,7 +260,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.hour);
             this.Controls.Add(this.date);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.deconnexionBtn);
             this.Controls.Add(this.btnLock);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.username);
@@ -269,7 +270,6 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ouatelse - Accueil";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -281,7 +281,7 @@
         private System.Windows.Forms.Label username;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnLock;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button deconnexionBtn;
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Label hour;
         private System.Windows.Forms.Timer timer1;

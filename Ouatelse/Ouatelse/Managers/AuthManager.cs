@@ -21,7 +21,10 @@ namespace Ouatelse.Managers
             get
             {
                 if (_instance == null)
+                {
                     _instance = new AuthManager();
+                    AuthManager.User = null;
+                }
                 return _instance;
             }
         }

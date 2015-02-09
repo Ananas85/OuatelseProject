@@ -17,8 +17,7 @@ namespace Ouatelse
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            LoginForm loginForm = new LoginForm();
-            Application.Run(loginForm);
+            Application.Run(new HomeForm());
 
         }
     }
