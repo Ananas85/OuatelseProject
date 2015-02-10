@@ -19,6 +19,7 @@ namespace Ouatelse
         public HomeForm()
         {
             InitializeComponent();
+
             if (!Utils.CheckServer())
             {
                 Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet");

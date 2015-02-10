@@ -33,7 +33,7 @@ namespace Ouatelse
 
         public static bool CheckServer()
         {
-            string host = "chardan.net";
+            string host = "http://chardan.net";
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(host);
