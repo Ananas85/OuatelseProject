@@ -15,6 +15,8 @@ namespace Ouatelse.Models
         public Customer Customer { get; set; }
         public Payment Payment { get; set; }
 
+        public ManyCollection<InvoiceProduct> Products = new ManyCollection<InvoiceProduct>(InvoiceProductManager.Instance, "factures_id", "Facture", 1);
+
         public void Hydrate(object[] data)
         {
             ArrayCursor<object> cursor = new ArrayCursor<object>(data);
