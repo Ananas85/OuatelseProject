@@ -33,15 +33,15 @@ namespace Ouatelse
 
         public static bool CheckServer()
         {
-            string host = "http://chardan.net";
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(host);
-                request.Method = "HEAD";
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                return response.StatusCode == HttpStatusCode.OK;
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                {
+                    return true;
+                }
             }
-            catch (Exception)
+            catch
             {
                 return false;
             }

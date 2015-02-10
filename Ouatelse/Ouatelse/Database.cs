@@ -74,7 +74,10 @@ namespace Ouatelse
             }
             catch
             {
-                Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                if (!Utils.CheckServer())
+                    Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
+                else
+                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
         }
@@ -99,18 +102,17 @@ namespace Ouatelse
             }
             catch
             {
-                Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                if (!Utils.CheckServer())
+                    Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
+                else
+                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                return false;
             }
             return false;
         }
 
         public DataSet GetDataSet(string query, Dictionary<string, object> parameters = null)
         {
-            if (!Utils.CheckServer())
-            {
-                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
-                return null;
-            }
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
             try
@@ -127,9 +129,12 @@ namespace Ouatelse
             }
             catch
             {
-                Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                if (!Utils.CheckServer())
+                    Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
+                else
+                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                return null;
             }
-            return null;
         }
 
         /// <summary>
