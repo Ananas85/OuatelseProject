@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -44,21 +45,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DateBirthPicker = new System.Windows.Forms.DateTimePicker();
-            this.adress1TB = new System.Windows.Forms.TextBox();
-            this.civilityBox = new System.Windows.Forms.ComboBox();
-            this.firstnameTB = new System.Windows.Forms.TextBox();
-            this.lastnameTB = new System.Windows.Forms.TextBox();
-            this.adress2TB = new System.Windows.Forms.TextBox();
-            this.zipCodeTB = new System.Windows.Forms.TextBox();
-            this.countryTB = new System.Windows.Forms.TextBox();
-            this.mobilePhoneTB = new System.Windows.Forms.TextBox();
-            this.phoneTB = new System.Windows.Forms.TextBox();
-            this.mailTB = new System.Windows.Forms.TextBox();
-            this.idTB = new System.Windows.Forms.TextBox();
+            this.Address1 = new System.Windows.Forms.TextBox();
+            this.GenderName = new System.Windows.Forms.ComboBox();
+            this.FirstName = new System.Windows.Forms.TextBox();
+            this.LastName = new System.Windows.Forms.TextBox();
+            this.Address2 = new System.Windows.Forms.TextBox();
+            this.CityPostalCode = new System.Windows.Forms.TextBox();
+            this.Country = new System.Windows.Forms.TextBox();
+            this.PhoneNumber = new System.Windows.Forms.TextBox();
+            this.MobilePhoneNumber = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.TextBox();
+            this.Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.CityName = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -93,6 +94,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notes";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(505, 225);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Factures";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -222,83 +233,84 @@
             this.DateBirthPicker.Size = new System.Drawing.Size(100, 20);
             this.DateBirthPicker.TabIndex = 75;
             // 
-            // adress1TB
+            // Address1
             // 
-            this.adress1TB.Location = new System.Drawing.Point(114, 203);
-            this.adress1TB.Name = "adress1TB";
-            this.adress1TB.Size = new System.Drawing.Size(442, 20);
-            this.adress1TB.TabIndex = 74;
+            this.Address1.Location = new System.Drawing.Point(114, 203);
+            this.Address1.Name = "Address1";
+            this.Address1.Size = new System.Drawing.Size(442, 20);
+            this.Address1.TabIndex = 74;
             // 
-            // civilityBox
+            // GenderName
             // 
-            this.civilityBox.FormattingEnabled = true;
-            this.civilityBox.Location = new System.Drawing.Point(232, 123);
-            this.civilityBox.Name = "civilityBox";
-            this.civilityBox.Size = new System.Drawing.Size(53, 21);
-            this.civilityBox.TabIndex = 73;
+            this.GenderName.FormattingEnabled = true;
+            this.GenderName.Location = new System.Drawing.Point(232, 123);
+            this.GenderName.Name = "GenderName";
+            this.GenderName.Size = new System.Drawing.Size(53, 21);
+            this.GenderName.TabIndex = 73;
             // 
-            // firstnameTB
+            // FirstName
             // 
-            this.firstnameTB.Location = new System.Drawing.Point(114, 149);
-            this.firstnameTB.Name = "firstnameTB";
-            this.firstnameTB.Size = new System.Drawing.Size(171, 20);
-            this.firstnameTB.TabIndex = 72;
+            this.FirstName.Location = new System.Drawing.Point(114, 149);
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Size = new System.Drawing.Size(171, 20);
+            this.FirstName.TabIndex = 72;
             // 
-            // lastnameTB
+            // LastName
             // 
-            this.lastnameTB.Location = new System.Drawing.Point(114, 177);
-            this.lastnameTB.Name = "lastnameTB";
-            this.lastnameTB.Size = new System.Drawing.Size(171, 20);
-            this.lastnameTB.TabIndex = 71;
+            this.LastName.Location = new System.Drawing.Point(114, 177);
+            this.LastName.Name = "LastName";
+            this.LastName.Size = new System.Drawing.Size(171, 20);
+            this.LastName.TabIndex = 71;
             // 
-            // adress2TB
+            // Address2
             // 
-            this.adress2TB.Location = new System.Drawing.Point(114, 229);
-            this.adress2TB.Name = "adress2TB";
-            this.adress2TB.Size = new System.Drawing.Size(442, 20);
-            this.adress2TB.TabIndex = 70;
+            this.Address2.Location = new System.Drawing.Point(114, 229);
+            this.Address2.Name = "Address2";
+            this.Address2.Size = new System.Drawing.Size(442, 20);
+            this.Address2.TabIndex = 70;
             // 
-            // zipCodeTB
+            // CityPostalCode
             // 
-            this.zipCodeTB.Location = new System.Drawing.Point(114, 255);
-            this.zipCodeTB.Name = "zipCodeTB";
-            this.zipCodeTB.Size = new System.Drawing.Size(69, 20);
-            this.zipCodeTB.TabIndex = 69;
+            this.CityPostalCode.Location = new System.Drawing.Point(114, 255);
+            this.CityPostalCode.Name = "CityPostalCode";
+            this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
+            this.CityPostalCode.TabIndex = 69;
             // 
-            // countryTB
+            // Country
             // 
-            this.countryTB.Location = new System.Drawing.Point(436, 255);
-            this.countryTB.Name = "countryTB";
-            this.countryTB.Size = new System.Drawing.Size(120, 20);
-            this.countryTB.TabIndex = 67;
+            this.Country.Location = new System.Drawing.Point(436, 255);
+            this.Country.Name = "Country";
+            this.Country.Size = new System.Drawing.Size(120, 20);
+            this.Country.TabIndex = 67;
             // 
-            // mobilePhoneTB
+            // PhoneNumber
             // 
-            this.mobilePhoneTB.Location = new System.Drawing.Point(114, 283);
-            this.mobilePhoneTB.Name = "mobilePhoneTB";
-            this.mobilePhoneTB.Size = new System.Drawing.Size(111, 20);
-            this.mobilePhoneTB.TabIndex = 66;
+            this.PhoneNumber.Location = new System.Drawing.Point(114, 283);
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
+            this.PhoneNumber.TabIndex = 66;
             // 
-            // phoneTB
+            // MobilePhoneNumber
             // 
-            this.phoneTB.Location = new System.Drawing.Point(232, 283);
-            this.phoneTB.Name = "phoneTB";
-            this.phoneTB.Size = new System.Drawing.Size(111, 20);
-            this.phoneTB.TabIndex = 65;
+            this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 283);
+            this.MobilePhoneNumber.Name = "MobilePhoneNumber";
+            this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
+            this.MobilePhoneNumber.TabIndex = 65;
             // 
-            // mailTB
+            // Email
             // 
-            this.mailTB.Location = new System.Drawing.Point(114, 309);
-            this.mailTB.Name = "mailTB";
-            this.mailTB.Size = new System.Drawing.Size(442, 20);
-            this.mailTB.TabIndex = 64;
+            this.Email.Location = new System.Drawing.Point(114, 309);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(442, 20);
+            this.Email.TabIndex = 64;
             // 
-            // idTB
+            // Id
             // 
-            this.idTB.Location = new System.Drawing.Point(114, 123);
-            this.idTB.Name = "idTB";
-            this.idTB.Size = new System.Drawing.Size(69, 20);
-            this.idTB.TabIndex = 63;
+            this.Id.Location = new System.Drawing.Point(114, 123);
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Size = new System.Drawing.Size(69, 20);
+            this.Id.TabIndex = 63;
             // 
             // label1
             // 
@@ -321,30 +333,30 @@
             this.pictureBox1.TabIndex = 61;
             this.pictureBox1.TabStop = false;
             // 
-            // listBox1
+            // CityName
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(212, 258);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(131, 17);
-            this.listBox1.TabIndex = 93;
+            this.CityName.FormattingEnabled = true;
+            this.CityName.Location = new System.Drawing.Point(230, 256);
+            this.CityName.Name = "CityName";
+            this.CityName.Size = new System.Drawing.Size(145, 21);
+            this.CityName.TabIndex = 93;
             // 
-            // tabPage3
+            // label10
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(505, 225);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Factures";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(189, 258);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 94;
+            this.label10.Text = "Ville : ";
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(586, 652);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.CityName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -359,17 +371,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DateBirthPicker);
-            this.Controls.Add(this.adress1TB);
-            this.Controls.Add(this.civilityBox);
-            this.Controls.Add(this.firstnameTB);
-            this.Controls.Add(this.lastnameTB);
-            this.Controls.Add(this.adress2TB);
-            this.Controls.Add(this.zipCodeTB);
-            this.Controls.Add(this.countryTB);
-            this.Controls.Add(this.mobilePhoneTB);
-            this.Controls.Add(this.phoneTB);
-            this.Controls.Add(this.mailTB);
-            this.Controls.Add(this.idTB);
+            this.Controls.Add(this.Address1);
+            this.Controls.Add(this.GenderName);
+            this.Controls.Add(this.FirstName);
+            this.Controls.Add(this.LastName);
+            this.Controls.Add(this.Address2);
+            this.Controls.Add(this.CityPostalCode);
+            this.Controls.Add(this.Country);
+            this.Controls.Add(this.PhoneNumber);
+            this.Controls.Add(this.MobilePhoneNumber);
+            this.Controls.Add(this.Email);
+            this.Controls.Add(this.Id);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "CustomerForm";
@@ -400,20 +412,21 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DateBirthPicker;
-        private System.Windows.Forms.TextBox adress1TB;
-        private System.Windows.Forms.ComboBox civilityBox;
-        private System.Windows.Forms.TextBox firstnameTB;
-        private System.Windows.Forms.TextBox lastnameTB;
-        private System.Windows.Forms.TextBox adress2TB;
-        private System.Windows.Forms.TextBox zipCodeTB;
-        private System.Windows.Forms.TextBox countryTB;
-        private System.Windows.Forms.TextBox mobilePhoneTB;
-        private System.Windows.Forms.TextBox phoneTB;
-        private System.Windows.Forms.TextBox mailTB;
-        private System.Windows.Forms.TextBox idTB;
+        private System.Windows.Forms.TextBox Address1;
+        private System.Windows.Forms.ComboBox GenderName;
+        private System.Windows.Forms.TextBox FirstName;
+        private System.Windows.Forms.TextBox LastName;
+        private System.Windows.Forms.TextBox Address2;
+        private System.Windows.Forms.TextBox CityPostalCode;
+        private System.Windows.Forms.TextBox Country;
+        private System.Windows.Forms.TextBox PhoneNumber;
+        private System.Windows.Forms.TextBox MobilePhoneNumber;
+        private System.Windows.Forms.TextBox Email;
+        private System.Windows.Forms.TextBox Id;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox CityName;
+        private System.Windows.Forms.Label label10;
     }
 }

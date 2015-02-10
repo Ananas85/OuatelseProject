@@ -46,8 +46,8 @@ namespace Ouatelse.Models
             this.Email = cursor.Read().ToString();
             this.DateOfBirth = DateTime.Parse(cursor.Read().ToString());
             this.Comments = cursor.Read().ToString();
-            this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Nationality = CountryManager.Instance.Find(cursor.Read().ToString());
+            this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
 
         }

@@ -56,6 +56,7 @@ namespace Ouatelse
                 customer.SubItems.Add(cs.City.PostalCode.ToString());
                 customer.SubItems.Add(cs.City.Name);
                 customer.SubItems.Add(cs.City.Country.Name);
+                Utils.Info(CityManager.Instance.Find(33996).Name);
                 customer.Tag = cs;
                 if (alternativeColor)
                 {

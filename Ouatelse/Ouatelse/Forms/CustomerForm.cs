@@ -15,7 +15,6 @@ namespace Ouatelse.Forms
     public partial class CustomerForm : Form
     {
         Customer obj = null;
-        Binding b = new Binding();
         
         public CustomerForm(Customer obj)
         {
@@ -31,8 +30,8 @@ namespace Ouatelse.Forms
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-            b.Bind(this.firstnameTB, "Text", obj, "LastName");
-            b.Bind(this.lastnameTB, "Text", obj, "FirstName");
+            b.Bind(this.FirstName, "Text", obj, "LastName");
+            b.Bind(this.LastName, "Text", obj, "FirstName");
             //b.Bind();
             // TODO: FINISH TO POPULATE...
 
