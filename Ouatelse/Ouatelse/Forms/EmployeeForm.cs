@@ -52,7 +52,7 @@ namespace Ouatelse.Forms
             b.Bind(this.mobilePhoneTB, "Text", obj, "MobilePhoneNumber");
             b.Bind(this.phoneTB, "Text", obj, "PhoneNumber");
             b.Bind(this.mailTB, "Text", obj, "Email");
-            b.Bind(this.commentsTB, "Text", obj, "Comments");
+            b.Bind(this.commentsTB, "Text", obj, "Comments")
             */
             b.Populate();
         }
