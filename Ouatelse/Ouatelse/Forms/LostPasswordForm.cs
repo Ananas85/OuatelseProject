@@ -24,14 +24,19 @@ namespace Ouatelse
             Employee employee = EmployeeManager.Instance.First("WHERE mail='" + this.emailEntry.Text + "'");
             if (employee != null)
             {
-                Utils.Info("Vous êtes dans la base, on va vous envoyé un mail avec votre mot de passe");
-                MailSender.Instance.sendMail(employee.Email, "retrouve ton mot de passe", "Le voilà, gros bisous");
+                MailSender.Instance.lostPassword(employee);
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             else
             {
                 Utils.Warning("Vous n'êtes pas dans la base de données");
             }
 
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
     }
 }

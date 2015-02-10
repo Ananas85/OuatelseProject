@@ -89,6 +89,11 @@ namespace Ouatelse.Forms
             }
         }
 
+        private bool verifyData()
+        {
+            return true;
+        }
+
         public Customer getCustomer()
         {
             return obj;

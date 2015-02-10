@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Comments = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CityName = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.Comments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,10 +71,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.Comments);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(43, 348);
+            this.tabControl1.Location = new System.Drawing.Point(43, 357);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(513, 251);
+            this.tabControl1.Size = new System.Drawing.Size(513, 242);
             this.tabControl1.TabIndex = 92;
             // 
             // tabPage1
@@ -93,10 +93,19 @@
             this.Comments.Location = new System.Drawing.Point(4, 22);
             this.Comments.Name = "Comments";
             this.Comments.Padding = new System.Windows.Forms.Padding(5);
-            this.Comments.Size = new System.Drawing.Size(505, 225);
+            this.Comments.Size = new System.Drawing.Size(505, 216);
             this.Comments.TabIndex = 1;
             this.Comments.Text = "Notes";
             this.Comments.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(5, 5);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(495, 206);
+            this.textBox1.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -369,21 +378,15 @@
             this.label10.TabIndex = 94;
             this.label10.Text = "Ville : ";
             // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(5, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(495, 215);
-            this.textBox1.TabIndex = 0;
-            // 
             // CustomerForm
             // 
+            this.AcceptButton = this.validateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(586, 652);
+            this.CancelButton = this.cancelButton;
+            this.ClientSize = new System.Drawing.Size(586, 609);
+            this.ControlBox = false;
             this.Controls.Add(this.label10);
             this.Controls.Add(this.CityName);
             this.Controls.Add(this.tabControl1);

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
+using Ouatelse.Models;
 
 namespace Ouatelse
 {
@@ -21,46 +23,50 @@ namespace Ouatelse
                 if (_instance == null)
                 {
                     _instance = new MailSender();
-                    SendersAddress = "outelse.contact@gmail.com";
+                    SendersAddress = "ouatelse.contact@gmail.com";
                     SendersPassword = "ouatelse";
                 }
                 return _instance;
             }
         }
 
-        public void sendMail(string to, string subject, string body)
+        public void sendMail(string toList, string subject, string body)
         {
+            MailMessage message = new MailMessage();
+            SmtpClient smtpClient = new SmtpClient();
             try
             {
-
-                string ReceiversAddress = to;
-                //we will use Smtp client which allows us to send email using SMTP Protocol
-                //i have specified the properties of SmtpClient smtp within{}
-                //gmails smtp server name is smtp.gmail.com and port number is 587
-                SmtpClient smtp = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(SendersAddress,SendersPassword),
-                    Timeout = 3000
-                };
-
-                //MailMessage represents a mail message
-                //it is 4 parameters(From,TO,subject,body)
-
-                MailMessage message = new MailMessage(SendersAddress, ReceiversAddress, subject, body);
-                /*WE use smtp sever we specified above to send the message(MailMessage message)*/
-
-                smtp.Send(message);
-                Utils.Info("Message correctement envoyé");
-                Console.ReadKey();
+                MailAddress fromAddress = new MailAddress(SendersAddress);
+                message.From = fromAddress;
+                message.To.Add(new MailAddress(toList));
+                message.To.Add(new MailAddress(SendersAddress));
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = body;
+                // We use gmail as our smtp client
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.EnableSsl = true;
+                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
+                smtpClient.Send(message);
+                Utils.Info("Mail envoyé avec succès");
             }
             catch (Exception ex)
             {
-                Utils.Warning(ex.Message);
+                Utils.Error("Mail non envoyé" + ex.Message);
             }
         }
+
+        public void lostPassword(Employee emp)
+        {
+            string htmlContent = Ouatelse.Properties.Resources.forgottenPassword;
+            string body = htmlContent.Replace("USERNAME", emp.Username);
+            body = body.Replace("PASSWORD", emp.Password);
+            body = body.Replace("EMAIL", emp.Email);
+            sendMail(emp.Email, "Récupération de mot de passe", body);
+        }
+
     }
 }
