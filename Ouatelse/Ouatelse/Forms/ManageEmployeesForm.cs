@@ -57,8 +57,17 @@ namespace Ouatelse.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // TODO : Correct selection using MouseClick (like Customers)
             EmployeeForm ef = new EmployeeForm(EmployeeManager.Instance.Find(listView_employees.SelectedItems[0].Text));
-            ef.ShowDialog();
+            if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+        }
+
+        private void clientsBtn_Click(object sender, EventArgs e)
+        {
+            EmployeeForm ef = new EmployeeForm(new Employee());
+            if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
         }
     }
 }

@@ -61,8 +61,8 @@
             this.commentsTab = new System.Windows.Forms.TabControl();
             this.statsTab = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.countryBox = new System.Windows.Forms.ComboBox();
             this.commentsTB = new System.Windows.Forms.TextBox();
+            this.countryBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.commentsTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -322,6 +322,7 @@
             // 
             // storeBox
             // 
+            this.storeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.storeBox.FormattingEnabled = true;
             this.storeBox.Location = new System.Drawing.Point(385, 173);
             this.storeBox.Name = "storeBox";
@@ -359,14 +360,6 @@
             this.tabPage2.Text = "Notes";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // countryBox
-            // 
-            this.countryBox.FormattingEnabled = true;
-            this.countryBox.Location = new System.Drawing.Point(428, 252);
-            this.countryBox.Name = "countryBox";
-            this.countryBox.Size = new System.Drawing.Size(128, 21);
-            this.countryBox.TabIndex = 61;
-            // 
             // commentsTB
             // 
             this.commentsTB.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -375,6 +368,14 @@
             this.commentsTB.Name = "commentsTB";
             this.commentsTB.Size = new System.Drawing.Size(499, 219);
             this.commentsTB.TabIndex = 0;
+            // 
+            // countryBox
+            // 
+            this.countryBox.FormattingEnabled = true;
+            this.countryBox.Location = new System.Drawing.Point(428, 252);
+            this.countryBox.Name = "countryBox";
+            this.countryBox.Size = new System.Drawing.Size(128, 21);
+            this.countryBox.TabIndex = 61;
             // 
             // EmployeeForm
             // 

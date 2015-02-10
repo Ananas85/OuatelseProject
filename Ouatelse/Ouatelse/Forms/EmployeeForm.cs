@@ -27,6 +27,12 @@ namespace Ouatelse.Forms
 
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
+            List<Store> stores = new List<Store>(StoreManager.Instance.All());
+
+            this.storeBox.DataSource = stores;
+            this.storeBox.ValueMember = "Id";
+            this.storeBox.DisplayMember = "Address";
+
            /*
             * CANNOT POPULATE DUE TO ERRORS TYPES IN BINDING.
             * 
@@ -34,12 +40,13 @@ namespace Ouatelse.Forms
             */
             b.Bind(this.firstnameTB, "Text", obj, "FirstName");
             b.Bind(this.lastnameTB, "Text", obj, "LastName");
-            /*
-            b.Bind(this.roleTB, "Text", obj, "Role.Name");
-            b.Bind(this.storeBox, "Value", obj, "Store.Name");
+            
+            //b.Bind(this.roleTB, "Text", obj, "Role.Name");
+            if (obj.Store != null)
+                this.storeBox.SelectedValue = obj.Store.Id;
             b.Bind(this.adress1TB, "Text", obj, "Address1");
             b.Bind(this.adress2TB, "Text", obj, "Address2");
-            b.Bind(this.zipCodeTB, "Text", obj, "City.PostalCode.ToString()");
+            /*b.Bind(this.zipCodeTB, "Text", obj, "City.PostalCode.ToString()");
             b.Bind(this.cityTB, "Text", obj, "City.Name");
             b.Bind(this.countryBox, "Value", obj, "Country.Name");
             b.Bind(this.mobilePhoneTB, "Text", obj, "MobilePhoneNumber");
@@ -53,6 +60,7 @@ namespace Ouatelse.Forms
         private void validateButton_Click(object sender, EventArgs e)
         {
             b.Hydrate();
+            obj.Store = (Store)this.storeBox.SelectedItem;
             EmployeeManager.Instance.Save(obj);
         }
     }

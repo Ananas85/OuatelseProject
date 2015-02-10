@@ -58,6 +58,7 @@
             this.clientsBtn.TabIndex = 18;
             this.clientsBtn.Text = "Nouveau salarié";
             this.clientsBtn.UseVisualStyleBackColor = false;
+            this.clientsBtn.Click += new System.EventHandler(this.clientsBtn_Click);
             // 
             // button1
             // 
@@ -182,7 +183,7 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
-            // EmployeesForm
+            // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,7 +198,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.clientsBtn);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "EmployeesForm";
+            this.Name = "ManageEmployeesForm";
             this.Text = "Ouatelse - Gestion des salariés";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

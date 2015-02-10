@@ -33,7 +33,13 @@ namespace Ouatelse
             foreach (Bind b in Binds)
             {
                 object val = b.destPropInfo.GetValue(b.o2, null);
-                b.srcPropInfo.SetValue(b.o1, val, null);
+                if (b.p1 == "Text")
+                {
+                    string strVal = (val == null) ? "" : val.ToString();
+                    b.srcPropInfo.SetValue(b.o1, strVal, null);
+                }
+                else
+                    b.srcPropInfo.SetValue(b.o1, val, null);
             }
         }
 

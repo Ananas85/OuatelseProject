@@ -30,10 +30,10 @@ namespace Ouatelse.Models
 
         public void Add(EntityT entity)
         {
-            Type t = typeof(entity);
+            /*Type t = typeof(entity);
             t.GetProperty(property).SetValue(entity, Int32.Parse(this.id.ToString()));
             manager.Save(entity);
-            items.Add(entity);
+            items.Add(entity);*/
         }
     }
 }
