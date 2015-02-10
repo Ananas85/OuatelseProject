@@ -50,13 +50,12 @@ namespace Ouatelse
             foreach (Customer cs in customerArray)
             {
                 ListViewItem customer = this.customerListView.Items.Add(cs.Id.ToString());
-                customer.SubItems.Add(cs.FirstName);
                 customer.SubItems.Add(cs.LastName);
+                customer.SubItems.Add(cs.FirstName);
                 customer.SubItems.Add(cs.Address1 + " " + cs.Address2);
-                customer.SubItems.Add(cs.City.PostalCode.ToString());
+                customer.SubItems.Add(cs.City.PostalCode);
                 customer.SubItems.Add(cs.City.Name);
                 customer.SubItems.Add(cs.City.Country.Name);
-                Utils.Info(CityManager.Instance.Find(33996).Name);
                 customer.Tag = cs;
                 if (alternativeColor)
                 {
@@ -80,11 +79,27 @@ namespace Ouatelse
         private void NewCustomer()
         {
             CustomerForm cs = new CustomerForm(new Customer());
+            if (cs.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+            CustomerManager.Instance.Save(cs.getCustomer());
+            Reload(CustomerManager.Instance.All());
         }
 
         private void EditCustomer()
         {
+            if (currentCustomer != null)
+            {
+                CustomerForm cs = new CustomerForm(currentCustomer);
+                if (cs.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return;
+                CustomerManager.Instance.Save(cs.getCustomer());
+                Reload(CustomerManager.Instance.All());
 
+            }
+            else
+            {
+                Utils.Warning("Vous n'avez pas sélectionné de clients");
+            }
         }
 
         private void deletecustomer_Click(object sender, EventArgs e)
@@ -92,9 +107,25 @@ namespace Ouatelse
             if (currentCustomer != null)
             {
                 if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentCustomer.LastName + " " + currentCustomer.FirstName + " ? "))
-                    CustomerManager.Instance.Delete(currentCustomer);
+                    if (CustomerManager.Instance.Delete(currentCustomer))
+                        Reload(CustomerManager.Instance.All());
+
             }
-            Reload(CustomerManager.Instance.All());
+        }
+
+        private void customerListView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            EditCustomer();
+        }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+            EditCustomer();
+        }
+
+        private void nouveau_Click(object sender, EventArgs e)
+        {
+            NewCustomer();
         }
     }
 }

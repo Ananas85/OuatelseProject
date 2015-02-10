@@ -21,12 +21,11 @@ namespace Ouatelse.Models
         public DateTime DateOfBirth { get; set; }
         public string Comments { get; set; }
         public City City { get; set; }
-        public Country Nationality { get; set; }
         public Gender Gender { get; set; }
 
         public Customer()
         {
-
+            DateOfBirth = DateTime.Now;
         }
 
         /// <summary>
@@ -46,7 +45,6 @@ namespace Ouatelse.Models
             this.Email = cursor.Read().ToString();
             this.DateOfBirth = DateTime.Parse(cursor.Read().ToString());
             this.Comments = cursor.Read().ToString();
-            this.Nationality = CountryManager.Instance.Find(cursor.Read().ToString());
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
 
@@ -60,12 +58,11 @@ namespace Ouatelse.Models
             res.Add("adresse1", Address1);
             res.Add("adresse2", Address2);
             res.Add("fixe", PhoneNumber);
-            res.Add("mobile", MobilePhoneNumber);
+            res.Add("portable", MobilePhoneNumber);
             res.Add("mail", Email);
             res.Add("naissance", DateOfBirth.ToString("yyyy-MM-dd"));
             res.Add("notes", Comments);
             res.Add("villes_id", City.Id.ToString());
-            res.Add("pays_id", Nationality.Id.ToString());
             res.Add("civilite_id", Gender.Id.ToString());
             return res;
         }

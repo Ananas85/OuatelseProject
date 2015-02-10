@@ -40,8 +40,8 @@
             this.Ville = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.deletecustomer = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.clientsBtn = new System.Windows.Forms.Button();
+            this.modify = new System.Windows.Forms.Button();
+            this.nouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nbclients = new System.Windows.Forms.Label();
@@ -102,6 +102,7 @@
             this.customerListView.UseCompatibleStateImageBehavior = false;
             this.customerListView.View = System.Windows.Forms.View.Details;
             this.customerListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.customerListView_MouseClick);
+            this.customerListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.customerListView_MouseDoubleClick);
             // 
             // Référence
             // 
@@ -153,33 +154,35 @@
             this.deletecustomer.UseVisualStyleBackColor = false;
             this.deletecustomer.Click += new System.EventHandler(this.deletecustomer_Click);
             // 
-            // button1
+            // modify
             // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(202, 143);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 41);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Modifier un client";
-            this.button1.UseVisualStyleBackColor = false;
+            this.modify.BackColor = System.Drawing.Color.DodgerBlue;
+            this.modify.FlatAppearance.BorderSize = 0;
+            this.modify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.modify.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.modify.Location = new System.Drawing.Point(202, 143);
+            this.modify.Name = "modify";
+            this.modify.Size = new System.Drawing.Size(184, 41);
+            this.modify.TabIndex = 22;
+            this.modify.Text = "Modifier un client";
+            this.modify.UseVisualStyleBackColor = false;
+            this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
-            // clientsBtn
+            // nouveau
             // 
-            this.clientsBtn.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.clientsBtn.FlatAppearance.BorderSize = 0;
-            this.clientsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clientsBtn.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientsBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.clientsBtn.Location = new System.Drawing.Point(12, 143);
-            this.clientsBtn.Name = "clientsBtn";
-            this.clientsBtn.Size = new System.Drawing.Size(184, 41);
-            this.clientsBtn.TabIndex = 21;
-            this.clientsBtn.Text = "Nouveau client";
-            this.clientsBtn.UseVisualStyleBackColor = false;
+            this.nouveau.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.nouveau.FlatAppearance.BorderSize = 0;
+            this.nouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nouveau.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nouveau.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.nouveau.Location = new System.Drawing.Point(12, 143);
+            this.nouveau.Name = "nouveau";
+            this.nouveau.Size = new System.Drawing.Size(184, 41);
+            this.nouveau.TabIndex = 21;
+            this.nouveau.Text = "Nouveau client";
+            this.nouveau.UseVisualStyleBackColor = false;
+            this.nouveau.Click += new System.EventHandler(this.nouveau_Click);
             // 
             // pictureBox2
             // 
@@ -212,7 +215,7 @@
             this.nbclients.Text = "Nombre de";
             this.nbclients.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // CustomerForm
+            // ManageCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -221,15 +224,15 @@
             this.Controls.Add(this.nbclients);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.deletecustomer);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.clientsBtn);
+            this.Controls.Add(this.modify);
+            this.Controls.Add(this.nouveau);
             this.Controls.Add(this.customerListView);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.customerLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(929, 544);
-            this.Name = "CustomerForm";
+            this.Name = "ManageCustomersForm";
             this.Text = "Ouatelse : Gestion des clients";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -250,8 +253,8 @@
         private System.Windows.Forms.ColumnHeader Adresse;
         private System.Windows.Forms.ColumnHeader Ville;
         private System.Windows.Forms.Button deletecustomer;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button clientsBtn;
+        private System.Windows.Forms.Button modify;
+        private System.Windows.Forms.Button nouveau;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ColumnHeader Prénom;
         private System.Windows.Forms.ColumnHeader CodePostal;

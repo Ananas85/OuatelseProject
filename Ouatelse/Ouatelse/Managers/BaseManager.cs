@@ -26,6 +26,10 @@ namespace Ouatelse.Managers
         {
             // On récupère le DataSet
             DataSet ds =  db.GetDataSet("SELECT * FROM " + tableName);
+            if (ds == null)
+            {
+                return default(T[]);
+            }
             List<T> res = new List<T>();
 
             // On parcourt les lignes de résultat
@@ -51,6 +55,10 @@ namespace Ouatelse.Managers
         public T[] Filter(string filter)
         {
             DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " " + filter);
+            if (ds == null)
+            {
+                return default(T[]);
+            }
             List<T> res = new List<T>();
 
             // On parcourt les lignes de résultat
@@ -76,6 +84,10 @@ namespace Ouatelse.Managers
         public T First(string filter)
         {
             DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " " + filter);
+            if (ds == null)
+            {
+                return default(T);
+            }
             DataRowCollection rows = ds.Tables[0].Rows; // On récupère les lignes
 
             if (rows.Count == 0)        // Si il n'y a pas de résultats...
@@ -100,6 +112,8 @@ namespace Ouatelse.Managers
         public int Count(string filter = "")
         {
             object resp = db.ExecuteScalar("SELECT count(*) FROM " + tableName + " " + filter);
+            if ( (bool)resp == false || resp == null )
+                return 0;
             return Int32.Parse(resp.ToString());
         }
 
@@ -111,6 +125,10 @@ namespace Ouatelse.Managers
         public T Find(object id)
         {
             DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " WHERE id=" + id.ToString());
+            if (ds == null)
+            {
+                return default(T);
+            }
             DataRowCollection rows = ds.Tables[0].Rows;
 
             if (rows.Count == 0)        // Si il n'y a pas de résultats...
@@ -131,7 +149,7 @@ namespace Ouatelse.Managers
         /// Persiste une entité dans la base
         /// </summary>
         /// <param name="model">Entité à persister</param>
-        public void Save(BaseModel model)
+        public bool Save(BaseModel model)
         {
             StringBuilder query = new StringBuilder();
             if (!model.Exists)
@@ -157,7 +175,7 @@ namespace Ouatelse.Managers
 
                 query.AppendFormat(" WHERE id={0}", model.Id);
             }
-            Database.Instance.Execute(query.ToString());
+            return Database.Instance.Execute(query.ToString());
 
         }
 
@@ -165,15 +183,15 @@ namespace Ouatelse.Managers
         /// Supprime une entité de la base
         /// </summary>
         /// <param name="model">Entité à supprimer</param>
-        public void Delete(BaseModel model)
+        public bool Delete(BaseModel model)
         {
             if (!model.Exists)
             {
                 Utils.Error("Impossible de supprimer cette entité, elle n'est pas persisté dans la base");
-                return;
+                return false;
             }
             string query = String.Format("DELETE FROM {0} WHERE id={1}", tableName, model.Id);
-            Database.Instance.Execute(query.ToString());
+            return Database.Instance.Execute(query.ToString());
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Ouatelse.Forms
         public EmployeeForm(Employee obj)
         {
             InitializeComponent();
+            this.Text = this.label1.Text = obj.Exists ? "Détail d'un salarié " : " Nouveau salarié"; 
             this.obj = obj;
         }
 
@@ -61,6 +62,7 @@ namespace Ouatelse.Forms
         {
             b.Hydrate();
             obj.Store = (Store)this.storeBox.SelectedItem;
+            //TODO TESTER SI CA SEST BIEN PASSER DANS LE BOOLEEN COMME DANS CUSTOMER
             EmployeeManager.Instance.Save(obj);
         }
     }

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,11 @@ namespace Ouatelse
         public HomeForm()
         {
             InitializeComponent();
+            if (!Utils.CheckServer())
+            {
+                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet");
+                Application.Exit();
+            }
 
             //Set the time and the hour
             setTime();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Net.NetworkInformation;
 
 namespace Ouatelse
 {
@@ -52,8 +53,13 @@ namespace Ouatelse
             this.connection.Open();
         }
 
-        public void Execute(string query, Dictionary<string, object> parameters = null)
+        public bool Execute(string query, Dictionary<string, object> parameters = null)
         {
+            if (!Utils.CheckServer())
+            {
+                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet ou serveur hors service");
+                return false;
+            }
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
             try
@@ -64,15 +70,22 @@ namespace Ouatelse
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
                 cmd.ExecuteNonQuery();
+                return true;
             }
             catch
             {
                 Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                return false;
             }
         }
 
         public object ExecuteScalar(string query, Dictionary<string, object> parameters = null)
         {
+            if (!Utils.CheckServer())
+            {
+                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
+                return false;
+            }
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
             try
@@ -88,11 +101,16 @@ namespace Ouatelse
             {
                 Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
             }
-            return null;
+            return false;
         }
 
         public DataSet GetDataSet(string query, Dictionary<string, object> parameters = null)
         {
+            if (!Utils.CheckServer())
+            {
+                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
+                return null;
+            }
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
             try

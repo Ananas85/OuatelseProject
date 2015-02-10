@@ -16,6 +16,13 @@ namespace Ouatelse.Models
         /// l'ID de notre modèle
         /// </summary>
         public int Id { get; set; }
+
+        public string StringId
+        {
+            get { return Id.ToString(); }
+            set { Id = Int32.Parse(value); }
+        }
+
         protected bool exists = false;
 
         /// <summary>
