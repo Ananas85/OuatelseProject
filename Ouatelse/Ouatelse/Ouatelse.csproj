@@ -74,11 +74,11 @@
     <Compile Include="Forms\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EmployeesForm.cs">
+    <Compile Include="Forms\ManageEmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EmployeesForm.Designer.cs">
-      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    <Compile Include="Forms\ManageEmployeesForm.Designer.cs">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +149,7 @@
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceProduct.cs" />
+    <Compile Include="Models\ManyCollection.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
@@ -166,8 +167,8 @@
     <EmbeddedResource Include="Forms\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EmployeesForm.resx">
-      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ManageEmployeesForm.resx">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>

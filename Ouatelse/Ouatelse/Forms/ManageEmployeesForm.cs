@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Ouatelse.Forms
 {
-    public partial class EmployeesForm : Form
+    public partial class ManageEmployeesForm : Form
     {
-        public EmployeesForm()
+        public ManageEmployeesForm()
         {
             InitializeComponent();
                 

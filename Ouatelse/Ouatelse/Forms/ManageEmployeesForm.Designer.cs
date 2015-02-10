@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse.Forms
 {
-    partial class EmployeesForm
+    partial class ManageEmployeesForm
     {
         /// <summary>
         /// Required designer variable.

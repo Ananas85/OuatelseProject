@@ -11,7 +11,7 @@ namespace Ouatelse.Managers
     /// Interface qui permet de gérer nos managers en iutilisant les types Génériques
     /// </summary>
     /// <typeparam name="T">Le type dy manager</typeparam>
-    interface IManager<T>
+    public interface IManager<T>
     {
         T[] All();
         T[] Filter(string filter);
