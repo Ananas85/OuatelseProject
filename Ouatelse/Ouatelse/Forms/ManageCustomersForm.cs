@@ -1,4 +1,5 @@
-﻿using Ouatelse.Managers;
+﻿using Ouatelse.Forms;
+using Ouatelse.Managers;
 using Ouatelse.Models;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,10 @@ using System.Windows.Forms;
 
 namespace Ouatelse
 {
-    public partial class CustomerForm : Form
+    public partial class ManageCustomersForm : Form
     {
         Customer currentCustomer = null;
-        public CustomerForm()
+        public ManageCustomersForm()
         {
             InitializeComponent();
             Reload(CustomerManager.Instance.All());
@@ -77,7 +78,7 @@ namespace Ouatelse
 
         private void NewCustomer()
         {
-
+            CustomerForm cs = new CustomerForm(new Customer());
         }
 
         private void EditCustomer()

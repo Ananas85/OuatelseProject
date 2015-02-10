@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Ouatelse.Forms
 {
-    public partial class EmployeesForm : Form
+    public partial class ManageEmployeesForm : Form
     {
-        public EmployeesForm()
+        public ManageEmployeesForm()
         {
             InitializeComponent();
                 
@@ -53,6 +53,12 @@ namespace Ouatelse.Forms
             else
                 labelSearch.Text = employeeArray.Length + " résultats";
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EmployeeForm ef = new EmployeeForm(EmployeeManager.Instance.Find(listView_employees.SelectedItems[0].Text));
+            ef.ShowDialog();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse
 {
-    partial class CustomerForm
+    partial class ManageCustomersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -116,13 +116,11 @@
             // Nom
             // 
             this.Nom.Text = "Nom";
-            this.Nom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Nom.Width = 133;
             // 
             // Adresse
             // 
             this.Adresse.Text = "Adresse";
-            this.Adresse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Adresse.Width = 190;
             // 
             // CodePostal
@@ -133,7 +131,6 @@
             // Ville
             // 
             this.Ville.Text = "Ville";
-            this.Ville.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Ville.Width = 150;
             // 
             // Pays

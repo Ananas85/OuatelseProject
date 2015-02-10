@@ -25,7 +25,7 @@ namespace Ouatelse
             if (employee != null)
             {
                 Utils.Info("Vous êtes dans la base, on va vous envoyé un mail avec votre mot de passe");
-                //VRAIMENT ENVOYE UN MAIL
+                MailSender.Instance.sendMail(employee.Email, "retrouve ton mot de passe", "Le voilà, gros bisous");
             }
             else
             {

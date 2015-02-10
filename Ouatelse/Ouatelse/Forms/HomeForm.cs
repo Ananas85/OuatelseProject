@@ -83,7 +83,7 @@ namespace Ouatelse
 
         private void clientsBtn_Click(object sender, EventArgs e)
         {
-            CustomerForm customerForm = new CustomerForm();
+            ManageCustomersForm customerForm = new ManageCustomersForm();
             customerForm.ShowDialog();
         }
 
@@ -95,7 +95,7 @@ namespace Ouatelse
 
         private void salarieBtn_Click(object sender, EventArgs e)
         {
-            EmployeesForm employeeForm = new EmployeesForm();
+            ManageEmployeesForm employeeForm = new ManageEmployeesForm();
             employeeForm.ShowDialog();
         }
 

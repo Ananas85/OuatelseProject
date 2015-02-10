@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse.Forms
 {
-    partial class EmployeesForm
+    partial class ManageEmployeesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -72,6 +72,7 @@
             this.button1.TabIndex = 19;
             this.button1.Text = "Modifier un salarié";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -115,6 +116,7 @@
             this.listView_employees.GridLines = true;
             this.listView_employees.Location = new System.Drawing.Point(12, 147);
             this.listView_employees.Margin = new System.Windows.Forms.Padding(2);
+            this.listView_employees.MultiSelect = false;
             this.listView_employees.Name = "listView_employees";
             this.listView_employees.Size = new System.Drawing.Size(904, 235);
             this.listView_employees.TabIndex = 23;
