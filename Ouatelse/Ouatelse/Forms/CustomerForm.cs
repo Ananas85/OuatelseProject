@@ -30,8 +30,8 @@ namespace Ouatelse.Forms
             loadGenders(GenderManager.Instance.All());
 
             this.Id.Text = obj.StringId;
-            b.Bind(this.FirstName, "Text", obj, "LastName");
-            b.Bind(this.LastName, "Text", obj, "FirstName");
+            b.Bind(this.FirstName, "Text", obj, "FirstName");
+            b.Bind(this.LastName, "Text", obj, "LastName");
             b.Bind(this.Address1, "Text", obj, "Address1");
             b.Bind(this.Address2, "Text", obj, "Address2");
             b.Bind(this.PhoneNumber, "Text", obj, "PhoneNumber");

@@ -71,8 +71,8 @@ namespace Ouatelse
         public void newCustomer(Customer cust)
         {
             string htmlContent = Ouatelse.Properties.Resources.newCustomer;
-            string body = htmlContent.Replace("NAME", cust.FirstName);
-            body = body.Replace("SURNAME", cust.LastName);
+            string body = htmlContent.Replace("SURNAME", cust.LastName);
+            body = body.Replace("NAME", cust.FirstName);
             sendMail(cust.Email, "Bienvenue chez Ouatelse", body);
         }
 
@@ -85,7 +85,7 @@ namespace Ouatelse
             body = body.Replace("STORE", emp.Store.Address);
             body = body.Replace("USERNAME", emp.Username);
             body = body.Replace("PASSWORD", emp.Password);
-            sendMail(emp.Email, "Création de comte utilisateur", body);
+            sendMail(emp.Email, "Création de compte utilisateur", body);
         }
 
     }

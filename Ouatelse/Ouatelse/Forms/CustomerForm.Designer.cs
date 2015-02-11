@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.Comments = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -61,61 +56,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CityName = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
-            this.Comments.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.CommentsContainer = new System.Windows.Forms.TabPage();
+            this.Statistiques = new System.Windows.Forms.TabPage();
+            this.Factures = new System.Windows.Forms.TabPage();
+            this.Comments = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.CommentsContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.Comments);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(43, 357);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(513, 242);
-            this.tabControl1.TabIndex = 92;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(505, 225);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Statistiques";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // Comments
-            // 
-            this.Comments.Controls.Add(this.textBox1);
-            this.Comments.Location = new System.Drawing.Point(4, 22);
-            this.Comments.Name = "Comments";
-            this.Comments.Padding = new System.Windows.Forms.Padding(5);
-            this.Comments.Size = new System.Drawing.Size(505, 216);
-            this.Comments.TabIndex = 1;
-            this.Comments.Text = "Notes";
-            this.Comments.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(5, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(495, 206);
-            this.textBox1.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(505, 225);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Factures";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -253,14 +202,14 @@
             this.DateBirthPicker.Location = new System.Drawing.Point(456, 283);
             this.DateBirthPicker.Name = "DateBirthPicker";
             this.DateBirthPicker.Size = new System.Drawing.Size(100, 20);
-            this.DateBirthPicker.TabIndex = 75;
+            this.DateBirthPicker.TabIndex = 10;
             // 
             // Address1
             // 
             this.Address1.Location = new System.Drawing.Point(114, 203);
             this.Address1.Name = "Address1";
             this.Address1.Size = new System.Drawing.Size(442, 20);
-            this.Address1.TabIndex = 74;
+            this.Address1.TabIndex = 4;
             // 
             // GenderName
             // 
@@ -269,35 +218,35 @@
             this.GenderName.Location = new System.Drawing.Point(232, 123);
             this.GenderName.Name = "GenderName";
             this.GenderName.Size = new System.Drawing.Size(53, 21);
-            this.GenderName.TabIndex = 73;
+            this.GenderName.TabIndex = 1;
             // 
             // FirstName
             // 
             this.FirstName.Location = new System.Drawing.Point(114, 149);
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(171, 20);
-            this.FirstName.TabIndex = 72;
+            this.FirstName.TabIndex = 2;
             // 
             // LastName
             // 
             this.LastName.Location = new System.Drawing.Point(114, 177);
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(171, 20);
-            this.LastName.TabIndex = 71;
+            this.LastName.TabIndex = 3;
             // 
             // Address2
             // 
             this.Address2.Location = new System.Drawing.Point(114, 229);
             this.Address2.Name = "Address2";
             this.Address2.Size = new System.Drawing.Size(442, 20);
-            this.Address2.TabIndex = 70;
+            this.Address2.TabIndex = 5;
             // 
             // CityPostalCode
             // 
             this.CityPostalCode.Location = new System.Drawing.Point(114, 255);
             this.CityPostalCode.Name = "CityPostalCode";
             this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
-            this.CityPostalCode.TabIndex = 69;
+            this.CityPostalCode.TabIndex = 6;
             this.CityPostalCode.TextChanged += new System.EventHandler(this.CityPostalCode_TextChanged);
             // 
             // Country
@@ -313,21 +262,21 @@
             this.PhoneNumber.Location = new System.Drawing.Point(114, 283);
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
-            this.PhoneNumber.TabIndex = 66;
+            this.PhoneNumber.TabIndex = 8;
             // 
             // MobilePhoneNumber
             // 
             this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 283);
             this.MobilePhoneNumber.Name = "MobilePhoneNumber";
             this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
-            this.MobilePhoneNumber.TabIndex = 65;
+            this.MobilePhoneNumber.TabIndex = 9;
             // 
             // Email
             // 
             this.Email.Location = new System.Drawing.Point(114, 309);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(442, 20);
-            this.Email.TabIndex = 64;
+            this.Email.TabIndex = 11;
             // 
             // Id
             // 
@@ -335,7 +284,7 @@
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
-            this.Id.TabIndex = 63;
+            this.Id.TabIndex = 0;
             // 
             // label1
             // 
@@ -365,7 +314,7 @@
             this.CityName.Location = new System.Drawing.Point(232, 256);
             this.CityName.Name = "CityName";
             this.CityName.Size = new System.Drawing.Size(175, 21);
-            this.CityName.TabIndex = 93;
+            this.CityName.TabIndex = 7;
             this.CityName.SelectedIndexChanged += new System.EventHandler(this.CityName_SelectedIndexChanged);
             // 
             // label10
@@ -378,6 +327,56 @@
             this.label10.TabIndex = 94;
             this.label10.Text = "Ville : ";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.CommentsContainer);
+            this.tabControl1.Controls.Add(this.Statistiques);
+            this.tabControl1.Controls.Add(this.Factures);
+            this.tabControl1.Location = new System.Drawing.Point(65, 335);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(494, 246);
+            this.tabControl1.TabIndex = 95;
+            // 
+            // CommentsContainer
+            // 
+            this.CommentsContainer.BackColor = System.Drawing.Color.Transparent;
+            this.CommentsContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CommentsContainer.Controls.Add(this.Comments);
+            this.CommentsContainer.Location = new System.Drawing.Point(4, 22);
+            this.CommentsContainer.Name = "CommentsContainer";
+            this.CommentsContainer.Padding = new System.Windows.Forms.Padding(3);
+            this.CommentsContainer.Size = new System.Drawing.Size(486, 220);
+            this.CommentsContainer.TabIndex = 0;
+            this.CommentsContainer.Text = "Notes";
+            // 
+            // Statistiques
+            // 
+            this.Statistiques.Location = new System.Drawing.Point(4, 22);
+            this.Statistiques.Name = "Statistiques";
+            this.Statistiques.Padding = new System.Windows.Forms.Padding(3);
+            this.Statistiques.Size = new System.Drawing.Size(486, 220);
+            this.Statistiques.TabIndex = 1;
+            this.Statistiques.Text = "Statistiques";
+            this.Statistiques.UseVisualStyleBackColor = true;
+            // 
+            // Factures
+            // 
+            this.Factures.Location = new System.Drawing.Point(4, 22);
+            this.Factures.Name = "Factures";
+            this.Factures.Size = new System.Drawing.Size(486, 220);
+            this.Factures.TabIndex = 2;
+            this.Factures.Text = "Factures";
+            this.Factures.UseVisualStyleBackColor = true;
+            // 
+            // Comments
+            // 
+            this.Comments.Location = new System.Drawing.Point(8, 6);
+            this.Comments.Multiline = true;
+            this.Comments.Name = "Comments";
+            this.Comments.Size = new System.Drawing.Size(470, 206);
+            this.Comments.TabIndex = 0;
+            // 
             // CustomerForm
             // 
             this.AcceptButton = this.validateButton;
@@ -387,9 +386,9 @@
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 609);
             this.ControlBox = false;
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.CityName);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cancelButton);
@@ -419,10 +418,10 @@
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.Comments.ResumeLayout(false);
-            this.Comments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.CommentsContainer.ResumeLayout(false);
+            this.CommentsContainer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,9 +429,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage Comments;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button cancelButton;
@@ -459,9 +455,12 @@
         private System.Windows.Forms.TextBox Id;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox CityName;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage CommentsContainer;
+        private System.Windows.Forms.TextBox Comments;
+        private System.Windows.Forms.TabPage Statistiques;
+        private System.Windows.Forms.TabPage Factures;
     }
 }

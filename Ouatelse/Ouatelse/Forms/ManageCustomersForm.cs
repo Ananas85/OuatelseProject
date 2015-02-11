@@ -50,8 +50,8 @@ namespace Ouatelse
             foreach (Customer cs in customerArray)
             {
                 ListViewItem customer = this.customerListView.Items.Add(cs.Id.ToString());
-                customer.SubItems.Add(cs.LastName);
                 customer.SubItems.Add(cs.FirstName);
+                customer.SubItems.Add(cs.LastName);
                 customer.SubItems.Add(cs.Address1 + " " + cs.Address2);
                 customer.SubItems.Add(cs.City.PostalCode);
                 customer.SubItems.Add(cs.City.Name);
@@ -83,6 +83,8 @@ namespace Ouatelse
                 return;
             CustomerManager.Instance.Save(cs.getCustomer());
             Reload(CustomerManager.Instance.All());
+            Utils.Info("Client enregistré avec succès");
+            MailSender.Instance.newCustomer(cs.getCustomer());
         }
 
         private void EditCustomer()
@@ -94,6 +96,7 @@ namespace Ouatelse
                     return;
                 CustomerManager.Instance.Save(cs.getCustomer());
                 Reload(CustomerManager.Instance.All());
+                Utils.Info("Client modifié avec succès");
 
             }
             else
