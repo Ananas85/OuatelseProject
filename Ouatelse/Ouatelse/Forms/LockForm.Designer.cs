@@ -30,28 +30,95 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.username = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.passwordEntry = new System.Windows.Forms.TextBox();
+            this.quitBtn = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.forgotPassword = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(86, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(83, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(154, 136);
+            this.pictureBox1.Size = new System.Drawing.Size(165, 136);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // username
             // 
-            this.username.AutoSize = true;
-            this.username.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(129, 171);
+            this.username.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.Location = new System.Drawing.Point(12, 181);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(68, 30);
+            this.username.Size = new System.Drawing.Size(306, 21);
             this.username.TabIndex = 1;
-            this.username.Text = "label1";
+            this.username.Text = "USERNAME";
+            this.username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(58, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(214, 30);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Connecté en tant que";
+            // 
+            // passwordEntry
+            // 
+            this.passwordEntry.Location = new System.Drawing.Point(69, 205);
+            this.passwordEntry.Name = "passwordEntry";
+            this.passwordEntry.Size = new System.Drawing.Size(193, 20);
+            this.passwordEntry.TabIndex = 3;
+            // 
+            // quitBtn
+            // 
+            this.quitBtn.BackColor = System.Drawing.Color.IndianRed;
+            this.quitBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.quitBtn.FlatAppearance.BorderSize = 0;
+            this.quitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.quitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quitBtn.ForeColor = System.Drawing.Color.White;
+            this.quitBtn.Location = new System.Drawing.Point(12, 251);
+            this.quitBtn.Name = "quitBtn";
+            this.quitBtn.Size = new System.Drawing.Size(118, 33);
+            this.quitBtn.TabIndex = 10;
+            this.quitBtn.TabStop = false;
+            this.quitBtn.Text = "Déconnexion";
+            this.quitBtn.UseVisualStyleBackColor = false;
+            this.quitBtn.Click += new System.EventHandler(this.quitBtn_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnOk.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnOk.FlatAppearance.BorderSize = 0;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.ForeColor = System.Drawing.Color.White;
+            this.btnOk.Location = new System.Drawing.Point(200, 251);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(118, 33);
+            this.btnOk.TabIndex = 9;
+            this.btnOk.TabStop = false;
+            this.btnOk.Text = "Connexion";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // forgotPassword
+            // 
+            this.forgotPassword.AutoSize = true;
+            this.forgotPassword.Location = new System.Drawing.Point(110, 226);
+            this.forgotPassword.Name = "forgotPassword";
+            this.forgotPassword.Size = new System.Drawing.Size(111, 13);
+            this.forgotPassword.TabIndex = 11;
+            this.forgotPassword.TabStop = true;
+            this.forgotPassword.Text = "Mot de passe oublié ?";
+            this.forgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forgotPassword_LinkClicked);
             // 
             // LockForm
             // 
@@ -59,10 +126,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(330, 296);
             this.ControlBox = false;
+            this.Controls.Add(this.forgotPassword);
+            this.Controls.Add(this.quitBtn);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.passwordEntry);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.username);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LockForm";
-            this.Text = "LockForm";
+            this.Text = "Session verrouillée";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -73,5 +146,10 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label username;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox passwordEntry;
+        private System.Windows.Forms.Button quitBtn;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.LinkLabel forgotPassword;
     }
 }
