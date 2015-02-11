@@ -30,39 +30,40 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.idTB = new System.Windows.Forms.TextBox();
-            this.mailTB = new System.Windows.Forms.TextBox();
-            this.phoneTB = new System.Windows.Forms.TextBox();
-            this.mobilePhoneTB = new System.Windows.Forms.TextBox();
-            this.cityTB = new System.Windows.Forms.TextBox();
-            this.zipCodeTB = new System.Windows.Forms.TextBox();
-            this.adress2TB = new System.Windows.Forms.TextBox();
-            this.lastnameTB = new System.Windows.Forms.TextBox();
-            this.firstnameTB = new System.Windows.Forms.TextBox();
-            this.civilityBox = new System.Windows.Forms.ComboBox();
-            this.adress1TB = new System.Windows.Forms.TextBox();
-            this.DateBirthPicker = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.validateButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.roleTB = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.storeBox = new System.Windows.Forms.ComboBox();
             this.commentsTab = new System.Windows.Forms.TabControl();
             this.statsTab = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.commentsTB = new System.Windows.Forms.TextBox();
-            this.countryBox = new System.Windows.Forms.ComboBox();
+            this.Comments = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.CityName = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DateBirthPicker = new System.Windows.Forms.DateTimePicker();
+            this.Address1 = new System.Windows.Forms.TextBox();
+            this.GenderName = new System.Windows.Forms.ComboBox();
+            this.FirstName = new System.Windows.Forms.TextBox();
+            this.LastName = new System.Windows.Forms.TextBox();
+            this.Address2 = new System.Windows.Forms.TextBox();
+            this.CityPostalCode = new System.Windows.Forms.TextBox();
+            this.Country = new System.Windows.Forms.TextBox();
+            this.PhoneNumber = new System.Windows.Forms.TextBox();
+            this.MobilePhoneNumber = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.TextBox();
+            this.Id = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Role = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Store = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.commentsTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -88,164 +89,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
-            // 
-            // idTB
-            // 
-            this.idTB.Location = new System.Drawing.Point(114, 120);
-            this.idTB.Name = "idTB";
-            this.idTB.Size = new System.Drawing.Size(69, 20);
-            this.idTB.TabIndex = 25;
-            // 
-            // mailTB
-            // 
-            this.mailTB.Location = new System.Drawing.Point(114, 306);
-            this.mailTB.Name = "mailTB";
-            this.mailTB.Size = new System.Drawing.Size(442, 20);
-            this.mailTB.TabIndex = 26;
-            // 
-            // phoneTB
-            // 
-            this.phoneTB.Location = new System.Drawing.Point(232, 280);
-            this.phoneTB.Name = "phoneTB";
-            this.phoneTB.Size = new System.Drawing.Size(111, 20);
-            this.phoneTB.TabIndex = 28;
-            // 
-            // mobilePhoneTB
-            // 
-            this.mobilePhoneTB.Location = new System.Drawing.Point(114, 280);
-            this.mobilePhoneTB.Name = "mobilePhoneTB";
-            this.mobilePhoneTB.Size = new System.Drawing.Size(111, 20);
-            this.mobilePhoneTB.TabIndex = 29;
-            // 
-            // cityTB
-            // 
-            this.cityTB.Location = new System.Drawing.Point(189, 252);
-            this.cityTB.Name = "cityTB";
-            this.cityTB.Size = new System.Drawing.Size(154, 20);
-            this.cityTB.TabIndex = 31;
-            // 
-            // zipCodeTB
-            // 
-            this.zipCodeTB.Location = new System.Drawing.Point(114, 252);
-            this.zipCodeTB.Name = "zipCodeTB";
-            this.zipCodeTB.Size = new System.Drawing.Size(69, 20);
-            this.zipCodeTB.TabIndex = 32;
-            // 
-            // adress2TB
-            // 
-            this.adress2TB.Location = new System.Drawing.Point(114, 226);
-            this.adress2TB.Name = "adress2TB";
-            this.adress2TB.Size = new System.Drawing.Size(442, 20);
-            this.adress2TB.TabIndex = 33;
-            // 
-            // lastnameTB
-            // 
-            this.lastnameTB.Location = new System.Drawing.Point(114, 174);
-            this.lastnameTB.Name = "lastnameTB";
-            this.lastnameTB.Size = new System.Drawing.Size(171, 20);
-            this.lastnameTB.TabIndex = 34;
-            // 
-            // firstnameTB
-            // 
-            this.firstnameTB.Location = new System.Drawing.Point(114, 146);
-            this.firstnameTB.Name = "firstnameTB";
-            this.firstnameTB.Size = new System.Drawing.Size(171, 20);
-            this.firstnameTB.TabIndex = 35;
-            // 
-            // civilityBox
-            // 
-            this.civilityBox.FormattingEnabled = true;
-            this.civilityBox.Location = new System.Drawing.Point(232, 120);
-            this.civilityBox.Name = "civilityBox";
-            this.civilityBox.Size = new System.Drawing.Size(53, 21);
-            this.civilityBox.TabIndex = 36;
-            // 
-            // adress1TB
-            // 
-            this.adress1TB.Location = new System.Drawing.Point(114, 200);
-            this.adress1TB.Name = "adress1TB";
-            this.adress1TB.Size = new System.Drawing.Size(442, 20);
-            this.adress1TB.TabIndex = 37;
-            // 
-            // DateBirthPicker
-            // 
-            this.DateBirthPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateBirthPicker.Location = new System.Drawing.Point(456, 280);
-            this.DateBirthPicker.Name = "DateBirthPicker";
-            this.DateBirthPicker.Size = new System.Drawing.Size(100, 20);
-            this.DateBirthPicker.TabIndex = 38;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Code Salarié:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(191, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 41;
-            this.label3.Text = "Civilité:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 203);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
-            this.label4.TabIndex = 42;
-            this.label4.Text = "Adresse: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(79, 255);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 43;
-            this.label5.Text = "Ville:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(394, 255);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 44;
-            this.label6.Text = "Pays: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(59, 283);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 45;
-            this.label7.Text = "Tél/Port:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(351, 283);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 13);
-            this.label8.TabIndex = 46;
-            this.label8.Text = "Date de naissance:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(62, 309);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 13);
-            this.label9.TabIndex = 47;
-            this.label9.Text = "Courriel:";
             // 
             // validateButton
             // 
@@ -277,58 +120,6 @@
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(76, 177);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 51;
-            this.label11.Text = "Nom: ";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(62, 149);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 13);
-            this.label12.TabIndex = 52;
-            this.label12.Text = "Prénom: ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(344, 150);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 13);
-            this.label13.TabIndex = 56;
-            this.label13.Text = "Rôle: ";
-            // 
-            // roleTB
-            // 
-            this.roleTB.Location = new System.Drawing.Point(385, 147);
-            this.roleTB.Name = "roleTB";
-            this.roleTB.Size = new System.Drawing.Size(171, 20);
-            this.roleTB.TabIndex = 55;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(326, 176);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 13);
-            this.label14.TabIndex = 58;
-            this.label14.Text = "Magasin:  ";
-            // 
-            // storeBox
-            // 
-            this.storeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.storeBox.FormattingEnabled = true;
-            this.storeBox.Location = new System.Drawing.Point(385, 173);
-            this.storeBox.Name = "storeBox";
-            this.storeBox.Size = new System.Drawing.Size(171, 21);
-            this.storeBox.TabIndex = 59;
-            // 
             // commentsTab
             // 
             this.commentsTab.Controls.Add(this.statsTab);
@@ -351,7 +142,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.commentsTB);
+            this.tabPage2.Controls.Add(this.Comments);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -360,22 +151,262 @@
             this.tabPage2.Text = "Notes";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // commentsTB
+            // Comments
             // 
-            this.commentsTB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commentsTB.Location = new System.Drawing.Point(3, 3);
-            this.commentsTB.Multiline = true;
-            this.commentsTB.Name = "commentsTB";
-            this.commentsTB.Size = new System.Drawing.Size(499, 219);
-            this.commentsTB.TabIndex = 0;
+            this.Comments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Comments.Location = new System.Drawing.Point(3, 3);
+            this.Comments.Multiline = true;
+            this.Comments.Name = "Comments";
+            this.Comments.Size = new System.Drawing.Size(499, 219);
+            this.Comments.TabIndex = 0;
             // 
-            // countryBox
+            // label10
             // 
-            this.countryBox.FormattingEnabled = true;
-            this.countryBox.Location = new System.Drawing.Point(428, 252);
-            this.countryBox.Name = "countryBox";
-            this.countryBox.Size = new System.Drawing.Size(128, 21);
-            this.countryBox.TabIndex = 61;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(185, 254);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 118;
+            this.label10.Text = "Ville : ";
+            // 
+            // CityName
+            // 
+            this.CityName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CityName.FormattingEnabled = true;
+            this.CityName.Location = new System.Drawing.Point(232, 252);
+            this.CityName.Name = "CityName";
+            this.CityName.Size = new System.Drawing.Size(175, 21);
+            this.CityName.TabIndex = 117;
+            this.CityName.SelectedIndexChanged += new System.EventHandler(this.CityName_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(60, 148);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 13);
+            this.label12.TabIndex = 116;
+            this.label12.Text = "Prénom: ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(75, 176);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 115;
+            this.label11.Text = "Nom: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(62, 308);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.TabIndex = 114;
+            this.label9.Text = "Courriel:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(351, 282);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 13);
+            this.label8.TabIndex = 113;
+            this.label8.Text = "Date de naissance:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(59, 282);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 112;
+            this.label7.Text = "Tél/Port:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(413, 254);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 111;
+            this.label6.Text = "Pays: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(37, 254);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 110;
+            this.label5.Text = "Code postal :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(60, 202);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 109;
+            this.label4.Text = "Adresse: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(183, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 108;
+            this.label3.Text = "Civilité:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(40, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 107;
+            this.label2.Text = "Code Client:";
+            // 
+            // DateBirthPicker
+            // 
+            this.DateBirthPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateBirthPicker.Location = new System.Drawing.Point(456, 279);
+            this.DateBirthPicker.Name = "DateBirthPicker";
+            this.DateBirthPicker.Size = new System.Drawing.Size(100, 20);
+            this.DateBirthPicker.TabIndex = 106;
+            // 
+            // Address1
+            // 
+            this.Address1.Location = new System.Drawing.Point(114, 199);
+            this.Address1.Name = "Address1";
+            this.Address1.Size = new System.Drawing.Size(442, 20);
+            this.Address1.TabIndex = 105;
+            // 
+            // GenderName
+            // 
+            this.GenderName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GenderName.FormattingEnabled = true;
+            this.GenderName.Location = new System.Drawing.Point(232, 119);
+            this.GenderName.Name = "GenderName";
+            this.GenderName.Size = new System.Drawing.Size(53, 21);
+            this.GenderName.TabIndex = 104;
+            // 
+            // FirstName
+            // 
+            this.FirstName.Location = new System.Drawing.Point(114, 145);
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Size = new System.Drawing.Size(171, 20);
+            this.FirstName.TabIndex = 103;
+            // 
+            // LastName
+            // 
+            this.LastName.Location = new System.Drawing.Point(114, 173);
+            this.LastName.Name = "LastName";
+            this.LastName.Size = new System.Drawing.Size(171, 20);
+            this.LastName.TabIndex = 102;
+            // 
+            // Address2
+            // 
+            this.Address2.Location = new System.Drawing.Point(114, 225);
+            this.Address2.Name = "Address2";
+            this.Address2.Size = new System.Drawing.Size(442, 20);
+            this.Address2.TabIndex = 101;
+            // 
+            // CityPostalCode
+            // 
+            this.CityPostalCode.Location = new System.Drawing.Point(114, 251);
+            this.CityPostalCode.Name = "CityPostalCode";
+            this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
+            this.CityPostalCode.TabIndex = 100;
+            this.CityPostalCode.TextChanged += new System.EventHandler(this.CityPostalCode_TextChanged);
+            // 
+            // Country
+            // 
+            this.Country.Location = new System.Drawing.Point(456, 251);
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            this.Country.Size = new System.Drawing.Size(100, 20);
+            this.Country.TabIndex = 99;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.Location = new System.Drawing.Point(114, 279);
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
+            this.PhoneNumber.TabIndex = 98;
+            // 
+            // MobilePhoneNumber
+            // 
+            this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 279);
+            this.MobilePhoneNumber.Name = "MobilePhoneNumber";
+            this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
+            this.MobilePhoneNumber.TabIndex = 97;
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(114, 305);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(442, 20);
+            this.Email.TabIndex = 96;
+            // 
+            // Id
+            // 
+            this.Id.Location = new System.Drawing.Point(114, 119);
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Size = new System.Drawing.Size(69, 20);
+            this.Id.TabIndex = 95;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(369, 148);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 13);
+            this.label13.TabIndex = 120;
+            this.label13.Text = "Rôle:";
+            // 
+            // Role
+            // 
+            this.Role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Role.FormattingEnabled = true;
+            this.Role.Location = new System.Drawing.Point(408, 145);
+            this.Role.Name = "Role";
+            this.Role.Size = new System.Drawing.Size(148, 21);
+            this.Role.TabIndex = 119;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(291, 176);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 13);
+            this.label14.TabIndex = 122;
+            this.label14.Text = "Magasin:";
+            // 
+            // Store
+            // 
+            this.Store.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Store.FormattingEnabled = true;
+            this.Store.Location = new System.Drawing.Point(354, 173);
+            this.Store.Name = "Store";
+            this.Store.Size = new System.Drawing.Size(202, 21);
+            this.Store.TabIndex = 121;
             // 
             // EmployeeForm
             // 
@@ -384,17 +415,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(609, 616);
-            this.Controls.Add(this.countryBox);
-            this.Controls.Add(this.commentsTab);
-            this.Controls.Add(this.storeBox);
+            this.ClientSize = new System.Drawing.Size(586, 609);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.Store);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.roleTB);
+            this.Controls.Add(this.Role);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.CityName);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -404,17 +433,20 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DateBirthPicker);
-            this.Controls.Add(this.adress1TB);
-            this.Controls.Add(this.civilityBox);
-            this.Controls.Add(this.firstnameTB);
-            this.Controls.Add(this.lastnameTB);
-            this.Controls.Add(this.adress2TB);
-            this.Controls.Add(this.zipCodeTB);
-            this.Controls.Add(this.cityTB);
-            this.Controls.Add(this.mobilePhoneTB);
-            this.Controls.Add(this.phoneTB);
-            this.Controls.Add(this.mailTB);
-            this.Controls.Add(this.idTB);
+            this.Controls.Add(this.Address1);
+            this.Controls.Add(this.GenderName);
+            this.Controls.Add(this.FirstName);
+            this.Controls.Add(this.LastName);
+            this.Controls.Add(this.Address2);
+            this.Controls.Add(this.CityPostalCode);
+            this.Controls.Add(this.Country);
+            this.Controls.Add(this.PhoneNumber);
+            this.Controls.Add(this.MobilePhoneNumber);
+            this.Controls.Add(this.Email);
+            this.Controls.Add(this.Id);
+            this.Controls.Add(this.commentsTab);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -434,38 +466,39 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox idTB;
-        private System.Windows.Forms.TextBox mailTB;
-        private System.Windows.Forms.TextBox phoneTB;
-        private System.Windows.Forms.TextBox mobilePhoneTB;
-        private System.Windows.Forms.TextBox cityTB;
-        private System.Windows.Forms.TextBox zipCodeTB;
-        private System.Windows.Forms.TextBox adress2TB;
-        private System.Windows.Forms.TextBox lastnameTB;
-        private System.Windows.Forms.TextBox firstnameTB;
-        private System.Windows.Forms.ComboBox civilityBox;
-        private System.Windows.Forms.TextBox adress1TB;
-        private System.Windows.Forms.DateTimePicker DateBirthPicker;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox roleTB;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox storeBox;
         private System.Windows.Forms.TabControl commentsTab;
         private System.Windows.Forms.TabPage statsTab;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ComboBox countryBox;
-        private System.Windows.Forms.TextBox commentsTB;
+        private System.Windows.Forms.TextBox Comments;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox CityName;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker DateBirthPicker;
+        private System.Windows.Forms.TextBox Address1;
+        private System.Windows.Forms.ComboBox GenderName;
+        private System.Windows.Forms.TextBox FirstName;
+        private System.Windows.Forms.TextBox LastName;
+        private System.Windows.Forms.TextBox Address2;
+        private System.Windows.Forms.TextBox CityPostalCode;
+        private System.Windows.Forms.TextBox Country;
+        private System.Windows.Forms.TextBox PhoneNumber;
+        private System.Windows.Forms.TextBox MobilePhoneNumber;
+        private System.Windows.Forms.TextBox Email;
+        private System.Windows.Forms.TextBox Id;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox Role;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox Store;
     }
 }

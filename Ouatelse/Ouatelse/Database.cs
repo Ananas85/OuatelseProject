@@ -108,7 +108,6 @@ namespace Ouatelse
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
-            return false;
         }
 
         public DataSet GetDataSet(string query, Dictionary<string, object> parameters = null)

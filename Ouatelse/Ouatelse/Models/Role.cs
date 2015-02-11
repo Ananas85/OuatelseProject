@@ -18,8 +18,9 @@ namespace Ouatelse.Models
             ArrayCursor<object> cursor = new ArrayCursor<object>(data);
             this.Id = Int32.Parse(cursor.Read().ToString());
             this.Name = cursor.Read().ToString();
-            if (!String.IsNullOrEmpty(cursor.Read().ToString()))
-                this.ParentRole = RoleManager.Instance.Find(cursor.Read().ToString());            
+            string parent = cursor.Read().ToString();
+            if (!String.IsNullOrEmpty(parent))
+                this.ParentRole = RoleManager.Instance.Find(parent);            
         }
 
         public Dictionary<string, string> Fetch()

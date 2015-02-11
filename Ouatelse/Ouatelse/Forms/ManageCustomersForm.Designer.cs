@@ -44,7 +44,7 @@
             this.nouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.nbclients = new System.Windows.Forms.Label();
+            this.CustomersNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -205,15 +205,15 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // nbclients
+            // CustomersNumber
             // 
-            this.nbclients.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nbclients.Location = new System.Drawing.Point(773, 486);
-            this.nbclients.Name = "nbclients";
-            this.nbclients.Size = new System.Drawing.Size(126, 22);
-            this.nbclients.TabIndex = 25;
-            this.nbclients.Text = "Nombre de";
-            this.nbclients.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.CustomersNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomersNumber.Location = new System.Drawing.Point(773, 486);
+            this.CustomersNumber.Name = "CustomersNumber";
+            this.CustomersNumber.Size = new System.Drawing.Size(126, 22);
+            this.CustomersNumber.TabIndex = 25;
+            this.CustomersNumber.Text = "--";
+            this.CustomersNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // ManageCustomersForm
             // 
@@ -221,7 +221,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(913, 505);
-            this.Controls.Add(this.nbclients);
+            this.Controls.Add(this.CustomersNumber);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.deletecustomer);
             this.Controls.Add(this.modify);
@@ -259,7 +259,7 @@
         private System.Windows.Forms.ColumnHeader Prénom;
         private System.Windows.Forms.ColumnHeader CodePostal;
         private System.Windows.Forms.ColumnHeader Pays;
-        private System.Windows.Forms.Label nbclients;
+        private System.Windows.Forms.Label CustomersNumber;
 
     }
 }

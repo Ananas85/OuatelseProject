@@ -14,23 +14,22 @@ namespace Ouatelse.Forms
 {
     public partial class ManageEmployeesForm : Form
     {
+        Employee currentEmployee = null;
         public ManageEmployeesForm()
         {
             InitializeComponent();
-                
-            //Reload items
             Reload(EmployeeManager.Instance.All());
         }
 
         public void Reload(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(searchBoxEmployee.Text))
+            if (String.IsNullOrWhiteSpace(searchBox.Text))
             {
                 Reload(EmployeeManager.Instance.All());
             }
             else
             {
-                string Search = "WHERE nom LIKE '" + searchBoxEmployee.Text + "%' OR prenom LIKE '" + searchBoxEmployee.Text + "%';";
+                string Search = "WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';";
                 Reload(EmployeeManager.Instance.Filter(Search));
             }
         }
@@ -38,6 +37,15 @@ namespace Ouatelse.Forms
         private void Reload(Employee[] employeeArray)
         {
             this.listView_employees.Items.Clear();
+
+            this.employeesNumber.Text = employeeArray.Length.ToString();
+
+            if (employeeArray.Length > 1)
+                this.employeesNumber.Text += " salariés.";
+            else
+                this.employeesNumber.Text += " salarié.";
+
+            bool alternativeColor = false;
             foreach (Employee e in employeeArray)
             {
                 ListViewItem employee = this.listView_employees.Items.Add(e.Id.ToString());
@@ -45,29 +53,78 @@ namespace Ouatelse.Forms
                 employee.SubItems.Add(e.FirstName.ToString());
                 employee.SubItems.Add(e.Email.ToString());
                 employee.SubItems.Add(e.Role.Name.ToString());
-                employee.SubItems.Add(e.Store.City.Name.ToString());
+                employee.SubItems.Add(e.Store.Name);
                 employee.Tag = e;
             }
-            if (employeeArray.Length <= 1)
-                labelSearch.Text = employeeArray.Length + " résultat";
-            else
-                labelSearch.Text = employeeArray.Length + " résultats";
-
+            if (alternativeColor)
+            {
+                listView_employees.BackColor = Color.WhiteSmoke;
+            }
+            alternativeColor = !alternativeColor;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void listView_employees_MouseClick(object sender, MouseEventArgs e)
         {
-            // TODO : Correct selection using MouseClick (like Customers)
-            EmployeeForm ef = new EmployeeForm(EmployeeManager.Instance.Find(listView_employees.SelectedItems[0].Text));
-            if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            ListViewItem item = this.listView_employees.GetItemAt(e.X, e.Y);
+            if (item == null)
+            {
+                currentEmployee = null;
                 return;
+            }
+            currentEmployee = (Employee)item.Tag;
         }
 
-        private void clientsBtn_Click(object sender, EventArgs e)
+
+        private void NewEmployee()
         {
             EmployeeForm ef = new EmployeeForm(new Employee());
             if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
+            EmployeeManager.Instance.Save(ef.getEmployee());
+            Reload(EmployeeManager.Instance.All());
         }
+
+        private void EditEmployee()
+        {
+            if (currentEmployee != null)
+            {
+                EmployeeForm ef = new EmployeeForm(currentEmployee);
+                if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return;
+                EmployeeManager.Instance.Save(ef.getEmployee());
+                Reload(EmployeeManager.Instance.All());
+
+            }
+            else
+            {
+                Utils.Warning("Vous n'avez pas sélectionné de salarié");
+            }
+        }
+
+        private void NewEmployeeButton_Click(object sender, EventArgs e)
+        {
+            NewEmployee();
+        }
+
+
+        private void DeleteEmployeeButton_Click(object sender, EventArgs e)
+        {
+            if (currentEmployee != null)
+            {
+                if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentEmployee.LastName + " " + currentEmployee.FirstName + " ? "))
+                    if (EmployeeManager.Instance.Delete(currentEmployee))
+                        Reload(EmployeeManager.Instance.All());
+
+            }
+        }
+
+        private void ModifyEmployeeButton_Click(object sender, EventArgs e)
+        {
+            EditEmployee();
+        }
+
+
+
+
     }
 }

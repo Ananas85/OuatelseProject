@@ -39,12 +39,12 @@ namespace Ouatelse
         {
             this.customerListView.Items.Clear();
 
-            if (customerArray.Length > 1)
-                this.nbclients.Text = "Nombre de clients :";
-            else
-                this.nbclients.Text = "Nombre de client :";
+            this.CustomersNumber.Text = customerArray.Length.ToString();
 
-            this.nbclients.Text += customerArray.Length.ToString();
+            if (customerArray.Length > 1)
+                this.CustomersNumber.Text += " clients.";
+            else
+                this.CustomersNumber.Text += " client.";
 
             bool alternativeColor = false;
             foreach (Customer cs in customerArray)
@@ -98,7 +98,7 @@ namespace Ouatelse
             }
             else
             {
-                Utils.Warning("Vous n'avez pas sélectionné de clients");
+                Utils.Warning("Vous n'avez pas sélectionné de client");
             }
         }
 

@@ -27,7 +27,7 @@ namespace Ouatelse.Models
 
         public Employee()
         {
-
+            DateOfBirth = DateTime.Now;
         }
 
         /// <summary>
