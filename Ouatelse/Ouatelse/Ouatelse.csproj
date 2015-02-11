@@ -40,6 +40,7 @@
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.5\Assemblies\v4.5\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +60,12 @@
     </Compile>
     <Compile Include="Forms\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LockForm.Designer.cs">
+      <DependentUpon>LockForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ManageCustomersForm.cs">
       <SubType>Form</SubType>
@@ -160,6 +167,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LockForm.resx">
+      <DependentUpon>LockForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManageCustomersForm.resx">
       <DependentUpon>ManageCustomersForm.cs</DependentUpon>

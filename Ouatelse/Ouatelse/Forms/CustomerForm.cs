@@ -45,7 +45,7 @@ namespace Ouatelse.Forms
                 this.CityPostalCode.Text = obj.City.PostalCode;
                 this.CityName.SelectedValue = obj.City.Id;
             }
-
+            b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
         }
 
@@ -54,7 +54,38 @@ namespace Ouatelse.Forms
             b.Hydrate();
             obj.Gender = (Gender)this.GenderName.SelectedItem;
             obj.City = (City)this.CityName.SelectedItem;
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            if (obj.validate().Count != 0)
+            {
+                string error = String.Empty;
+                foreach (Customer.ValidationResult warning in obj.validate())
+                {
+                    switch (warning)
+                    {
+                        case Customer.ValidationResult.WRONG_LASTNAME:
+                            error += "Erreur dans la saisie du nom ( il doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Customer.ValidationResult.WRONG_FIRSTNAME:
+                            error += "Erreur dans la saisie du prénom ( il doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Customer.ValidationResult.WRONG_ADRESS:
+                            error += "Erreur dans la saisie de l'adresse ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Customer.ValidationResult.WRONG_CITY:
+
+                            error += "Erreur dans la saisie de la ville ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Customer.ValidationResult.WRONG_EMAIL:
+                            error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
+                            break;
+                    }
+                }
+                Utils.Warning(error);
+            }
+            else
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            
         }
 
         private void loadGenders(Gender[] genders)
@@ -87,11 +118,6 @@ namespace Ouatelse.Forms
             {
                 loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
             }
-        }
-
-        private bool verifyData()
-        {
-            return true;
         }
 
         public Customer getCustomer()
