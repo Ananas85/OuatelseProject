@@ -1,6 +1,7 @@
 ﻿using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Ouatelse.Models
         public Store Store { get; set; }
         public Gender Gender { get; set; }
         public bool EmailOnUpdate { get; set; }
+        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL }
 
         public Employee()
         {
@@ -77,8 +79,42 @@ namespace Ouatelse.Models
             res.Add("roles_id", Role.Id.ToString());
             res.Add("magasin_id", Store.Id.ToString());
             res.Add("civilite_id", Gender.Id.ToString());
-            res.Add("email_modification", EmailOnUpdate.ToString());
+            res.Add("email_modification", Convert.ToInt16(EmailOnUpdate).ToString());
             return res;
+        }
+        public List<ValidationResult> validate()
+        {
+            List<ValidationResult> response = new List<ValidationResult>();
+            if (this.City == null)
+            {
+                response.Add(ValidationResult.WRONG_CITY);
+            }
+            if (String.IsNullOrWhiteSpace(this.FirstName))
+            {
+                response.Add(ValidationResult.WRONG_FIRSTNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.LastName))
+            {
+                response.Add(ValidationResult.WRONG_LASTNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.Address1))
+            {
+                response.Add(ValidationResult.WRONG_ADRESS);
+            }
+            if (String.IsNullOrWhiteSpace(this.Role.Name))
+            {
+                response.Add(ValidationResult.WRONG_ROLE);
+            }
+            if (String.IsNullOrWhiteSpace(this.Store.Name))
+            {
+                response.Add(ValidationResult.WRONG_STORE);
+            }
+            if (!String.IsNullOrWhiteSpace(this.Email))
+            {
+                if (!new EmailAddressAttribute().IsValid(this.Email))
+                    response.Add(ValidationResult.WRONG_EMAIL);
+            }
+            return response;
         }
     }
 }

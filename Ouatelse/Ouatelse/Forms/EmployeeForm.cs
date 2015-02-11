@@ -58,6 +58,7 @@ namespace Ouatelse.Forms
              if (obj.Role != null)
                 this.Role.SelectedValue = obj.Role.Id;
 
+            b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
         }
 
@@ -67,8 +68,47 @@ namespace Ouatelse.Forms
             obj.Gender = (Gender)this.GenderName.SelectedItem;
             obj.City = (City)this.CityName.SelectedItem;
             obj.Store = (Store)this.Store.SelectedItem;
-            obj.Role = (Role)this.Role.SelectedItem;
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            obj.Role = (Role)this.Role.SelectedItem; 
+            if (obj.validate().Count != 0)
+            {
+                string error = String.Empty;
+                foreach (Employee.ValidationResult warning in obj.validate())
+                {
+                    switch (warning)
+                    {
+                        case Employee.ValidationResult.WRONG_LASTNAME:
+                            error += "Erreur dans la saisie du nom ( il doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Employee.ValidationResult.WRONG_FIRSTNAME:
+                            error += "Erreur dans la saisie du prénom ( il doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Employee.ValidationResult.WRONG_ADRESS:
+                            error += "Erreur dans la saisie de l'adresse ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Employee.ValidationResult.WRONG_CITY:
+
+                            error += "Erreur dans la saisie de la ville ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Employee.ValidationResult.WRONG_STORE:
+
+                            error += "Erreur dans la saisie du magasin ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Employee.ValidationResult.WRONG_ROLE:
+
+                            error += "Erreur dans la saisie du rôle ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            break;
+                        case Employee.ValidationResult.WRONG_EMAIL:
+                            error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
+                            break;
+                    }
+                }
+                Utils.Warning(error);
+            }
+            else
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+           
         }
 
         private void loadGenders(Gender[] genders)

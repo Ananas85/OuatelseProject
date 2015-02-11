@@ -78,7 +78,7 @@ namespace Ouatelse
 
         public void newEmployee(Employee emp)
         {
-            string htmlContent = Ouatelse.Properties.Resources.newCustomer;
+            string htmlContent = Ouatelse.Properties.Resources.newEmployee;
             string body = htmlContent.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
             body = body.Replace("EMAIL", emp.Email);

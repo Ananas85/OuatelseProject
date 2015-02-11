@@ -32,10 +32,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.validateButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.commentsTab = new System.Windows.Forms.TabControl();
-            this.statsTab = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Tabs = new System.Windows.Forms.TabControl();
+            this.CommentsTab = new System.Windows.Forms.TabPage();
             this.Comments = new System.Windows.Forms.TextBox();
+            this.statsTab = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.CityName = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -64,9 +64,10 @@
             this.Role = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Store = new System.Windows.Forms.ComboBox();
+            this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.commentsTab.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.Tabs.SuspendLayout();
+            this.CommentsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -120,15 +121,35 @@
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
-            // commentsTab
+            // Tabs
             // 
-            this.commentsTab.Controls.Add(this.statsTab);
-            this.commentsTab.Controls.Add(this.tabPage2);
-            this.commentsTab.Location = new System.Drawing.Point(43, 345);
-            this.commentsTab.Name = "commentsTab";
-            this.commentsTab.SelectedIndex = 0;
-            this.commentsTab.Size = new System.Drawing.Size(513, 251);
-            this.commentsTab.TabIndex = 60;
+            this.Tabs.Controls.Add(this.CommentsTab);
+            this.Tabs.Controls.Add(this.statsTab);
+            this.Tabs.Location = new System.Drawing.Point(43, 345);
+            this.Tabs.Name = "Tabs";
+            this.Tabs.SelectedIndex = 0;
+            this.Tabs.Size = new System.Drawing.Size(513, 251);
+            this.Tabs.TabIndex = 60;
+            // 
+            // CommentsTab
+            // 
+            this.CommentsTab.Controls.Add(this.Comments);
+            this.CommentsTab.Location = new System.Drawing.Point(4, 22);
+            this.CommentsTab.Name = "CommentsTab";
+            this.CommentsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CommentsTab.Size = new System.Drawing.Size(505, 225);
+            this.CommentsTab.TabIndex = 1;
+            this.CommentsTab.Text = "Notes";
+            this.CommentsTab.UseVisualStyleBackColor = true;
+            // 
+            // Comments
+            // 
+            this.Comments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Comments.Location = new System.Drawing.Point(3, 3);
+            this.Comments.Multiline = true;
+            this.Comments.Name = "Comments";
+            this.Comments.Size = new System.Drawing.Size(499, 219);
+            this.Comments.TabIndex = 0;
             // 
             // statsTab
             // 
@@ -139,26 +160,6 @@
             this.statsTab.TabIndex = 0;
             this.statsTab.Text = "Statistiques";
             this.statsTab.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.Comments);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(505, 225);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Notes";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // Comments
-            // 
-            this.Comments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Comments.Location = new System.Drawing.Point(3, 3);
-            this.Comments.Multiline = true;
-            this.Comments.Name = "Comments";
-            this.Comments.Size = new System.Drawing.Size(499, 219);
-            this.Comments.TabIndex = 0;
             // 
             // label10
             // 
@@ -276,9 +277,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(40, 122);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 107;
-            this.label2.Text = "Code Client:";
+            this.label2.Text = "Code Salarié:";
             // 
             // DateBirthPicker
             // 
@@ -359,7 +360,7 @@
             // 
             this.Email.Location = new System.Drawing.Point(114, 305);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(442, 20);
+            this.Email.Size = new System.Drawing.Size(310, 20);
             this.Email.TabIndex = 96;
             // 
             // Id
@@ -408,6 +409,17 @@
             this.Store.Size = new System.Drawing.Size(202, 21);
             this.Store.TabIndex = 121;
             // 
+            // EmailOnUpdate
+            // 
+            this.EmailOnUpdate.AutoSize = true;
+            this.EmailOnUpdate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EmailOnUpdate.Location = new System.Drawing.Point(427, 308);
+            this.EmailOnUpdate.Name = "EmailOnUpdate";
+            this.EmailOnUpdate.Size = new System.Drawing.Size(130, 17);
+            this.EmailOnUpdate.TabIndex = 123;
+            this.EmailOnUpdate.Text = "Email à la modification";
+            this.EmailOnUpdate.UseVisualStyleBackColor = true;
+            // 
             // EmployeeForm
             // 
             this.AcceptButton = this.validateButton;
@@ -416,6 +428,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 609);
+            this.ControlBox = false;
+            this.Controls.Add(this.EmailOnUpdate);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.Store);
             this.Controls.Add(this.label13);
@@ -444,19 +458,18 @@
             this.Controls.Add(this.MobilePhoneNumber);
             this.Controls.Add(this.Email);
             this.Controls.Add(this.Id);
-            this.Controls.Add(this.commentsTab);
+            this.Controls.Add(this.Tabs);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EmployeeForm";
             this.Text = "EmployeeForm";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.commentsTab.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.Tabs.ResumeLayout(false);
+            this.CommentsTab.ResumeLayout(false);
+            this.CommentsTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,9 +481,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TabControl commentsTab;
+        private System.Windows.Forms.TabControl Tabs;
         private System.Windows.Forms.TabPage statsTab;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage CommentsTab;
         private System.Windows.Forms.TextBox Comments;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox CityName;
@@ -500,5 +513,6 @@
         private System.Windows.Forms.ComboBox Role;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Store;
+        private System.Windows.Forms.CheckBox EmailOnUpdate;
     }
 }
