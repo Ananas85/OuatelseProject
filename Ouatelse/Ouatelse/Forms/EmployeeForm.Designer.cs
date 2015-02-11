@@ -33,9 +33,9 @@
             this.validateButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.Tabs = new System.Windows.Forms.TabControl();
-            this.statsTab = new System.Windows.Forms.TabPage();
             this.CommentsTab = new System.Windows.Forms.TabPage();
             this.Comments = new System.Windows.Forms.TextBox();
+            this.statsTab = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.CityName = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -64,6 +64,7 @@
             this.Role = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Store = new System.Windows.Forms.ComboBox();
+            this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tabs.SuspendLayout();
             this.CommentsTab.SuspendLayout();
@@ -130,16 +131,6 @@
             this.Tabs.Size = new System.Drawing.Size(513, 251);
             this.Tabs.TabIndex = 60;
             // 
-            // statsTab
-            // 
-            this.statsTab.Location = new System.Drawing.Point(4, 22);
-            this.statsTab.Name = "statsTab";
-            this.statsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.statsTab.Size = new System.Drawing.Size(505, 225);
-            this.statsTab.TabIndex = 0;
-            this.statsTab.Text = "Statistiques";
-            this.statsTab.UseVisualStyleBackColor = true;
-            // 
             // CommentsTab
             // 
             this.CommentsTab.Controls.Add(this.Comments);
@@ -159,6 +150,16 @@
             this.Comments.Name = "Comments";
             this.Comments.Size = new System.Drawing.Size(499, 219);
             this.Comments.TabIndex = 0;
+            // 
+            // statsTab
+            // 
+            this.statsTab.Location = new System.Drawing.Point(4, 22);
+            this.statsTab.Name = "statsTab";
+            this.statsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.statsTab.Size = new System.Drawing.Size(505, 225);
+            this.statsTab.TabIndex = 0;
+            this.statsTab.Text = "Statistiques";
+            this.statsTab.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -359,7 +360,7 @@
             // 
             this.Email.Location = new System.Drawing.Point(114, 305);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(442, 20);
+            this.Email.Size = new System.Drawing.Size(310, 20);
             this.Email.TabIndex = 96;
             // 
             // Id
@@ -408,6 +409,17 @@
             this.Store.Size = new System.Drawing.Size(202, 21);
             this.Store.TabIndex = 121;
             // 
+            // EmailOnUpdate
+            // 
+            this.EmailOnUpdate.AutoSize = true;
+            this.EmailOnUpdate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EmailOnUpdate.Location = new System.Drawing.Point(427, 308);
+            this.EmailOnUpdate.Name = "EmailOnUpdate";
+            this.EmailOnUpdate.Size = new System.Drawing.Size(130, 17);
+            this.EmailOnUpdate.TabIndex = 123;
+            this.EmailOnUpdate.Text = "Email à la modification";
+            this.EmailOnUpdate.UseVisualStyleBackColor = true;
+            // 
             // EmployeeForm
             // 
             this.AcceptButton = this.validateButton;
@@ -416,6 +428,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 609);
+            this.ControlBox = false;
+            this.Controls.Add(this.EmailOnUpdate);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.Store);
             this.Controls.Add(this.label13);
@@ -449,7 +463,6 @@
             this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EmployeeForm";
             this.Text = "EmployeeForm";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
@@ -500,5 +513,6 @@
         private System.Windows.Forms.ComboBox Role;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Store;
+        private System.Windows.Forms.CheckBox EmailOnUpdate;
     }
 }

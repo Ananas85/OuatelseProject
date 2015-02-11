@@ -80,8 +80,15 @@ namespace Ouatelse.Forms
             EmployeeForm ef = new EmployeeForm(new Employee());
             if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
-            EmployeeManager.Instance.Save(ef.getEmployee());
+
+            Employee currentEmployee = ef.getEmployee();
+
+            // Génération du compte utilisateur
+            
+            EmployeeManager.Instance.Save(ef.getEmployee());     
             Reload(EmployeeManager.Instance.All());
+            Utils.Info("Salarié enregistré avec succès.");
+            // MailSender.Instance.newEmployee(ef.getEmployee());
         }
 
         private void EditEmployee()
@@ -93,7 +100,7 @@ namespace Ouatelse.Forms
                     return;
                 EmployeeManager.Instance.Save(ef.getEmployee());
                 Reload(EmployeeManager.Instance.All());
-
+                Utils.Info("Salarié enregistré avec succès");
             }
             else
             {
@@ -119,6 +126,11 @@ namespace Ouatelse.Forms
         }
 
         private void ModifyEmployeeButton_Click(object sender, EventArgs e)
+        {
+            EditEmployee();
+        }
+
+        private void listView_employees_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             EditEmployee();
         }

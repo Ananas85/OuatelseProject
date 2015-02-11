@@ -72,6 +72,7 @@
             this.listView_employees.UseCompatibleStateImageBehavior = false;
             this.listView_employees.View = System.Windows.Forms.View.Details;
             this.listView_employees.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseClick);
+            this.listView_employees.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseDoubleClick);
             // 
             // reference_column
             // 
