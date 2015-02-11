@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Ouatelse.Models
 {
@@ -12,7 +14,6 @@ namespace Ouatelse.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string PhoneNumber { get; set; }
@@ -22,6 +23,8 @@ namespace Ouatelse.Models
         public string Comments { get; set; }
         public City City { get; set; }
         public Gender Gender { get; set; }
+        public bool EmailOnUpdate { get; set; }
+        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_ADRESS, WRONG_CITY, WRONG_EMAIL}
 
         public Customer()
         {
@@ -47,6 +50,7 @@ namespace Ouatelse.Models
             this.Comments = cursor.Read().ToString();
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
+            this.EmailOnUpdate = bool.Parse(cursor.Read().ToString());
 
         }
 
@@ -64,7 +68,35 @@ namespace Ouatelse.Models
             res.Add("notes", Comments);
             res.Add("villes_id", City.Id.ToString());
             res.Add("civilite_id", Gender.Id.ToString());
+            res.Add("email_modification", Convert.ToInt16(EmailOnUpdate).ToString());
             return res;
+        }
+
+        public List<ValidationResult> validate()
+        {
+            List<ValidationResult> response = new List<ValidationResult>();
+            if (this.City == null)
+            {
+                response.Add(ValidationResult.WRONG_CITY);
+            }
+            if (String.IsNullOrWhiteSpace(this.FirstName))
+            {
+                response.Add(ValidationResult.WRONG_FIRSTNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.LastName))
+            {
+                response.Add(ValidationResult.WRONG_LASTNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.Address1))
+            {
+                response.Add(ValidationResult.WRONG_ADRESS);
+            }
+            if (!String.IsNullOrWhiteSpace(this.Email))
+            {
+                if (!new EmailAddressAttribute().IsValid(this.Email))
+                    response.Add(ValidationResult.WRONG_EMAIL);
+            }
+            return response;
         }
     }
 }

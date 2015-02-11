@@ -24,10 +24,12 @@ namespace Ouatelse.Models
         public Role Role { get; set; }
         public Store Store { get; set; }
         public Gender Gender { get; set; }
+        public bool EmailOnUpdate { get; set; }
 
         public Employee()
         {
             DateOfBirth = DateTime.Now;
+            this.EmailOnUpdate = false;
         }
 
         /// <summary>
@@ -53,6 +55,8 @@ namespace Ouatelse.Models
             this.Role = RoleManager.Instance.Find(cursor.Read().ToString());
             this.Store = StoreManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
+            this.EmailOnUpdate = bool.Parse(cursor.Read().ToString());
+
         }
 
         public Dictionary<string, string> Fetch()
@@ -73,6 +77,7 @@ namespace Ouatelse.Models
             res.Add("roles_id", Role.Id.ToString());
             res.Add("magasin_id", Store.Id.ToString());
             res.Add("civilite_id", Gender.Id.ToString());
+            res.Add("email_modification", EmailOnUpdate.ToString());
             return res;
         }
     }

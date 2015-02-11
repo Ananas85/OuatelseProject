@@ -61,6 +61,7 @@
             this.Statistiques = new System.Windows.Forms.TabPage();
             this.Factures = new System.Windows.Forms.TabPage();
             this.Comments = new System.Windows.Forms.TextBox();
+            this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CommentsContainer.SuspendLayout();
@@ -275,7 +276,7 @@
             // 
             this.Email.Location = new System.Drawing.Point(114, 309);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(442, 20);
+            this.Email.Size = new System.Drawing.Size(308, 20);
             this.Email.TabIndex = 11;
             // 
             // Id
@@ -332,7 +333,7 @@
             this.tabControl1.Controls.Add(this.CommentsContainer);
             this.tabControl1.Controls.Add(this.Statistiques);
             this.tabControl1.Controls.Add(this.Factures);
-            this.tabControl1.Location = new System.Drawing.Point(65, 335);
+            this.tabControl1.Location = new System.Drawing.Point(62, 347);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(494, 246);
@@ -371,11 +372,22 @@
             // 
             // Comments
             // 
-            this.Comments.Location = new System.Drawing.Point(8, 6);
+            this.Comments.Location = new System.Drawing.Point(6, 2);
             this.Comments.Multiline = true;
             this.Comments.Name = "Comments";
             this.Comments.Size = new System.Drawing.Size(470, 206);
             this.Comments.TabIndex = 0;
+            // 
+            // EmailOnUpdate
+            // 
+            this.EmailOnUpdate.AutoSize = true;
+            this.EmailOnUpdate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EmailOnUpdate.Location = new System.Drawing.Point(428, 311);
+            this.EmailOnUpdate.Name = "EmailOnUpdate";
+            this.EmailOnUpdate.Size = new System.Drawing.Size(130, 17);
+            this.EmailOnUpdate.TabIndex = 97;
+            this.EmailOnUpdate.Text = "Email à la modification";
+            this.EmailOnUpdate.UseVisualStyleBackColor = true;
             // 
             // CustomerForm
             // 
@@ -384,8 +396,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(586, 609);
+            this.ClientSize = new System.Drawing.Size(586, 606);
             this.ControlBox = false;
+            this.Controls.Add(this.EmailOnUpdate);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.CityName);
@@ -462,5 +475,6 @@
         private System.Windows.Forms.TextBox Comments;
         private System.Windows.Forms.TabPage Statistiques;
         private System.Windows.Forms.TabPage Factures;
+        private System.Windows.Forms.CheckBox EmailOnUpdate;
     }
 }
