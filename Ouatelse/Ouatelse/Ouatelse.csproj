@@ -209,7 +209,13 @@
     <None Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\newCustomer.html" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\forgottenPassword.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newEmployee.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
