@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Ouatelse.Models
@@ -26,7 +27,7 @@ namespace Ouatelse.Models
         public Store Store { get; set; }
         public Gender Gender { get; set; }
         public bool EmailOnUpdate { get; set; }
-        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL }
+        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_USERNAME, WRONG_PASSWORD, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL,WRONG_PHONENUMBER, WRONG_MOBILEPHONENUMBER }
 
         public Employee()
         {
@@ -97,6 +98,14 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_LASTNAME);
             }
+            if (String.IsNullOrWhiteSpace(this.Username) || !Regex.IsMatch(this.Username, "^[a-zA-Z0-9]+$"))
+            {
+                response.Add(ValidationResult.WRONG_USERNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.Password) || !Regex.IsMatch(this.Password, "^[a-zA-Z0-9]+$"))
+            {
+                response.Add(ValidationResult.WRONG_PASSWORD);
+            }
             if (String.IsNullOrWhiteSpace(this.Address1))
             {
                 response.Add(ValidationResult.WRONG_ADRESS);
@@ -113,6 +122,16 @@ namespace Ouatelse.Models
             {
                 if (!new EmailAddressAttribute().IsValid(this.Email))
                     response.Add(ValidationResult.WRONG_EMAIL);
+            }
+            if (!String.IsNullOrWhiteSpace(this.PhoneNumber))
+            {
+                if(this.PhoneNumber.Length != 10 || !Regex.IsMatch(this.PhoneNumber, "^[0-9]*$"))
+                    response.Add(ValidationResult.WRONG_PHONENUMBER);
+            }
+            if (!String.IsNullOrWhiteSpace(this.MobilePhoneNumber))
+            {
+                if (this.MobilePhoneNumber.Length != 10 || !Regex.IsMatch(this.MobilePhoneNumber, "^[0-9]*$"))
+                    response.Add(ValidationResult.WRONG_MOBILEPHONENUMBER);
             }
             return response;
         }

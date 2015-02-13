@@ -65,6 +65,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.Store = new System.Windows.Forms.ComboBox();
             this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.Username = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.Password = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tabs.SuspendLayout();
             this.CommentsTab.SuspendLayout();
@@ -125,10 +129,10 @@
             // 
             this.Tabs.Controls.Add(this.CommentsTab);
             this.Tabs.Controls.Add(this.statsTab);
-            this.Tabs.Location = new System.Drawing.Point(43, 345);
+            this.Tabs.Location = new System.Drawing.Point(43, 372);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(513, 251);
+            this.Tabs.Size = new System.Drawing.Size(513, 224);
             this.Tabs.TabIndex = 60;
             // 
             // CommentsTab
@@ -137,7 +141,7 @@
             this.CommentsTab.Location = new System.Drawing.Point(4, 22);
             this.CommentsTab.Name = "CommentsTab";
             this.CommentsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CommentsTab.Size = new System.Drawing.Size(505, 225);
+            this.CommentsTab.Size = new System.Drawing.Size(505, 198);
             this.CommentsTab.TabIndex = 1;
             this.CommentsTab.Text = "Notes";
             this.CommentsTab.UseVisualStyleBackColor = true;
@@ -148,7 +152,7 @@
             this.Comments.Location = new System.Drawing.Point(3, 3);
             this.Comments.Multiline = true;
             this.Comments.Name = "Comments";
-            this.Comments.Size = new System.Drawing.Size(499, 219);
+            this.Comments.Size = new System.Drawing.Size(499, 192);
             this.Comments.TabIndex = 0;
             // 
             // statsTab
@@ -165,7 +169,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(185, 254);
+            this.label10.Location = new System.Drawing.Point(185, 280);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 13);
             this.label10.TabIndex = 118;
@@ -175,7 +179,7 @@
             // 
             this.CityName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CityName.FormattingEnabled = true;
-            this.CityName.Location = new System.Drawing.Point(232, 252);
+            this.CityName.Location = new System.Drawing.Point(232, 278);
             this.CityName.Name = "CityName";
             this.CityName.Size = new System.Drawing.Size(175, 21);
             this.CityName.TabIndex = 117;
@@ -185,7 +189,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(60, 148);
+            this.label12.Location = new System.Drawing.Point(60, 174);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 13);
             this.label12.TabIndex = 116;
@@ -195,7 +199,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(75, 176);
+            this.label11.Location = new System.Drawing.Point(75, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 13);
             this.label11.TabIndex = 115;
@@ -205,7 +209,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(62, 308);
+            this.label9.Location = new System.Drawing.Point(62, 334);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 114;
@@ -215,7 +219,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(351, 282);
+            this.label8.Location = new System.Drawing.Point(351, 308);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 13);
             this.label8.TabIndex = 113;
@@ -225,7 +229,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(59, 282);
+            this.label7.Location = new System.Drawing.Point(59, 308);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 112;
@@ -235,7 +239,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(413, 254);
+            this.label6.Location = new System.Drawing.Point(413, 280);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 111;
@@ -245,7 +249,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 254);
+            this.label5.Location = new System.Drawing.Point(37, 280);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 110;
@@ -255,7 +259,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(60, 202);
+            this.label4.Location = new System.Drawing.Point(60, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 109;
@@ -265,7 +269,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(183, 122);
+            this.label3.Location = new System.Drawing.Point(183, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 108;
@@ -275,7 +279,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 122);
+            this.label2.Location = new System.Drawing.Point(40, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 107;
@@ -284,14 +288,14 @@
             // DateBirthPicker
             // 
             this.DateBirthPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateBirthPicker.Location = new System.Drawing.Point(456, 279);
+            this.DateBirthPicker.Location = new System.Drawing.Point(456, 305);
             this.DateBirthPicker.Name = "DateBirthPicker";
             this.DateBirthPicker.Size = new System.Drawing.Size(100, 20);
             this.DateBirthPicker.TabIndex = 106;
             // 
             // Address1
             // 
-            this.Address1.Location = new System.Drawing.Point(114, 199);
+            this.Address1.Location = new System.Drawing.Point(114, 225);
             this.Address1.Name = "Address1";
             this.Address1.Size = new System.Drawing.Size(442, 20);
             this.Address1.TabIndex = 105;
@@ -300,35 +304,35 @@
             // 
             this.GenderName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderName.FormattingEnabled = true;
-            this.GenderName.Location = new System.Drawing.Point(232, 119);
+            this.GenderName.Location = new System.Drawing.Point(232, 145);
             this.GenderName.Name = "GenderName";
             this.GenderName.Size = new System.Drawing.Size(53, 21);
             this.GenderName.TabIndex = 104;
             // 
             // FirstName
             // 
-            this.FirstName.Location = new System.Drawing.Point(114, 145);
+            this.FirstName.Location = new System.Drawing.Point(114, 171);
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(171, 20);
             this.FirstName.TabIndex = 103;
             // 
             // LastName
             // 
-            this.LastName.Location = new System.Drawing.Point(114, 173);
+            this.LastName.Location = new System.Drawing.Point(114, 199);
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(171, 20);
             this.LastName.TabIndex = 102;
             // 
             // Address2
             // 
-            this.Address2.Location = new System.Drawing.Point(114, 225);
+            this.Address2.Location = new System.Drawing.Point(114, 251);
             this.Address2.Name = "Address2";
             this.Address2.Size = new System.Drawing.Size(442, 20);
             this.Address2.TabIndex = 101;
             // 
             // CityPostalCode
             // 
-            this.CityPostalCode.Location = new System.Drawing.Point(114, 251);
+            this.CityPostalCode.Location = new System.Drawing.Point(114, 277);
             this.CityPostalCode.Name = "CityPostalCode";
             this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
             this.CityPostalCode.TabIndex = 100;
@@ -336,7 +340,7 @@
             // 
             // Country
             // 
-            this.Country.Location = new System.Drawing.Point(456, 251);
+            this.Country.Location = new System.Drawing.Point(456, 277);
             this.Country.Name = "Country";
             this.Country.ReadOnly = true;
             this.Country.Size = new System.Drawing.Size(100, 20);
@@ -344,28 +348,28 @@
             // 
             // PhoneNumber
             // 
-            this.PhoneNumber.Location = new System.Drawing.Point(114, 279);
+            this.PhoneNumber.Location = new System.Drawing.Point(114, 305);
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.PhoneNumber.TabIndex = 98;
             // 
             // MobilePhoneNumber
             // 
-            this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 279);
+            this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 305);
             this.MobilePhoneNumber.Name = "MobilePhoneNumber";
             this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.MobilePhoneNumber.TabIndex = 97;
             // 
             // Email
             // 
-            this.Email.Location = new System.Drawing.Point(114, 305);
+            this.Email.Location = new System.Drawing.Point(114, 331);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(310, 20);
             this.Email.TabIndex = 96;
             // 
             // Id
             // 
-            this.Id.Location = new System.Drawing.Point(114, 119);
+            this.Id.Location = new System.Drawing.Point(114, 145);
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
@@ -375,7 +379,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(369, 148);
+            this.label13.Location = new System.Drawing.Point(369, 174);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(33, 13);
             this.label13.TabIndex = 120;
@@ -385,7 +389,7 @@
             // 
             this.Role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Role.FormattingEnabled = true;
-            this.Role.Location = new System.Drawing.Point(408, 145);
+            this.Role.Location = new System.Drawing.Point(408, 171);
             this.Role.Name = "Role";
             this.Role.Size = new System.Drawing.Size(148, 21);
             this.Role.TabIndex = 119;
@@ -394,7 +398,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(291, 176);
+            this.label14.Location = new System.Drawing.Point(291, 202);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 13);
             this.label14.TabIndex = 122;
@@ -404,7 +408,7 @@
             // 
             this.Store.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Store.FormattingEnabled = true;
-            this.Store.Location = new System.Drawing.Point(354, 173);
+            this.Store.Location = new System.Drawing.Point(354, 199);
             this.Store.Name = "Store";
             this.Store.Size = new System.Drawing.Size(202, 21);
             this.Store.TabIndex = 121;
@@ -413,22 +417,59 @@
             // 
             this.EmailOnUpdate.AutoSize = true;
             this.EmailOnUpdate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EmailOnUpdate.Location = new System.Drawing.Point(427, 308);
+            this.EmailOnUpdate.Location = new System.Drawing.Point(427, 334);
             this.EmailOnUpdate.Name = "EmailOnUpdate";
             this.EmailOnUpdate.Size = new System.Drawing.Size(130, 17);
             this.EmailOnUpdate.TabIndex = 123;
             this.EmailOnUpdate.Text = "Email à la modification";
             this.EmailOnUpdate.UseVisualStyleBackColor = true;
             // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.Location = new System.Drawing.Point(45, 96);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(67, 13);
+            this.usernameLabel.TabIndex = 125;
+            this.usernameLabel.Text = "Identifiant: ";
+            // 
+            // Username
+            // 
+            this.Username.Location = new System.Drawing.Point(114, 93);
+            this.Username.Name = "Username";
+            this.Username.Size = new System.Drawing.Size(171, 20);
+            this.Username.TabIndex = 124;
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(30, 122);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(83, 13);
+            this.passwordLabel.TabIndex = 127;
+            this.passwordLabel.Text = "Mot de passe: ";
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(114, 119);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(171, 20);
+            this.Password.TabIndex = 126;
+            // 
             // EmployeeForm
             // 
-            this.AcceptButton = this.validateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 609);
             this.ControlBox = false;
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.Password);
+            this.Controls.Add(this.usernameLabel);
+            this.Controls.Add(this.Username);
             this.Controls.Add(this.EmailOnUpdate);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.Store);
@@ -514,5 +555,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Store;
         private System.Windows.Forms.CheckBox EmailOnUpdate;
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.TextBox Username;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.TextBox Password;
     }
 }
