@@ -331,6 +331,7 @@
             // CityPostalCode
             // 
             this.CityPostalCode.Location = new System.Drawing.Point(114, 277);
+            this.CityPostalCode.MaxLength = 5;
             this.CityPostalCode.Name = "CityPostalCode";
             this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
             this.CityPostalCode.TabIndex = 100;
@@ -347,6 +348,7 @@
             // PhoneNumber
             // 
             this.PhoneNumber.Location = new System.Drawing.Point(114, 305);
+            this.PhoneNumber.MaxLength = 10;
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.PhoneNumber.TabIndex = 98;
@@ -354,6 +356,7 @@
             // MobilePhoneNumber
             // 
             this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 305);
+            this.MobilePhoneNumber.MaxLength = 10;
             this.MobilePhoneNumber.Name = "MobilePhoneNumber";
             this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.MobilePhoneNumber.TabIndex = 97;

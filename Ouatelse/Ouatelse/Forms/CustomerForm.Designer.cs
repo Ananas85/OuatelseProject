@@ -227,6 +227,7 @@
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(171, 20);
             this.FirstName.TabIndex = 2;
+            this.FirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirstName_KeyPress);
             // 
             // LastName
             // 
@@ -234,6 +235,7 @@
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(171, 20);
             this.LastName.TabIndex = 3;
+            this.LastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LastName_KeyPress);
             // 
             // Address2
             // 
@@ -249,6 +251,7 @@
             this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
             this.CityPostalCode.TabIndex = 6;
             this.CityPostalCode.TextChanged += new System.EventHandler(this.CityPostalCode_TextChanged);
+            this.CityPostalCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CityPostalCode_KeyPress);
             // 
             // Country
             // 
@@ -261,16 +264,20 @@
             // PhoneNumber
             // 
             this.PhoneNumber.Location = new System.Drawing.Point(114, 283);
+            this.PhoneNumber.MaxLength = 10;
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.PhoneNumber.TabIndex = 8;
+            this.PhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_KeyPress);
             // 
             // MobilePhoneNumber
             // 
             this.MobilePhoneNumber.Location = new System.Drawing.Point(232, 283);
+            this.MobilePhoneNumber.MaxLength = 10;
             this.MobilePhoneNumber.Name = "MobilePhoneNumber";
             this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.MobilePhoneNumber.TabIndex = 9;
+            this.MobilePhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MobilePhoneNumber_KeyPress);
             // 
             // Email
             // 

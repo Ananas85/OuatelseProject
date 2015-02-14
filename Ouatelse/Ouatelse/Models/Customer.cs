@@ -76,7 +76,7 @@ namespace Ouatelse.Models
         /// <summary>
         /// Ce qui permet de valider les données d'un client
         /// </summary>
-        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_ADRESS, WRONG_CITY, WRONG_EMAIL}
+        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_ADRESS, WRONG_CITY, WRONG_EMAIL, WRONG_PHONENUMBER, WRONG_MOBILEPHONENUMBER}
         #endregion
 
         #region Constructeur de la classe
@@ -167,6 +167,16 @@ namespace Ouatelse.Models
             {
                 if (!new EmailAddressAttribute().IsValid(this.Email))
                     response.Add(ValidationResult.WRONG_EMAIL);
+            }
+            if (!String.IsNullOrEmpty(this.PhoneNumber))
+            {
+                if (this.PhoneNumber.Length != 10)
+                    response.Add(ValidationResult.WRONG_PHONENUMBER);
+            }
+            if (!String.IsNullOrEmpty(this.PhoneNumber))
+            {
+                if (this.MobilePhoneNumber.Length != 10)
+                    response.Add(ValidationResult.WRONG_MOBILEPHONENUMBER);
             }
             return response;
         }

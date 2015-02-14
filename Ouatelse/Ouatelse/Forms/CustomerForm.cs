@@ -108,11 +108,16 @@ namespace Ouatelse.Forms
                             error += "Erreur dans la saisie de l'adresse ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
                         case Customer.ValidationResult.WRONG_CITY:
-
-                            error += "Erreur dans la saisie de la ville ( elle doit obligatoirement être rempli )" + Environment.NewLine;
+                            error += "Erreur dans la saisie de la ville ( elle doit obligatoirement être rempli -> Code Postal )" + Environment.NewLine;
                             break;
                         case Customer.ValidationResult.WRONG_EMAIL:
                             error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
+                            break;
+                        case Customer.ValidationResult.WRONG_PHONENUMBER:
+                            error += "Erreur dans la saisie du numéro de téléphone fixe ( 10 caractères obligatoire )" + Environment.NewLine;
+                            break;
+                        case Customer.ValidationResult.WRONG_MOBILEPHONENUMBER:
+                            error += "Erreur dans la saisie du numéro de téléphone mobile ( 10 caractères obligatoire )" + Environment.NewLine;
                             break;
                     }
                 }
@@ -177,6 +182,62 @@ namespace Ouatelse.Forms
         public Customer getCustomer()
         {
             return obj;
+        }
+        #endregion
+
+        #region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone fixe
+        private void PhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        #region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone mobile
+        private void MobilePhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        #region Autorisation uniqument de l'entrée de chiffre pour le code postal
+        private void CityPostalCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        #region Autorisation uniquement de l'entrée de lettre ou - pour le prénom
+        private void FirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar !='-')
+            {
+
+                Utils.Info("Uniquement les lettres ou - sont autorisés");
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        #region Autorisation uniquement de l'entrée de lettre ou - pour le nom
+        private void LastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
+            {
+                Utils.Info("Uniquement les lettres ou - sont autorisés");
+                e.Handled = true;
+            }
         }
         #endregion
 
