@@ -352,6 +352,7 @@
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.PhoneNumber.TabIndex = 98;
+            this.PhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_KeyPress);
             // 
             // MobilePhoneNumber
             // 
@@ -360,6 +361,7 @@
             this.MobilePhoneNumber.Name = "MobilePhoneNumber";
             this.MobilePhoneNumber.Size = new System.Drawing.Size(111, 20);
             this.MobilePhoneNumber.TabIndex = 97;
+            this.MobilePhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MobilePhoneNumber_KeyPress);
             // 
             // Email
             // 
@@ -441,6 +443,7 @@
             this.Username.Name = "Username";
             this.Username.Size = new System.Drawing.Size(171, 20);
             this.Username.TabIndex = 124;
+            this.Username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Username_KeyPress);
             // 
             // EmployeeForm
             // 

@@ -15,20 +15,28 @@ namespace Ouatelse.Forms
 {
     public partial class EmployeeForm : Form
     {
+        #region Attributs
         Employee obj = null;
         Binding b = new Binding();
         List<City> cities = null;
         List<Role> roles = null;
         List<Store> stores = null;
+        #endregion
 
+        #region Constructeur
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
+        /// <param name="obj"></param>
         public EmployeeForm(Employee obj)
         {
             InitializeComponent();
             this.Text = this.label1.Text = obj.Exists ? "Détail d'un salarié " : " Nouveau salarié"; 
             this.obj = obj;
         }
+        #endregion
 
-
+        #region Chargement de la fenêtre
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
             loadGenders(GenderManager.Instance.All());
@@ -62,7 +70,14 @@ namespace Ouatelse.Forms
             b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
         }
+        #endregion
 
+        #region Méthode d'évenement du clic sur le bouton de validation
+        /// <summary>
+        /// Méthode d'évenement du clic sur le bouton de validation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void validateButton_Click(object sender, EventArgs e)
         {
             b.Hydrate();
@@ -105,10 +120,10 @@ namespace Ouatelse.Forms
                             error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_PHONENUMBER:
-                            error += "Erreur dans la saisie du numéro de téléphone" + Environment.NewLine;
+                            error += "Erreur dans la saisie du numéro de téléphone ( 10 caractères )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_MOBILEPHONENUMBER:
-                            error += "Erreur dans la saisie du numéro de téléphone portable" + Environment.NewLine;
+                            error += "Erreur dans la saisie du numéro de téléphone portable ( 10 caractères )" + Environment.NewLine;
                             break;
                     }
                 }
@@ -120,7 +135,14 @@ namespace Ouatelse.Forms
             }
            
         }
+        #endregion
 
+
+        #region Chargement des attributs étrangers
+        /// <summary>
+        /// Chargement des civilités
+        /// </summary>
+        /// <param name="genders">Tableau des civilités</param>
         private void loadGenders(Gender[] genders)
         {
             List<Gender> genderList = new List<Gender>(genders);
@@ -129,6 +151,10 @@ namespace Ouatelse.Forms
             this.GenderName.DisplayMember = "Name";
         }
 
+        /// <summary>
+        /// Chargement des villes
+        /// </summary>
+        /// <param name="cities">Tableau des villes</param>
         private void loadCities(City[] cities)
         {
             this.cities = new List<City>(cities);
@@ -137,6 +163,10 @@ namespace Ouatelse.Forms
             this.CityName.DisplayMember = "Name";
         }
 
+        /// <summary>
+        /// Chargement des rôles
+        /// </summary>
+        /// <param name="roles">Tableau des rôles</param>
         private void loadRoles(Role[] roles)
         {
             this.roles = new List<Role>(roles);
@@ -145,6 +175,10 @@ namespace Ouatelse.Forms
             this.Role.DisplayMember = "Name";
         }
 
+        /// <summary>
+        /// Chargement des magasins
+        /// </summary>
+        /// <param name="stores">Tableau des magasins</param>
         private void loadStores(Store[] stores)
         {
             this.stores = new List<Store>(stores);
@@ -152,7 +186,14 @@ namespace Ouatelse.Forms
             this.Store.ValueMember = "Id";
             this.Store.DisplayMember = "Name";
         }
+        #endregion
 
+        #region Affichage dynamiques (ville et pays)
+        /// <summary>
+        /// Affichage du pays en fonction de la ville
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CityName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.CityName != null)
@@ -161,7 +202,66 @@ namespace Ouatelse.Forms
                 this.Country.Text = String.Empty;
         }
 
+        /// <summary>
+        /// Affichage de la ville en fonction du code postal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CityPostalCode_TextChanged(object sender, EventArgs e)
+        {
+            if (this.CityPostalCode.TextLength == 5)
+            {
+                loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
+            }
+        }
+        #endregion
 
+        #region Verificateurs dynamiques de saisie
+        /// <summary>
+        /// Vérificateur de numéro de téléphone fixe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Vérificateur de numéro de téléphone mobile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MobilePhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Vérificateur d'identifiant
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Username_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les lettres et chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+
+        #endregion
+
+        #region Autres
         private bool verifyData()
         {
             return true;
@@ -171,16 +271,6 @@ namespace Ouatelse.Forms
         {
             return obj;
         }
-
-        private void CityPostalCode_TextChanged(object sender, EventArgs e)
-        {
-            if (this.CityPostalCode.TextLength == 5)
-            {
-                loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
-            }
-        }
-
-
-
+        #endregion
     }
 }

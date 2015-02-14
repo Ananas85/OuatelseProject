@@ -98,7 +98,7 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_LASTNAME);
             }
-            if (String.IsNullOrWhiteSpace(this.Username) || !Regex.IsMatch(this.Username, "^[a-zA-Z0-9]+$"))
+            if (String.IsNullOrWhiteSpace(this.Username))
             {
                 response.Add(ValidationResult.WRONG_USERNAME);
             }
@@ -121,12 +121,12 @@ namespace Ouatelse.Models
             }
             if (!String.IsNullOrWhiteSpace(this.PhoneNumber))
             {
-                if(this.PhoneNumber.Length != 10 || !Regex.IsMatch(this.PhoneNumber, "^[0-9]*$"))
+                if(this.PhoneNumber.Length != 10)
                     response.Add(ValidationResult.WRONG_PHONENUMBER);
             }
             if (!String.IsNullOrWhiteSpace(this.MobilePhoneNumber))
             {
-                if (this.MobilePhoneNumber.Length != 10 || !Regex.IsMatch(this.MobilePhoneNumber, "^[0-9]*$"))
+                if (this.MobilePhoneNumber.Length != 10)
                     response.Add(ValidationResult.WRONG_MOBILEPHONENUMBER);
             }
             return response;

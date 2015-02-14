@@ -15,12 +15,24 @@ namespace Ouatelse.Forms
     public partial class ManageEmployeesForm : Form
     {
         Employee currentEmployee = null;
+
+        #region Constructeur de la classe
+        /// <summary>
+        /// Constructeur de la classe
+        /// </summary>
         public ManageEmployeesForm()
         {
             InitializeComponent();
             Reload(EmployeeManager.Instance.All());
         }
+        #endregion
 
+        #region Méthode pour le rechargement de la ListView
+        /// <summary>
+        /// Méthode pour le rechargement de la ListView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Reload(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(searchBox.Text))
@@ -33,7 +45,13 @@ namespace Ouatelse.Forms
                 Reload(EmployeeManager.Instance.Filter(Search));
             }
         }
+        #endregion
 
+        #region Méthode pour le rechargement de la ListView (avec un tableau en paramètre)
+        /// <summary>
+        /// Méthode pour le rechargement de la ListView
+        /// </summary>
+        /// <param name="employeeArray">Liste d'employés à afficher</param>
         private void Reload(Employee[] employeeArray)
         {
             this.listView_employees.Items.Clear();
@@ -41,9 +59,9 @@ namespace Ouatelse.Forms
             this.employeesNumber.Text = employeeArray.Length.ToString();
 
             if (employeeArray.Length > 1)
-                this.employeesNumber.Text += " salariés.";
+                this.employeesNumber.Text += " salariés";
             else
-                this.employeesNumber.Text += " salarié.";
+                this.employeesNumber.Text += " salarié";
 
             bool alternativeColor = false;
             foreach (Employee e in employeeArray)
@@ -62,7 +80,14 @@ namespace Ouatelse.Forms
             }
             alternativeColor = !alternativeColor;
         }
+        #endregion
 
+        #region Méthode d'évenement du clic dans la ListView
+        /// <summary>
+        /// Méthode d'évenement du clic dans la ListView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_employees_MouseClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = this.listView_employees.GetItemAt(e.X, e.Y);
@@ -73,25 +98,47 @@ namespace Ouatelse.Forms
             }
             currentEmployee = (Employee)item.Tag;
         }
+        #endregion
 
-
+        #region Création d'un employé
+        /// <summary>
+        /// Méthode de création d'un nouvel employé
+        /// </summary>
         private void NewEmployee()
         {
             EmployeeForm ef = new EmployeeForm(new Employee());
             if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
 
+            // Génération du compte utilisateur
             Employee currentEmployee = ef.getEmployee();
             currentEmployee.Password = Utils.generatePassword(5);
 
-            // Génération du compte utilisateur
-            Utils.Info(currentEmployee.Password);
-            EmployeeManager.Instance.Save(currentEmployee);     
+
+            EmployeeManager.Instance.Save(currentEmployee);
             Reload(EmployeeManager.Instance.All());
             Utils.Info("Salarié enregistré avec succès.");
-            // MailSender.Instance.newEmployee(ef.getEmployee());
-        }
 
+            //Envoi du mail au nouveau salarié
+            if (currentEmployee.Email != null)
+                MailSender.Instance.newEmployee(currentEmployee);
+        }
+       
+        /// <summary>
+        /// Méthode d'évenement du clic sur le bouton de création d'un nouvel employé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewEmployeeButton_Click(object sender, EventArgs e)
+        {
+            NewEmployee();
+        }
+        #endregion
+
+        #region Modification d'un employé
+        /// <summary>
+        /// Méthode de modification d'un employé
+        /// </summary>
         private void EditEmployee()
         {
             if (currentEmployee != null)
@@ -108,14 +155,33 @@ namespace Ouatelse.Forms
                 Utils.Warning("Vous n'avez pas sélectionné de salarié");
             }
         }
-
-        private void NewEmployeeButton_Click(object sender, EventArgs e)
+        
+        /// <summary>
+        ///  Méthode d'évenement du clic sur le bouton de modification d'un employé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ModifyEmployeeButton_Click(object sender, EventArgs e)
         {
-            NewEmployee();
+            EditEmployee();
         }
 
+        /// <summary>
+        /// Méthode d'évenement du double-clic dans la ListView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_employees_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            EditEmployee();
+        }
+        #endregion
 
-        private void DeleteEmployeeButton_Click(object sender, EventArgs e)
+        #region Suppression d'un employé
+        /// <summary>
+        /// Méthode de suppression d'un employé
+        /// </summary>
+        private void DeleteEmployee()
         {
             if (currentEmployee != null)
             {
@@ -126,18 +192,15 @@ namespace Ouatelse.Forms
             }
         }
 
-        private void ModifyEmployeeButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Méthode d'évenement du clic sur le bouton de suppression d'un employé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteEmployeeButton_Click(object sender, EventArgs e)
         {
-            EditEmployee();
+            DeleteEmployee();
         }
-
-        private void listView_employees_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            EditEmployee();
-        }
-
-
-
-
+        #endregion
     }
 }
