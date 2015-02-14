@@ -261,5 +261,6 @@
         private System.Windows.Forms.ColumnHeader Pays;
         private System.Windows.Forms.Label CustomersNumber;
 
+
     }
 }

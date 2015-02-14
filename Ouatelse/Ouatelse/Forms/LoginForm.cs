@@ -30,12 +30,11 @@ namespace Ouatelse
             if (AuthManager.Instance.Login(this.usernameEntry.Text, this.passwordEntry.Text))
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                return;
             }
-            else
-            {
-                Utils.Warning("Ce compte n'existe pas ou identifiants invalides.");
-                this.DialogResult = System.Windows.Forms.DialogResult.None;
-            }
+            Utils.Warning("Ce compte n'existe pas ou identifiants invalides.");
+            this.DialogResult = System.Windows.Forms.DialogResult.None;
+
         }
 
         private void quitBtn_Click(object sender, EventArgs e)

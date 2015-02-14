@@ -14,10 +14,19 @@ namespace Ouatelse.Managers
     /// <typeparam name="T">Le type de l'entité</typeparam>
     public abstract class BaseManager<T> : IManager<T>
     {
+        #region Les attributs de la classe
+        /// <summary>
+        /// l'instance du pattern singleton
+        /// </summary>
         Database db = Database.Instance;
 
+        /// <summary>
+        /// Le nom de la table dans la base de données
+        /// </summary>
         protected string tableName = "";
+        #endregion
 
+        #region Récupération de toutes les entités présentes dans la table
         /// <summary>
         /// Récupère toutes les entitées présentes dans la table
         /// </summary>
@@ -46,7 +55,9 @@ namespace Ouatelse.Managers
 
             return res.ToArray();
         }
+        #endregion
 
+        #region Récupération des entités de la table selon un filtre SQL
         /// <summary>
         /// Permet de récupérer certaines entités selon un filtre SQL.
         /// </summary>
@@ -75,7 +86,9 @@ namespace Ouatelse.Managers
 
             return res.ToArray();
         }
+        #endregion
 
+        #region Récupération de la première entité de la table selon un filtre SQL
         /// <summary>
         /// Permet de récupérer la première entité selon un filtre SQL.
         /// </summary>
@@ -103,7 +116,9 @@ namespace Ouatelse.Managers
 
             return entity;
         }
+        #endregion
 
+        #region Récupération du nombre d'entité de la table selon un filtre SQL
         /// <summary>
         /// Retourne le nombre d'entité dans la table, selon un fitre SQL si nécessaire
         /// </summary>
@@ -116,7 +131,9 @@ namespace Ouatelse.Managers
                 return 0;
             return Int32.Parse(resp.ToString());
         }
+        #endregion
 
+        #region Récuprération d'une entité de la table selon son ID
         /// <summary>
         /// Retourne une entité selon un id
         /// </summary>
@@ -144,7 +161,9 @@ namespace Ouatelse.Managers
 
             return entity;
         }
+        #endregion
 
+        #region Persiste une entité dans la base de données
         /// <summary>
         /// Persiste une entité dans la base
         /// </summary>
@@ -178,7 +197,9 @@ namespace Ouatelse.Managers
             return Database.Instance.Execute(query.ToString());
 
         }
+        #endregion
 
+        #region Suppression d'une entité dans la base de données
         /// <summary>
         /// Supprime une entité de la base
         /// </summary>
@@ -193,5 +214,6 @@ namespace Ouatelse.Managers
             string query = String.Format("DELETE FROM {0} WHERE id={1}", tableName, model.Id);
             return Database.Instance.Execute(query.ToString());
         }
+        #endregion
     }
 }

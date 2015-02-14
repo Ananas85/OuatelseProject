@@ -58,9 +58,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CommentsContainer = new System.Windows.Forms.TabPage();
+            this.Comments = new System.Windows.Forms.TextBox();
             this.Statistiques = new System.Windows.Forms.TabPage();
             this.Factures = new System.Windows.Forms.TabPage();
-            this.Comments = new System.Windows.Forms.TextBox();
             this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -351,6 +351,14 @@
             this.CommentsContainer.TabIndex = 0;
             this.CommentsContainer.Text = "Notes";
             // 
+            // Comments
+            // 
+            this.Comments.Location = new System.Drawing.Point(2, 2);
+            this.Comments.Multiline = true;
+            this.Comments.Name = "Comments";
+            this.Comments.Size = new System.Drawing.Size(480, 214);
+            this.Comments.TabIndex = 0;
+            // 
             // Statistiques
             // 
             this.Statistiques.Location = new System.Drawing.Point(4, 22);
@@ -370,14 +378,6 @@
             this.Factures.Text = "Factures";
             this.Factures.UseVisualStyleBackColor = true;
             // 
-            // Comments
-            // 
-            this.Comments.Location = new System.Drawing.Point(6, 2);
-            this.Comments.Multiline = true;
-            this.Comments.Name = "Comments";
-            this.Comments.Size = new System.Drawing.Size(470, 206);
-            this.Comments.TabIndex = 0;
-            // 
             // EmailOnUpdate
             // 
             this.EmailOnUpdate.AutoSize = true;
@@ -391,7 +391,6 @@
             // 
             // CustomerForm
             // 
-            this.AcceptButton = this.validateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
