@@ -102,10 +102,6 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_USERNAME);
             }
-            if (String.IsNullOrWhiteSpace(this.Password) || !Regex.IsMatch(this.Password, "^[a-zA-Z0-9]+$"))
-            {
-                response.Add(ValidationResult.WRONG_PASSWORD);
-            }
             if (String.IsNullOrWhiteSpace(this.Address1))
             {
                 response.Add(ValidationResult.WRONG_ADRESS);

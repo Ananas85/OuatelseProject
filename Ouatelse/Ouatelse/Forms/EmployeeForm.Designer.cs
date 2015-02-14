@@ -67,8 +67,6 @@
             this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.Username = new System.Windows.Forms.TextBox();
-            this.passwordLabel = new System.Windows.Forms.Label();
-            this.Password = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tabs.SuspendLayout();
             this.CommentsTab.SuspendLayout();
@@ -160,7 +158,7 @@
             this.statsTab.Location = new System.Drawing.Point(4, 22);
             this.statsTab.Name = "statsTab";
             this.statsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.statsTab.Size = new System.Drawing.Size(505, 225);
+            this.statsTab.Size = new System.Drawing.Size(505, 198);
             this.statsTab.TabIndex = 0;
             this.statsTab.Text = "Statistiques";
             this.statsTab.UseVisualStyleBackColor = true;
@@ -441,23 +439,6 @@
             this.Username.Size = new System.Drawing.Size(171, 20);
             this.Username.TabIndex = 124;
             // 
-            // passwordLabel
-            // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(30, 122);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(83, 13);
-            this.passwordLabel.TabIndex = 127;
-            this.passwordLabel.Text = "Mot de passe: ";
-            // 
-            // Password
-            // 
-            this.Password.Location = new System.Drawing.Point(114, 119);
-            this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(171, 20);
-            this.Password.TabIndex = 126;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,8 +447,6 @@
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 609);
             this.ControlBox = false;
-            this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.Password);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.Username);
             this.Controls.Add(this.EmailOnUpdate);
@@ -557,7 +536,5 @@
         private System.Windows.Forms.CheckBox EmailOnUpdate;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.TextBox Username;
-        private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.TextBox Password;
     }
 }

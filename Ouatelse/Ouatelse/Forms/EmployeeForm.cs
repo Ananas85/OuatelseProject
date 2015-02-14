@@ -40,7 +40,6 @@ namespace Ouatelse.Forms
             b.Bind(this.FirstName, "Text", obj, "FirstName");
             b.Bind(this.LastName, "Text", obj, "LastName");
             b.Bind(this.Username, "Text", obj, "Username");
-            b.Bind(this.Password, "Text", obj, "Password");
             b.Bind(this.Address1, "Text", obj, "Address1");
             b.Bind(this.Address2, "Text", obj, "Address2");
             b.Bind(this.PhoneNumber, "Text", obj, "PhoneNumber");
@@ -86,9 +85,6 @@ namespace Ouatelse.Forms
                             break;
                         case Employee.ValidationResult.WRONG_USERNAME:
                             error += "Erreur dans la saisie de l'identifiant ( il doit être obligatoirement rempli et ne doit pas contenir de caractères spéciaux )" + Environment.NewLine;
-                            break;
-                        case Employee.ValidationResult.WRONG_PASSWORD:
-                            error += "Erreur dans la saisie du mot de passe ( il doit être obligatoirement rempli et ne doit pas contenir de caractères spéciaux )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_ADRESS:
                             error += "Erreur dans la saisie de l'adresse ( elle doit obligatoirement être rempli )" + Environment.NewLine;

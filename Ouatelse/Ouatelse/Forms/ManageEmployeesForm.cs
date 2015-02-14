@@ -82,10 +82,11 @@ namespace Ouatelse.Forms
                 return;
 
             Employee currentEmployee = ef.getEmployee();
+            currentEmployee.Password = Utils.generatePassword(5);
 
             // Génération du compte utilisateur
-            
-            EmployeeManager.Instance.Save(ef.getEmployee());     
+            Utils.Info(currentEmployee.Password);
+            EmployeeManager.Instance.Save(currentEmployee);     
             Reload(EmployeeManager.Instance.All());
             Utils.Info("Salarié enregistré avec succès.");
             // MailSender.Instance.newEmployee(ef.getEmployee());
