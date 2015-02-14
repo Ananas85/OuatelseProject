@@ -48,21 +48,14 @@ namespace Ouatelse
             }
         }
 
-        public static string RemoveDiacritics(string text)
+        public static String generatePassword(int length)
         {
-            var normalizedString = text.Normalize(NormalizationForm.FormD);
-            var stringBuilder = new StringBuilder();
-
-            foreach (var c in normalizedString)
-            {
-                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
-                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
-                {
-                    stringBuilder.Append(c);
-                }
-            }
-
-            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+            const String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder password = new StringBuilder();
+            Random generator = new Random();
+            while(0 < length--)
+                password.Append(alphabet[generator.Next(alphabet.Length)]);
+            return password.ToString();
         }
     }
 }
