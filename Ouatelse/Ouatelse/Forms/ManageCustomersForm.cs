@@ -19,7 +19,8 @@ namespace Ouatelse
     public partial class ManageCustomersForm : Form
     {
         Customer currentCustomer = null;
-
+        string lastColumnClicked = string.Empty;
+        string order = string.Empty;
         #region Constructeur de la classe
         /// <summary>
         /// Constructeur de la classe
@@ -40,15 +41,8 @@ namespace Ouatelse
         /// <param name="e"></param>
         public void Reload(object sender, EventArgs e)
         {
-            //Si la recherche n'a pas de contenu on met l'intégralité des clients
-            if (String.IsNullOrWhiteSpace(searchBox.Text))
-            {
-                Reload(CustomerManager.Instance.All());
-                return;
-            }
-            //Sinon la barre est rempli on recharge la listView selon le filtre
-            string Search = "WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';";
-            Reload(CustomerManager.Instance.Filter(Search));
+            //Si c'est vide ça recharge tous les clients
+            Reload(CustomerManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';"));
         }
         #endregion
 
@@ -112,19 +106,12 @@ namespace Ouatelse
             if (cs.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
 
-            currentCustomer = cs.getCustomer();
-            //Enregistrement dans la base de données
-            CustomerManager.Instance.Save(currentCustomer);
+            CustomerManager.Instance.Create(cs.getCustomer());
 
             //Rechargement du listView
             Reload(CustomerManager.Instance.All());
 
-            //Message d'information
-            Utils.Info("Client enregistré avec succès");
-
-            //Envoi du mail au nouveau client
-            if (currentCustomer.Email != null)
-                MailSender.Instance.newCustomer(currentCustomer);
+            
         }
         #endregion
 
@@ -187,19 +174,15 @@ namespace Ouatelse
         /// </summary>
         private void EditCustomer()
         {
-            CustomerForm cs = new CustomerForm(currentCustomer);
+            //Passage d'un objet par copie
+            CustomerForm cs = new CustomerForm((Customer)currentCustomer.Clone());
             if (cs.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
             if (currentCustomer != cs.getCustomer())
             {
-                currentCustomer = cs.getCustomer();
-                CustomerManager.Instance.Save(currentCustomer);
+                CustomerManager.Instance.Modify(cs.getCustomer());
                 Reload(CustomerManager.Instance.All());
-                Utils.Info("Client modifié avec succès");
-                if (currentCustomer.EmailOnUpdate)
-                {
-                    MailSender.Instance.modifyCustomer(currentCustomer);
-                }
+                currentCustomer = cs.getCustomer();
                 return;
             }
             Utils.Info("Aucune modification apporté au client");
@@ -226,6 +209,119 @@ namespace Ouatelse
                         MailSender.Instance.deleteCustomer(currentCustomer);
                         currentCustomer = null;
                     }
+            }
+        }
+        #endregion
+
+        #region Gestion des tris sur les colonnes
+        private void customerListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            switch (this.customerListView.Columns[e.Column].Name)
+            {
+                case "id":
+                    if ( this.lastColumnClicked == "id"){
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }   
+                    this.Reload(CustomerManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY id "+ this.order));
+                    this.lastColumnClicked = "id";
+                    break;
+                case "prenom":
+                    if (this.lastColumnClicked == "prenom")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }   
+                    this.Reload(CustomerManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY prenom "+ this.order));
+                    this.lastColumnClicked = "prenom";
+                    break;
+                case "nom":
+                    if (this.lastColumnClicked == "nom")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(CustomerManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY nom " + this.order));
+                    this.lastColumnClicked = "nom";
+                    break;
+                case "adresse":
+                    if (this.lastColumnClicked == "adresse")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }   
+                    this.Reload(CustomerManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY adresse1 " + this.order));
+                    this.lastColumnClicked = "adresse";
+                    break;
+                case "code_postal":
+                    if (this.lastColumnClicked == "code_postal")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }  
+                    this.Reload(CustomerManager.Instance.Filter("INNER JOIN villes ON clients.villes_id = villes.id WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY villes.code_postal " + this.order));
+                    this.lastColumnClicked = "code_postal";
+                    break;
+                case "villes_id":
+                    if (this.lastColumnClicked == "villes_id")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    } 
+                    this.Reload(CustomerManager.Instance.Filter("INNER JOIN villes ON clients.villes_id = villes.id WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY villes.libelle " + this.order));
+                    this.lastColumnClicked = "villes_id";
+                    break;
+                case "pays":
+                    if (this.lastColumnClicked == "pays_id")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(CustomerManager.Instance.Filter("INNER JOIN villes ON clients.villes_id = villes.id INNER JOIN pays ON villes.pays_id = pays.id WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY pays.libelle " + this.order));
+                    this.lastColumnClicked = "pays_id";
+                    break;
             }
         }
         #endregion

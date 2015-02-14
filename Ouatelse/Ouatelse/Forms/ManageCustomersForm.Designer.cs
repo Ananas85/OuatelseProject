@@ -32,13 +32,20 @@
             this.customerLabel = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.customerListView = new System.Windows.Forms.ListView();
-            this.Référence = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.id.Name = "id";
             this.Prénom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Prénom.Name = "prenom";
             this.Nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nom.Name = "nom";
             this.Adresse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Adresse.Name = "adresse";
             this.CodePostal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CodePostal.Name = "code_postal";
             this.Ville = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Ville.Name = "villes_id";
             this.Pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Pays.Name = "pays";
             this.deletecustomer = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.nouveau = new System.Windows.Forms.Button();
@@ -86,7 +93,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.customerListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Référence,
+            this.id,
             this.Prénom,
             this.Nom,
             this.Adresse,
@@ -101,13 +108,14 @@
             this.customerListView.TabIndex = 8;
             this.customerListView.UseCompatibleStateImageBehavior = false;
             this.customerListView.View = System.Windows.Forms.View.Details;
+            this.customerListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.customerListView_ColumnClick);
             this.customerListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.customerListView_MouseClick);
             this.customerListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.customerListView_MouseDoubleClick);
             // 
-            // Référence
+            // id
             // 
-            this.Référence.Text = "Référence";
-            this.Référence.Width = 74;
+            this.id.Text = "Référence";
+            this.id.Width = 74;
             // 
             // Prénom
             // 
@@ -248,7 +256,7 @@
         private System.Windows.Forms.Label customerLabel;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ListView customerListView;
-        private System.Windows.Forms.ColumnHeader Référence;
+        private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader Nom;
         private System.Windows.Forms.ColumnHeader Adresse;
         private System.Windows.Forms.ColumnHeader Ville;

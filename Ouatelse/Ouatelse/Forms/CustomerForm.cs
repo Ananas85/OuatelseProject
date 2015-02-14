@@ -79,11 +79,6 @@ namespace Ouatelse.Forms
         #endregion
 
         #region Gestion de la validation du formulaire
-        /// <summary>
-        /// Gestion de la validation du formulaire
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void validateButton_Click_1(object sender, EventArgs e)
         {
             //On hydrate notre binding
@@ -145,7 +140,7 @@ namespace Ouatelse.Forms
 
         #region Chargement des villes dans la combobox
         /// <summary>
-        /// Chargmeent des villes dans la comboBox
+        /// Chargement des villes dans la comboBox
         /// </summary>
         /// <param name="cities"></param>
         private void loadCities(City[] cities)

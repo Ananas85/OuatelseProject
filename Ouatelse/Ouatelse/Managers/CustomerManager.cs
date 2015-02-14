@@ -24,9 +24,38 @@ namespace Ouatelse.Managers
             }
         }
 
+        #region Constructeur de la classe
         public CustomerManager()
         {
             this.tableName = "clients";
         }
+        #endregion
+
+        #region Permet de créer un nouveau Client
+        public void Create(Customer cust)
+        {
+            //Enregistrement dans la base de données
+            CustomerManager.Instance.Save(cust);
+
+            //Message d'information
+            Utils.Info("Client enregistré avec succès");
+
+            //Envoi du mail au nouveau client
+            if (!String.IsNullOrWhiteSpace(cust.Email))
+                MailSender.Instance.newCustomer(cust);
+        }
+        #endregion
+
+        #region Permet de modifier un client
+        public void Modify(Customer cust)
+        {
+            CustomerManager.Instance.Save(cust);
+            Utils.Info("Client modifié avec succès");
+            if (cust.EmailOnUpdate)
+            {
+                MailSender.Instance.modifyCustomer(cust);
+            }
+        }
+        #endregion
     }
 }
