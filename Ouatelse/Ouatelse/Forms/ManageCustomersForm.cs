@@ -206,7 +206,8 @@ namespace Ouatelse
                     {
                         Reload(CustomerManager.Instance.All());
                         Utils.Info("Client supprimé avec succès");
-                        MailSender.Instance.deleteCustomer(currentCustomer);
+                        if (!String.IsNullOrWhiteSpace(currentCustomer.Email))
+                            MailSender.Instance.deleteCustomer(currentCustomer);
                         currentCustomer = null;
                     }
             }
