@@ -65,6 +65,10 @@ namespace Ouatelse
             else
                 this.CustomersNumber.Text += " client";
 
+            //Recherche du nombre total de client
+            //this.CustomersNumber.Text += " " + CustomerManager.Instance.Count().ToString();
+
+
             //Gestion de la couleur alternée entre les lignes
             bool alternativeColor = false;
 
@@ -326,5 +330,37 @@ namespace Ouatelse
             }
         }
         #endregion
+
+        private void modifierCeClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditCustomer();
+        }
+
+        private void supprimerCeClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentCustomer != null)
+            {
+                if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentCustomer.LastName + " " + currentCustomer.FirstName + " ? "))
+                    if (CustomerManager.Instance.Delete(currentCustomer))
+                    {
+                        Reload(CustomerManager.Instance.All());
+                        Utils.Info("Client supprimé avec succès");
+                        if (!String.IsNullOrWhiteSpace(currentCustomer.Email))
+                            MailSender.Instance.deleteCustomer(currentCustomer);
+                        currentCustomer = null;
+                    }
+            }
+        }
+
+        private void customerListView_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem item = ((ListView)sender).SelectedItems[0];
+            if (item == null)
+            {
+                currentCustomer = null;
+                return;
+            }
+            currentCustomer = (Customer)item.Tag;
+        }
     }
 }

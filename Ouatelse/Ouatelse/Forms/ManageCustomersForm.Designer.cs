@@ -28,32 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.customerLabel = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.customerListView = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.id.Name = "id";
-            this.Prénom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Prénom.Name = "prenom";
-            this.Nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Nom.Name = "nom";
-            this.Adresse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Adresse.Name = "adresse";
-            this.CodePostal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CodePostal.Name = "code_postal";
-            this.Ville = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Ville.Name = "villes_id";
-            this.Pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Pays.Name = "pays";
+            this.prenom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.adresse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.code_postal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.villes_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.deletecustomer = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.nouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CustomersNumber = new System.Windows.Forms.Label();
+            this.rightClickCustomer = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.rightClickCustomer.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -94,12 +92,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.customerListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.id,
-            this.Prénom,
-            this.Nom,
-            this.Adresse,
-            this.CodePostal,
-            this.Ville,
-            this.Pays});
+            this.prenom,
+            this.nom,
+            this.adresse,
+            this.code_postal,
+            this.villes_id,
+            this.pays});
+            this.customerListView.ContextMenuStrip = this.rightClickCustomer;
             this.customerListView.FullRowSelect = true;
             this.customerListView.GridLines = true;
             this.customerListView.Location = new System.Drawing.Point(12, 201);
@@ -109,43 +108,51 @@
             this.customerListView.UseCompatibleStateImageBehavior = false;
             this.customerListView.View = System.Windows.Forms.View.Details;
             this.customerListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.customerListView_ColumnClick);
+            this.customerListView.ItemActivate += new System.EventHandler(this.customerListView_ItemActivate);
             this.customerListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.customerListView_MouseClick);
             this.customerListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.customerListView_MouseDoubleClick);
             // 
             // id
             // 
+            this.id.Name = "id";
             this.id.Text = "Référence";
             this.id.Width = 74;
             // 
-            // Prénom
+            // prenom
             // 
-            this.Prénom.Text = "Prénom";
-            this.Prénom.Width = 108;
+            this.prenom.Name = "prenom";
+            this.prenom.Text = "Prénom";
+            this.prenom.Width = 108;
             // 
-            // Nom
+            // nom
             // 
-            this.Nom.Text = "Nom";
-            this.Nom.Width = 133;
+            this.nom.Name = "nom";
+            this.nom.Text = "Nom";
+            this.nom.Width = 133;
             // 
-            // Adresse
+            // adresse
             // 
-            this.Adresse.Text = "Adresse";
-            this.Adresse.Width = 190;
+            this.adresse.Name = "adresse";
+            this.adresse.Text = "Adresse";
+            this.adresse.Width = 190;
             // 
-            // CodePostal
+            // code_postal
             // 
-            this.CodePostal.Text = "Code Postal";
-            this.CodePostal.Width = 113;
+            this.code_postal.Name = "code_postal";
+            this.code_postal.Text = "Code Postal";
+            this.code_postal.Width = 113;
             // 
-            // Ville
+            // villes_id
             // 
-            this.Ville.Text = "Ville";
-            this.Ville.Width = 150;
+            this.villes_id.Name = "villes_id";
+            this.villes_id.Text = "Ville";
+            this.villes_id.Width = 150;
             // 
-            // Pays
+            // pays
             // 
-            this.Pays.Text = "Pays";
-            this.Pays.Width = 89;
+            this.pays.Name = "pays";
+            this.pays.Text = "Pays";
+            this.pays.Width = 89;
             // 
             // deletecustomer
             // 
@@ -223,6 +230,28 @@
             this.CustomersNumber.Text = "--";
             this.CustomersNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // rightClickCustomer
+            // 
+            this.rightClickCustomer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierCeClientToolStripMenuItem,
+            this.supprimerCeClientToolStripMenuItem});
+            this.rightClickCustomer.Name = "rightClickCustomer";
+            this.rightClickCustomer.Size = new System.Drawing.Size(177, 48);
+            // 
+            // modifierCeClientToolStripMenuItem
+            // 
+            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
+            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
+            this.modifierCeClientToolStripMenuItem.Click += new System.EventHandler(this.modifierCeClientToolStripMenuItem_Click);
+            // 
+            // supprimerCeClientToolStripMenuItem
+            // 
+            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
+            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
+            this.supprimerCeClientToolStripMenuItem.Click += new System.EventHandler(this.supprimerCeClientToolStripMenuItem_Click);
+            // 
             // ManageCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +273,7 @@
             this.Text = "Ouatelse : Gestion des clients";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.rightClickCustomer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +298,15 @@
         private System.Windows.Forms.ColumnHeader CodePostal;
         private System.Windows.Forms.ColumnHeader Pays;
         private System.Windows.Forms.Label CustomersNumber;
+        private System.Windows.Forms.ColumnHeader prenom;
+        private System.Windows.Forms.ColumnHeader nom;
+        private System.Windows.Forms.ColumnHeader adresse;
+        private System.Windows.Forms.ColumnHeader code_postal;
+        private System.Windows.Forms.ColumnHeader villes_id;
+        private System.Windows.Forms.ColumnHeader pays;
+        private System.Windows.Forms.ContextMenuStrip rightClickCustomer;
+        private System.Windows.Forms.ToolStripMenuItem modifierCeClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerCeClientToolStripMenuItem;
 
 
     }

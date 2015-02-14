@@ -83,7 +83,7 @@ namespace Ouatelse
             }
             catch (Exception ex)
             {
-                Utils.Error("Mail non envoyé" + ex.Message);
+                Utils.Error("Mail non envoyé ");
             }
         }
         #endregion

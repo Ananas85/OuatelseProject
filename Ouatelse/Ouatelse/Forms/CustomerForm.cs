@@ -145,6 +145,11 @@ namespace Ouatelse.Forms
         /// <param name="cities"></param>
         private void loadCities(City[] cities)
         {
+            if (cities == null)
+            {
+                this.citiesList.Clear();
+                return;
+            }
             this.citiesList = new List<City>(cities);
             this.CityName.DataSource = citiesList;
             this.CityName.ValueMember = "Id";
@@ -166,10 +171,12 @@ namespace Ouatelse.Forms
         #region Contrôle de l'affichage des villes selon le code postal
         private void CityPostalCode_TextChanged(object sender, EventArgs e)
         {
-            if (this.CityPostalCode.TextLength == 5)
+            if (this.CityPostalCode.TextLength < 5)
             {
-                loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
+                loadCities(null);
+                return;
             }
+            loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
         }
         #endregion
 
