@@ -36,12 +36,7 @@ namespace Ouatelse
         /// </summary>
         public static Database Instance
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = new Database();
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new Database()); }
         }
 
         /// <summary>
@@ -49,12 +44,9 @@ namespace Ouatelse
         /// </summary>
         private Database()
         {
-            if (Utils.CheckServer())
-            {
-                this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
-                this.connection.Open();
-                return;
-            }
+            if (!Utils.CheckServer()) return;
+            this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
+            this.connection.Open();
         }
 
         public bool Execute(string query, Dictionary<string, object> parameters = null)
@@ -129,6 +121,11 @@ namespace Ouatelse
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }
+        }
+
+        public int LastInsertId
+        {
+            get { return (int)ExecuteScalar("SELECT LAST_INSERT_ID();"); }
         }
 
         /// <summary>

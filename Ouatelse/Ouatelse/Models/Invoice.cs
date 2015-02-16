@@ -17,6 +17,13 @@ namespace Ouatelse.Models
 
         public ManyCollection<InvoiceProduct> Products = new ManyCollection<InvoiceProduct>(InvoiceProductManager.Instance, "factures_id", "Facture", 1);
 
+        public Invoice()
+        {
+            Date = DateTime.Now;
+            DiscountPercent = 0;
+            
+        }
+
         public void Hydrate(object[] data)
         {
             ArrayCursor<object> cursor = new ArrayCursor<object>(data);

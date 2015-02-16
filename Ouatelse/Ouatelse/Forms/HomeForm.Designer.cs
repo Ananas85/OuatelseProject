@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.connexionText = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.Label();
             this.factureBtn = new System.Windows.Forms.Button();
@@ -110,23 +111,24 @@
             // 
             // date
             // 
-            this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(108, 9);
+            this.date.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(108, 16);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(432, 33);
+            this.date.Size = new System.Drawing.Size(226, 56);
             this.date.TabIndex = 7;
             this.date.Text = "DATE";
-            this.date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.date.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // hour
             // 
-            this.hour.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hour.Location = new System.Drawing.Point(108, 42);
+            this.hour.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hour.ForeColor = System.Drawing.Color.LightGray;
+            this.hour.Location = new System.Drawing.Point(340, 16);
             this.hour.Name = "hour";
-            this.hour.Size = new System.Drawing.Size(432, 26);
+            this.hour.Size = new System.Drawing.Size(187, 56);
             this.hour.TabIndex = 8;
             this.hour.Text = "HEURE";
-            this.hour.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.hour.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // timer1
             // 
@@ -248,11 +250,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 65);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 

@@ -60,7 +60,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.date.Text = DateTime.Now.ToShortDateString();
+            this.date.Text = DateTime.Now.ToLongDateString();
             this.hour.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
@@ -119,8 +119,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void factureBtn_Click(object sender, EventArgs e)
         {
-            InvoiceForm invoiceForm = new InvoiceForm();
-            invoiceForm.ShowDialog();
+            new InvoiceForm().ShowDialog();
         }
 
         /// <summary>

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ouatelse.Managers;
+using Ouatelse.Models;
 
 namespace Ouatelse.Forms
 {
@@ -15,6 +10,19 @@ namespace Ouatelse.Forms
         public InvoiceForm()
         {
             InitializeComponent();
+        }
+
+        private void InvoiceForm_Load(object sender, EventArgs e)
+        {
+            Invoice invoice = new Invoice()
+            {
+                Employee = EmployeeManager.Instance.First(""),
+                Payment = PaymentManager.Instance.First(""),
+                Customer = CustomerManager.Instance.First("")
+            };
+            InvoiceManager.Instance.Save(invoice);
+
+            Utils.Info(Database.Instance.LastInsertId.ToString());
         }
     }
 }
