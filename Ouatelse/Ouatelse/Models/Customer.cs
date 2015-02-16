@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ouatelse.Models
 {
-    public class Customer : BaseModel, IModel
+    public class Customer : BaseModel, IModel, ICloneable
     {
         #region Les attributs de la classe
         /// <summary>
@@ -201,8 +201,6 @@ namespace Ouatelse.Models
         {
             if ((Object)y != null)
             {
-                if (x.Email != null && y.Email != null)
-                    return x.Email == y.Email;
                 return x.LastName == y.LastName && x.FirstName == y.LastName && x.Address1 == y.Address1 && x.City == y.City;
             }
             return false;
@@ -213,6 +211,13 @@ namespace Ouatelse.Models
         public static bool operator !=(Customer x, Customer y)
         {
             return !(x == y);
+        }
+        #endregion
+
+        #region Utilisation de Clone pour passer un objet par copie
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
         #endregion
     }

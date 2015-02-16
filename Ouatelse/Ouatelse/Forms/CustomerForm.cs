@@ -79,11 +79,6 @@ namespace Ouatelse.Forms
         #endregion
 
         #region Gestion de la validation du formulaire
-        /// <summary>
-        /// Gestion de la validation du formulaire
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void validateButton_Click_1(object sender, EventArgs e)
         {
             //On hydrate notre binding
@@ -145,11 +140,16 @@ namespace Ouatelse.Forms
 
         #region Chargement des villes dans la combobox
         /// <summary>
-        /// Chargmeent des villes dans la comboBox
+        /// Chargement des villes dans la comboBox
         /// </summary>
         /// <param name="cities"></param>
         private void loadCities(City[] cities)
         {
+            if (cities == null)
+            {
+                this.citiesList.Clear();
+                return;
+            }
             this.citiesList = new List<City>(cities);
             this.CityName.DataSource = citiesList;
             this.CityName.ValueMember = "Id";
@@ -171,10 +171,12 @@ namespace Ouatelse.Forms
         #region Contrôle de l'affichage des villes selon le code postal
         private void CityPostalCode_TextChanged(object sender, EventArgs e)
         {
-            if (this.CityPostalCode.TextLength == 5)
+            if (this.CityPostalCode.TextLength < 5)
             {
-                loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
+                loadCities(null);
+                return;
             }
+            loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
         }
         #endregion
 

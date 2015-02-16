@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listView_employees = new System.Windows.Forms.ListView();
             this.reference_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lastname_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,8 +45,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.employeesNumber = new System.Windows.Forms.Label();
+            this.rightClickListView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.rightClickListView.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView_employees
@@ -60,6 +65,7 @@
             this.mail_column,
             this.role_column,
             this.store_column});
+            this.listView_employees.ContextMenuStrip = this.rightClickListView;
             this.listView_employees.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView_employees.FullRowSelect = true;
             this.listView_employees.GridLines = true;
@@ -71,7 +77,6 @@
             this.listView_employees.TabIndex = 23;
             this.listView_employees.UseCompatibleStateImageBehavior = false;
             this.listView_employees.View = System.Windows.Forms.View.Details;
-            this.listView_employees.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseClick);
             this.listView_employees.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseDoubleClick);
             // 
             // reference_column
@@ -210,6 +215,26 @@
             this.employeesNumber.Text = "--";
             this.employeesNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // rightClickListView
+            // 
+            this.rightClickListView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierCeClientToolStripMenuItem,
+            this.supprimerCeClientToolStripMenuItem});
+            this.rightClickListView.Name = "rightClickListView";
+            this.rightClickListView.Size = new System.Drawing.Size(177, 48);
+            // 
+            // modifierCeClientToolStripMenuItem
+            // 
+            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
+            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
+            // 
+            // supprimerCeClientToolStripMenuItem
+            // 
+            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
+            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
+            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,6 +256,7 @@
             this.Text = "Ouatelse - Gestion des salariés";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.rightClickListView.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +280,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label employeesNumber;
+        private System.Windows.Forms.ContextMenuStrip rightClickListView;
+        private System.Windows.Forms.ToolStripMenuItem modifierCeClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerCeClientToolStripMenuItem;
     }
 }

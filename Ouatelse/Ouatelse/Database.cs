@@ -49,16 +49,18 @@ namespace Ouatelse
         /// </summary>
         private Database()
         {
-            this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
-
-            this.connection.Open();
+            if (Utils.CheckServer())
+            {
+                this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
+                this.connection.Open();
+                return;
+            }
         }
 
         public bool Execute(string query, Dictionary<string, object> parameters = null)
         {
             if (!Utils.CheckServer())
             {
-                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet ou serveur hors service");
                 return false;
             }
             if (parameters == null)
@@ -75,9 +77,7 @@ namespace Ouatelse
             }
             catch
             {
-                if (!Utils.CheckServer())
-                    Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
-                else
+                if (Utils.CheckServer())
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
@@ -87,7 +87,6 @@ namespace Ouatelse
         {
             if (!Utils.CheckServer())
             {
-                Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
                 return false;
             }
 
@@ -102,9 +101,7 @@ namespace Ouatelse
             }
             catch
             {
-                if (!Utils.CheckServer())
-                    Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
-                else
+                if (Utils.CheckServer())
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
@@ -128,9 +125,7 @@ namespace Ouatelse
             }
             catch
             {
-                if (!Utils.CheckServer())
-                    Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
-                else
+                if (Utils.CheckServer())
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }

@@ -34,7 +34,6 @@ namespace Ouatelse
             }
             Utils.Warning("Ce compte n'existe pas ou identifiants invalides.");
             this.DialogResult = System.Windows.Forms.DialogResult.None;
-
         }
 
         private void quitBtn_Click(object sender, EventArgs e)
