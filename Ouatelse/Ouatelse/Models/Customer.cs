@@ -22,6 +22,8 @@ namespace Ouatelse.Models
         /// </summary>
         public string FirstName { get; set; }
 
+        public virtual string FullName { get { return string.Format("{0} {1}", LastName, FirstName); } }
+
         /// <summary>
         /// Obligatoire : L'adresse n°1 du client
         /// </summary>
@@ -199,6 +201,8 @@ namespace Ouatelse.Models
         #region sucharge de l'opérateur ==
         public static bool operator ==(Customer x, Customer y)
         {
+            if ((Object) x == null && (Object) y == null)
+                return true;
             if ((Object)y != null)
             {
                 return x.LastName == y.LastName && x.FirstName == y.LastName && x.Address1 == y.Address1 && x.City == y.City;

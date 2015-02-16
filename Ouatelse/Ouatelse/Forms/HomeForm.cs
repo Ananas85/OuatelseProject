@@ -119,7 +119,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void factureBtn_Click(object sender, EventArgs e)
         {
-            new InvoiceForm().ShowDialog();
+            new InvoiceForm(new Invoice()).ShowDialog();
         }
 
         /// <summary>

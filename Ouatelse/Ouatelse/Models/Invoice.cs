@@ -41,7 +41,7 @@ namespace Ouatelse.Models
             res.Add("date", Date.ToString("yyyy-MM-dd"));
             res.Add("pourcentage_remise", DiscountPercent.ToString());
             res.Add("salaries_id", Employee.Id.ToString());
-            res.Add("clients_id", Customer.Id.ToString());
+            res.Add("clients_id", Customer == null ? "0" : Customer.Id.ToString());
             res.Add("moyen_de_paiements_id", Payment.Id.ToString());
             return res;
         }
