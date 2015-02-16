@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Remoting;
 
 
 namespace Ouatelse.Models
@@ -199,12 +200,11 @@ namespace Ouatelse.Models
         #region sucharge de l'opérateur ==
         public static bool operator ==(Customer x, Customer y)
         {
-            if ((Object)y != null)
-            {
-                return x.LastName == y.LastName && x.FirstName == y.LastName && x.Address1 == y.Address1 && x.City == y.City;
-            }
-            return false;
+            return (Object) x == null && (Object) y == null || (Object) y != null &&
+                   (x.LastName == y.LastName && x.FirstName == y.LastName && x.Address1 == y.Address1 &&
+                    x.City == y.City);
         }
+
         #endregion
 
         #region surcharge de l'opérateur !=
@@ -218,6 +218,17 @@ namespace Ouatelse.Models
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+        #endregion
+
+        #region Surcharge de to String 
+        public override string ToString()
+        {
+            return "ID : " + this.Id.ToString() + Environment.NewLine +
+                   "Nom : " + this.LastName + Environment.NewLine +
+                   "Prénom :" + this.FirstName + Environment.NewLine +
+                   "Address1 : " + this.Address1 + Environment.NewLine +
+                   " Gender : " + this.Gender.Name + Environment.NewLine;
         }
         #endregion
     }
