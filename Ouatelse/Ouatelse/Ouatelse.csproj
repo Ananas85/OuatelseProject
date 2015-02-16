@@ -40,6 +40,7 @@
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.5\Assemblies\v4.5\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,19 +54,38 @@
   <ItemGroup>
     <Compile Include="ArrayCursor.cs" />
     <Compile Include="Bind.cs" />
-    <Compile Include="Forms\CustomersForm.cs">
+    <Compile Include="Binding.cs" />
+    <Compile Include="Forms\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomersForm.Designer.cs">
-      <DependentUpon>CustomersForm.cs</DependentUpon>
+    <Compile Include="Forms\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LockForm.Designer.cs">
+      <DependentUpon>LockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManageCustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageCustomersForm.Designer.cs">
+      <DependentUpon>ManageCustomersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseCredentials.cs" />
-    <Compile Include="Forms\EmployeesForm.cs">
+    <Compile Include="Forms\EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EmployeesForm.Designer.cs">
-      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    <Compile Include="Forms\EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManageEmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageEmployeesForm.Designer.cs">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
@@ -91,11 +111,11 @@
     <Compile Include="Forms\LostPasswordForm.Designer.cs">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManyCollection.cs" />
-    <Compile Include="Models\ProductsForm.cs">
+    <Compile Include="MailSender.cs" />
+    <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Models\ProductsForm.Designer.cs">
+    <Compile Include="Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SalesForm.cs">
@@ -136,6 +156,7 @@
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceProduct.cs" />
+    <Compile Include="Models\ManyCollection.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
@@ -144,8 +165,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
-    <EmbeddedResource Include="Forms\CustomersForm.resx">
-      <DependentUpon>CustomersForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LockForm.resx">
+      <DependentUpon>LockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManageCustomersForm.resx">
+      <DependentUpon>ManageCustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManageEmployeesForm.resx">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
@@ -184,6 +217,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newCustomer.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forgottenPassword.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newEmployee.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deleteCustomer.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deleteEmployee.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modifiedCustomer.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modifiedEmployee.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-petit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBack-04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-04.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

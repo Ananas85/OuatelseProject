@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 namespace Ouatelse
 {
@@ -47,13 +49,20 @@ namespace Ouatelse
         /// </summary>
         private Database()
         {
-            this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
-
-            this.connection.Open();
+            if (Utils.CheckServer())
+            {
+                this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
+                this.connection.Open();
+                return;
+            }
         }
 
-        public void Execute(string query, Dictionary<string, object> parameters = null)
+        public bool Execute(string query, Dictionary<string, object> parameters = null)
         {
+            if (!Utils.CheckServer())
+            {
+                return false;
+            }
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
             try
@@ -64,17 +73,23 @@ namespace Ouatelse
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
                 cmd.ExecuteNonQuery();
+                return true;
             }
             catch
             {
-                Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                if (Utils.CheckServer())
+                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                return false;
             }
         }
 
         public object ExecuteScalar(string query, Dictionary<string, object> parameters = null)
         {
-            if (parameters == null)
-                parameters = new Dictionary<string, object>();
+            if (!Utils.CheckServer())
+            {
+                return false;
+            }
+
             try
             {
                 MySqlCommand cmd = this.connection.CreateCommand();
@@ -86,9 +101,10 @@ namespace Ouatelse
             }
             catch
             {
-                Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                if (Utils.CheckServer())
+                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                return false;
             }
-            return null;
         }
 
         public DataSet GetDataSet(string query, Dictionary<string, object> parameters = null)
@@ -109,9 +125,10 @@ namespace Ouatelse
             }
             catch
             {
-                Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                if (Utils.CheckServer())
+                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                return null;
             }
-            return null;
         }
 
         /// <summary>

@@ -13,6 +13,10 @@ namespace Ouatelse.Models
         /// </summary>
         /// <param name="data">Tableau d'objets représentant les champs de l'entité</param>
         void Hydrate(object[] data);
+
+        /// <summary>
+        /// Permet de dire que l'entité est présente en base
+        /// </summary>
         void MakeExistant();
 
         /// <summary>

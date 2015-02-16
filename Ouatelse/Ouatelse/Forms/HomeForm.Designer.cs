@@ -265,6 +265,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(782, 121);
             this.label1.TabIndex = 24;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // HomeForm
             // 
@@ -294,6 +295,7 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ouatelse - Accueil";
+            this.Load += new System.EventHandler(this.HomeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

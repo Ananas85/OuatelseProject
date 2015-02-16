@@ -1,8 +1,10 @@
 ﻿using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Ouatelse.Models
@@ -21,14 +23,16 @@ namespace Ouatelse.Models
         public DateTime DateOfBirth { get; set; }
         public string Comments { get; set; }
         public City City { get; set; }
-        public Country Nationality { get; set; }
         public Role Role { get; set; }
         public Store Store { get; set; }
         public Gender Gender { get; set; }
+        public bool EmailOnUpdate { get; set; }
+        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_USERNAME, WRONG_PASSWORD, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL,WRONG_PHONENUMBER, WRONG_MOBILEPHONENUMBER }
 
         public Employee()
         {
-
+            DateOfBirth = DateTime.Now;
+            this.EmailOnUpdate = false;
         }
 
         /// <summary>
@@ -51,10 +55,11 @@ namespace Ouatelse.Models
             this.DateOfBirth = DateTime.Parse(cursor.Read().ToString());
             this.Comments = cursor.Read().ToString();
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
-            this.Nationality = CountryManager.Instance.Find(cursor.Read().ToString());
             this.Role = RoleManager.Instance.Find(cursor.Read().ToString());
             this.Store = StoreManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
+            this.EmailOnUpdate = bool.Parse(cursor.Read().ToString());
+
         }
 
         public Dictionary<string, string> Fetch()
@@ -72,11 +77,59 @@ namespace Ouatelse.Models
             res.Add("naissance", DateOfBirth.ToString("yyyy-MM-dd"));
             res.Add("notes", Comments);
             res.Add("villes_id", City.Id.ToString());
-            res.Add("pays_id", Nationality.Id.ToString());
             res.Add("roles_id", Role.Id.ToString());
             res.Add("magasin_id", Store.Id.ToString());
             res.Add("civilite_id", Gender.Id.ToString());
+            res.Add("email_modification", Convert.ToInt16(EmailOnUpdate).ToString());
             return res;
+        }
+        public List<ValidationResult> validate()
+        {
+            List<ValidationResult> response = new List<ValidationResult>();
+            if (this.City == null)
+            {
+                response.Add(ValidationResult.WRONG_CITY);
+            }
+            if (String.IsNullOrWhiteSpace(this.FirstName))
+            {
+                response.Add(ValidationResult.WRONG_FIRSTNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.LastName))
+            {
+                response.Add(ValidationResult.WRONG_LASTNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.Username))
+            {
+                response.Add(ValidationResult.WRONG_USERNAME);
+            }
+            if (String.IsNullOrWhiteSpace(this.Address1))
+            {
+                response.Add(ValidationResult.WRONG_ADRESS);
+            }
+            if (String.IsNullOrWhiteSpace(this.Role.Name))
+            {
+                response.Add(ValidationResult.WRONG_ROLE);
+            }
+            if (String.IsNullOrWhiteSpace(this.Store.Name))
+            {
+                response.Add(ValidationResult.WRONG_STORE);
+            }
+            if (!String.IsNullOrWhiteSpace(this.Email))
+            {
+                if (!new EmailAddressAttribute().IsValid(this.Email))
+                    response.Add(ValidationResult.WRONG_EMAIL);
+            }
+            if (!String.IsNullOrWhiteSpace(this.PhoneNumber))
+            {
+                if(this.PhoneNumber.Length != 10)
+                    response.Add(ValidationResult.WRONG_PHONENUMBER);
+            }
+            if (!String.IsNullOrWhiteSpace(this.MobilePhoneNumber))
+            {
+                if (this.MobilePhoneNumber.Length != 10)
+                    response.Add(ValidationResult.WRONG_MOBILEPHONENUMBER);
+            }
+            return response;
         }
     }
 }

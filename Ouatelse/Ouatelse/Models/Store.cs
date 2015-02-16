@@ -12,6 +12,14 @@ namespace Ouatelse.Models
         public string Address { get; set; }
         public City City { get; set; }
 
+        public string Name
+        {
+            get
+            {
+                return String.Format("{0} - {1}", Address, City.Name);
+            }
+        }
+
         /// <summary>
         /// Permet d'hydrater l'objet
         /// </summary>
