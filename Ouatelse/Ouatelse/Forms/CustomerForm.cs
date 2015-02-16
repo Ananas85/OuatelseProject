@@ -145,11 +145,6 @@ namespace Ouatelse.Forms
         /// <param name="cities"></param>
         private void loadCities(City[] cities)
         {
-            if (cities == null)
-            {
-                this.citiesList.Clear();
-                return;
-            }
             this.citiesList = new List<City>(cities);
             this.CityName.DataSource = citiesList;
             this.CityName.ValueMember = "Id";
@@ -171,12 +166,10 @@ namespace Ouatelse.Forms
         #region Contrôle de l'affichage des villes selon le code postal
         private void CityPostalCode_TextChanged(object sender, EventArgs e)
         {
-            if (this.CityPostalCode.TextLength < 5)
+            if (CityPostalCode.TextLength == 5)
             {
-                loadCities(null);
-                return;
+                loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
             }
-            loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
         }
         #endregion
 
@@ -212,23 +205,18 @@ namespace Ouatelse.Forms
         #region Autorisation uniqument de l'entrée de chiffre pour le code postal
         private void CityPostalCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)) return;
+            Utils.Info("Uniquement les chiffres sont autorisés");
+            e.Handled = true;
         }
         #endregion
 
         #region Autorisation uniquement de l'entrée de lettre ou - pour le prénom
         private void FirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar !='-')
-            {
-
-                Utils.Info("Uniquement les lettres ou - sont autorisés");
-                e.Handled = true;
-            }
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || e.KeyChar == '-') return;
+            Utils.Info("Uniquement les lettres ou - sont autorisés");
+            e.Handled = true;
         }
         #endregion
 
