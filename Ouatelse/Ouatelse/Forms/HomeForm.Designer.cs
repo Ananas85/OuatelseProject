@@ -181,7 +181,6 @@
             // holliday
             // 
             this.holliday.BackColor = System.Drawing.Color.DodgerBlue;
-            this.holliday.Enabled = false;
             this.holliday.FlatAppearance.BorderSize = 0;
             this.holliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.holliday.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,6 +191,7 @@
             this.holliday.TabIndex = 19;
             this.holliday.Text = "Congés";
             this.holliday.UseVisualStyleBackColor = false;
+            this.holliday.Click += new System.EventHandler(this.holliday_Click);
             // 
             // assistanceBtn
             // 
