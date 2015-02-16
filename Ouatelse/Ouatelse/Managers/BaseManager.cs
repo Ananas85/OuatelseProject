@@ -194,7 +194,13 @@ namespace Ouatelse.Managers
 
                 query.AppendFormat(" WHERE id={0}", model.Id);
             }
-            return Database.Instance.Execute(query.ToString());
+            bool res = Database.Instance.Execute(query.ToString());
+            if (!model.Exists && res)
+            {
+                model.MakeExistant();
+                model.Id = Int32.Parse(Database.Instance.LastInsertId.ToString());
+            }
+            return res;
 
         }
         #endregion

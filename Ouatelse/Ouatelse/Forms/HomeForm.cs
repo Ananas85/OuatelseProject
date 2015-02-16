@@ -173,7 +173,7 @@ namespace Ouatelse
 
         private void HomeForm_Load(object sender, EventArgs e)
         {
-            Utils.Info(CustomerManager.Instance.Count().ToString());
+            
         }
     }
 }

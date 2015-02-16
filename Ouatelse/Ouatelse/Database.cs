@@ -31,6 +31,8 @@ namespace Ouatelse
         /// </summary>
         private MySqlConnection connection = null;
 
+        private long? _lastInsertId = null;
+
         /// <summary>
         /// Methode indispensable pour le pattern singleton Database.Instance.function
         /// </summary>
@@ -65,6 +67,7 @@ namespace Ouatelse
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
                 cmd.ExecuteNonQuery();
+                _lastInsertId = cmd.LastInsertedId;
                 return true;
             }
             catch
@@ -121,11 +124,12 @@ namespace Ouatelse
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }
+            
         }
 
-        public int LastInsertId
+        public long? LastInsertId
         {
-            get { return (int)ExecuteScalar("SELECT LAST_INSERT_ID();"); }
+            get { return _lastInsertId; }
         }
 
         /// <summary>
