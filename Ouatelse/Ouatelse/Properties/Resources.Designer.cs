@@ -132,10 +132,10 @@ namespace Ouatelse.Properties {
         ///&lt;head&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
-        ///&lt;title&gt;Modification d&apos;un salarié&lt;/title&gt;
+        ///&lt;title&gt;Modification d&apos;un client&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE= [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string modifiedCustomer {
             get {
@@ -196,6 +196,16 @@ namespace Ouatelse.Properties {
         internal static string newEmployee {
             get {
                 return ResourceManager.GetString("newEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ouatelse_04 {
+            get {
+                object obj = ResourceManager.GetObject("Ouatelse-04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

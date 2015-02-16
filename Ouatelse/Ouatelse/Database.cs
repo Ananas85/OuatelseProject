@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Diagnostics;
 using System.Net.NetworkInformation;
 
 namespace Ouatelse
@@ -89,8 +90,7 @@ namespace Ouatelse
                 Utils.Error("Impossible d'effectuer l'opération demandée. Aucune connexion Internet  ou serveur hors service");
                 return false;
             }
-            if (parameters == null)
-                parameters = new Dictionary<string, object>();
+
             try
             {
                 MySqlCommand cmd = this.connection.CreateCommand();

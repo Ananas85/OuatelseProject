@@ -172,5 +172,15 @@ namespace Ouatelse
             SupportForm supportForm = new SupportForm();
             supportForm.ShowDialog();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+            Utils.Info(CustomerManager.Instance.Count().ToString());
+        }
     }
 }
