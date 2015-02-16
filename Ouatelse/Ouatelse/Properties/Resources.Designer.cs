@@ -222,26 +222,6 @@ namespace Ouatelse.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ouatelse_051 {
-            get {
-                object obj = ResourceManager.GetObject("Ouatelse-051", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Ouatelse_06 {
-            get {
-                object obj = ResourceManager.GetObject("Ouatelse-06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Ouatelse_full_05 {
             get {
                 object obj = ResourceManager.GetObject("Ouatelse-full-05", resourceCulture);
