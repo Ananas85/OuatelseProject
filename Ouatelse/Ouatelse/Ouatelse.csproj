@@ -111,18 +111,18 @@
     <Compile Include="Forms\LostPasswordForm.Designer.cs">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewProductForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NewProductForm.Designer.cs">
-      <DependentUpon>NewProductForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MailSender.cs" />
     <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailSender.cs" />
+    <Compile Include="Forms\ManageProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageProductsForm.Designer.cs">
+      <DependentUpon>ManageProductsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SalesForm.cs">
       <SubType>Form</SubType>
@@ -195,8 +195,11 @@
     <EmbeddedResource Include="Forms\LostPasswordForm.resx">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewProductForm.resx">
-      <DependentUpon>NewProductForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ManageProductsForm.resx">
+      <DependentUpon>ManageProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductsForm.resx">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

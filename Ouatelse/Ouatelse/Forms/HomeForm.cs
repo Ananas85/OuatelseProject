@@ -141,7 +141,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void produitBtn_Click(object sender, EventArgs e)
         {
-            ProductsForm productForm = new ProductsForm();
+            ManageProductForm productForm = new ManageProductForm();
             productForm.ShowDialog();
         }
 
