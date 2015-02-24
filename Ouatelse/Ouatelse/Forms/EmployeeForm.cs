@@ -137,7 +137,6 @@ namespace Ouatelse.Forms
         }
         #endregion
 
-
         #region Chargement des attributs étrangers
         /// <summary>
         /// Chargement des civilités

@@ -15,6 +15,10 @@ namespace Ouatelse.Forms
     public partial class ManageEmployeesForm : Form
     {
         Employee currentEmployee = null;
+        string lastColumnClicked = string.Empty;
+        string order = string.Empty;
+
+        
 
         #region Constructeur de la classe
         /// <summary>
@@ -35,15 +39,8 @@ namespace Ouatelse.Forms
         /// <param name="e"></param>
         public void Reload(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(searchBox.Text))
-            {
-                Reload(EmployeeManager.Instance.All());
-            }
-            else
-            {
-                string Search = "WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';";
-                Reload(EmployeeManager.Instance.Filter(Search));
-            }
+            //Si c'est vide ça recharge tous les clients
+            Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';"));
         }
         #endregion
 
@@ -73,12 +70,13 @@ namespace Ouatelse.Forms
                 employee.SubItems.Add(e.Role.Name.ToString());
                 employee.SubItems.Add(e.Store.Name);
                 employee.Tag = e;
+
+                if (alternativeColor)
+                {
+                    employee.BackColor = Color.WhiteSmoke;
+                }
+                alternativeColor = !alternativeColor;
             }
-            if (alternativeColor)
-            {
-                listView_employees.BackColor = Color.WhiteSmoke;
-            }
-            alternativeColor = !alternativeColor;
         }
         #endregion
 
@@ -90,6 +88,7 @@ namespace Ouatelse.Forms
         /// <param name="e"></param>
         private void listView_employees_MouseClick(object sender, MouseEventArgs e)
         {
+            //On récupère le salarié correspondant à la ligne
             ListViewItem item = this.listView_employees.GetItemAt(e.X, e.Y);
             if (item == null)
             {
@@ -187,8 +186,13 @@ namespace Ouatelse.Forms
             {
                 if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentEmployee.LastName + " " + currentEmployee.FirstName + " ? "))
                     if (EmployeeManager.Instance.Delete(currentEmployee))
+                    {
                         Reload(EmployeeManager.Instance.All());
-
+                        Utils.Info("Client supprimé avec succès");
+                        if (!String.IsNullOrWhiteSpace(currentEmployee.Email))
+                            MailSender.Instance.deleteEmployee(currentEmployee);
+                        currentEmployee = null;
+                    }
             }
         }
 
@@ -202,5 +206,113 @@ namespace Ouatelse.Forms
             DeleteEmployee();
         }
         #endregion
+
+        private void listView_employees_ItemActivate(object sender, EventArgs e)
+        {
+            ListViewItem item = ((ListView)sender).SelectedItems[0];
+            if (item == null)
+            {
+                currentEmployee = null;
+                return;
+            }
+            currentEmployee = (Employee)item.Tag;
+        }
+
+        private void listView_employees_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            switch (this.listView_employees.Columns[e.Column].Name)
+            {
+                case "reference":
+                    if (this.lastColumnClicked == "reference")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY id " + this.order));
+                    this.lastColumnClicked = "id";
+                    break;
+                case "firstname":
+                    if (this.lastColumnClicked == "firstname")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY prenom " + this.order));
+                    this.lastColumnClicked = "firstname";
+                    break;
+                case "lastname":
+                    if (this.lastColumnClicked == "lastname")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY nom " + this.order));
+                    this.lastColumnClicked = "lastname";
+                    break;
+                case "mail":
+                    if (this.lastColumnClicked == "mail")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY mail " + this.order));
+                    this.lastColumnClicked = "mail";
+                    break;
+                case "role":
+                    if (this.lastColumnClicked == "role")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(EmployeeManager.Instance.Filter("INNER JOIN roles ON salaries.roles_id = roles.id WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY roles.libelle_role " + this.order));
+                    this.lastColumnClicked = "role";
+                    break;
+                case "store":
+                    if (this.lastColumnClicked == "store")
+                    {
+                        if (this.order == "ASC")
+                            this.order = "DESC";
+                        else
+                            this.order = "ASC";
+                    }
+                    else
+                    {
+                        this.order = "ASC";
+                    }
+                    this.Reload(EmployeeManager.Instance.Filter("INNER JOIN magasin ON salaries.magasin_id = magasin.id WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY magasin.adresse " + this.order));
+                    this.lastColumnClicked = "store";
+                    break;
+            }
+        }
     }
 }
