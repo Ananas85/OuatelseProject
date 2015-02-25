@@ -162,6 +162,7 @@ namespace Ouatelse
 
         private void holliday_Click(object sender, EventArgs e)
         {
+            new HolidayForm().ShowDialog();
         }
     }
 }
