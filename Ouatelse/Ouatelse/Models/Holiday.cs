@@ -14,9 +14,11 @@ namespace Ouatelse.Models
         public Employee Employee { get; set; }
 
 
-        public Holiday()
+        public Holiday(DateTime sd, DateTime ed, Employee e)
         {
-
+            this.StartingDate = sd;
+            this.EndingDate = ed;
+            this.Employee = e;
         }
 
         /// <summary>

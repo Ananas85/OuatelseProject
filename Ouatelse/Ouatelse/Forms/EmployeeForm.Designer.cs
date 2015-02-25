@@ -463,7 +463,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 609);
-            this.ControlBox = false;
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.Username);
             this.Controls.Add(this.EmailOnUpdate);
@@ -502,7 +501,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label15);
             this.Name = "EmployeeForm";
-            this.Text = "EmployeeForm";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.Tabs.ResumeLayout(false);
             this.CommentsTab.ResumeLayout(false);

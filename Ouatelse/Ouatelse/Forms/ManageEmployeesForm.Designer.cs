@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.listView_employees = new System.Windows.Forms.ListView();
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.reference = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lastname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.firstname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +44,7 @@
             this.ModifyEmployeeButton = new System.Windows.Forms.Button();
             this.NewEmployeeButton = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.customerLabel = new System.Windows.Forms.Label();
+            this.employeeLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.employeesNumber = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView_employees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.id,
+            this.reference,
             this.lastname,
             this.firstname,
             this.mail,
@@ -82,11 +82,11 @@
             this.listView_employees.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseClick);
             this.listView_employees.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseDoubleClick);
             // 
-            // id
+            // reference
             // 
-            this.id.Name = "reference";
-            this.id.Text = "Référence";
-            this.id.Width = 118;
+            this.reference.Name = "reference";
+            this.reference.Text = "Référence";
+            this.reference.Width = 118;
             // 
             // lastname
             // 
@@ -204,15 +204,15 @@
             this.searchBox.TabIndex = 28;
             this.searchBox.TextChanged += new System.EventHandler(this.Reload);
             // 
-            // customerLabel
+            // employeeLabel
             // 
-            this.customerLabel.AutoSize = true;
-            this.customerLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerLabel.Location = new System.Drawing.Point(151, 44);
-            this.customerLabel.Name = "customerLabel";
-            this.customerLabel.Size = new System.Drawing.Size(342, 47);
-            this.customerLabel.TabIndex = 27;
-            this.customerLabel.Text = "Gestion des salariés";
+            this.employeeLabel.AutoSize = true;
+            this.employeeLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeLabel.Location = new System.Drawing.Point(151, 44);
+            this.employeeLabel.Name = "employeeLabel";
+            this.employeeLabel.Size = new System.Drawing.Size(342, 47);
+            this.employeeLabel.TabIndex = 27;
+            this.employeeLabel.Text = "Gestion des salariés";
             // 
             // pictureBox1
             // 
@@ -257,11 +257,12 @@
             this.Controls.Add(this.ModifyEmployeeButton);
             this.Controls.Add(this.NewEmployeeButton);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.customerLabel);
+            this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView_employees);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(929, 544);
             this.Name = "ManageEmployeesForm";
             this.Text = "Ouatelse - Gestion des salariés";
             this.rightClickListView.ResumeLayout(false);
@@ -286,12 +287,13 @@
         private System.Windows.Forms.Button ModifyEmployeeButton;
         private System.Windows.Forms.Button NewEmployeeButton;
         private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.Label customerLabel;
+        private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label employeesNumber;
         private System.Windows.Forms.ContextMenuStrip rightClickListView;
         private System.Windows.Forms.ToolStripMenuItem modifierCeClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerCeClientToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader reference;
     }
 }

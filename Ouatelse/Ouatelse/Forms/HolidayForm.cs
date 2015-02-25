@@ -38,6 +38,7 @@ namespace Ouatelse.Forms
                         DateTime dateValue = new DateTime(DateTime.Now.Year, i, j);
                         string day = dateValue.ToString("ddd", new CultureInfo("fr-FR")).Substring(0, 1);
                         cell.Value = day;
+                        cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                     else
                     {
@@ -55,6 +56,33 @@ namespace Ouatelse.Forms
         {
             foreach (DataGridViewColumn c in holidays.Columns)
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+        static List<DateTime> SortAscending(List<DateTime> list)
+        {
+            list.Sort((a, b) => a.CompareTo(b));
+            return list;
+        }
+
+        private void newholiday_Click(object sender, EventArgs e)
+        {
+            String data = "";
+            List<DateTime> holidaysSelected = new List<DateTime>();
+            List<DateTime> holidaysSorted = new List<DateTime>();
+            foreach(DataGridViewCell c in holidays.SelectedCells)
+            {
+                DateTime dateValue = new DateTime(DateTime.Now.Year, c.RowIndex+1, c.ColumnIndex+1);
+                holidaysSelected.Add(dateValue);
+            }
+
+            holidaysSorted = SortAscending(holidaysSelected);
+
+            foreach (DateTime dt in holidaysSorted)
+            {
+                data += String.Format("{0:D}",dt);
+                data += "\n";
+            }
+            Utils.Info(data);
         }
     }
 }
