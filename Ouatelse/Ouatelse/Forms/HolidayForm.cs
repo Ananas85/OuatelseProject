@@ -103,6 +103,7 @@ namespace Ouatelse.Forms
                     }
                     else
                     {
+                        cell.Value = "";
                         cell.ReadOnly = true;
                         cell.Style.BackColor = Color.Gray;
                     }
@@ -129,7 +130,7 @@ namespace Ouatelse.Forms
             List<DateTime> holidaysSorted = new List<DateTime>();
             foreach(DataGridViewCell c in holidays.SelectedCells)
             {
-                DateTime dateValue = new DateTime(DateTime.Now.Year, c.RowIndex+1, c.ColumnIndex+1);
+                DateTime dateValue = new DateTime(currentYear, c.RowIndex+1, c.ColumnIndex+1);
                 holidaysSelected.Add(dateValue);
             }
 
