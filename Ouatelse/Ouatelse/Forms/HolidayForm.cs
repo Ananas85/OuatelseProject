@@ -16,6 +16,7 @@ namespace Ouatelse.Forms
         public HolidayForm()
         {
             InitializeComponent();
+
             this.holidays.RowHeadersWidth = 100;
             foreach (DataGridViewColumn col in this.holidays.Columns)
             {
@@ -31,14 +32,12 @@ namespace Ouatelse.Forms
                 row.HeaderCell.Value = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
                 for (int j = 1; j <= 31; ++j)
                 {
-                    DataGridViewCell cell = new DataGridViewTextBoxCell();
+                    DataGridViewCell cell = holidays.Rows[i - 1].Cells[j - 1];
                     if (j <= DateTime.DaysInMonth(DateTime.Now.Year, i))
                     {
-
                         DateTime dateValue = new DateTime(DateTime.Now.Year, i, j);
                         string day = dateValue.ToString("ddd", new CultureInfo("fr-FR")).Substring(0, 1);
                         cell.Value = day;
-
                     }
                     else
                     {
@@ -47,6 +46,15 @@ namespace Ouatelse.Forms
                     }
                 }
             }
+
+           
+            preventSortingColumns();
+        }
+
+        public void preventSortingColumns()
+        {
+            foreach (DataGridViewColumn c in holidays.Columns)
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
     }
 }

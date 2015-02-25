@@ -69,6 +69,9 @@
             this.holidays.AllowUserToDeleteRows = false;
             this.holidays.AllowUserToResizeColumns = false;
             this.holidays.AllowUserToResizeRows = false;
+            this.holidays.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.holidays.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.holidays.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.holidays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.holidays.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.one,
@@ -102,9 +105,12 @@
             this.vingtneuf,
             this.trente,
             this.trenteun});
+            this.holidays.GridColor = System.Drawing.SystemColors.Control;
             this.holidays.Location = new System.Drawing.Point(12, 61);
             this.holidays.Name = "holidays";
-            this.holidays.Size = new System.Drawing.Size(1058, 382);
+            this.holidays.ReadOnly = true;
+            this.holidays.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.holidays.Size = new System.Drawing.Size(1034, 296);
             this.holidays.TabIndex = 0;
             // 
             // one
@@ -266,7 +272,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 578);
+            this.ClientSize = new System.Drawing.Size(1054, 578);
             this.Controls.Add(this.holidays);
             this.Name = "HolidayForm";
             this.Text = "HolidayForm";
