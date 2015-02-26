@@ -123,6 +123,12 @@
     <Compile Include="Forms\LostPasswordForm.Designer.cs">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\newHolidaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\newHolidaysForm.Designer.cs">
+      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LostPasswordForm.resx">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\newHolidaysForm.resx">
+      <DependentUpon>newHolidaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewProductForm.resx">
       <DependentUpon>NewProductForm.cs</DependentUpon>

@@ -14,6 +14,8 @@ namespace Ouatelse.Forms
     public partial class HolidayForm : Form
     {
         private int currentYear = DateTime.Now.Year;
+        private DataGridViewTextBoxCell currentCell;
+        private List<DateTime> forbiddenDays = new List<DateTime>();
 
         public HolidayForm()
         {
@@ -61,6 +63,13 @@ namespace Ouatelse.Forms
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         if (day.Equals("s") || day.Equals("d"))
                         {
+                            if (day.Equals("d"))
+                            {
+                                this.forbiddenDays.Add(dateValue);
+                                cell.ReadOnly = true;
+
+                            }
+
                             cell.Style.ForeColor = Color.Red;
                         }
                         else
@@ -85,7 +94,7 @@ namespace Ouatelse.Forms
             {
                 for (int j = 1; j <= 31; ++j)
                 {
-                    DataGridViewCell cell = holidays.Rows[i-1].Cells[j-1];
+                    DataGridViewCell cell = holidays.Rows[i - 1].Cells[j - 1];
                     cell.Style.BackColor = Color.White;
                     cell.Style.ForeColor = Color.Black;
                     if (j <= DateTime.DaysInMonth(currentYear, i))
@@ -96,6 +105,12 @@ namespace Ouatelse.Forms
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         if (day.Equals("s") || day.Equals("d"))
                         {
+                            if (day.Equals("d"))
+                            {
+                                this.forbiddenDays.Add(dateValue);
+                                cell.ReadOnly = true;
+                            }
+
                             cell.Style.ForeColor = Color.Red;
                         }
                         else
@@ -135,12 +150,17 @@ namespace Ouatelse.Forms
 
         private void newholiday_Click(object sender, EventArgs e)
         {
+            /*  if (forbiddenDays.Contains(new DateTime(currentYear, currentCell.RowIndex + 1, currentCell.ColumnIndex + 1))) 
+              { 
+                
+              } */
+
             String data = "";
             List<DateTime> holidaysSelected = new List<DateTime>();
             List<DateTime> holidaysSorted = new List<DateTime>();
-            foreach(DataGridViewCell c in holidays.SelectedCells)
+            foreach (DataGridViewCell c in holidays.SelectedCells)
             {
-                DateTime dateValue = new DateTime(currentYear, c.RowIndex+1, c.ColumnIndex+1);
+                DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
                 holidaysSelected.Add(dateValue);
             }
 
@@ -148,7 +168,7 @@ namespace Ouatelse.Forms
 
             foreach (DateTime dt in holidaysSorted)
             {
-                data += String.Format("{0:D}",dt);
+                data += String.Format("{0:D}", dt);
                 data += "\n";
             }
             Utils.Info(data);
@@ -170,6 +190,7 @@ namespace Ouatelse.Forms
             updateCalendar();
             this.year.Text = currentYear.ToString();
         }
+
     }
 }
 
