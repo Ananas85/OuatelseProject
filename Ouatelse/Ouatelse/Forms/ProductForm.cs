@@ -12,23 +12,18 @@ using System.Windows.Forms;
 
 namespace Ouatelse.Forms
 {
-    public partial class CustomerForm : Form
+    public partial class ProductForm : Form
     {
         #region Les attributs de la classe
         /// <summary>
-        /// Le client courant du formulaire
+        /// Le produit courant du formulaire
         /// </summary>
-        Customer obj = null;
+        Product obj = null;
 
         /// <summary>
-        /// La cohérence entre le formulaire et notre client
+        /// La cohérence entre le formulaire et notre produit
         /// </summary>
         Binding b = new Binding();
-
-        /// <summary>
-        /// La liste des villes à afficher
-        /// </summary>
-        List<City> citiesList = null;
         #endregion
 
         #region Le constructeur de la classe
@@ -36,11 +31,11 @@ namespace Ouatelse.Forms
         /// Le constructeur de la classe
         /// </summary>
         /// <param name="obj"></param>
-        public CustomerForm(Customer obj)
+        public ProductForm(Product obj)
         {
             InitializeComponent();
             //Cohérence pour l'affichage des titres
-            this.Text = this.label1.Text = obj.Exists ? "Détail d'un client " : " Nouveau client"; 
+            this.Text = this.label1.Text = obj.Exists ? "Détail du produit " : " Nouveau produit";
             this.obj = obj;
         }
         #endregion
@@ -51,29 +46,17 @@ namespace Ouatelse.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CustomerForm_Load(object sender, EventArgs e)
+        private void ProductForm_Load(object sender, EventArgs e)
         {
-            //On charge les différentes civilités
-            loadGenders(GenderManager.Instance.All());
 
             //On lie notre objet à notre binding
             this.Id.Text = obj.StringId;
-            b.Bind(this.FirstName, "Text", obj, "FirstName");
-            b.Bind(this.LastName, "Text", obj, "LastName");
-            b.Bind(this.Address1, "Text", obj, "Address1");
-            b.Bind(this.Address2, "Text", obj, "Address2");
-            b.Bind(this.PhoneNumber, "Text", obj, "PhoneNumber");
-            b.Bind(this.MobilePhoneNumber, "Text", obj, "MobilePhoneNumber");
-            b.Bind(this.Email, "Text", obj, "Email");
-            b.Bind(this.Comments, "Text", obj, "Comments");
-            b.Bind(this.DateBirthPicker, "Value", obj, "DateOfBirth");
-
-            if (obj.City != null)
-            {
-                this.CityPostalCode.Text = obj.City.PostalCode;
-                this.CityName.SelectedValue = obj.City.Id;
-            }
-            b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
+            b.Bind(this.Name, "Text", obj, "Name");
+            b.Bind(this.Designation, "Text", obj, "Designation");
+            b.Bind(this.PurchasePrice, "Text", obj, "PurchasePrice");
+            b.Bind(this.SellPrice, "Text", obj, "SellPrice");
+            b.Bind(this.TVA, "Text", obj, "TVA");
+            b.Bind(this.EANCode, "Text", obj, "EANCode");
             b.Populate();
         }
         #endregion
@@ -83,36 +66,31 @@ namespace Ouatelse.Forms
         {
             //On hydrate notre binding
             b.Hydrate();
-            obj.Gender = (Gender)this.GenderName.SelectedItem;
-            obj.City = (City)this.CityName.SelectedItem;
             //On regarde si notre entité peut être validé en base
             if (obj.validate().Count != 0)
             {
                 string error = String.Empty;
-                foreach (Customer.ValidationResult warning in obj.validate())
+                foreach (Product.ValidationResult warning in obj.validate())
                 {
                     switch (warning)
                     {
-                        case Customer.ValidationResult.WRONG_LASTNAME:
+                        case Product.ValidationResult.WRONG_NAME:
                             error += "Erreur dans la saisie du nom ( il doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
-                        case Customer.ValidationResult.WRONG_FIRSTNAME:
+                        case Product.ValidationResult.WRONG_DESIGNATION:
                             error += "Erreur dans la saisie du prénom ( il doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
-                        case Customer.ValidationResult.WRONG_ADRESS:
+                        case Product.ValidationResult.WRONG_PURCHASEPRICE:
                             error += "Erreur dans la saisie de l'adresse ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
-                        case Customer.ValidationResult.WRONG_CITY:
+                        case Product.ValidationResult.WRONG_SELLPRICE:
                             error += "Erreur dans la saisie de la ville ( elle doit obligatoirement être rempli -> Code Postal )" + Environment.NewLine;
                             break;
-                        case Customer.ValidationResult.WRONG_EMAIL:
+                        case Product.ValidationResult.WRONG_TVA:
                             error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
                             break;
-                        case Customer.ValidationResult.WRONG_PHONENUMBER:
+                        case Product.ValidationResult.WRONG_EANCODE:
                             error += "Erreur dans la saisie du numéro de téléphone fixe ( 10 caractères obligatoire )" + Environment.NewLine;
-                            break;
-                        case Customer.ValidationResult.WRONG_MOBILEPHONENUMBER:
-                            error += "Erreur dans la saisie du numéro de téléphone mobile ( 10 caractères obligatoire )" + Environment.NewLine;
                             break;
                     }
                 }
@@ -145,6 +123,11 @@ namespace Ouatelse.Forms
         /// <param name="cities"></param>
         private void loadCities(City[] cities)
         {
+            if (cities == null)
+            {
+                this.citiesList.Clear();
+                return;
+            }
             this.citiesList = new List<City>(cities);
             this.CityName.DataSource = citiesList;
             this.CityName.ValueMember = "Id";
@@ -155,7 +138,8 @@ namespace Ouatelse.Forms
         #region Affichage du pays selon la ville
         private void CityName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.CityName != null){
+            if (this.CityName != null)
+            {
                 this.Country.Text = ((City)this.CityName.SelectedItem).Country.Name;
                 return;
             }
@@ -166,10 +150,12 @@ namespace Ouatelse.Forms
         #region Contrôle de l'affichage des villes selon le code postal
         private void CityPostalCode_TextChanged(object sender, EventArgs e)
         {
-            if (CityPostalCode.TextLength == 5)
+            if (this.TVA.TextLength < 5)
             {
-                loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.CityPostalCode.Text + "%';"));
+                loadCities(null);
+                return;
             }
+            loadCities(CityManager.Instance.Filter("WHERE code_postal LIKE '" + this.TVA.Text + "%';"));
         }
         #endregion
 
@@ -205,18 +191,23 @@ namespace Ouatelse.Forms
         #region Autorisation uniqument de l'entrée de chiffre pour le code postal
         private void CityPostalCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)) return;
-            Utils.Info("Uniquement les chiffres sont autorisés");
-            e.Handled = true;
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
         }
         #endregion
 
         #region Autorisation uniquement de l'entrée de lettre ou - pour le prénom
         private void FirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || e.KeyChar == '-') return;
-            Utils.Info("Uniquement les lettres ou - sont autorisés");
-            e.Handled = true;
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
+            {
+
+                Utils.Info("Uniquement les lettres ou - sont autorisés");
+                e.Handled = true;
+            }
         }
         #endregion
 
@@ -230,6 +221,7 @@ namespace Ouatelse.Forms
             }
         }
         #endregion
+
 
     }
 }

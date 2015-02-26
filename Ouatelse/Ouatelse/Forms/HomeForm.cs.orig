@@ -137,7 +137,12 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void produitBtn_Click(object sender, EventArgs e)
         {
+<<<<<<< .merge_file_a01996
+            ManageProductForm productForm = new ManageProductForm();
+            productForm.ShowDialog();
+=======
             new ProductsForm().ShowDialog();
+>>>>>>> .merge_file_a07012
         }
 
         /// <summary>
