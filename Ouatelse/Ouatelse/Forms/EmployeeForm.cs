@@ -119,6 +119,9 @@ namespace Ouatelse.Forms
                         case Employee.ValidationResult.WRONG_EMAIL:
                             error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
                             break;
+                        case Employee.ValidationResult.ALREADY_USED_MAIL:
+                            error += "Erreur dans la saisie du mail ( adresse mail déjà utilisée )" + Environment.NewLine;
+                            break;
                         case Employee.ValidationResult.WRONG_PHONENUMBER:
                             error += "Erreur dans la saisie du numéro de téléphone ( 10 caractères )" + Environment.NewLine;
                             break;
@@ -136,7 +139,6 @@ namespace Ouatelse.Forms
            
         }
         #endregion
-
 
         #region Chargement des attributs étrangers
         /// <summary>

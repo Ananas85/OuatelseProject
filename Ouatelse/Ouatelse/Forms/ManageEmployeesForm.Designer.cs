@@ -30,27 +30,27 @@
         {
             this.components = new System.ComponentModel.Container();
             this.listView_employees = new System.Windows.Forms.ListView();
-            this.reference_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lastname_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.firstname_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mail_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.role_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.store_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.reference = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.firstname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.role = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.store = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rightClickListView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.DeleteEmployeeButton = new System.Windows.Forms.Button();
             this.ModifyEmployeeButton = new System.Windows.Forms.Button();
             this.NewEmployeeButton = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.customerLabel = new System.Windows.Forms.Label();
+            this.employeeLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.employeesNumber = new System.Windows.Forms.Label();
-            this.rightClickListView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rightClickListView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.rightClickListView.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView_employees
@@ -59,12 +59,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView_employees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.reference_column,
-            this.lastname_column,
-            this.firstname_column,
-            this.mail_column,
-            this.role_column,
-            this.store_column});
+            this.reference,
+            this.lastname,
+            this.firstname,
+            this.mail,
+            this.role,
+            this.store});
             this.listView_employees.ContextMenuStrip = this.rightClickListView;
             this.listView_employees.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView_employees.FullRowSelect = true;
@@ -77,37 +77,66 @@
             this.listView_employees.TabIndex = 23;
             this.listView_employees.UseCompatibleStateImageBehavior = false;
             this.listView_employees.View = System.Windows.Forms.View.Details;
+            this.listView_employees.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_employees_ColumnClick);
+            this.listView_employees.ItemActivate += new System.EventHandler(this.listView_employees_ItemActivate);
+            this.listView_employees.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseClick);
             this.listView_employees.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_employees_MouseDoubleClick);
             // 
-            // reference_column
+            // reference
             // 
-            this.reference_column.Text = "Référence";
-            this.reference_column.Width = 118;
+            this.reference.Name = "reference";
+            this.reference.Text = "Référence";
+            this.reference.Width = 118;
             // 
-            // lastname_column
+            // lastname
             // 
-            this.lastname_column.Text = "Nom";
-            this.lastname_column.Width = 117;
+            this.lastname.Name = "lastname";
+            this.lastname.Text = "Nom";
+            this.lastname.Width = 117;
             // 
-            // firstname_column
+            // firstname
             // 
-            this.firstname_column.Text = "Prénom";
-            this.firstname_column.Width = 156;
+            this.firstname.Name = "firstname";
+            this.firstname.Text = "Prénom";
+            this.firstname.Width = 156;
             // 
-            // mail_column
+            // mail
             // 
-            this.mail_column.Text = "Adresse mail";
-            this.mail_column.Width = 150;
+            this.mail.Name = "mail";
+            this.mail.Text = "Adresse mail";
+            this.mail.Width = 150;
             // 
-            // role_column
+            // role
             // 
-            this.role_column.Text = "Rôle";
-            this.role_column.Width = 127;
+            this.role.Name = "role";
+            this.role.Text = "Rôle";
+            this.role.Width = 127;
             // 
-            // store_column
+            // store
             // 
-            this.store_column.Text = "Magasin";
-            this.store_column.Width = 232;
+            this.store.Name = "store";
+            this.store.Text = "Magasin";
+            this.store.Width = 232;
+            // 
+            // rightClickListView
+            // 
+            this.rightClickListView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierCeClientToolStripMenuItem,
+            this.supprimerCeClientToolStripMenuItem});
+            this.rightClickListView.Name = "rightClickListView";
+            this.rightClickListView.Size = new System.Drawing.Size(177, 48);
+            // 
+            // modifierCeClientToolStripMenuItem
+            // 
+            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
+            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
+            // 
+            // supprimerCeClientToolStripMenuItem
+            // 
+            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
+            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
             // 
             // pictureBox2
             // 
@@ -173,16 +202,17 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 26);
             this.searchBox.TabIndex = 28;
+            this.searchBox.TextChanged += new System.EventHandler(this.Reload);
             // 
-            // customerLabel
+            // employeeLabel
             // 
-            this.customerLabel.AutoSize = true;
-            this.customerLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerLabel.Location = new System.Drawing.Point(151, 44);
-            this.customerLabel.Name = "customerLabel";
-            this.customerLabel.Size = new System.Drawing.Size(342, 47);
-            this.customerLabel.TabIndex = 27;
-            this.customerLabel.Text = "Gestion des salariés";
+            this.employeeLabel.AutoSize = true;
+            this.employeeLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeLabel.Location = new System.Drawing.Point(151, 44);
+            this.employeeLabel.Name = "employeeLabel";
+            this.employeeLabel.Size = new System.Drawing.Size(342, 47);
+            this.employeeLabel.TabIndex = 27;
+            this.employeeLabel.Text = "Gestion des salariés";
             // 
             // pictureBox1
             // 
@@ -215,26 +245,6 @@
             this.employeesNumber.Text = "--";
             this.employeesNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // rightClickListView
-            // 
-            this.rightClickListView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifierCeClientToolStripMenuItem,
-            this.supprimerCeClientToolStripMenuItem});
-            this.rightClickListView.Name = "rightClickListView";
-            this.rightClickListView.Size = new System.Drawing.Size(177, 48);
-            // 
-            // modifierCeClientToolStripMenuItem
-            // 
-            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
-            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
-            // 
-            // supprimerCeClientToolStripMenuItem
-            // 
-            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
-            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
-            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,16 +257,17 @@
             this.Controls.Add(this.ModifyEmployeeButton);
             this.Controls.Add(this.NewEmployeeButton);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.customerLabel);
+            this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView_employees);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(929, 544);
             this.Name = "ManageEmployeesForm";
             this.Text = "Ouatelse - Gestion des salariés";
+            this.rightClickListView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.rightClickListView.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,23 +276,24 @@
         #endregion
 
         private System.Windows.Forms.ListView listView_employees;
-        private System.Windows.Forms.ColumnHeader reference_column;
-        private System.Windows.Forms.ColumnHeader lastname_column;
-        private System.Windows.Forms.ColumnHeader firstname_column;
-        private System.Windows.Forms.ColumnHeader mail_column;
-        private System.Windows.Forms.ColumnHeader role_column;
-        private System.Windows.Forms.ColumnHeader store_column;
+        private System.Windows.Forms.ColumnHeader id;
+        private System.Windows.Forms.ColumnHeader lastname;
+        private System.Windows.Forms.ColumnHeader firstname;
+        private System.Windows.Forms.ColumnHeader mail;
+        private System.Windows.Forms.ColumnHeader role;
+        private System.Windows.Forms.ColumnHeader store;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button DeleteEmployeeButton;
         private System.Windows.Forms.Button ModifyEmployeeButton;
         private System.Windows.Forms.Button NewEmployeeButton;
         private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.Label customerLabel;
+        private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label employeesNumber;
         private System.Windows.Forms.ContextMenuStrip rightClickListView;
         private System.Windows.Forms.ToolStripMenuItem modifierCeClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerCeClientToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader reference;
     }
 }

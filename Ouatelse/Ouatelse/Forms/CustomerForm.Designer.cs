@@ -414,7 +414,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 606);
-            this.ControlBox = false;
             this.Controls.Add(this.EmailOnUpdate);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label10);

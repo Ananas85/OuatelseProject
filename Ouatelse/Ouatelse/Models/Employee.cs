@@ -27,7 +27,7 @@ namespace Ouatelse.Models
         public Store Store { get; set; }
         public Gender Gender { get; set; }
         public bool EmailOnUpdate { get; set; }
-        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_USERNAME, WRONG_PASSWORD, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL,WRONG_PHONENUMBER, WRONG_MOBILEPHONENUMBER }
+        public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_USERNAME, WRONG_PASSWORD, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL, WRONG_PHONENUMBER, WRONG_MOBILEPHONENUMBER, ALREADY_USED_MAIL }
 
         public Employee()
         {
@@ -118,6 +118,9 @@ namespace Ouatelse.Models
             {
                 if (!new EmailAddressAttribute().IsValid(this.Email))
                     response.Add(ValidationResult.WRONG_EMAIL);
+                else
+                    if (EmployeeManager.Instance.Filter("WHERE mail = \"" + this.Email + "\"").Length >= 1)
+                        response.Add(ValidationResult.ALREADY_USED_MAIL);
             }
             if (!String.IsNullOrWhiteSpace(this.PhoneNumber))
             {
