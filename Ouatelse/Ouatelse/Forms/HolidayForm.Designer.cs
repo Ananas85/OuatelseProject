@@ -66,7 +66,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.year = new System.Windows.Forms.Label();
-            this.preventYear = new System.Windows.Forms.Button();
+            this.previousYear = new System.Windows.Forms.Button();
             this.nextYear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -409,15 +409,15 @@
             this.year.TabIndex = 30;
             this.year.Text = "Year";
             // 
-            // preventYear
+            // previousYear
             // 
-            this.preventYear.Location = new System.Drawing.Point(672, 151);
-            this.preventYear.Name = "preventYear";
-            this.preventYear.Size = new System.Drawing.Size(32, 23);
-            this.preventYear.TabIndex = 31;
-            this.preventYear.Text = "<-";
-            this.preventYear.UseVisualStyleBackColor = true;
-            this.preventYear.Click += new System.EventHandler(this.preventYear_Click);
+            this.previousYear.Location = new System.Drawing.Point(672, 151);
+            this.previousYear.Name = "previousYear";
+            this.previousYear.Size = new System.Drawing.Size(32, 23);
+            this.previousYear.TabIndex = 31;
+            this.previousYear.Text = "<-";
+            this.previousYear.UseVisualStyleBackColor = true;
+            this.previousYear.Click += new System.EventHandler(this.previousYear_Click);
             // 
             // nextYear
             // 
@@ -436,7 +436,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1054, 509);
             this.Controls.Add(this.nextYear);
-            this.Controls.Add(this.preventYear);
+            this.Controls.Add(this.previousYear);
             this.Controls.Add(this.year);
             this.Controls.Add(this.deleteholiday);
             this.Controls.Add(this.newholiday);
@@ -496,7 +496,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn trente;
         private System.Windows.Forms.DataGridViewTextBoxColumn trenteun;
         private System.Windows.Forms.Label year;
-        private System.Windows.Forms.Button preventYear;
+        private System.Windows.Forms.Button previousYear;
         private System.Windows.Forms.Button nextYear;
     }
 }

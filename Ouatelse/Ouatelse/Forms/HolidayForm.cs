@@ -43,6 +43,7 @@ namespace Ouatelse.Forms
 
         public void fillCalendar()
         {
+            preventPreviousYear();
             for (int i = 1; i <= 12; ++i)
             {
 
@@ -79,6 +80,7 @@ namespace Ouatelse.Forms
 
         public void updateCalendar()
         {
+            preventPreviousYear();
             for (int i = 1; i <= 12; ++i)
             {
                 for (int j = 1; j <= 31; ++j)
@@ -117,6 +119,14 @@ namespace Ouatelse.Forms
                 c.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
+        public void preventPreviousYear()
+        {
+            if (currentYear == DateTime.Now.Year)
+                this.previousYear.Enabled = false;
+            else
+                this.previousYear.Enabled = true;
+        }
+
         static List<DateTime> SortAscending(List<DateTime> list)
         {
             list.Sort((a, b) => a.CompareTo(b));
@@ -144,26 +154,18 @@ namespace Ouatelse.Forms
             Utils.Info(data);
         }
 
-        private void preventYear_Click(object sender, EventArgs e)
-        {          
+        private void previousYear_Click(object sender, EventArgs e)
+        {
             if (currentYear > DateTime.Now.Year)
             {
                 currentYear--;
                 updateCalendar();
                 this.year.Text = currentYear.ToString();
-                if (currentYear == DateTime.Now.Year)
-                {
-                    this.preventYear.Enabled = false;
-                }
             }
         }
 
         private void nextYear_Click(object sender, EventArgs e)
         {
-            if (currentYear == DateTime.Now.Year)
-            {
-                this.preventYear.Enabled = true;
-            }
             currentYear++;
             updateCalendar();
             this.year.Text = currentYear.ToString();
