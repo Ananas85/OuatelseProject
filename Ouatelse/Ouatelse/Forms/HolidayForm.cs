@@ -138,15 +138,20 @@ namespace Ouatelse.Forms
                             cell.Style.ForeColor = Color.Red;
                         }
 
-                        //Gestion des vacances déjà posées:
-                        string query = "WHERE salaries_id = " +
-                                       AuthManager.Instance.User.Id +  " AND '" + String.Format("{0:yyyy-MM-dd}",dateValue) +
-                                       "' BETWEEN date_debut AND date_fin" ;
-                        if ( HolidayManager.Instance.Count(query) == 1)
+                        if (dateValue == new DateTime(currentYear, 05, 29))
                         {
-                            cell.Style.BackColor = HolidayManager.Instance.First(query).Accepted ? Color.ForestGreen : Color.Orange;
-                            alreadyPresent++;
+                            //Gestion des vacances déjà posées:
+                            string query = "WHERE salaries_id = " +
+                                           AuthManager.Instance.User.Id + " AND '" + String.Format("{0:yyyy-MM-dd}", dateValue) +
+                                           "' BETWEEN date_debut AND date_fin";
+                            Holiday stepHoliday = HolidayManager.Instance.Filter(query)[0];
+                            if (stepHoliday != null)
+                            {
+                                cell.Style.BackColor = stepHoliday.Accepted ? Color.ForestGreen : Color.Orange;
+                                alreadyPresent++;
+                            }
                         }
+
                     }
                     else
                     {

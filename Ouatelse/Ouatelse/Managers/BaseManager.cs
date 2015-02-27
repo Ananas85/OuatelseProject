@@ -18,7 +18,7 @@ namespace Ouatelse.Managers
         /// <summary>
         /// l'instance du pattern singleton
         /// </summary>
-        readonly Database db = Database.Instance;
+        Database db = Database.Instance;
 
         /// <summary>
         /// Le nom de la table dans la base de données
