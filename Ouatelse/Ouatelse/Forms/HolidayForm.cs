@@ -17,6 +17,7 @@ namespace Ouatelse.Forms
     {
         private int currentYear = DateTime.Now.Year;
         private List<DateTime> unworkingDate;
+        private int alreadyPresent;
 
         //Liste des jours où l'on ne travaille pas
         private List<DateTime> permanentUnworkingDate;
@@ -27,9 +28,9 @@ namespace Ouatelse.Forms
             designCalendar();
 
             fillCalendar();
+
             
             this.year.Text = currentYear.ToString();
-            this.holidays.ClearSelection();
         }
 
         public void fillPermanentUnworkingDate()
@@ -106,6 +107,7 @@ namespace Ouatelse.Forms
 
         public void fillCalendar()
         {
+            alreadyPresent = 0;
             fillPermanentUnworkingDate();
             unworkingDate = new List<DateTime>();
             preventPreviousYear();
@@ -134,6 +136,16 @@ namespace Ouatelse.Forms
                         {
                             cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
                             cell.Style.ForeColor = Color.Red;
+                        }
+
+                        //Gestion des vacances déjà posées:
+                        string query = "WHERE '" + String.Format("{0:yyyy-MM-dd}",dateValue) +
+                                       "' BETWEEN date_debut AND date_fin AND salaries_id = " +
+                                       AuthManager.Instance.User.Id;
+                        if ( HolidayManager.Instance.Count(query) == 1)
+                        {
+                            cell.Style.BackColor = HolidayManager.Instance.First(query).Accepted ? Color.ForestGreen : Color.Orange;
+                            alreadyPresent++;
                         }
                     }
                     else
@@ -166,10 +178,13 @@ namespace Ouatelse.Forms
                         cell.Value = day;
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                        if (!isWorkingDate(dateValue))
+                        if (day.Equals("s") || day.Equals("d"))
+                        {
+                            cell.Style.ForeColor = Color.Red;
+                        }
+                        else
                         {
                             cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
-                            cell.Style.ForeColor = Color.Red;
                         }
                     }
                     else
@@ -204,66 +219,44 @@ namespace Ouatelse.Forms
 
         private void newholiday_Click(object sender, EventArgs e)
         {
-
-            if (holidays.SelectedCells.Count == 0)
+           
+            
+            
+            String data = "";
+            List<DateTime> holidaysSelected = new List<DateTime>();
+            List<DateTime> holidaysSorted = new List<DateTime>();
+            foreach(DataGridViewCell c in holidays.SelectedCells)
             {
-                Utils.Error("Veuillez sélectionner une date ou une plage pour votre congé");
+                if (c.Style.BackColor != Color.Gray)
+                {
+                    DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
+                    holidaysSelected.Add(dateValue);  
+                }
+                
+            }
+
+            holidaysSorted = SortAscending(holidaysSelected);
+
+            foreach (DateTime dt in holidaysSorted)
+            {
+                data += String.Format("{0:D}",dt);
+                data += "\n";
+            }
+
+            DateTime startingDate = holidaysSorted[0];
+            DateTime endingDate = holidaysSorted.Last();
+            if ((endingDate - startingDate).Days + 1  != holidaysSorted.Count)
+            {
+                Utils.Error("Vous devez choisir des jours consécutifs");
                 return;
             }
-            else 
+
+            int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
+            int amplitude = holidaysSorted.Count;
+            if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
             {
-
-                if (holidays.SelectedCells.Count == 1 && unworkingDate.Contains(new DateTime(currentYear, holidays.SelectedCells[0].RowIndex + 1, holidays.SelectedCells[0].ColumnIndex + 1)))
-                {
-                    Utils.Error("Il est interdit de sélectionner uniquement un jour non ouvrable");
-                    return;
-                }
-                String data = "";
-                List<DateTime> holidaysSelected = new List<DateTime>();
-                List<DateTime> holidaysSorted = new List<DateTime>();
-
-                foreach(DataGridViewCell c in holidays.SelectedCells)
-                {
-                    
-                    if (c.Style.BackColor != Color.Gray )
-                    {
-                        DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
-                        holidaysSelected.Add(dateValue);  
-                    }
-                    else
-                    {
-                        Utils.Error("Vous ne pouvez pas sélectionner un jour qui n'existe pas...");
-                        return;
-                    }
-                
-                }
-
-                holidaysSorted = SortAscending(holidaysSelected);
-
-                foreach (DateTime dt in holidaysSorted)
-                {
-                    data += String.Format("{0:D}",dt);
-                    data += "\n";
-                }
-
-                DateTime startingDate = holidaysSorted[0];
-                DateTime endingDate = holidaysSorted.Last();
-                if ((endingDate - startingDate).Days + 1  != holidaysSorted.Count)
-                {
-                    Utils.Error("Vous devez choisir des jours consécutifs");
-                    return;
-                }
-
-                int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
-                int amplitude = holidaysSorted.Count;
-                if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
-                    return;
-
-                HolidayManager.Instance.Save(new Holiday(startingDate,endingDate,AuthManager.Instance.User));
-                updateCalendar();
-                Utils.Info("Demande de congé envoyée. Vous recevrez une réponse par mail incessement sous peu.");
-
-
+                Utils.Info("Vous avez annulé");
+                return;
             }
         }
 
