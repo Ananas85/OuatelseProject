@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace Ouatelse.Forms
 {
-    public partial class newHolidaysForm : Form
+    public partial class NewHolidaysForm : Form
     {
-        public newHolidaysForm()
+        public NewHolidaysForm(DateTime start, DateTime end, int nbHolidays, int amplitude)
         {
             InitializeComponent();
+            this.startingDate.Text = start.ToLongDateString();
+            this.endingDate.Text = end.ToLongDateString();
+            this.nbDay.Text = nbHolidays.ToString();
+            this.amplitude.Text = amplitude.ToString();
         }
     }
 }

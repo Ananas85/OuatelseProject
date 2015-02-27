@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ouatelse.Managers;
 
 namespace Ouatelse.Forms
 {
@@ -238,9 +239,13 @@ namespace Ouatelse.Forms
             }
 
             int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
-
-
-            Utils.Info("Demande de congés du " + startingDate.ToShortDateString() + " au " + endingDate.ToString() + " soit " + nbHollidays +" jours ouvrés" );
+            int amplitude = holidaysSorted.Count;
+            if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
+            {
+                Utils.Info("Vous avez annulés");
+                return;
+            }
+            
         }
 
         private void previousYear_Click(object sender, EventArgs e)
