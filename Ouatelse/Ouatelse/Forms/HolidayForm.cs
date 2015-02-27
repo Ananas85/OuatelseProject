@@ -14,7 +14,10 @@ namespace Ouatelse.Forms
     public partial class HolidayForm : Form
     {
         private int currentYear = DateTime.Now.Year;
+        private List<DateTime> unworkingDate;
 
+        //Liste des jours où l'on ne travaille pas
+        private List<DateTime> permanentUnworkingDate;
         public HolidayForm()
         {
             InitializeComponent();
@@ -23,7 +26,65 @@ namespace Ouatelse.Forms
 
             fillCalendar();
 
+            
             this.year.Text = currentYear.ToString();
+        }
+
+        public void fillPermanentUnworkingDate()
+        {
+            permanentUnworkingDate = new List<DateTime>();
+            //On retire le 1er janvier
+            permanentUnworkingDate.Add(new DateTime(currentYear, 1,1));
+            //Le 1 mai
+            permanentUnworkingDate.Add(new DateTime(currentYear, 5, 1));
+            //Le 8 mai
+            permanentUnworkingDate.Add(new DateTime(currentYear, 5, 8));
+            //La fête nationale
+            permanentUnworkingDate.Add(new DateTime(currentYear, 7, 14));
+            //L'assomption
+            permanentUnworkingDate.Add(new DateTime(currentYear, 8, 15));
+            //La toussaint
+            permanentUnworkingDate.Add(new DateTime(currentYear, 11, 1));
+            //L'armistice
+            permanentUnworkingDate.Add(new DateTime(currentYear, 11, 11));
+            //Noël
+            permanentUnworkingDate.Add(new DateTime(currentYear, 12, 25));
+
+            //Calcul des jours non fixes ( algorithme de oudin ) 
+            //Calcul du nombre d'or - 1
+            int goldNumber = (int)(currentYear % 19);
+            //Année diviser par 100
+            int yearPerHundred = (int) (currentYear/100);
+            // Calcul de l'epacte
+            int epacte = (int)((yearPerHundred - yearPerHundred / 4 - (8 * yearPerHundred + 13) / 25 + (19 * goldNumber) + 15) % 30);
+            //Le nombre de jours à partir du 21 mars pour atteindre la pleine lune Pascale
+            int daysEquinoxeToMoonFull = (int)(epacte - (epacte / 28) * (1 - (epacte / 28) * (29 / (epacte + 1)) * ((21 - goldNumber) / 11)));
+            //Jour de la semaine pour la pleine lune Pascale (0=dimanche)
+            int weekDayMoonFull = (int)((currentYear + currentYear / 4 + daysEquinoxeToMoonFull + 2 - yearPerHundred + yearPerHundred / 4) % 7);
+            // Nombre de jours du 21 mars jusqu'au dimanche de ou 
+            // avant la pleine lune Pascale (un nombre entre -6 et 28)
+            int daysEquinoxeBeforeFullMoon = daysEquinoxeToMoonFull - weekDayMoonFull;
+            // mois de pâques
+            int monthPaques = (int)(3 + (daysEquinoxeBeforeFullMoon + 40) / 44);
+            // jour de pâques
+            int dayPaques = (int)(daysEquinoxeBeforeFullMoon + 28 - 31 * (monthPaques / 4));
+            // lundi de pâques
+            DateTime mondayPaques = new DateTime(currentYear, monthPaques, dayPaques + 1);
+            permanentUnworkingDate.Add(mondayPaques);
+            // Ascension
+            permanentUnworkingDate.Add(mondayPaques.AddDays(38));
+            //Pentecote
+            permanentUnworkingDate.Add(mondayPaques.AddDays(49));
+        }
+
+        public bool isWorkingDate(DateTime date)
+        {
+            if (permanentUnworkingDate.Contains(date) || date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                unworkingDate.Add(date);
+                return false;
+            }
+            return true;
         }
 
         #region Méthode pour mettre en forme le calendrier
@@ -43,29 +104,34 @@ namespace Ouatelse.Forms
 
         public void fillCalendar()
         {
+            fillPermanentUnworkingDate();
+            unworkingDate = new List<DateTime>();
             preventPreviousYear();
             for (int i = 1; i <= 12; ++i)
             {
-
                 DataGridViewRow row = new DataGridViewRow();
                 this.holidays.Rows.Add(row);
                 row.HeaderCell.Value = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
                 for (int j = 1; j <= 31; ++j)
                 {
                     DataGridViewCell cell = holidays.Rows[i - 1].Cells[j - 1];
+                    //On vérifie que l'on ne dépasse pas le nombre de jour du mois en cours sinon on le grise
                     if (j <= DateTime.DaysInMonth(currentYear, i))
                     {
-                        DateTime dateValue = new DateTime(currentYear, i, j);
-                        string day = dateValue.ToString("ddd", new CultureInfo("fr-FR")).Substring(0, 1);
-                        cell.Value = day;
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                        if (day.Equals("s") || day.Equals("d"))
-                        {
-                            cell.Style.ForeColor = Color.Red;
-                        }
-                        else
+                        DateTime dateValue = new DateTime(currentYear, i, j);
+
+                        //On récupère la première lettre du nom du jour
+                        string day = dateValue.ToString("ddd", new CultureInfo("fr-FR")).Substring(0, 1);
+
+                        //On met à jour le contenu de la cellule
+                        cell.Value = day;
+                        
+                        //On vérifie si c'est un jour ouvrable, si ce n'en est pas un on le met en rouge
+                        if (!isWorkingDate(dateValue))
                         {
                             cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
+                            cell.Style.ForeColor = Color.Red;
                         }
                     }
                     else
@@ -80,6 +146,9 @@ namespace Ouatelse.Forms
 
         public void updateCalendar()
         {
+            unworkingDate = new List<DateTime>();
+            fillPermanentUnworkingDate();
+
             preventPreviousYear();
             for (int i = 1; i <= 12; ++i)
             {
@@ -94,6 +163,7 @@ namespace Ouatelse.Forms
                         string day = dateValue.ToString("ddd", new CultureInfo("fr-FR")).Substring(0, 1);
                         cell.Value = day;
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
                         if (day.Equals("s") || day.Equals("d"))
                         {
                             cell.Style.ForeColor = Color.Red;
@@ -135,13 +205,20 @@ namespace Ouatelse.Forms
 
         private void newholiday_Click(object sender, EventArgs e)
         {
+           
+            
+            
             String data = "";
             List<DateTime> holidaysSelected = new List<DateTime>();
             List<DateTime> holidaysSorted = new List<DateTime>();
             foreach(DataGridViewCell c in holidays.SelectedCells)
             {
-                DateTime dateValue = new DateTime(currentYear, c.RowIndex+1, c.ColumnIndex+1);
-                holidaysSelected.Add(dateValue);
+                if (c.Style.BackColor != Color.Gray)
+                {
+                    DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
+                    holidaysSelected.Add(dateValue);  
+                }
+                
             }
 
             holidaysSorted = SortAscending(holidaysSelected);
@@ -151,7 +228,19 @@ namespace Ouatelse.Forms
                 data += String.Format("{0:D}",dt);
                 data += "\n";
             }
-            Utils.Info(data);
+
+            DateTime startingDate = holidaysSorted[0];
+            DateTime endingDate = holidaysSorted.Last();
+            if ((endingDate - startingDate).Days + 1  != holidaysSorted.Count)
+            {
+                Utils.Error("Vous devez choisir des jours consécutifs");
+                return;
+            }
+
+            int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
+
+
+            Utils.Info("Demande de congés du " + startingDate.ToShortDateString() + " au " + endingDate.ToString() + " soit " + nbHollidays +" jours ouvrés" );
         }
 
         private void previousYear_Click(object sender, EventArgs e)
