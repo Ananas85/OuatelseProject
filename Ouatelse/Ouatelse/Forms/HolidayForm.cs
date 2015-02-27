@@ -139,9 +139,9 @@ namespace Ouatelse.Forms
                         }
 
                         //Gestion des vacances déjà posées:
-                        string query = "WHERE '" + String.Format("{0:yyyy-MM-dd}",dateValue) +
-                                       "' BETWEEN date_debut AND date_fin AND salaries_id = " +
-                                       AuthManager.Instance.User.Id;
+                        string query = "WHERE salaries_id = " +
+                                       AuthManager.Instance.User.Id +  " AND '" + String.Format("{0:yyyy-MM-dd}",dateValue) +
+                                       "' BETWEEN date_debut AND date_fin" ;
                         if ( HolidayManager.Instance.Count(query) == 1)
                         {
                             cell.Style.BackColor = HolidayManager.Instance.First(query).Accepted ? Color.ForestGreen : Color.Orange;
