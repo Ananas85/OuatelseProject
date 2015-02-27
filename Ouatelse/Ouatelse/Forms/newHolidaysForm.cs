@@ -20,5 +20,6 @@ namespace Ouatelse.Forms
             this.nbDay.Text = nbHolidays.ToString();
             this.amplitude.Text = amplitude.ToString();
         }
+
     }
 }

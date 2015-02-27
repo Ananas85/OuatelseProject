@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ouatelse.Managers;
+using Ouatelse.Models;
 
 namespace Ouatelse.Forms
 {
@@ -26,9 +27,9 @@ namespace Ouatelse.Forms
             designCalendar();
 
             fillCalendar();
-
             
             this.year.Text = currentYear.ToString();
+            this.holidays.ClearSelection();
         }
 
         public void fillPermanentUnworkingDate()
@@ -165,13 +166,10 @@ namespace Ouatelse.Forms
                         cell.Value = day;
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                        if (day.Equals("s") || day.Equals("d"))
-                        {
-                            cell.Style.ForeColor = Color.Red;
-                        }
-                        else
+                        if (!isWorkingDate(dateValue))
                         {
                             cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
+                            cell.Style.ForeColor = Color.Red;
                         }
                     }
                     else
@@ -206,46 +204,67 @@ namespace Ouatelse.Forms
 
         private void newholiday_Click(object sender, EventArgs e)
         {
-           
-            
-            
-            String data = "";
-            List<DateTime> holidaysSelected = new List<DateTime>();
-            List<DateTime> holidaysSorted = new List<DateTime>();
-            foreach(DataGridViewCell c in holidays.SelectedCells)
+
+            if (holidays.SelectedCells.Count == 0)
             {
-                if (c.Style.BackColor != Color.Gray)
+                Utils.Error("Veuillez sélectionner une date ou une plage pour votre congé");
+                return;
+            }
+            else 
+            {
+
+                if (holidays.SelectedCells.Count == 1 && unworkingDate.Contains(new DateTime(currentYear, holidays.SelectedCells[0].RowIndex + 1, holidays.SelectedCells[0].ColumnIndex + 1)))
                 {
-                    DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
-                    holidaysSelected.Add(dateValue);  
+                    Utils.Error("Il est interdit de sélectionner uniquement un jour non ouvrable");
+                    return;
                 }
+                String data = "";
+                List<DateTime> holidaysSelected = new List<DateTime>();
+                List<DateTime> holidaysSorted = new List<DateTime>();
+
+                foreach(DataGridViewCell c in holidays.SelectedCells)
+                {
+                    
+                    if (c.Style.BackColor != Color.Gray )
+                    {
+                        DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
+                        holidaysSelected.Add(dateValue);  
+                    }
+                    else
+                    {
+                        Utils.Error("Vous ne pouvez pas sélectionner un jour qui n'existe pas...");
+                        return;
+                    }
                 
-            }
+                }
 
-            holidaysSorted = SortAscending(holidaysSelected);
+                holidaysSorted = SortAscending(holidaysSelected);
 
-            foreach (DateTime dt in holidaysSorted)
-            {
-                data += String.Format("{0:D}",dt);
-                data += "\n";
-            }
+                foreach (DateTime dt in holidaysSorted)
+                {
+                    data += String.Format("{0:D}",dt);
+                    data += "\n";
+                }
 
-            DateTime startingDate = holidaysSorted[0];
-            DateTime endingDate = holidaysSorted.Last();
-            if ((endingDate - startingDate).Days + 1  != holidaysSorted.Count)
-            {
-                Utils.Error("Vous devez choisir des jours consécutifs");
-                return;
-            }
+                DateTime startingDate = holidaysSorted[0];
+                DateTime endingDate = holidaysSorted.Last();
+                if ((endingDate - startingDate).Days + 1  != holidaysSorted.Count)
+                {
+                    Utils.Error("Vous devez choisir des jours consécutifs");
+                    return;
+                }
 
-            int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
-            int amplitude = holidaysSorted.Count;
-            if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
-            {
-                Utils.Info("Vous avez annulés");
-                return;
+                int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
+                int amplitude = holidaysSorted.Count;
+                if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
+                    return;
+
+                HolidayManager.Instance.Save(new Holiday(startingDate,endingDate,AuthManager.Instance.User));
+                updateCalendar();
+                Utils.Info("Demande de congé envoyée. Vous recevrez une réponse par mail incessement sous peu.");
+
+
             }
-            
         }
 
         private void previousYear_Click(object sender, EventArgs e)
