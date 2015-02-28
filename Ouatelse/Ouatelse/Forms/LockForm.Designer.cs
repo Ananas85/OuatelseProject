@@ -126,6 +126,7 @@
             this.Controls.Add(this.username);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LockForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Session verrouillée";
             this.ResumeLayout(false);
             this.PerformLayout();

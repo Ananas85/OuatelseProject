@@ -1,39 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Ouatelse.Managers;
 
 namespace Ouatelse.Models
 {
-    public class ManyCollection<EntityT>
+    /// <summary>
+    /// Représente une relation de type OneToMany
+    /// 
+    /// L'"entité source" est le modèle depuis lequel la relation est établie.
+    /// </summary>
+    /// <typeparam name="TModel">Modèle que l'on souhaite associer</typeparam>
+    public class ManyCollection<TModel>
     {
-        private List<EntityT> items = new List<EntityT>();
-        private string column;
-        private object id;
-        private IManager<EntityT> manager;
+        private readonly List<TModel> items = new List<TModel>();
+        private readonly BaseModel sourceModel;
+        private readonly string column;
+        private readonly string property;
+        private readonly IManager<TModel> manager;
 
-        public ManyCollection(IManager<EntityT> manager, string column, string property, object id)
+        /// <summary>
+        /// Représente une relation de type ManyToMany
+        /// </summary>
+        /// <param name="sourceModel">Entité source</param>
+        /// <param name="manager">Manager du modèle associé TModel</param>
+        /// <param name="column">Colonne de la BDD dans la table de l'entité source contenant l'id du modèle associé</param>
+        /// <param name="property">Propriété de TModele référençant l'entité source</param>
+        public ManyCollection(BaseModel sourceModel, IManager<TModel> manager, string column, string property)
         {
+            this.sourceModel = sourceModel;
             this.column = column;
-            this.id = id;
+            this.property = property;
             this.manager = manager;
             Reload();
         }
 
+        /// <summary>
+        /// Recharge la liste d'objets depuis la base de données
+        /// </summary>
         public void Reload()
         {
             items.Clear();
-            items.AddRange(manager.Filter(String.Format(" WHERE {0} = '{1}'", column, id)));
+            items.AddRange(manager.Filter(String.Format(" WHERE {0} = '{1}'", column, sourceModel.Id)));
         }
 
-        public void Add(EntityT entity)
+        /// <summary>
+        /// Ajoute entity dans la table associée
+        /// </summary>
+        /// <param name="entity">Entité à ajouter</param>
+        public void Add(TModel entity)
         {
-            /*Type t = typeof(entity);
-            t.GetProperty(property).SetValue(entity, Int32.Parse(this.id.ToString()));
-            manager.Save(entity);
-            items.Add(entity);*/
+            Type t = typeof(TModel);                                // On récupère le type du modèle pour la Reflection
+            t.GetProperty(property).SetValue(entity, sourceModel);  // On définit la propriété qui accède à notre entité source
+            manager.Save(entity as BaseModel);                      // On persiste l'entité
+            items.Add(entity);                                      // On l'ajoute localement dans la liste pour éviter un Reload depuis la BDD
+        }
+
+        /// <summary>
+        /// Retourne les objets issus de la relation.
+        /// </summary>
+        public TModel[] Items
+        {
+            get { return items.ToArray(); }
+        }
+
+        public bool Delete(TModel entity)
+        {
+            BaseModel model = entity as BaseModel;
+            if (model == null || !model.Exists)
+                return false;
+
+            return ((BaseManager<TModel>)manager).Delete(model);
+        }
+
+        public bool DeleteAll()
+        {
+            return Items.All(Delete);
         }
     }
 }

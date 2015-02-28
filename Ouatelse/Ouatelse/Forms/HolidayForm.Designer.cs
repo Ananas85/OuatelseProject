@@ -492,6 +492,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HolidayForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse  - Gestion des congés";
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

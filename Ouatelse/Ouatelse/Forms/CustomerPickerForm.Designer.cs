@@ -179,6 +179,7 @@
             this.Controls.Add(this.nouveau);
             this.Controls.Add(this.customerListView);
             this.Name = "CustomerPickerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sélection d\'un client";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

@@ -31,7 +31,11 @@ namespace Ouatelse
         /// </summary>
         private MySqlConnection connection = null;
 
-        private long? _lastInsertId = null;
+        private long? lastInsertId = null;
+
+        public bool isLoggingEnabled { get; private set; }
+
+        private List<string> queryLog = new List<string>(); 
 
         /// <summary>
         /// Methode indispensable pour le pattern singleton Database.Instance.function
@@ -46,6 +50,7 @@ namespace Ouatelse
         /// </summary>
         private Database()
         {
+            this.isLoggingEnabled = true;
             if (!Utils.CheckServer()) return;
             this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
             this.connection.Open();
@@ -67,7 +72,8 @@ namespace Ouatelse
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
                 cmd.ExecuteNonQuery();
-                _lastInsertId = cmd.LastInsertedId;
+                lastInsertId = cmd.LastInsertedId;
+                if (isLoggingEnabled) queryLog.Add(query);
                 return true;
             }
             catch
@@ -85,6 +91,9 @@ namespace Ouatelse
                 return false;
             }
 
+            if (parameters == null)
+                parameters = new Dictionary<string, object>();
+
             try
             {
                 MySqlCommand cmd = this.connection.CreateCommand();
@@ -92,6 +101,7 @@ namespace Ouatelse
                 cmd.CommandText = runningQuery;
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
+                if (isLoggingEnabled) queryLog.Add(query);
                 return cmd.ExecuteScalar();
             }
             catch
@@ -116,6 +126,7 @@ namespace Ouatelse
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
+                if (isLoggingEnabled) queryLog.Add(query);
                 return ds;
             }
             catch
@@ -129,7 +140,12 @@ namespace Ouatelse
 
         public long? LastInsertId
         {
-            get { return _lastInsertId; }
+            get { return lastInsertId; }
+        }
+
+        public string[] LoggedQueries
+        {
+            get { return queryLog.ToArray(); }
         }
 
         /// <summary>
