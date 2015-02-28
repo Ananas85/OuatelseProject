@@ -260,7 +260,7 @@ namespace Ouatelse.Forms
             int amplitude = holidaysSorted.Count;
             if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
             {
-                Utils.Info("Vous avez annulé");
+                //Utils.Info("Vous avez annulé");
                 return;
             }
         }
