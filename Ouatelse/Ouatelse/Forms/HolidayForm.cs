@@ -281,7 +281,7 @@ namespace Ouatelse.Forms
             int amplitude = holidaysSorted.Count;
             if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude, 30 - (workingDate + alreadyPresent)).ShowDialog() != DialogResult.OK)
             {
-                Utils.Info("Vous avez annulé");
+                //Utils.Info("Vous avez annulé");
                 return;
             }
             HolidayManager.Instance.Save(new Holiday(startingDate, endingDate, AuthManager.Instance.User));
