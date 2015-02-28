@@ -1,10 +1,11 @@
-﻿using Ouatelse.Managers;
+using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Remoting;
 
 
 namespace Ouatelse.Models
@@ -209,6 +210,7 @@ namespace Ouatelse.Models
             }
             return false;
         }
+
         #endregion
 
         #region surcharge de l'opérateur !=
@@ -222,6 +224,17 @@ namespace Ouatelse.Models
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+        #endregion
+
+        #region Surcharge de to String 
+        public override string ToString()
+        {
+            return "ID : " + this.Id.ToString() + Environment.NewLine +
+                   "Nom : " + this.LastName + Environment.NewLine +
+                   "Prénom :" + this.FirstName + Environment.NewLine +
+                   "Address1 : " + this.Address1 + Environment.NewLine +
+                   " Gender : " + this.Gender.Name + Environment.NewLine;
         }
         #endregion
     }

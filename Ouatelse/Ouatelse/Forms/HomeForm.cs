@@ -1,4 +1,4 @@
-﻿using Ouatelse.Forms;
+using Ouatelse.Forms;
 using Ouatelse.Managers;
 using Ouatelse.Models;
 using System;
@@ -32,8 +32,7 @@ namespace Ouatelse
         {
             if (AuthManager.Instance.User == null)
             {
-                LoginForm loginForm = new LoginForm();
-                loginForm.ShowDialog();
+                new LoginForm().ShowDialog();
                 if (AuthManager.Instance.User != null)
                 {
                     ReloadUser();
@@ -108,8 +107,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void clientsBtn_Click(object sender, EventArgs e)
         {
-            ManageCustomersForm customerForm = new ManageCustomersForm();
-            customerForm.ShowDialog();
+            new ManageCustomersForm().ShowDialog();
         }
 
         /// <summary>
@@ -129,8 +127,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void salarieBtn_Click(object sender, EventArgs e)
         {
-            ManageEmployeesForm employeeForm = new ManageEmployeesForm();
-            employeeForm.ShowDialog();
+            new ManageEmployeesForm().ShowDialog();
         }
 
         /// <summary>
@@ -140,8 +137,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void produitBtn_Click(object sender, EventArgs e)
         {
-            ProductsForm productForm = new ProductsForm();
-            productForm.ShowDialog();
+            new ProductsForm().ShowDialog();
         }
 
         /// <summary>
@@ -151,8 +147,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void venteBtn_Click(object sender, EventArgs e)
         {
-            SalesForm salesForm = new SalesForm();
-            salesForm.ShowDialog();
+            new SalesForm().ShowDialog();
         }
 
         /// <summary>
@@ -162,18 +157,12 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void assistanceBtn_Click(object sender, EventArgs e)
         {
-            SupportForm supportForm = new SupportForm();
-            supportForm.ShowDialog();
+            new SupportForm().ShowDialog();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void holliday_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void HomeForm_Load(object sender, EventArgs e)
-        {
-            
+            new HolidayForm().ShowDialog();
         }
     }
 }

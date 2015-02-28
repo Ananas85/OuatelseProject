@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,6 +61,18 @@
     <Compile Include="Forms\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CustomerPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerPickerForm.Designer.cs">
+      <DependentUpon>CustomerPickerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HolidayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HolidayForm.Designer.cs">
+      <DependentUpon>HolidayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +122,18 @@
     </Compile>
     <Compile Include="Forms\LostPasswordForm.Designer.cs">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\newHolidaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\newHolidaysForm.Designer.cs">
+      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewProductForm.Designer.cs">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MailSender.cs" />
     <Compile Include="Forms\ProductsForm.cs">
@@ -164,9 +188,20 @@
     <Compile Include="Models\Store.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerPickerForm.resx">
+      <DependentUpon>CustomerPickerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HolidayForm.resx">
+      <DependentUpon>HolidayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
@@ -192,16 +227,17 @@
     <EmbeddedResource Include="Forms\LostPasswordForm.resx">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\newHolidaysForm.resx">
+      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewProductForm.resx">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -250,6 +286,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ouatelse-04.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-061.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-062.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-051.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-052.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-full-05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ouatelse-06.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

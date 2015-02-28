@@ -118,23 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="modifiedCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\modifiedCustomer.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Ouatelse-05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ouatelse-051.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="newCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\newCustomer.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="forgottenPassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forgottenPassword.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="deleteCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\deleteCustomer.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="modifiedEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\modifiedEmployee.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="newEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\newEmployee.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="deleteEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deleteEmployee.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -142,10 +130,28 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ouatelse-petit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="newEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newEmployee.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Ouatelse-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ouatelse-04.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="deleteCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deleteCustomer.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="modifiedEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modifiedEmployee.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="forgottenPassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forgottenPassword.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="modifiedCustomer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modifiedCustomer.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Ouatelse-full-05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ouatelse-full-05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

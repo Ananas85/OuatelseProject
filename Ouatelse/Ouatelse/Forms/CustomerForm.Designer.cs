@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerForm));
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -63,6 +62,7 @@
             this.Statistiques = new System.Windows.Forms.TabPage();
             this.Factures = new System.Windows.Forms.TabPage();
             this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CommentsContainer.SuspendLayout();
@@ -96,7 +96,7 @@
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cancelButton.Location = new System.Drawing.Point(368, 31);
+            this.cancelButton.Location = new System.Drawing.Point(392, 24);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 40);
             this.cancelButton.TabIndex = 85;
@@ -110,7 +110,7 @@
             this.validateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.validateButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.validateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.validateButton.Location = new System.Drawing.Point(467, 31);
+            this.validateButton.Location = new System.Drawing.Point(487, 24);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(89, 40);
             this.validateButton.TabIndex = 84;
@@ -298,8 +298,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(107, 25);
+            this.label1.Location = new System.Drawing.Point(132, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(243, 40);
@@ -308,10 +309,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
+            this.pictureBox1.Location = new System.Drawing.Point(-8, -3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 65);
+            this.pictureBox1.Size = new System.Drawing.Size(147, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 61;
             this.pictureBox1.TabStop = false;
@@ -397,6 +399,14 @@
             this.EmailOnUpdate.Text = "Email à la modification";
             this.EmailOnUpdate.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Location = new System.Drawing.Point(111, -2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(525, 90);
+            this.label13.TabIndex = 98;
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,7 +414,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(586, 606);
-            this.ControlBox = false;
             this.Controls.Add(this.EmailOnUpdate);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label10);
@@ -435,6 +444,7 @@
             this.Controls.Add(this.Id);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -485,5 +495,6 @@
         private System.Windows.Forms.TabPage Statistiques;
         private System.Windows.Forms.TabPage Factures;
         private System.Windows.Forms.CheckBox EmailOnUpdate;
+        private System.Windows.Forms.Label label13;
     }
 }

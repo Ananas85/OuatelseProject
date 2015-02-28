@@ -101,6 +101,9 @@ namespace Ouatelse.Forms
                         case Employee.ValidationResult.WRONG_USERNAME:
                             error += "Erreur dans la saisie de l'identifiant ( il doit être obligatoirement rempli et ne doit pas contenir de caractères spéciaux )" + Environment.NewLine;
                             break;
+                        case Employee.ValidationResult.ALREADY_USED_USERNAME:
+                            error += "Erreur dans la saisie de l'identifiant ( identifiant déjà utilisé )" + Environment.NewLine;
+                            break;
                         case Employee.ValidationResult.WRONG_ADRESS:
                             error += "Erreur dans la saisie de l'adresse ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
@@ -119,6 +122,9 @@ namespace Ouatelse.Forms
                         case Employee.ValidationResult.WRONG_EMAIL:
                             error += "Erreur dans la saisie du mail ( elle doit respecter le format mail )" + Environment.NewLine;
                             break;
+                        case Employee.ValidationResult.ALREADY_USED_MAIL:
+                            error += "Erreur dans la saisie du mail ( adresse mail déjà utilisée )" + Environment.NewLine;
+                            break;
                         case Employee.ValidationResult.WRONG_PHONENUMBER:
                             error += "Erreur dans la saisie du numéro de téléphone ( 10 caractères )" + Environment.NewLine;
                             break;
@@ -136,7 +142,6 @@ namespace Ouatelse.Forms
            
         }
         #endregion
-
 
         #region Chargement des attributs étrangers
         /// <summary>
@@ -272,5 +277,6 @@ namespace Ouatelse.Forms
             return obj;
         }
         #endregion
+
     }
 }

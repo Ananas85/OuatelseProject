@@ -41,7 +41,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.clientsBtn = new System.Windows.Forms.Button();
             this.salarieBtn = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.holliday = new System.Windows.Forms.Button();
             this.assistanceBtn = new System.Windows.Forms.Button();
             this.venteBtn = new System.Windows.Forms.Button();
             this.produitBtn = new System.Windows.Forms.Button();
@@ -74,7 +74,7 @@
             this.factureBtn.BackColor = System.Drawing.Color.DodgerBlue;
             this.factureBtn.FlatAppearance.BorderSize = 0;
             this.factureBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.factureBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.factureBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.factureBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.factureBtn.Location = new System.Drawing.Point(85, 121);
             this.factureBtn.Name = "factureBtn";
@@ -142,7 +142,7 @@
             this.button9.Enabled = false;
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button9.Location = new System.Drawing.Point(85, 301);
             this.button9.Name = "button9";
@@ -180,19 +180,20 @@
             this.salarieBtn.UseVisualStyleBackColor = false;
             this.salarieBtn.Click += new System.EventHandler(this.salarieBtn_Click);
             // 
-            // button5
+            // holliday
             // 
-            this.button5.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button5.Enabled = false;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button5.Location = new System.Drawing.Point(274, 301);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(184, 84);
-            this.button5.TabIndex = 19;
-            this.button5.UseVisualStyleBackColor = false;
+            this.holliday.BackColor = System.Drawing.Color.DodgerBlue;
+            this.holliday.FlatAppearance.BorderSize = 0;
+            this.holliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.holliday.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.holliday.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.holliday.Location = new System.Drawing.Point(274, 301);
+            this.holliday.Name = "holliday";
+            this.holliday.Size = new System.Drawing.Size(184, 84);
+            this.holliday.TabIndex = 19;
+            this.holliday.Text = "Congés";
+            this.holliday.UseVisualStyleBackColor = false;
+            this.holliday.Click += new System.EventHandler(this.holliday_Click);
             // 
             // assistanceBtn
             // 
@@ -214,7 +215,7 @@
             this.venteBtn.BackColor = System.Drawing.Color.DodgerBlue;
             this.venteBtn.FlatAppearance.BorderSize = 0;
             this.venteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.venteBtn.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.venteBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.venteBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.venteBtn.Location = new System.Drawing.Point(464, 211);
             this.venteBtn.Name = "venteBtn";
@@ -267,7 +268,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(782, 121);
             this.label1.TabIndex = 24;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // HomeForm
             // 
@@ -279,7 +279,7 @@
             this.Controls.Add(this.produitBtn);
             this.Controls.Add(this.venteBtn);
             this.Controls.Add(this.assistanceBtn);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.holliday);
             this.Controls.Add(this.salarieBtn);
             this.Controls.Add(this.clientsBtn);
             this.Controls.Add(this.button9);
@@ -297,7 +297,6 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ouatelse - Accueil";
-            this.Load += new System.EventHandler(this.HomeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -317,7 +316,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button clientsBtn;
         private System.Windows.Forms.Button salarieBtn;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button holliday;
         private System.Windows.Forms.Button assistanceBtn;
         private System.Windows.Forms.Button venteBtn;
         private System.Windows.Forms.Button produitBtn;

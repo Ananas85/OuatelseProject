@@ -113,9 +113,7 @@ namespace Ouatelse
             CustomerManager.Instance.Create(cs.getCustomer());
 
             //Rechargement du listView
-            Reload(CustomerManager.Instance.All());
-
-            
+            Reload(CustomerManager.Instance.All()); 
         }
         #endregion
 
@@ -340,7 +338,9 @@ namespace Ouatelse
         {
             if (currentCustomer != null)
             {
-                if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentCustomer.LastName + " " + currentCustomer.FirstName + " ? "))
+                if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentCustomer.LastName + " " +
+                                 currentCustomer.FirstName + " ? "))
+                {
                     if (CustomerManager.Instance.Delete(currentCustomer))
                     {
                         Reload(CustomerManager.Instance.All());
@@ -349,6 +349,7 @@ namespace Ouatelse
                             MailSender.Instance.deleteCustomer(currentCustomer);
                         currentCustomer = null;
                     }
+                }
             }
         }
 
