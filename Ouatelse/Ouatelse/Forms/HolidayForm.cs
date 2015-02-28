@@ -18,6 +18,7 @@ namespace Ouatelse.Forms
         private int currentYear = DateTime.Now.Year;
         private List<DateTime> unworkingDate;
         private int alreadyPresent;
+        private List<Holiday> putHolidays; 
 
         //Liste des jours où l'on ne travaille pas
         private List<DateTime> permanentUnworkingDate;
@@ -107,7 +108,6 @@ namespace Ouatelse.Forms
 
         public void fillCalendar()
         {
-            alreadyPresent = 0;
             fillPermanentUnworkingDate();
             unworkingDate = new List<DateTime>();
             preventPreviousYear();
@@ -137,21 +137,6 @@ namespace Ouatelse.Forms
                             cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
                             cell.Style.ForeColor = Color.Red;
                         }
-
-                        if (dateValue == new DateTime(currentYear, 05, 29))
-                        {
-                            //Gestion des vacances déjà posées:
-                            string query = "WHERE salaries_id = " +
-                                           AuthManager.Instance.User.Id + " AND '" + String.Format("{0:yyyy-MM-dd}", dateValue) +
-                                           "' BETWEEN date_debut AND date_fin";
-                            Holiday stepHoliday = HolidayManager.Instance.Filter(query)[0];
-                            if (stepHoliday != null)
-                            {
-                                cell.Style.BackColor = stepHoliday.Accepted ? Color.ForestGreen : Color.Orange;
-                                alreadyPresent++;
-                            }
-                        }
-
                     }
                     else
                     {
@@ -161,7 +146,32 @@ namespace Ouatelse.Forms
                 }
             }
             preventSortingColumns();
+            UpdateAlreadyPost();
         }
+
+        public void UpdateAlreadyPost()
+        {
+            alreadyPresent = 0;
+            putHolidays = new List<Holiday>();
+            putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)" ).ToList();
+            Color day;
+            DateTime current;
+            foreach (Holiday holiday in putHolidays)
+            {
+                day = holiday.Accepted ? Color.Green : Color.Orange;
+                current = holiday.StartingDate;
+                for (int i = 0; i <= holiday.numberOfDays(); ++i)
+                {
+                    if (isWorkingDate(current))
+                        alreadyPresent++;
+                    holidays.Rows[current.Month - 1].Cells[current.Day - 1].Style.BackColor = day;
+                    current = current.AddDays(1);
+                }
+            }
+            this.nbPut.Text = alreadyPresent.ToString();
+            this.nbRest.Text = (30 - alreadyPresent).ToString();
+        }
+
 
         public void updateCalendar()
         {
@@ -200,6 +210,7 @@ namespace Ouatelse.Forms
                     }
                 }
             }
+            UpdateAlreadyPost();
         }
 
         public void preventSortingColumns()
@@ -224,21 +235,20 @@ namespace Ouatelse.Forms
 
         private void newholiday_Click(object sender, EventArgs e)
         {
-           
+            if (alreadyPresent == 30)
+            {
+                Utils.Error("Vous avez déjà posé tous vos jours de congés");
+                return;
+            }
             
             
             String data = "";
-            List<DateTime> holidaysSelected = new List<DateTime>();
             List<DateTime> holidaysSorted = new List<DateTime>();
-            foreach(DataGridViewCell c in holidays.SelectedCells)
-            {
-                if (c.Style.BackColor != Color.Gray)
-                {
-                    DateTime dateValue = new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1);
-                    holidaysSelected.Add(dateValue);  
-                }
-                
-            }
+
+            //Utilisation de link, on récupère tous les jours sélectionnés
+            List<DateTime> holidaysSelected = (from DataGridViewCell c in holidays.SelectedCells
+                                               where c.Style.BackColor != Color.Gray 
+                                               select new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1)).ToList();
 
             holidaysSorted = SortAscending(holidaysSelected);
 
@@ -255,14 +265,28 @@ namespace Ouatelse.Forms
                 Utils.Error("Vous devez choisir des jours consécutifs");
                 return;
             }
+            int workingDate = 0;
+            for (DateTime p = startingDate; p <= endingDate; p = p.AddDays(1))
+            {
+                if (p.DayOfWeek != DayOfWeek.Sunday)
+                    workingDate++;
+            }
+            if (workingDate + alreadyPresent > 30)
+            {
+                Utils.Error("Vous ne pouvez pas poser plus de congés que vous en avez le droit.");
+                return;
+            }
 
             int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
             int amplitude = holidaysSorted.Count;
-            if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude).ShowDialog() != DialogResult.OK)
+            if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude, 30 - (workingDate + alreadyPresent)).ShowDialog() != DialogResult.OK)
             {
                 Utils.Info("Vous avez annulé");
                 return;
             }
+            HolidayManager.Instance.Save(new Holiday(startingDate, endingDate, AuthManager.Instance.User));
+            updateCalendar();
+            Utils.Info("Votre demande de congé a bien été prise en compte");
         }
 
         private void previousYear_Click(object sender, EventArgs e)

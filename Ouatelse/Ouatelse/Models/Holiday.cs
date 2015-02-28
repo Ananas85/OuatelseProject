@@ -30,6 +30,20 @@ namespace Ouatelse.Models
             Accepted = false;
         }
 
+        public List<DateTime> ConcernedDays()
+        {
+            List<DateTime> concerned = new List<DateTime>();
+            for (DateTime i = StartingDate.Date; i.Date <= EndingDate.Date; i.AddDays(1))
+            {
+                concerned.Add(i);
+            }
+            return concerned;
+        }
+
+        public int numberOfDays()
+        {
+            return (EndingDate - StartingDate).Days;
+        }
         /// <summary>
         /// Permet d'hydrater l'objet
         /// </summary>

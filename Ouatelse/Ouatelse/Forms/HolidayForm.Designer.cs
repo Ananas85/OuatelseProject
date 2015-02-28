@@ -68,6 +68,10 @@
             this.year = new System.Windows.Forms.Label();
             this.previousYear = new System.Windows.Forms.Button();
             this.nextYear = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nbPut = new System.Windows.Forms.Label();
+            this.nbRest = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -403,7 +407,7 @@
             // year
             // 
             this.year.AutoSize = true;
-            this.year.Location = new System.Drawing.Point(710, 156);
+            this.year.Location = new System.Drawing.Point(951, 160);
             this.year.Name = "year";
             this.year.Size = new System.Drawing.Size(29, 13);
             this.year.TabIndex = 30;
@@ -411,7 +415,7 @@
             // 
             // previousYear
             // 
-            this.previousYear.Location = new System.Drawing.Point(672, 151);
+            this.previousYear.Location = new System.Drawing.Point(913, 155);
             this.previousYear.Name = "previousYear";
             this.previousYear.Size = new System.Drawing.Size(32, 23);
             this.previousYear.TabIndex = 31;
@@ -421,7 +425,7 @@
             // 
             // nextYear
             // 
-            this.nextYear.Location = new System.Drawing.Point(745, 151);
+            this.nextYear.Location = new System.Drawing.Point(986, 155);
             this.nextYear.Name = "nextYear";
             this.nextYear.Size = new System.Drawing.Size(32, 23);
             this.nextYear.TabIndex = 32;
@@ -429,12 +433,52 @@
             this.nextYear.UseVisualStyleBackColor = true;
             this.nextYear.Click += new System.EventHandler(this.nextYear_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(422, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 13);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Nombre de jours posés : ";
+            // 
+            // nbPut
+            // 
+            this.nbPut.AutoSize = true;
+            this.nbPut.Location = new System.Drawing.Point(544, 160);
+            this.nbPut.Name = "nbPut";
+            this.nbPut.Size = new System.Drawing.Size(35, 13);
+            this.nbPut.TabIndex = 34;
+            this.nbPut.Text = "nbPut";
+            // 
+            // nbRest
+            // 
+            this.nbRest.AutoSize = true;
+            this.nbRest.Location = new System.Drawing.Point(746, 160);
+            this.nbRest.Name = "nbRest";
+            this.nbRest.Size = new System.Drawing.Size(41, 13);
+            this.nbRest.TabIndex = 36;
+            this.nbRest.Text = "nbRest";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(610, 160);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(130, 13);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Nombre de jours restants :";
+            // 
             // HolidayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1054, 509);
+            this.Controls.Add(this.nbRest);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.nbPut);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.nextYear);
             this.Controls.Add(this.previousYear);
             this.Controls.Add(this.year);
@@ -498,5 +542,9 @@
         private System.Windows.Forms.Label year;
         private System.Windows.Forms.Button previousYear;
         private System.Windows.Forms.Button nextYear;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label nbPut;
+        private System.Windows.Forms.Label nbRest;
+        private System.Windows.Forms.Label label5;
     }
 }
