@@ -58,6 +58,7 @@ namespace Ouatelse.Managers
         #endregion
 
         #region Récupération des entités de la table selon un filtre SQL
+
         /// <summary>
         /// Permet de récupérer certaines entités selon un filtre SQL.
         /// </summary>

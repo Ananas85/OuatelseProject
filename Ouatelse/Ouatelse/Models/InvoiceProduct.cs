@@ -30,5 +30,10 @@ namespace Ouatelse.Models
             res.Add("produits_id", Product.Id.ToString());
             return res;
         }
+
+        public float Price
+        {
+            get { return Quantity*Product.SellPrice; }
+        }
     }
 }
