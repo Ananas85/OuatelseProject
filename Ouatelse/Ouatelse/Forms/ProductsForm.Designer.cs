@@ -220,6 +220,7 @@
             this.Controls.Add(this.listView_products);
             this.Controls.Add(this.panel1);
             this.Name = "ProductsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Gestion du stock";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -449,6 +449,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CustomerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.CustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);

@@ -194,6 +194,7 @@
             this.Controls.Add(this.designationTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Name = "NewProductForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nouveau produit";
             this.ResumeLayout(false);
             this.PerformLayout();

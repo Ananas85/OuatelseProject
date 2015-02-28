@@ -234,6 +234,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewHolidaysForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse - Demande de congé";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

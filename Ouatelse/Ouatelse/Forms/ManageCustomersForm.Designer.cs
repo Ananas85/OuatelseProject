@@ -40,18 +40,18 @@
             this.code_postal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.villes_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rightClickCustomer = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deletecustomer = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.nouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CustomersNumber = new System.Windows.Forms.Label();
-            this.rightClickCustomer = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rightClickCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.rightClickCustomer.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -154,6 +154,28 @@
             this.pays.Text = "Pays";
             this.pays.Width = 89;
             // 
+            // rightClickCustomer
+            // 
+            this.rightClickCustomer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierCeClientToolStripMenuItem,
+            this.supprimerCeClientToolStripMenuItem});
+            this.rightClickCustomer.Name = "rightClickCustomer";
+            this.rightClickCustomer.Size = new System.Drawing.Size(177, 48);
+            // 
+            // modifierCeClientToolStripMenuItem
+            // 
+            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
+            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
+            this.modifierCeClientToolStripMenuItem.Click += new System.EventHandler(this.modifierCeClientToolStripMenuItem_Click);
+            // 
+            // supprimerCeClientToolStripMenuItem
+            // 
+            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
+            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
+            this.supprimerCeClientToolStripMenuItem.Click += new System.EventHandler(this.supprimerCeClientToolStripMenuItem_Click);
+            // 
             // deletecustomer
             // 
             this.deletecustomer.BackColor = System.Drawing.Color.IndianRed;
@@ -230,28 +252,6 @@
             this.CustomersNumber.Text = "--";
             this.CustomersNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // rightClickCustomer
-            // 
-            this.rightClickCustomer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifierCeClientToolStripMenuItem,
-            this.supprimerCeClientToolStripMenuItem});
-            this.rightClickCustomer.Name = "rightClickCustomer";
-            this.rightClickCustomer.Size = new System.Drawing.Size(177, 48);
-            // 
-            // modifierCeClientToolStripMenuItem
-            // 
-            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
-            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
-            this.modifierCeClientToolStripMenuItem.Click += new System.EventHandler(this.modifierCeClientToolStripMenuItem_Click);
-            // 
-            // supprimerCeClientToolStripMenuItem
-            // 
-            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
-            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
-            this.supprimerCeClientToolStripMenuItem.Click += new System.EventHandler(this.supprimerCeClientToolStripMenuItem_Click);
-            // 
             // ManageCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,10 +270,11 @@
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(929, 544);
             this.Name = "ManageCustomersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse : Gestion des clients";
+            this.rightClickCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.rightClickCustomer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
