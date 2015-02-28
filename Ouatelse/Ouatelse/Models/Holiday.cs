@@ -14,6 +14,13 @@ namespace Ouatelse.Models
         public Employee Employee { get; set; }
         public Boolean Accepted { get; set; }
 
+        public Holiday()
+        {
+            StartingDate = DateTime.Now;
+            EndingDate = DateTime.Now.AddDays(1);
+            Employee = null;
+            Accepted = false;
+        }
 
         public Holiday(DateTime sd, DateTime ed, Employee e)
         {
