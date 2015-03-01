@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Management;
 using Ouatelse.Models;
 using Ouatelse.Managers;
+using System.Web;
 
 namespace Ouatelse.Forms
 {
@@ -130,13 +131,34 @@ namespace Ouatelse.Forms
 
         private void supportMessageTB_MouseClick(object sender, MouseEventArgs e)
         {
-            supportMessageTB.Clear();
+            if (supportMessageTB.Text == "Formulez votre message d'assistance en étant le plus précis possible !")
+                supportMessageTB.Clear();
         }
 
         private void validateButton_Click(object sender, EventArgs e)
         {
-            this.message = supportMessageTB.Text;
-            this.category = categoryCB.SelectedItem.ToString();
+            string badValidation = "";
+            // Validation
+            if (categoryCB.SelectedItem == null)
+                badValidation += "Veuillez choisir une catégorie" + "\n";
+
+            if (supportMessageTB.Text == "" || supportMessageTB.Text == "Formulez votre message d'assistance en étant le plus précis possible !")
+                badValidation += "Veuillez entrer un message" + "\n";
+            
+            if(badValidation != "")
+            {
+                Utils.Warning(badValidation);
+                return;
+            }
+            else
+            {
+                // prevent html tags and support multiline
+                this.message = HttpUtility.HtmlEncode(supportMessageTB.Text).Replace("\n", "<br/>");
+
+                this.category = categoryCB.SelectedItem.ToString();
+            }
+
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }      
     }
 }

@@ -160,8 +160,8 @@ namespace Ouatelse
             SupportForm sf = new SupportForm(AuthManager.Instance.User);
             if( sf.ShowDialog() != DialogResult.OK)
                 return;
-
-            MailSender.Instance.supportRequest(sf.Os, sf.Version, sf.User, sf.Date, sf.Category, sf.Message);
+            else
+                MailSender.Instance.supportRequest(sf.Os, sf.Version, sf.User, sf.Date, sf.Category, sf.Message);
         }
 
         private void holliday_Click(object sender, EventArgs e)
