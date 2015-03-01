@@ -35,7 +35,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.startingDate = new System.Windows.Forms.Label();
             this.endingDate = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.amplitude = new System.Windows.Forms.Label();
             this.rest = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,21 +120,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(189, 102);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(219, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.Size = new System.Drawing.Size(114, 19);
             this.label3.TabIndex = 105;
-            this.label3.Text = "Début du congé:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(204, 124);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 106;
-            this.label4.Tag = "";
-            this.label4.Text = "Fin du congé:";
+            this.label3.Text = "Durée du congé :";
             // 
             // label6
             // 
@@ -147,18 +138,22 @@
             // 
             // startingDate
             // 
-            this.startingDate.Location = new System.Drawing.Point(286, 102);
+            this.startingDate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startingDate.ForeColor = System.Drawing.Color.Green;
+            this.startingDate.Location = new System.Drawing.Point(12, 124);
             this.startingDate.Name = "startingDate";
-            this.startingDate.Size = new System.Drawing.Size(137, 13);
+            this.startingDate.Size = new System.Drawing.Size(235, 32);
             this.startingDate.TabIndex = 109;
             this.startingDate.Text = "-";
-            this.startingDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.startingDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // endingDate
             // 
-            this.endingDate.Location = new System.Drawing.Point(286, 124);
+            this.endingDate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endingDate.ForeColor = System.Drawing.Color.Firebrick;
+            this.endingDate.Location = new System.Drawing.Point(305, 124);
             this.endingDate.Name = "endingDate";
-            this.endingDate.Size = new System.Drawing.Size(137, 13);
+            this.endingDate.Size = new System.Drawing.Size(235, 32);
             this.endingDate.TabIndex = 110;
             this.endingDate.Text = "-";
             this.endingDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,6 +203,17 @@
             this.rest.TabIndex = 115;
             this.rest.Text = "-";
             // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Wingdings", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.LightGray;
+            this.label4.Location = new System.Drawing.Point(253, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 32);
+            this.label4.TabIndex = 109;
+            this.label4.Text = "►";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // NewHolidaysForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,9 +226,9 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.nbDay);
             this.Controls.Add(this.endingDate);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.startingDate);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelButton);
@@ -251,7 +257,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label startingDate;
         private System.Windows.Forms.Label endingDate;
@@ -260,5 +265,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label amplitude;
         private System.Windows.Forms.Label rest;
+        private System.Windows.Forms.Label label4;
     }
 }
