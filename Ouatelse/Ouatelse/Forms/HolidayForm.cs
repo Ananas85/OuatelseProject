@@ -316,10 +316,11 @@ namespace Ouatelse.Forms
                 Utils.Error("Vous devez choisir des jours consécutifs");
                 return;
             }
+
             int workingDate = 0;
             for (DateTime p = startingDate; p <= endingDate; p = p.AddDays(1))
             {
-                if (p.DayOfWeek != DayOfWeek.Sunday)
+                if(!isWorkingDate(p))
                     workingDate++;
             }
             if (workingDate + alreadyPresent > 30)

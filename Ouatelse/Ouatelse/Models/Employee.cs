@@ -53,7 +53,7 @@ namespace Ouatelse.Models
             this.MobilePhoneNumber = cursor.Read().ToString();
             this.Email = cursor.Read().ToString();
             this.DateOfBirth = DateTime.Parse(cursor.Read().ToString());
-            this.Comments = cursor.Read().ToString();
+            this.Comments = cursor.Read().ToString().Replace(@"\'", "'");
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Role = RoleManager.Instance.Find(cursor.Read().ToString());
             this.Store = StoreManager.Instance.Find(cursor.Read().ToString());
@@ -64,23 +64,25 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("nom", LastName);
-            res.Add("prenom", FirstName);
-            res.Add("identifiant", Username);
-            res.Add("mot_de_passe", Password);
-            res.Add("adresse1", Address1);
-            res.Add("adresse2", Address2);
-            res.Add("fixe", PhoneNumber);
-            res.Add("portable", MobilePhoneNumber);
-            res.Add("mail", Email);
-            res.Add("naissance", DateOfBirth.ToString("yyyy-MM-dd"));
-            res.Add("notes", Comments);
-            res.Add("villes_id", City.Id.ToString());
-            res.Add("roles_id", Role.Id.ToString());
-            res.Add("magasin_id", Store.Id.ToString());
-            res.Add("civilite_id", Gender.Id.ToString());
-            res.Add("email_modification", Convert.ToInt16(EmailOnUpdate).ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"nom", LastName},
+                {"prenom", FirstName},
+                {"identifiant", Username},
+                {"mot_de_passe", Password},
+                {"adresse1", Address1},
+                {"adresse2", Address2},
+                {"fixe", PhoneNumber},
+                {"portable", MobilePhoneNumber},
+                {"mail", Email},
+                {"naissance", DateOfBirth.ToString("yyyy-MM-dd")},
+                {"notes", Comments},
+                {"villes_id", City.Id.ToString()},
+                {"roles_id", Role.Id.ToString()},
+                {"magasin_id", Store.Id.ToString()},
+                {"civilite_id", Gender.Id.ToString()},
+                {"email_modification", Convert.ToInt16(EmailOnUpdate).ToString()}
+            };
             return res;
         }
         public List<ValidationResult> validate()

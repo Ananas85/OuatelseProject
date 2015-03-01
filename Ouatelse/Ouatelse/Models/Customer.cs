@@ -28,11 +28,7 @@ namespace Ouatelse.Models
         /// <summary>
         /// Obligatoire : L'adresse n°1 du client
         /// </summary>
-        public string Address1
-        {
-            get { return Address1.Replace("\'", "'"); }
-            set { Address1.Replace("'","\'"); }
-        }
+        public string Address1 { get; set; }
 
         /// <summary>
         /// L'adresse n°2 du client
