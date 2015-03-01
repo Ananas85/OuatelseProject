@@ -50,6 +50,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.aRendre = new System.Windows.Forms.TextBox();
+            this.aRegler = new System.Windows.Forms.TextBox();
             this.aRendreLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -68,8 +70,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.quickAdd = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.aRegler = new System.Windows.Forms.TextBox();
-            this.aRendre = new System.Windows.Forms.TextBox();
             this.totalHT = new System.Windows.Forms.TextBox();
             this.totalTVA = new System.Windows.Forms.TextBox();
             this.totalTTC = new System.Windows.Forms.TextBox();
@@ -98,7 +98,7 @@
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cancelButton.Location = new System.Drawing.Point(547, 19);
+            this.cancelButton.Location = new System.Drawing.Point(547, 18);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 40);
             this.cancelButton.TabIndex = 112;
@@ -114,7 +114,7 @@
             this.validateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.validateButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.validateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.validateButton.Location = new System.Drawing.Point(646, 19);
+            this.validateButton.Location = new System.Drawing.Point(646, 18);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(89, 40);
             this.validateButton.TabIndex = 111;
@@ -285,6 +285,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Réglement de la Facture";
             // 
+            // aRendre
+            // 
+            this.aRendre.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aRendre.Location = new System.Drawing.Point(261, 83);
+            this.aRendre.Name = "aRendre";
+            this.aRendre.ReadOnly = true;
+            this.aRendre.Size = new System.Drawing.Size(103, 26);
+            this.aRendre.TabIndex = 112;
+            this.aRendre.Text = "0,00";
+            this.aRendre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // aRegler
+            // 
+            this.aRegler.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aRegler.Location = new System.Drawing.Point(261, 20);
+            this.aRegler.Name = "aRegler";
+            this.aRegler.ReadOnly = true;
+            this.aRegler.Size = new System.Drawing.Size(103, 26);
+            this.aRegler.TabIndex = 112;
+            this.aRegler.Text = "0,00";
+            this.aRegler.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // aRendreLabel
             // 
             this.aRendreLabel.Location = new System.Drawing.Point(166, 83);
@@ -437,7 +459,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(139, 19);
+            this.label1.Location = new System.Drawing.Point(139, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(281, 40);
@@ -448,7 +470,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBox1.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -8);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(147, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -458,7 +480,7 @@
             // label15
             // 
             this.label15.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label15.Location = new System.Drawing.Point(118, -7);
+            this.label15.Location = new System.Drawing.Point(118, -8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(715, 90);
             this.label15.TabIndex = 121;
@@ -489,28 +511,6 @@
             this.button3.TabIndex = 111;
             this.button3.Text = "Rechercher un produit...";
             this.button3.UseVisualStyleBackColor = false;
-            // 
-            // aRegler
-            // 
-            this.aRegler.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aRegler.Location = new System.Drawing.Point(261, 20);
-            this.aRegler.Name = "aRegler";
-            this.aRegler.ReadOnly = true;
-            this.aRegler.Size = new System.Drawing.Size(103, 26);
-            this.aRegler.TabIndex = 112;
-            this.aRegler.Text = "0,00";
-            this.aRegler.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // aRendre
-            // 
-            this.aRendre.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aRendre.Location = new System.Drawing.Point(261, 83);
-            this.aRendre.Name = "aRendre";
-            this.aRendre.ReadOnly = true;
-            this.aRendre.Size = new System.Drawing.Size(103, 26);
-            this.aRendre.TabIndex = 112;
-            this.aRendre.Text = "0,00";
-            this.aRendre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // totalHT
             // 

@@ -112,7 +112,7 @@
             // date
             // 
             this.date.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(108, 16);
+            this.date.Location = new System.Drawing.Point(108, 18);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(226, 56);
             this.date.TabIndex = 7;
