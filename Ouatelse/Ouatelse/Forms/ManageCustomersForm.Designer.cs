@@ -288,16 +288,10 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ListView customerListView;
         private System.Windows.Forms.ColumnHeader id;
-        private System.Windows.Forms.ColumnHeader Nom;
-        private System.Windows.Forms.ColumnHeader Adresse;
-        private System.Windows.Forms.ColumnHeader Ville;
         private System.Windows.Forms.Button deletecustomer;
         private System.Windows.Forms.Button modify;
         private System.Windows.Forms.Button nouveau;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ColumnHeader Prénom;
-        private System.Windows.Forms.ColumnHeader CodePostal;
-        private System.Windows.Forms.ColumnHeader Pays;
         private System.Windows.Forms.Label CustomersNumber;
         private System.Windows.Forms.ColumnHeader prenom;
         private System.Windows.Forms.ColumnHeader nom;

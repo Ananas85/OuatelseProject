@@ -151,13 +151,17 @@ namespace Ouatelse
         }
 
         /// <summary>
-        /// Action sur le bouton vérouiller.
+        /// Action sur le bouton assistance.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void assistanceBtn_Click(object sender, EventArgs e)
         {
-            new SupportForm().ShowDialog();
+            SupportForm sf = new SupportForm(AuthManager.Instance.User);
+            if( sf.ShowDialog() != DialogResult.OK)
+                return;
+
+            MailSender.Instance.supportRequest(sf.Os, sf.Version, sf.User, sf.Date, sf.Category, sf.Message);
         }
 
         private void holliday_Click(object sender, EventArgs e)

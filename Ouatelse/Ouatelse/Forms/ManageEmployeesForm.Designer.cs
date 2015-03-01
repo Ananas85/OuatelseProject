@@ -277,7 +277,6 @@
         #endregion
 
         private System.Windows.Forms.ListView listView_employees;
-        private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader lastname;
         private System.Windows.Forms.ColumnHeader firstname;
         private System.Windows.Forms.ColumnHeader mail;
