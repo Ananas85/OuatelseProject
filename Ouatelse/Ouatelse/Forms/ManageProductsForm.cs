@@ -17,7 +17,7 @@ namespace Ouatelse
     /// <summary>
     /// Classe qui permet de gérer l'ensemble des clients de la base de données
     /// </summary>
-    public partial class ManageProductForm : Form
+    public partial class ManageProductsForm : Form
     {
         Product currentProduct = null;
         string lastColumnClicked = string.Empty;
@@ -26,7 +26,7 @@ namespace Ouatelse
         /// <summary>
         /// Constructeur de la classe
         /// </summary>
-        public ManageProductForm()
+        public ManageProductsForm()
         {
             InitializeComponent();
             //Appelle de la méthode pour remplir les données dans le listView

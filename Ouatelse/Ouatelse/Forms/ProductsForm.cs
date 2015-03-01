@@ -46,26 +46,48 @@ namespace Ouatelse.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ProductForm_Load(object sender, EventArgs e)
+        private void ProductsForm_Load(object sender, EventArgs e)
         {
 
             //On lie notre objet à notre binding
             this.Id.Text = obj.StringId;
             b.Bind(this.NameP, "Text", obj, "Name");
             b.Bind(this.Designation, "Text", obj, "Designation");
-            b.Bind(this.PurchasePrice, "Text", obj, "PurchasePrice");
-            b.Bind(this.SellPrice, "Text", obj, "SellPrice");
-            b.Bind(this.TVA, "Text", obj, "TVA");
             b.Bind(this.EANCode, "Text", obj, "EANCode");
+
             b.Populate();
         }
         #endregion
 
         #region Gestion de la validation du formulaire
-        private void validateButton_Click_1(object sender, EventArgs e)
+        private void validateButton_Click(object sender, EventArgs e)
         {
             //On hydrate notre binding
             b.Hydrate();
+            float val = new float();
+            if (!float.TryParse(this.PurchasePrice.Text, out val))
+            {
+                Utils.Warning("Prix d'achat incorrect");
+                return;
+            };
+            obj.PurchasePrice = val;
+
+            if (!float.TryParse(this.SellPrice.Text, out val))
+            {
+                Utils.Warning("Prix de vente incorrect");
+                return;
+            };
+            obj.SellPrice = val;
+
+            obj.TVA = float.Parse(this.TVA.Text);
+
+            if (!float.TryParse(this.TVA.Text, out val))
+            {
+                Utils.Warning("TVA incorrecte");
+                return;
+            };
+            obj.TVA = val;
+
             //On regarde si notre entité peut être validé en base
             if (obj.validate().Count != 0)
             {
@@ -98,7 +120,10 @@ namespace Ouatelse.Forms
                 return;
             }
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            else
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
         #endregion
 
@@ -108,6 +133,33 @@ namespace Ouatelse.Forms
             return obj;
         }
         #endregion
+
+        private void PurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+
+        private void SellPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
+
+        private void TVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }
 
         //#region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone fixe
         //private void PhoneNumber_KeyPress(object sender, KeyPressEventArgs e)

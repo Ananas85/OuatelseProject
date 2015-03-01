@@ -138,7 +138,7 @@
             this.cancelButton.Location = new System.Drawing.Point(368, 31);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 40);
-            this.cancelButton.TabIndex = 122;
+            this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
@@ -152,9 +152,10 @@
             this.validateButton.Location = new System.Drawing.Point(467, 31);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(89, 40);
-            this.validateButton.TabIndex = 121;
+            this.validateButton.TabIndex = 9;
             this.validateButton.Text = "Valider";
             this.validateButton.UseVisualStyleBackColor = false;
+            this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
             // 
             // label7
             // 
@@ -191,43 +192,46 @@
             this.PurchasePrice.Location = new System.Drawing.Point(114, 203);
             this.PurchasePrice.Name = "PurchasePrice";
             this.PurchasePrice.Size = new System.Drawing.Size(442, 20);
-            this.PurchasePrice.TabIndex = 102;
+            this.PurchasePrice.TabIndex = 4;
+            this.PurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PurchasePrice_KeyPress);
             // 
             // NameP
             // 
             this.NameP.Location = new System.Drawing.Point(114, 149);
             this.NameP.Name = "NameP";
             this.NameP.Size = new System.Drawing.Size(171, 20);
-            this.NameP.TabIndex = 100;
+            this.NameP.TabIndex = 2;
             // 
             // Designation
             // 
             this.Designation.Location = new System.Drawing.Point(114, 177);
             this.Designation.Name = "Designation";
             this.Designation.Size = new System.Drawing.Size(171, 20);
-            this.Designation.TabIndex = 101;
+            this.Designation.TabIndex = 3;
             // 
             // SellPrice
             // 
             this.SellPrice.Location = new System.Drawing.Point(114, 229);
             this.SellPrice.Name = "SellPrice";
             this.SellPrice.Size = new System.Drawing.Size(442, 20);
-            this.SellPrice.TabIndex = 103;
+            this.SellPrice.TabIndex = 5;
+            this.SellPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SellPrice_KeyPress);
             // 
             // TVA
             // 
             this.TVA.Location = new System.Drawing.Point(114, 255);
             this.TVA.Name = "TVA";
             this.TVA.Size = new System.Drawing.Size(69, 20);
-            this.TVA.TabIndex = 104;
+            this.TVA.TabIndex = 6;
+            this.TVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TVA_KeyPress);
             // 
             // EANCode
             // 
             this.EANCode.Location = new System.Drawing.Point(114, 283);
-            this.EANCode.MaxLength = 10;
+            this.EANCode.MaxLength = 13;
             this.EANCode.Name = "EANCode";
             this.EANCode.Size = new System.Drawing.Size(111, 20);
-            this.EANCode.TabIndex = 106;
+            this.EANCode.TabIndex = 7;
             // 
             // Id
             // 
@@ -235,7 +239,7 @@
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
-            this.Id.TabIndex = 98;
+            this.Id.TabIndex = 1;
             // 
             // label1
             // 
@@ -280,7 +284,6 @@
             // 
             // ProductsForm
             // 
-            this.AcceptButton = this.validateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -310,6 +313,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProductsForm";
+            this.Load += new System.EventHandler(this.ProductsForm_Load);
             this.CommentsContainer.ResumeLayout(false);
             this.CommentsContainer.PerformLayout();
             this.tabControl1.ResumeLayout(false);

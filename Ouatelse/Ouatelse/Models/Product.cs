@@ -93,7 +93,7 @@ namespace Ouatelse.Models
         public List<ValidationResult> validate()
         {
             List<ValidationResult> response = new List<ValidationResult>();
-            if (this.Name == null)
+            if (String.IsNullOrWhiteSpace(this.Name))
             {
                 response.Add(ValidationResult.WRONG_NAME);
             }

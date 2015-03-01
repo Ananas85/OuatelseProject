@@ -137,7 +137,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void produitBtn_Click(object sender, EventArgs e)
         {
-            new ProductsForm().ShowDialog();
+            new ManageProductsForm().ShowDialog();
         }
 
         /// <summary>

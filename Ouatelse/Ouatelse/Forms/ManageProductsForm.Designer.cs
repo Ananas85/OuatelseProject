@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse
 {
-    partial class ManageProductForm
+    partial class ManageProductsForm
     {
         /// <summary>
         /// Required designer variable.
