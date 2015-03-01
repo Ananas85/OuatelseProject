@@ -43,7 +43,6 @@
             this.versionLabel = new System.Windows.Forms.Label();
             this.supportMessageTB = new System.Windows.Forms.TextBox();
             this.categoryCB = new System.Windows.Forms.ComboBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.categoryLabel = new System.Windows.Forms.Label();
             this.storeLabel = new System.Windows.Forms.Label();
             this.storeTB = new System.Windows.Forms.TextBox();
@@ -208,10 +207,6 @@
             this.categoryCB.Size = new System.Drawing.Size(159, 21);
             this.categoryCB.TabIndex = 136;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // categoryLabel
             // 
             this.categoryLabel.AutoSize = true;
@@ -292,7 +287,6 @@
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.TextBox supportMessageTB;
         private System.Windows.Forms.ComboBox categoryCB;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label storeLabel;
         private System.Windows.Forms.TextBox storeTB;
