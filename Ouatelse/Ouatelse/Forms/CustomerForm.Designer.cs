@@ -248,6 +248,7 @@
             // CityPostalCode
             // 
             this.CityPostalCode.Location = new System.Drawing.Point(114, 255);
+            this.CityPostalCode.MaxLength = 5;
             this.CityPostalCode.Name = "CityPostalCode";
             this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
             this.CityPostalCode.TabIndex = 6;
