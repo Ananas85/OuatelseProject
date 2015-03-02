@@ -86,6 +86,7 @@ namespace Ouatelse.Forms
                 Utils.Warning("TVA incorrecte");
                 return;
             };
+
             obj.TVA = val;
 
             //On regarde si notre entité peut être validé en base
