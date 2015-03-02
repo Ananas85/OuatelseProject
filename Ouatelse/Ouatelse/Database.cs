@@ -31,17 +31,18 @@ namespace Ouatelse
         /// </summary>
         private MySqlConnection connection = null;
 
+        private long? lastInsertId = null;
+
+        public bool isLoggingEnabled { get; private set; }
+
+        private List<string> queryLog = new List<string>(); 
+
         /// <summary>
         /// Methode indispensable pour le pattern singleton Database.Instance.function
         /// </summary>
         public static Database Instance
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = new Database();
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new Database()); }
         }
 
         /// <summary>
@@ -49,12 +50,10 @@ namespace Ouatelse
         /// </summary>
         private Database()
         {
-            if (Utils.CheckServer())
-            {
-                this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
-                this.connection.Open();
-                return;
-            }
+            this.isLoggingEnabled = true;
+            if (!Utils.CheckServer()) return;
+            this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
+            this.connection.Open();
         }
 
         public bool Execute(string query, Dictionary<string, object> parameters = null)
@@ -73,6 +72,8 @@ namespace Ouatelse
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
                 cmd.ExecuteNonQuery();
+                lastInsertId = cmd.LastInsertedId;
+                if (isLoggingEnabled) queryLog.Add(query);
                 return true;
             }
             catch
@@ -90,6 +91,9 @@ namespace Ouatelse
                 return false;
             }
 
+            if (parameters == null)
+                parameters = new Dictionary<string, object>();
+
             try
             {
                 MySqlCommand cmd = this.connection.CreateCommand();
@@ -97,6 +101,7 @@ namespace Ouatelse
                 cmd.CommandText = runningQuery;
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
+                if (isLoggingEnabled) queryLog.Add(query);
                 return cmd.ExecuteScalar();
             }
             catch
@@ -121,6 +126,7 @@ namespace Ouatelse
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
+                if (isLoggingEnabled) queryLog.Add(query);
                 return ds;
             }
             catch
@@ -129,6 +135,17 @@ namespace Ouatelse
                     Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }
+            
+        }
+
+        public long? LastInsertId
+        {
+            get { return lastInsertId; }
+        }
+
+        public string[] LoggedQueries
+        {
+            get { return queryLog.ToArray(); }
         }
 
         /// <summary>

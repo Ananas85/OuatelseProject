@@ -79,9 +79,9 @@ namespace Ouatelse
                 smtpClient.Port = 587;
                 smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
                 smtpClient.Send(message);
-                Utils.Info("Mail envoyé avec succès");
+                //Utils.Info("Mail envoyé avec succès");
             }
-            catch (Exception ex)
+            catch
             {
                 Utils.Error("Mail non envoyé ");
             }
@@ -260,11 +260,17 @@ namespace Ouatelse
         /// Mail en cas de demande d'assistance
         /// </summary>
         /// <param name="emp">L'employé qui veut un support technique</param>
-        public void supportRequest(Employee emp)
+        public void supportRequest(string os, string vers, Employee emp, DateTime date,string category, string message)
         {
-            string htmlContent = Ouatelse.Properties.Resources.deleteEmployee;
-            string body = htmlContent.Replace("LASTNAME", emp.LastName);
-            sendMail(emp.Email, "Ouatelse  : Suppression de compte utilisateur", body);
+            string htmlContent = Ouatelse.Properties.Resources.support;
+            string body = htmlContent.Replace("OS", os);
+            body = body.Replace("VERSIONLOG", vers);
+            body = body.Replace("STORE", emp.Store.Name);
+            body = body.Replace("USER", emp.FirstName + " " + emp.LastName);
+            body = body.Replace("DATEVALUE", date.ToString());
+            body = body.Replace("CATEGORY", category);
+            body = body.Replace("MESSAGEVALUE", message);
+            sendMail(SendersAddress, "Ouatelse  : Demande d'assistance", body);
         }
         #endregion
     }

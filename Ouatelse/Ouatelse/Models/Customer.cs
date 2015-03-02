@@ -1,4 +1,4 @@
-﻿using Ouatelse.Managers;
+using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +22,8 @@ namespace Ouatelse.Models
         /// Obligatoire : Le prénom du client
         /// </summary>
         public string FirstName { get; set; }
+
+        public virtual string FullName { get { return string.Format("{0} {1}", LastName, FirstName); } }
 
         /// <summary>
         /// Obligatoire : L'adresse n°1 du client
@@ -123,19 +125,21 @@ namespace Ouatelse.Models
         /// <returns> Le dictionnaire </returns>
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("nom", LastName);
-            res.Add("prenom", FirstName);
-            res.Add("adresse1", Address1);
-            res.Add("adresse2", Address2);
-            res.Add("fixe", PhoneNumber);
-            res.Add("portable", MobilePhoneNumber);
-            res.Add("mail", Email);
-            res.Add("naissance", DateOfBirth.ToString("yyyy-MM-dd"));
-            res.Add("notes", Comments);
-            res.Add("villes_id", City.Id.ToString());
-            res.Add("civilite_id", Gender.Id.ToString());
-            res.Add("email_modification", Convert.ToInt16(EmailOnUpdate).ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"nom", LastName},
+                {"prenom", FirstName},
+                {"adresse1", Address1},
+                {"adresse2", Address2},
+                {"fixe", PhoneNumber},
+                {"portable", MobilePhoneNumber},
+                {"mail", Email},
+                {"naissance", DateOfBirth.ToString("yyyy-MM-dd")},
+                {"notes", Comments},
+                {"villes_id", City.Id.ToString()},
+                {"civilite_id", Gender.Id.ToString()},
+                {"email_modification", Convert.ToInt16(EmailOnUpdate).ToString()}
+            };
             return res;
         }
         #endregion
@@ -200,9 +204,13 @@ namespace Ouatelse.Models
         #region sucharge de l'opérateur ==
         public static bool operator ==(Customer x, Customer y)
         {
-            return (Object) x == null && (Object) y == null || (Object) y != null &&
-                   (x.LastName == y.LastName && x.FirstName == y.LastName && x.Address1 == y.Address1 &&
-                    x.City == y.City);
+            if ((Object) x == null && (Object) y == null)
+                return true;
+            if ((Object)y != null)
+            {
+                return x.LastName == y.LastName && x.FirstName == y.LastName && x.Address1 == y.Address1 && x.City == y.City;
+            }
+            return false;
         }
 
         #endregion

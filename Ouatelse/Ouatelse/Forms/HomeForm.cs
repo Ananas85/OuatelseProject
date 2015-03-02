@@ -1,4 +1,4 @@
-﻿using Ouatelse.Forms;
+using Ouatelse.Forms;
 using Ouatelse.Managers;
 using Ouatelse.Models;
 using System;
@@ -59,7 +59,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.date.Text = DateTime.Now.ToShortDateString();
+            this.date.Text = DateTime.Now.ToLongDateString();
             this.hour.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
@@ -117,7 +117,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void factureBtn_Click(object sender, EventArgs e)
         {
-            new InvoiceForm().ShowDialog();
+            new InvoiceForm(new Invoice()).ShowDialog();
         }
 
         /// <summary>
@@ -151,13 +151,17 @@ namespace Ouatelse
         }
 
         /// <summary>
-        /// Action sur le bouton vérouiller.
+        /// Action sur le bouton assistance.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void assistanceBtn_Click(object sender, EventArgs e)
         {
-            new SupportForm().ShowDialog();
+            SupportForm sf = new SupportForm(AuthManager.Instance.User);
+            if( sf.ShowDialog() != DialogResult.OK)
+                return;
+            else
+                MailSender.Instance.supportRequest(sf.Os, sf.Version, sf.User, sf.Date, sf.Category, sf.Message);
         }
 
         private void holliday_Click(object sender, EventArgs e)

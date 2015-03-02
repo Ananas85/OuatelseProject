@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ouatelse.Models
 {
-    interface IModel
+    public interface IModel
     {
         /// <summary>
         /// Permet de remplir les champs de l'entité depuis un tableau de données récupérées de la base.

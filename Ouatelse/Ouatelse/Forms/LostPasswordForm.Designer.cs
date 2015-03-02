@@ -92,6 +92,7 @@
             this.Controls.Add(this.yesBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "LostPasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mot de passe oublié";
             this.ResumeLayout(false);
             this.PerformLayout();

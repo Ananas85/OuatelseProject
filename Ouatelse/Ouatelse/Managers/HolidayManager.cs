@@ -16,12 +16,7 @@ namespace Ouatelse.Managers
 
         public static HolidayManager Instance
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = new HolidayManager();
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new HolidayManager()); }
         }
 
         private HolidayManager()

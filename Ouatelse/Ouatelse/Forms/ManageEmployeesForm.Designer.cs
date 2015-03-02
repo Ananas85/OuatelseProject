@@ -264,6 +264,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(929, 544);
             this.Name = "ManageEmployeesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse - Gestion des salariés";
             this.rightClickListView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -276,7 +277,6 @@
         #endregion
 
         private System.Windows.Forms.ListView listView_employees;
-        private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader lastname;
         private System.Windows.Forms.ColumnHeader firstname;
         private System.Windows.Forms.ColumnHeader mail;

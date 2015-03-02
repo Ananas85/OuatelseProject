@@ -248,6 +248,7 @@
             // CityPostalCode
             // 
             this.CityPostalCode.Location = new System.Drawing.Point(114, 255);
+            this.CityPostalCode.MaxLength = 5;
             this.CityPostalCode.Name = "CityPostalCode";
             this.CityPostalCode.Size = new System.Drawing.Size(69, 20);
             this.CityPostalCode.TabIndex = 6;
@@ -449,6 +450,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CustomerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.CustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);

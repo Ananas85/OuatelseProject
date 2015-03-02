@@ -12,15 +12,38 @@ namespace Ouatelse.Models
         public DateTime StartingDate { get; set; }
         public DateTime EndingDate { get; set; }
         public Employee Employee { get; set; }
+        public Boolean Accepted { get; set; }
 
+        public Holiday()
+        {
+            StartingDate = DateTime.Now;
+            EndingDate = DateTime.Now.AddDays(1);
+            Employee = null;
+            Accepted = false;
+        }
 
         public Holiday(DateTime sd, DateTime ed, Employee e)
         {
             this.StartingDate = sd;
             this.EndingDate = ed;
             this.Employee = e;
+            Accepted = false;
         }
 
+        public List<DateTime> ConcernedDays()
+        {
+            List<DateTime> concerned = new List<DateTime>();
+            for (DateTime i = StartingDate.Date; i.Date <= EndingDate.Date; i.AddDays(1))
+            {
+                concerned.Add(i);
+            }
+            return concerned;
+        }
+
+        public int numberOfDays()
+        {
+            return (EndingDate - StartingDate).Days;
+        }
         /// <summary>
         /// Permet d'hydrater l'objet
         /// </summary>
@@ -32,6 +55,7 @@ namespace Ouatelse.Models
             this.StartingDate = DateTime.Parse(cursor.Read().ToString());
             this.EndingDate = DateTime.Parse(cursor.Read().ToString());
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
+            this.Accepted = bool.Parse(cursor.Read().ToString());
         }
 
         public Dictionary<string, string> Fetch()
@@ -40,6 +64,7 @@ namespace Ouatelse.Models
             res.Add("date_debut", StartingDate.ToString("yyyy-MM-dd"));
             res.Add("date_fin", EndingDate.ToString("yyyy-MM-dd"));
             res.Add("salaries_id", Employee.Id.ToString());
+            res.Add("accepte", Convert.ToInt16(Accepted).ToString());
             return res;
         }
     }

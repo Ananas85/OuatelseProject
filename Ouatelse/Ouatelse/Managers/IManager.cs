@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ouatelse.Models;
 
 namespace Ouatelse.Managers
 {
@@ -11,13 +6,15 @@ namespace Ouatelse.Managers
     /// Interface qui permet de gérer nos managers en iutilisant les types Génériques
     /// </summary>
     /// <typeparam name="T">Le type dy manager</typeparam>
-    public interface IManager<T>
+    public interface IManager<out T>
     {
         T[] All();
         T[] Filter(string filter);
 
         int Count(string filter = "");
         T Find(object id);
+
+        bool Save(BaseModel model);
 
     }
 }

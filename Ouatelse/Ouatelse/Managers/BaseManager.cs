@@ -58,6 +58,7 @@ namespace Ouatelse.Managers
         #endregion
 
         #region Récupération des entités de la table selon un filtre SQL
+
         /// <summary>
         /// Permet de récupérer certaines entités selon un filtre SQL.
         /// </summary>
@@ -176,7 +177,7 @@ namespace Ouatelse.Managers
                 query.AppendFormat("INSERT INTO {0} (", tableName);
                 query.Append(String.Join(", ", ((IModel)model).Fetch().Keys));
                 query.Append(") VALUES('");
-                query.Append(String.Join("', '", ((IModel)model).Fetch().Values));
+                query.Append(String.Join("', '", ((IModel)model).Fetch().Values.Select(value => value.Replace(@"'", @"\'"))));
                 query.Append("')");
             }
             else
@@ -188,13 +189,19 @@ namespace Ouatelse.Managers
                 {
                     if (!first)
                         query.Append(",");
-                    query.AppendFormat(" {0} = '{1}'", key, dict[key]);
+                    query.AppendFormat(" {0} = '{1}'", key, dict[key].Replace(@"'", @"\'"));
                     first = false;
                 }
 
                 query.AppendFormat(" WHERE id={0}", model.Id);
             }
-            return Database.Instance.Execute(query.ToString());
+            bool res = Database.Instance.Execute(query.ToString());
+            if (!model.Exists && res)
+            {
+                model.MakeExistant();
+                model.Id = Int32.Parse(Database.Instance.LastInsertId.ToString());
+            }
+            return res;
 
         }
         #endregion

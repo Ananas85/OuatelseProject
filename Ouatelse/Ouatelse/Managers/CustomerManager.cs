@@ -38,7 +38,7 @@ namespace Ouatelse.Managers
             CustomerManager.Instance.Save(cust);
 
             //Message d'information
-            Utils.Info("Client enregistré avec succès");
+            //Utils.Info("Client enregistré avec succès");
 
             //Envoi du mail au nouveau client
             if (!String.IsNullOrWhiteSpace(cust.Email))
@@ -50,7 +50,7 @@ namespace Ouatelse.Managers
         public void Modify(Customer cust)
         {
             CustomerManager.Instance.Save(cust);
-            Utils.Info("Client modifié avec succès");
+            //Utils.Info("Client modifié avec succès");
             if (cust.EmailOnUpdate)
             {
                 MailSender.Instance.modifyCustomer(cust);

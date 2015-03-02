@@ -61,7 +61,7 @@
             this.customerListView.GridLines = true;
             this.customerListView.Location = new System.Drawing.Point(12, 109);
             this.customerListView.Name = "customerListView";
-            this.customerListView.Size = new System.Drawing.Size(885, 204);
+            this.customerListView.Size = new System.Drawing.Size(945, 217);
             this.customerListView.TabIndex = 9;
             this.customerListView.UseCompatibleStateImageBehavior = false;
             this.customerListView.View = System.Windows.Forms.View.Details;
@@ -127,7 +127,6 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::Ouatelse.Properties.Resources.search;
             this.pictureBox2.Location = new System.Drawing.Point(204, 69);
             this.pictureBox2.Name = "pictureBox2";
@@ -138,11 +137,12 @@
             // 
             // searchBox
             // 
-            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBox.Location = new System.Drawing.Point(242, 71);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(655, 26);
+            this.searchBox.Size = new System.Drawing.Size(715, 26);
             this.searchBox.TabIndex = 25;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
@@ -159,7 +159,7 @@
             // CustomersNumber
             // 
             this.CustomersNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomersNumber.Location = new System.Drawing.Point(771, 331);
+            this.CustomersNumber.Location = new System.Drawing.Point(831, 344);
             this.CustomersNumber.Name = "CustomersNumber";
             this.CustomersNumber.Size = new System.Drawing.Size(126, 22);
             this.CustomersNumber.TabIndex = 28;
@@ -171,7 +171,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(909, 362);
+            this.ClientSize = new System.Drawing.Size(969, 375);
             this.Controls.Add(this.CustomersNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
@@ -179,6 +179,7 @@
             this.Controls.Add(this.nouveau);
             this.Controls.Add(this.customerListView);
             this.Name = "CustomerPickerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sélection d\'un client";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
