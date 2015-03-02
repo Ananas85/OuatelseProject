@@ -136,13 +136,15 @@ namespace Ouatelse.Forms
 
             //On test la possibilté d'aller voir le planing de l'année précédente
             preventPreviousYear();
-
+         
             //Boucle pour gérer les mois
             for (int i = 1; i <= 12; ++i)
             {
+                
                 DataGridViewRow row = new DataGridViewRow();
                 //On ajoute le mois courant
                 this.holidays.Rows.Add(row);
+                
 
                 //On met en forme la colonne "légende"
                 row.HeaderCell.Value = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
@@ -352,6 +354,11 @@ namespace Ouatelse.Forms
         }
         #endregion
 
+        public bool isExistingDay(int month, int day)
+        {
+            return day < DateTime.DaysInMonth(currentYear, month);
+        }
+
         #region Méthode pour gérer le clique sur l'année suivante
         private void nextYear_Click(object sender, EventArgs e)
         {
@@ -360,6 +367,33 @@ namespace Ouatelse.Forms
             this.year.Text = currentYear.ToString();
         }
         #endregion
+
+        private void deleteholiday_Click(object sender, EventArgs e)
+        {
+            if (this.holidays.SelectedCells.Count > 1)
+            {
+                Utils.Error("Selectionnez uniquement une journée dans le congé selectionné");
+                return;
+            }
+
+            DateTime date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex+1, this.holidays.SelectedCells[0].ColumnIndex+1);
+            Holiday holiday = HolidayManager.Instance.First("WHERE salaries_id = " + AuthManager.Instance.User.Id + " AND '" +
+                                          String.Format("{0:yyyy-MM-dd}", date) +"' BETWEEN date_debut AND date_fin");
+            if (holiday == null)
+            {
+                Utils.Error("Ce jour n'est pas un congé");
+                return;
+            }
+            
+                if (holiday.Accepted)
+                {
+                    Utils.Error("Vous ne pouvez supprimer que les congés qui n'ont pas été validé");
+                    return;
+                }
+
+                HolidayManager.Instance.Delete(holiday);
+                updateCalendar();
+        }
     }
 }
 
