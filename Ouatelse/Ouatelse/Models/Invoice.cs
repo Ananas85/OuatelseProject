@@ -66,7 +66,7 @@ namespace Ouatelse.Models
         {
             get
             {
-                return Products.Items.Aggregate<InvoiceProduct, double>(0, (current, invoiceProduct) => current + (invoiceProduct.Price + ((invoiceProduct.Product.TVA / 100) * invoiceProduct.Price)));
+                return Products.Items.Aggregate<InvoiceProduct, double>(0, (current, item) => current + ((item.Product.TVA/100)*item.Price));
             }
         }
 
