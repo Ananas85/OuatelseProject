@@ -356,6 +356,7 @@
             this.deleteholiday.TabIndex = 28;
             this.deleteholiday.Text = "Supprimer un congé";
             this.deleteholiday.UseVisualStyleBackColor = false;
+            this.deleteholiday.Click += new System.EventHandler(this.deleteholiday_Click);
             // 
             // newholiday
             // 

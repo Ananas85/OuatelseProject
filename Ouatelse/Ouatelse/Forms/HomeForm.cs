@@ -19,7 +19,6 @@ namespace Ouatelse
         public HomeForm()
         {
             InitializeComponent();
-
             //Gère la connexion
             DoLogin();
 
