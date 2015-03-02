@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         public CityManager()
         {
-            this.tableName = "villes";
+            this.TableName = "villes";
         }
     }
 }

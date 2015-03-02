@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         public CountryManager()
         {
-            this.tableName = "pays";
+            this.TableName = "pays";
         }
     }
 }

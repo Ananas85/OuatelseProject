@@ -27,7 +27,7 @@ namespace Ouatelse.Managers
         #region Constructeur de la classe
         public CustomerManager()
         {
-            this.tableName = "clients";
+            this.TableName = "clients";
         }
         #endregion
 

@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         private PaymentManager()
         {
-            this.tableName = "moyen_de_paiements";
+            this.TableName = "moyen_de_paiements";
         }
     }
 }

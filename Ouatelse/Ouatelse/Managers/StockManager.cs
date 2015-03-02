@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         private StockManager()
         {
-            this.tableName = "mouvement_stock";
+            this.TableName = "mouvement_stock";
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         private InvoiceProductManager()
         {
-            this.tableName = "factures_produits";
+            this.TableName = "factures_produits";
         }
     }
 }

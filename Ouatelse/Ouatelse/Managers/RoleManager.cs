@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         public RoleManager()
         {
-            this.tableName = "roles";
+            this.TableName = "roles";
         }
     }
 }
