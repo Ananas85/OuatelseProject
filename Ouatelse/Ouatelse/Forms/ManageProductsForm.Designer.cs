@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageProductsForm));
             this.newProduct = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.deleteProduct = new System.Windows.Forms.Button();
@@ -48,12 +49,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.customerLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductsNumber = new System.Windows.Forms.Label();
             this.rightClickProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // newProduct
@@ -235,32 +234,24 @@
             // customerLabel
             // 
             this.customerLabel.AutoSize = true;
+            this.customerLabel.BackColor = System.Drawing.Color.Transparent;
             this.customerLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerLabel.Location = new System.Drawing.Point(151, 44);
+            this.customerLabel.ForeColor = System.Drawing.Color.White;
+            this.customerLabel.Location = new System.Drawing.Point(165, 35);
+            this.customerLabel.MinimumSize = new System.Drawing.Size(360, 47);
             this.customerLabel.Name = "customerLabel";
-            this.customerLabel.Size = new System.Drawing.Size(483, 47);
+            this.customerLabel.Size = new System.Drawing.Size(360, 47);
             this.customerLabel.TabIndex = 47;
-            this.customerLabel.Text = "Gestion des produits / stock";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 45;
-            this.pictureBox1.TabStop = false;
+            this.customerLabel.Text = "Gestion des produits";
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(-27, -12);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.label1.Location = new System.Drawing.Point(567, -25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1024, 142);
+            this.label1.Size = new System.Drawing.Size(403, 142);
             this.label1.TabIndex = 46;
             // 
             // ProductsNumber
@@ -273,15 +264,16 @@
             this.ProductsNumber.Text = "--";
             this.ProductsNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // ManageProductForm
+            // ManageProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(839, 516);
             this.Controls.Add(this.ProductsNumber);
             this.Controls.Add(this.customerLabel);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.searchBox);
@@ -291,13 +283,13 @@
             this.Controls.Add(this.modifyProduct);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.productListView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(855, 555);
-            this.Name = "ManageProductForm";
+            this.Name = "ManageProductsForm";
             this.Text = "Gestion des produits / stock";
             this.rightClickProduct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,7 +313,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label customerLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ProductsNumber;
         private System.Windows.Forms.ContextMenuStrip rightClickProduct;

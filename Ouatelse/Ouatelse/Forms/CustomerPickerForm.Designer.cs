@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerPickerForm));
             this.customerListView = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prenom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,7 +42,10 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CustomersNumber = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // customerListView
@@ -59,9 +63,9 @@
             this.pays});
             this.customerListView.FullRowSelect = true;
             this.customerListView.GridLines = true;
-            this.customerListView.Location = new System.Drawing.Point(12, 109);
+            this.customerListView.Location = new System.Drawing.Point(12, 149);
             this.customerListView.Name = "customerListView";
-            this.customerListView.Size = new System.Drawing.Size(945, 217);
+            this.customerListView.Size = new System.Drawing.Size(882, 240);
             this.customerListView.TabIndex = 9;
             this.customerListView.UseCompatibleStateImageBehavior = false;
             this.customerListView.View = System.Windows.Forms.View.Details;
@@ -117,7 +121,7 @@
             this.nouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nouveau.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nouveau.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.nouveau.Location = new System.Drawing.Point(12, 62);
+            this.nouveau.Location = new System.Drawing.Point(12, 102);
             this.nouveau.Name = "nouveau";
             this.nouveau.Size = new System.Drawing.Size(184, 41);
             this.nouveau.TabIndex = 22;
@@ -128,7 +132,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Ouatelse.Properties.Resources.search;
-            this.pictureBox2.Location = new System.Drawing.Point(204, 69);
+            this.pictureBox2.Location = new System.Drawing.Point(204, 109);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 31);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -140,17 +144,20 @@
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(242, 71);
+            this.searchBox.Location = new System.Drawing.Point(242, 111);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(715, 26);
+            this.searchBox.Size = new System.Drawing.Size(652, 26);
             this.searchBox.TabIndex = 25;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(280, 9);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(147, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(331, 47);
             this.label1.TabIndex = 27;
@@ -159,29 +166,55 @@
             // CustomersNumber
             // 
             this.CustomersNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomersNumber.Location = new System.Drawing.Point(831, 344);
+            this.CustomersNumber.Location = new System.Drawing.Point(768, 399);
             this.CustomersNumber.Name = "CustomersNumber";
             this.CustomersNumber.Size = new System.Drawing.Size(126, 22);
             this.CustomersNumber.TabIndex = 28;
             this.CustomersNumber.Text = "--";
             this.CustomersNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
+            this.pictureBox1.Location = new System.Drawing.Point(-6, -8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 91);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 99;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Location = new System.Drawing.Point(113, -7);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(899, 90);
+            this.label13.TabIndex = 100;
+            // 
             // CustomerPickerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(969, 375);
+            this.ClientSize = new System.Drawing.Size(906, 423);
             this.Controls.Add(this.CustomersNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.nouveau);
             this.Controls.Add(this.customerListView);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label13);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(922, 462);
             this.Name = "CustomerPickerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sélection d\'un client";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +235,7 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CustomersNumber;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label13;
     }
 }

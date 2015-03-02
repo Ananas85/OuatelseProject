@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageEmployeesForm));
             this.listView_employees = new System.Windows.Forms.ListView();
             this.reference = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lastname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -36,21 +37,19 @@
             this.mail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.role = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.store = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.rightClickListView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.modifierCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerCeClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rightClickEmployees = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editThisEmployeeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteThisEmployee = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.DeleteEmployeeButton = new System.Windows.Forms.Button();
             this.ModifyEmployeeButton = new System.Windows.Forms.Button();
             this.NewEmployeeButton = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.employeeLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.employeesNumber = new System.Windows.Forms.Label();
-            this.rightClickListView.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rightClickEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listView_employees
@@ -65,7 +64,7 @@
             this.mail,
             this.role,
             this.store});
-            this.listView_employees.ContextMenuStrip = this.rightClickListView;
+            this.listView_employees.ContextMenuStrip = this.rightClickEmployees;
             this.listView_employees.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView_employees.FullRowSelect = true;
             this.listView_employees.GridLines = true;
@@ -118,25 +117,27 @@
             this.store.Text = "Magasin";
             this.store.Width = 232;
             // 
-            // rightClickListView
+            // rightClickEmployees
             // 
-            this.rightClickListView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifierCeClientToolStripMenuItem,
-            this.supprimerCeClientToolStripMenuItem});
-            this.rightClickListView.Name = "rightClickListView";
-            this.rightClickListView.Size = new System.Drawing.Size(177, 48);
+            this.rightClickEmployees.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editThisEmployeeMenuItem,
+            this.deleteThisEmployee});
+            this.rightClickEmployees.Name = "rightClickListView";
+            this.rightClickEmployees.Size = new System.Drawing.Size(181, 48);
             // 
-            // modifierCeClientToolStripMenuItem
+            // editThisEmployeeMenuItem
             // 
-            this.modifierCeClientToolStripMenuItem.Name = "modifierCeClientToolStripMenuItem";
-            this.modifierCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.modifierCeClientToolStripMenuItem.Text = "Modifier ce client";
+            this.editThisEmployeeMenuItem.Name = "editThisEmployeeMenuItem";
+            this.editThisEmployeeMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editThisEmployeeMenuItem.Text = "Modifier ce salarié";
+            this.editThisEmployeeMenuItem.Click += new System.EventHandler(this.editThisEmployeeMenuItem_Click);
             // 
-            // supprimerCeClientToolStripMenuItem
+            // deleteThisEmployee
             // 
-            this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
-            this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
+            this.deleteThisEmployee.Name = "deleteThisEmployee";
+            this.deleteThisEmployee.Size = new System.Drawing.Size(180, 22);
+            this.deleteThisEmployee.Text = "Supprimer ce salarié";
+            this.deleteThisEmployee.Click += new System.EventHandler(this.deleteThisEmployeeMenuItem_Click);
             // 
             // pictureBox2
             // 
@@ -207,33 +208,14 @@
             // employeeLabel
             // 
             this.employeeLabel.AutoSize = true;
+            this.employeeLabel.BackColor = System.Drawing.Color.Transparent;
             this.employeeLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeLabel.Location = new System.Drawing.Point(151, 44);
+            this.employeeLabel.ForeColor = System.Drawing.Color.White;
+            this.employeeLabel.Location = new System.Drawing.Point(191, 32);
             this.employeeLabel.Name = "employeeLabel";
             this.employeeLabel.Size = new System.Drawing.Size(342, 47);
             this.employeeLabel.TabIndex = 27;
             this.employeeLabel.Text = "Gestion des salariés";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(-27, -12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(942, 142);
-            this.label1.TabIndex = 26;
             // 
             // employeesNumber
             // 
@@ -245,12 +227,25 @@
             this.employeesNumber.Text = "--";
             this.employeesNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.label1.Location = new System.Drawing.Point(597, -2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(338, 119);
+            this.label1.TabIndex = 34;
+            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(913, 505);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.employeesNumber);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.DeleteEmployeeButton);
@@ -258,17 +253,15 @@
             this.Controls.Add(this.NewEmployeeButton);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.employeeLabel);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.listView_employees);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(929, 544);
             this.Name = "ManageEmployeesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse - Gestion des salariés";
-            this.rightClickListView.ResumeLayout(false);
+            this.rightClickEmployees.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,12 +281,11 @@
         private System.Windows.Forms.Button NewEmployeeButton;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label employeeLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label employeesNumber;
-        private System.Windows.Forms.ContextMenuStrip rightClickListView;
-        private System.Windows.Forms.ToolStripMenuItem modifierCeClientToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem supprimerCeClientToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip rightClickEmployees;
+        private System.Windows.Forms.ToolStripMenuItem editThisEmployeeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteThisEmployee;
         private System.Windows.Forms.ColumnHeader reference;
+        private System.Windows.Forms.Label label1;
     }
 }

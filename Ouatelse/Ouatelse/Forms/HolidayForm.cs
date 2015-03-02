@@ -300,7 +300,7 @@ namespace Ouatelse.Forms
                 .ToList()
                 .Count > 0)
             {
-                Utils.Error("Vous avez selectionné des jours qui n'existent pas");
+                Utils.Error("Vous avez selectionné un ou plusieurs jours qui n'existent pas");
                 return;
             }
 
@@ -417,7 +417,7 @@ namespace Ouatelse.Forms
             
             if (holiday.Accepted)
             {
-                Utils.Error("Vous ne pouvez supprimer que les congés qui n'ont pas été validé");
+                Utils.Error("Vous ne pouvez supprimer que les congés qui n'ont pas été validés");
                 return;
             }
 
