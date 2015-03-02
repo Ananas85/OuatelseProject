@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         public StoreManager()
         {
-            this.tableName = "magasin";
+            this.TableName = "magasin";
         }
     }
 }

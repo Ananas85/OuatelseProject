@@ -18,6 +18,7 @@ namespace Ouatelse
     {
         public HomeForm()
         {
+            Utils.InitNotifyIcon();
             InitializeComponent();
             //Gère la connexion
             DoLogin();

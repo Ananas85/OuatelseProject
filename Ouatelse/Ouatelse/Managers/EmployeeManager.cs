@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         private EmployeeManager()
         {
-            this.tableName = "salaries";
+            this.TableName = "salaries";
         }
     }
 }

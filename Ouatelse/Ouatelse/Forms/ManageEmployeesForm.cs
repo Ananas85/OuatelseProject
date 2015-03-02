@@ -111,7 +111,7 @@ namespace Ouatelse.Forms
 
             // Génération du compte utilisateur
             Employee currentEmployee = ef.getEmployee();
-            currentEmployee.Password = Utils.generatePassword(5);
+            currentEmployee.Password = Utils.GeneratePassword(5);
 
 
             EmployeeManager.Instance.Save(currentEmployee);

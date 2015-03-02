@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -12,6 +13,8 @@ namespace Ouatelse
 {
     public static class Utils
     {
+        private static NotifyIcon NotifyIcon = null;
+
         public static DialogResult Info(string message, System.Windows.Forms.MessageBoxButtons buttons = System.Windows.Forms.MessageBoxButtons.OK)
         {
             return System.Windows.Forms.MessageBox.Show(message, Application.ProductName, buttons, System.Windows.Forms.MessageBoxIcon.Information);
@@ -49,7 +52,7 @@ namespace Ouatelse
             }
         }
 
-        public static String generatePassword(int length)
+        public static String GeneratePassword(int length)
         {
             const String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder password = new StringBuilder();
@@ -57,6 +60,12 @@ namespace Ouatelse
             while(0 < length--)
                 password.Append(alphabet[generator.Next(alphabet.Length)]);
             return password.ToString();
+        }
+
+        public static void InitNotifyIcon()
+        {
+            NotifyIcon = new NotifyIcon {Icon = Properties.Resources.OuatelseIcon};
+            NotifyIcon.ShowBalloonTip(1000, "Ouatelse", "Démarré", ToolTipIcon.Info);
         }
     }
 }

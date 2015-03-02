@@ -26,7 +26,7 @@ namespace Ouatelse.Managers
 
         private GenderManager()
         {
-            this.tableName = "civilite";
+            this.TableName = "civilite";
         }
     }
 }

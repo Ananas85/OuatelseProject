@@ -21,7 +21,7 @@ namespace Ouatelse.Managers
 
         private HolidayManager()
         {
-            this.tableName = "conge";
+            this.TableName = "conge";
         }
     }
 }
