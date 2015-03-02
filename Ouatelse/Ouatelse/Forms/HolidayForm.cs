@@ -20,13 +20,10 @@ namespace Ouatelse.Forms
         private int currentYear = DateTime.Now.Year;
 
         //Liste des jours où l'on ne travaille pas cette années
-        private List<DateTime> unworkingDate;
+        private List<DateTime> unworkingDate = new List<DateTime>();
 
         //Nombre de jour déjà posés
         private int alreadyPresent;
-
-        //Liste des congés déjà posés
-        private List<Holiday> putHolidays; 
 
         //Liste des jours fériés de l'année courante
         private List<DateTime> permanentUnworkingDate;
@@ -41,7 +38,7 @@ namespace Ouatelse.Forms
 
             designCalendar();
 
-            fillCalendar();
+            FillCalendar();
 
             
             this.year.Text = currentYear.ToString();
@@ -49,25 +46,27 @@ namespace Ouatelse.Forms
         #endregion
 
         #region Méthode qui permet d'enregistrer tous les jours fériés de l'année courante
-        public void fillPermanentUnworkingDate()
+        public void FillPermanentUnworkingDate()
         {
-            permanentUnworkingDate = new List<DateTime>();
-            //On retire le 1er janvier
-            permanentUnworkingDate.Add(new DateTime(currentYear, 1,1));
-            //Le 1 mai
-            permanentUnworkingDate.Add(new DateTime(currentYear, 5, 1));
-            //Le 8 mai
-            permanentUnworkingDate.Add(new DateTime(currentYear, 5, 8));
-            //La fête nationale
-            permanentUnworkingDate.Add(new DateTime(currentYear, 7, 14));
-            //L'assomption
-            permanentUnworkingDate.Add(new DateTime(currentYear, 8, 15));
-            //La toussaint
-            permanentUnworkingDate.Add(new DateTime(currentYear, 11, 1));
-            //L'armistice
-            permanentUnworkingDate.Add(new DateTime(currentYear, 11, 11));
-            //Noël
-            permanentUnworkingDate.Add(new DateTime(currentYear, 12, 25));
+            permanentUnworkingDate = new List<DateTime>
+            {
+                //1er Janvier
+                new DateTime(currentYear, 1, 1),
+                //1er Mai
+                new DateTime(currentYear, 5, 1),
+                //8 Mai
+                new DateTime(currentYear, 5, 8),
+                //Fête Nationale
+                new DateTime(currentYear, 7, 14),
+                //L'assomption
+                new DateTime(currentYear, 8, 15),
+                //La toussaint
+                new DateTime(currentYear, 11, 1),
+                //L'armistice
+                new DateTime(currentYear, 11, 11),
+                //Noël
+                new DateTime(currentYear, 12, 25)
+            };
 
             //Calcul des jours non fixes ( algorithme de oudin ) 
             //Calcul du nombre d'or - 1
@@ -126,13 +125,10 @@ namespace Ouatelse.Forms
         #endregion
 
         #region Méthode qui permet de remplir le calendrier au chargement
-        public void fillCalendar()
+        public void FillCalendar()
         {
             //On remplit d'abord toutes les dates fériées de l'année courante
-            fillPermanentUnworkingDate();
-
-            //La liste des jous non ouvrables de l'année courante
-            unworkingDate = new List<DateTime>();
+            FillPermanentUnworkingDate();
 
             //On test la possibilté d'aller voir le planing de l'année précédente
             preventPreviousYear();
@@ -161,6 +157,9 @@ namespace Ouatelse.Forms
                         //On définit le style d'alignement de la cellule courante.
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+                        //On Met le style de la cellule
+                        cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
+
                         //On récupère la date liée à la cellule courante.
                         DateTime dateValue = new DateTime(currentYear, i, j);
 
@@ -173,7 +172,6 @@ namespace Ouatelse.Forms
                         //On vérifie si c'est un jour ouvrable, si ce n'en est pas un on le met en rouge
                         if (!isWorkingDate(dateValue))
                         {
-                            cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
                             cell.Style.ForeColor = Color.Red;
                         }
                     }
@@ -194,15 +192,17 @@ namespace Ouatelse.Forms
         #region Affichage des jours posés en tant que congés
         public void UpdateAlreadyPost()
         {
+            //On remet à 0 les jours posés
             alreadyPresent = 0;
-            putHolidays = new List<Holiday>();
-            putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)" ).ToList();
-            Color day;
-            DateTime current;
+            
+            //On récupère tous les congés déjà posés
+            List<Holiday> putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)").ToList();
+
+            //On place les congés déjà posés sur le calendrier
             foreach (Holiday holiday in putHolidays)
             {
-                day = holiday.Accepted ? Color.Green : Color.Orange;
-                current = holiday.StartingDate;
+                Color day = holiday.Accepted ? Color.Green : Color.Orange;
+                DateTime current = holiday.StartingDate;
                 for (int i = 0; i <= holiday.numberOfDays(); ++i)
                 {
                     if (isWorkingDate(current))
@@ -217,19 +217,23 @@ namespace Ouatelse.Forms
         #endregion
 
         #region Méthode utilisée lors de la modification du calendrier
-        public void updateCalendar()
+        public void UpdateCalendar()
         {
-            unworkingDate = new List<DateTime>();
-            fillPermanentUnworkingDate();
-
+            FillPermanentUnworkingDate();
             preventPreviousYear();
+
             for (int i = 1; i <= 12; ++i)
             {
                 for (int j = 1; j <= 31; ++j)
                 {
+                    //On récupère la cellule
                     DataGridViewCell cell = holidays.Rows[i-1].Cells[j-1];
+                    //On met en forme la cellule
                     cell.Style.BackColor = Color.White;
                     cell.Style.ForeColor = Color.Black;
+                    cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
+
+                    //Si le jour courant est bien possible
                     if (j <= DateTime.DaysInMonth(currentYear, i))
                     {
                         DateTime dateValue = new DateTime(currentYear, i, j);
@@ -237,13 +241,9 @@ namespace Ouatelse.Forms
                         cell.Value = day;
                         cell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                        if (day.Equals("s") || day.Equals("d"))
+                        if (!isWorkingDate(dateValue))
                         {
                             cell.Style.ForeColor = Color.Red;
-                        }
-                        else
-                        {
-                            cell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
                         }
                     }
                     else
@@ -294,35 +294,53 @@ namespace Ouatelse.Forms
                 return;
             }
             
-            
-            String data = "";
-            List<DateTime> holidaysSorted = new List<DateTime>();
+            //On regarde s'il y'a des jours non existants dans la selection
+            if (holidays.SelectedCells.Cast<DataGridViewCell>()
+                .Where(c => c.Style.BackColor == Color.Gray)
+                .ToList()
+                .Count > 0)
+            {
+                Utils.Error("Vous avez selectionné des jours qui n'existent pas");
+                return;
+            }
 
-            //Utilisation de link, on récupère tous les jours sélectionnés
+            //On regarde s'il n'y a pas des congés déjà posé
+            if (holidays.SelectedCells.Cast<DataGridViewCell>()
+                    .Where(c => c.Style.BackColor == Color.Orange)
+                    .ToList()
+                    .Count > 0)
+            {
+                Utils.Error("Vous avez déjà posé des congés dans cette plage là");
+                return;
+            }
+
+            //Si nous arrivons ici, la selection des jours est correctes
             List<DateTime> holidaysSelected = (from DataGridViewCell c in holidays.SelectedCells
                                                where c.Style.BackColor != Color.Gray 
                                                select new DateTime(currentYear, c.RowIndex + 1, c.ColumnIndex + 1)).ToList();
 
+            
             //On récupère l'ordre croissant des dates posées pour les congés
-            holidaysSorted = SortAscending(holidaysSelected);
+            holidaysSelected = SortAscending(holidaysSelected);
 
-            foreach (DateTime dt in holidaysSorted)
-            {
-                data += String.Format("{0:D}",dt);
-                data += "\n";
-            }
-            DateTime startingDate = holidaysSorted[0];
-            DateTime endingDate = holidaysSorted.Last();
-            if ((endingDate - startingDate).Days + 1  != holidaysSorted.Count)
+            //On récupère le premier jour de la selection
+            DateTime startingDate = holidaysSelected.First();
+
+            //On récupère le dernier jour de la selection
+            DateTime endingDate = holidaysSelected.Last();
+
+            //On vérifie s'il n'y a pas d'intervalle vide entre les dates selectionnées
+            if ((endingDate - startingDate).Days + 1 != holidaysSelected.Count)
             {
                 Utils.Error("Vous devez choisir des jours consécutifs");
                 return;
             }
 
+
             int workingDate = 0;
             for (DateTime p = startingDate; p <= endingDate; p = p.AddDays(1))
             {
-                if(!isWorkingDate(p))
+                if(isWorkingDate(p))
                     workingDate++;
             }
             if (workingDate + alreadyPresent > 30)
@@ -331,13 +349,15 @@ namespace Ouatelse.Forms
                 return;
             }
 
-            int nbHollidays = holidaysSorted.Except(unworkingDate).ToList().Count;
-            int amplitude = holidaysSorted.Count;
+            int nbHollidays = holidaysSelected.Except(unworkingDate).ToList().Count;
+            int amplitude = holidaysSelected.Count;
+
             if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude,
                     30 - (workingDate + alreadyPresent)).ShowDialog() != DialogResult.OK) return;
+            
             HolidayManager.Instance.Save(new Holiday(startingDate, endingDate, AuthManager.Instance.User));
             this.holidays.ClearSelection();
-            updateCalendar();
+            UpdateCalendar();
             Utils.Info("Votre demande de congé a bien été prise en compte");
         }
         #endregion
@@ -348,26 +368,29 @@ namespace Ouatelse.Forms
             if (currentYear > DateTime.Now.Year)
             {
                 currentYear--;
-                updateCalendar();
+                UpdateCalendar();
                 this.year.Text = currentYear.ToString();
             }
         }
         #endregion
 
+        #region Méthode pour savoir si un jour existe
         public bool isExistingDay(int month, int day)
         {
             return day < DateTime.DaysInMonth(currentYear, month);
         }
+        #endregion
 
         #region Méthode pour gérer le clique sur l'année suivante
         private void nextYear_Click(object sender, EventArgs e)
         {
             currentYear++;
-            updateCalendar();
+            UpdateCalendar();
             this.year.Text = currentYear.ToString();
         }
         #endregion
 
+        #region Méthode pour gérer la suppression de congés
         private void deleteholiday_Click(object sender, EventArgs e)
         {
             if (this.holidays.SelectedCells.Count > 1)
@@ -392,15 +415,16 @@ namespace Ouatelse.Forms
                 return;
             }
             
-                if (holiday.Accepted)
-                {
-                    Utils.Error("Vous ne pouvez supprimer que les congés qui n'ont pas été validé");
-                    return;
-                }
+            if (holiday.Accepted)
+            {
+                Utils.Error("Vous ne pouvez supprimer que les congés qui n'ont pas été validé");
+                return;
+            }
 
-                HolidayManager.Instance.Delete(holiday);
-                updateCalendar();
+            HolidayManager.Instance.Delete(holiday);
+            UpdateCalendar();
         }
+        #endregion
     }
 }
 

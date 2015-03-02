@@ -352,9 +352,9 @@
             this.deleteholiday.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.deleteholiday.Location = new System.Drawing.Point(210, 143);
             this.deleteholiday.Name = "deleteholiday";
-            this.deleteholiday.Size = new System.Drawing.Size(195, 41);
+            this.deleteholiday.Size = new System.Drawing.Size(205, 41);
             this.deleteholiday.TabIndex = 28;
-            this.deleteholiday.Text = "Supprimer un congé";
+            this.deleteholiday.Text = "Retirer une demande";
             this.deleteholiday.UseVisualStyleBackColor = false;
             this.deleteholiday.Click += new System.EventHandler(this.deleteholiday_Click);
             // 
@@ -437,7 +437,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(422, 160);
+            this.label2.Location = new System.Drawing.Point(491, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 13);
             this.label2.TabIndex = 33;
@@ -446,7 +446,7 @@
             // nbPut
             // 
             this.nbPut.AutoSize = true;
-            this.nbPut.Location = new System.Drawing.Point(544, 160);
+            this.nbPut.Location = new System.Drawing.Point(613, 160);
             this.nbPut.Name = "nbPut";
             this.nbPut.Size = new System.Drawing.Size(35, 13);
             this.nbPut.TabIndex = 34;
@@ -455,7 +455,7 @@
             // nbRest
             // 
             this.nbRest.AutoSize = true;
-            this.nbRest.Location = new System.Drawing.Point(746, 160);
+            this.nbRest.Location = new System.Drawing.Point(815, 160);
             this.nbRest.Name = "nbRest";
             this.nbRest.Size = new System.Drawing.Size(41, 13);
             this.nbRest.TabIndex = 36;
@@ -464,7 +464,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(610, 160);
+            this.label5.Location = new System.Drawing.Point(679, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 13);
             this.label5.TabIndex = 35;
