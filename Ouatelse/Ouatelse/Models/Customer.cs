@@ -125,19 +125,21 @@ namespace Ouatelse.Models
         /// <returns> Le dictionnaire </returns>
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("nom", LastName);
-            res.Add("prenom", FirstName);
-            res.Add("adresse1", Address1);
-            res.Add("adresse2", Address2);
-            res.Add("fixe", PhoneNumber);
-            res.Add("portable", MobilePhoneNumber);
-            res.Add("mail", Email);
-            res.Add("naissance", DateOfBirth.ToString("yyyy-MM-dd"));
-            res.Add("notes", Comments);
-            res.Add("villes_id", City.Id.ToString());
-            res.Add("civilite_id", Gender.Id.ToString());
-            res.Add("email_modification", Convert.ToInt16(EmailOnUpdate).ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"nom", LastName},
+                {"prenom", FirstName},
+                {"adresse1", Address1},
+                {"adresse2", Address2},
+                {"fixe", PhoneNumber},
+                {"portable", MobilePhoneNumber},
+                {"mail", Email},
+                {"naissance", DateOfBirth.ToString("yyyy-MM-dd")},
+                {"notes", Comments},
+                {"villes_id", City.Id.ToString()},
+                {"civilite_id", Gender.Id.ToString()},
+                {"email_modification", Convert.ToInt16(EmailOnUpdate).ToString()}
+            };
             return res;
         }
         #endregion

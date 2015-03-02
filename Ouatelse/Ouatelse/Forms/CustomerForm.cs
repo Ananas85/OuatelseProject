@@ -223,7 +223,7 @@ namespace Ouatelse.Forms
         #region Autorisation uniquement de l'entrée de lettre ou - pour le nom
         private void LastName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != ' ')
             {
                 Utils.Info("Uniquement les lettres ou - sont autorisés");
                 e.Handled = true;

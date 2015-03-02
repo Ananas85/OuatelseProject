@@ -175,7 +175,7 @@ namespace Ouatelse.Managers
                 query.AppendFormat("INSERT INTO {0} (", TableName);
                 query.Append(String.Join(", ", ((IModel)model).Fetch().Keys));
                 query.Append(") VALUES('");
-                query.Append(String.Join("', '", ((IModel)model).Fetch().Values));
+                query.Append(String.Join("', '", ((IModel)model).Fetch().Values.Select(value => value.Replace(@"'", @"\'"))));
                 query.Append("')");
             }
             else
@@ -187,7 +187,7 @@ namespace Ouatelse.Managers
                 {
                     if (!first)
                         query.Append(",");
-                    query.AppendFormat(" {0} = '{1}'", key, dict[key]);
+                    query.AppendFormat(" {0} = '{1}'", key, dict[key].Replace(@"'", @"\'"));
                     first = false;
                 }
 
