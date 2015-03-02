@@ -31,6 +31,7 @@ namespace Ouatelse
                 Application.Exit();
             Utils.InitNotifyIcon();
             InitializeComponent();
+            Utils.SetNotifyIcon(this.notifyIcon1);
             //Gère la connexion
             DoLogin();
 
@@ -178,6 +179,11 @@ namespace Ouatelse
         private void holliday_Click(object sender, EventArgs e)
         {
             new HolidayForm().ShowDialog();
+        }
+
+private void HomeForm_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
