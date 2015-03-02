@@ -402,7 +402,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(-16, -12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1096, 142);
+            this.label1.Size = new System.Drawing.Size(1108, 142);
             this.label1.TabIndex = 29;
             // 
             // year
@@ -475,7 +475,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1054, 509);
+            this.ClientSize = new System.Drawing.Size(1066, 509);
             this.Controls.Add(this.nbRest);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nbPut);

@@ -375,6 +375,13 @@ namespace Ouatelse.Forms
                 Utils.Error("Selectionnez uniquement une journée dans le congé selectionné");
                 return;
             }
+            if (
+                !isExistingDay(this.holidays.SelectedCells[0].RowIndex + 1,
+                    this.holidays.SelectedCells[0].ColumnIndex + 1))
+            {
+                Utils.Error("Ce jour n'existe pas");
+                return;
+            }
 
             DateTime date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex+1, this.holidays.SelectedCells[0].ColumnIndex+1);
             Holiday holiday = HolidayManager.Instance.First("WHERE salaries_id = " + AuthManager.Instance.User.Id + " AND '" +

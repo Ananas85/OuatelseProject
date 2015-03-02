@@ -34,10 +34,10 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\OuatelseIcon.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IrisALS">
+      <HintPath>..\..\IrisALS.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.5\Assemblies\v4.5\MySql.Data.dll</HintPath>
@@ -321,45 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\support.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\OuatelseIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Ouatelse-07.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Ouatelse-071.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Ouatelse-072.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Ouatelse-073.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\page_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\group.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\street_stall.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user_suit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\users_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\package_go.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\plane.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\life_vest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

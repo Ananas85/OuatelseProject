@@ -45,6 +45,7 @@
             this.venteBtn = new System.Windows.Forms.Button();
             this.produitBtn = new System.Windows.Forms.Button();
             this.roleLbl = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // connexionText
@@ -264,6 +265,17 @@
             this.roleLbl.Text = "ROLE";
             this.roleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(598, 400);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(124, 13);
+            this.linkLabel1.TabIndex = 24;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Information sur la licence";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +283,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
             this.ClientSize = new System.Drawing.Size(732, 417);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.roleLbl);
             this.Controls.Add(this.produitBtn);
             this.Controls.Add(this.venteBtn);
@@ -292,6 +305,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ouatelse - Accueil";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -312,5 +326,6 @@
         private System.Windows.Forms.Button venteBtn;
         private System.Windows.Forms.Button produitBtn;
         private System.Windows.Forms.Label roleLbl;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
