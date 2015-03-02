@@ -72,6 +72,15 @@
             this.nbPut = new System.Windows.Forms.Label();
             this.nbRest = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -350,7 +359,7 @@
             this.deleteholiday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteholiday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteholiday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.deleteholiday.Location = new System.Drawing.Point(210, 143);
+            this.deleteholiday.Location = new System.Drawing.Point(432, 143);
             this.deleteholiday.Name = "deleteholiday";
             this.deleteholiday.Size = new System.Drawing.Size(205, 41);
             this.deleteholiday.TabIndex = 28;
@@ -402,13 +411,13 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(-16, -12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1108, 142);
+            this.label1.Size = new System.Drawing.Size(1310, 142);
             this.label1.TabIndex = 29;
             // 
             // year
             // 
             this.year.AutoSize = true;
-            this.year.Location = new System.Drawing.Point(951, 160);
+            this.year.Location = new System.Drawing.Point(1108, 160);
             this.year.Name = "year";
             this.year.Size = new System.Drawing.Size(29, 13);
             this.year.TabIndex = 30;
@@ -416,7 +425,7 @@
             // 
             // previousYear
             // 
-            this.previousYear.Location = new System.Drawing.Point(913, 155);
+            this.previousYear.Location = new System.Drawing.Point(1070, 155);
             this.previousYear.Name = "previousYear";
             this.previousYear.Size = new System.Drawing.Size(32, 23);
             this.previousYear.TabIndex = 31;
@@ -426,7 +435,7 @@
             // 
             // nextYear
             // 
-            this.nextYear.Location = new System.Drawing.Point(986, 155);
+            this.nextYear.Location = new System.Drawing.Point(1143, 155);
             this.nextYear.Name = "nextYear";
             this.nextYear.Size = new System.Drawing.Size(32, 23);
             this.nextYear.TabIndex = 32;
@@ -437,7 +446,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(491, 160);
+            this.label2.Location = new System.Drawing.Point(648, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 13);
             this.label2.TabIndex = 33;
@@ -446,7 +455,7 @@
             // nbPut
             // 
             this.nbPut.AutoSize = true;
-            this.nbPut.Location = new System.Drawing.Point(613, 160);
+            this.nbPut.Location = new System.Drawing.Point(770, 160);
             this.nbPut.Name = "nbPut";
             this.nbPut.Size = new System.Drawing.Size(35, 13);
             this.nbPut.TabIndex = 34;
@@ -455,7 +464,7 @@
             // nbRest
             // 
             this.nbRest.AutoSize = true;
-            this.nbRest.Location = new System.Drawing.Point(815, 160);
+            this.nbRest.Location = new System.Drawing.Point(972, 160);
             this.nbRest.Name = "nbRest";
             this.nbRest.Size = new System.Drawing.Size(41, 13);
             this.nbRest.TabIndex = 36;
@@ -464,18 +473,118 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(679, 160);
+            this.label5.Location = new System.Drawing.Point(836, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 13);
             this.label5.TabIndex = 35;
             this.label5.Text = "Nombre de jours restants :";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Orange;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(12, 501);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 23);
+            this.button1.TabIndex = 37;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 506);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Demande en attente";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(196, 506);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Demande validée";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LimeGreen;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(159, 501);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 23);
+            this.button2.TabIndex = 39;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(329, 506);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 13);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Jour déjà demandé";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.LightGray;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(292, 501);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 23);
+            this.button3.TabIndex = 41;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(1052, 218);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(204, 277);
+            this.listView1.TabIndex = 43;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1100, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "Congé de l\'équipe";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.DarkOrange;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button4.Location = new System.Drawing.Point(210, 143);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(216, 41);
+            this.button4.TabIndex = 45;
+            this.button4.Text = "Modifier une demande";
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // HolidayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1066, 509);
+            this.ClientSize = new System.Drawing.Size(1268, 536);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.nbRest);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nbPut);
@@ -548,5 +657,14 @@
         private System.Windows.Forms.Label nbPut;
         private System.Windows.Forms.Label nbRest;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button4;
     }
 }
