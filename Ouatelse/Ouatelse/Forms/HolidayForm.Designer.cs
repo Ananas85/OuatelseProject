@@ -63,7 +63,6 @@
             this.deleteholiday = new System.Windows.Forms.Button();
             this.newholiday = new System.Windows.Forms.Button();
             this.holidaysLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.year = new System.Windows.Forms.Label();
             this.previousYear = new System.Windows.Forms.Button();
@@ -82,7 +81,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // holidays
@@ -385,33 +383,23 @@
             // holidaysLabel
             // 
             this.holidaysLabel.AutoSize = true;
-            this.holidaysLabel.BackColor = System.Drawing.Color.White;
+            this.holidaysLabel.BackColor = System.Drawing.Color.Transparent;
             this.holidaysLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.holidaysLabel.Location = new System.Drawing.Point(151, 44);
+            this.holidaysLabel.ForeColor = System.Drawing.Color.White;
+            this.holidaysLabel.Location = new System.Drawing.Point(191, 35);
             this.holidaysLabel.Name = "holidaysLabel";
             this.holidaysLabel.Size = new System.Drawing.Size(336, 47);
             this.holidaysLabel.TabIndex = 25;
             this.holidaysLabel.Text = "Gestion des congés";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(-16, -12);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.label1.Location = new System.Drawing.Point(668, -12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1310, 142);
+            this.label1.Size = new System.Drawing.Size(626, 130);
             this.label1.TabIndex = 29;
             // 
             // year
@@ -575,6 +563,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1268, 536);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label7);
@@ -595,7 +585,6 @@
             this.Controls.Add(this.deleteholiday);
             this.Controls.Add(this.newholiday);
             this.Controls.Add(this.holidaysLabel);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.holidays);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -605,7 +594,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse  - Gestion des congés";
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -617,7 +605,6 @@
         private System.Windows.Forms.Button deleteholiday;
         private System.Windows.Forms.Button newholiday;
         private System.Windows.Forms.Label holidaysLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn one;
         private System.Windows.Forms.DataGridViewTextBoxColumn two;

@@ -395,7 +395,7 @@ namespace Ouatelse.Forms
         {
             if (this.holidays.SelectedCells.Count > 1)
             {
-                Utils.Error("Selectionnez uniquement une journée dans le congé selectionné");
+                Utils.Error("Sélectionnez uniquement une journée dans le congé concerné");
                 return;
             }
             if (
