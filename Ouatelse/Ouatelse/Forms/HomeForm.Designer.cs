@@ -164,7 +164,7 @@
             // 
             // salarieBtn
             // 
-            this.salarieBtn.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.salarieBtn.BackColor = System.Drawing.Color.DeepPink;
             this.salarieBtn.FlatAppearance.BorderSize = 0;
             this.salarieBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.salarieBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -218,7 +218,7 @@
             // 
             // venteBtn
             // 
-            this.venteBtn.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.venteBtn.BackColor = System.Drawing.Color.CadetBlue;
             this.venteBtn.FlatAppearance.BorderSize = 0;
             this.venteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.venteBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
