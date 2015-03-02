@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -62,10 +63,16 @@ namespace Ouatelse
             return password.ToString();
         }
 
-        public static void InitNotifyIcon()
+        public static void SetNotifyIcon(NotifyIcon icon)
         {
-            NotifyIcon = new NotifyIcon {Icon = Properties.Resources.OuatelseIcon};
-            NotifyIcon.ShowBalloonTip(1000, "Ouatelse", "Démarré", ToolTipIcon.Info);
+            NotifyIcon = icon;
+        }
+
+        public static void Notify(string message)
+        {
+            if (NotifyIcon == null)
+                return;
+            NotifyIcon.ShowBalloonTip(5000, "Ouatelse", message, ToolTipIcon.Info);
         }
     }
 }

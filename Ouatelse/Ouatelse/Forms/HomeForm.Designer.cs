@@ -45,13 +45,14 @@
             this.venteBtn = new System.Windows.Forms.Button();
             this.produitBtn = new System.Windows.Forms.Button();
             this.roleLbl = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // connexionText
             // 
             this.connexionText.BackColor = System.Drawing.Color.Transparent;
             this.connexionText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connexionText.Location = new System.Drawing.Point(551, 20);
+            this.connexionText.Location = new System.Drawing.Point(551, 19);
             this.connexionText.Name = "connexionText";
             this.connexionText.Size = new System.Drawing.Size(171, 20);
             this.connexionText.TabIndex = 0;
@@ -62,7 +63,7 @@
             // 
             this.username.BackColor = System.Drawing.Color.Transparent;
             this.username.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(548, 40);
+            this.username.Location = new System.Drawing.Point(548, 39);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(174, 13);
             this.username.TabIndex = 1;
@@ -93,7 +94,7 @@
             this.btnLock.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnLock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.NavajoWhite;
             this.btnLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLock.Location = new System.Drawing.Point(548, 75);
+            this.btnLock.Location = new System.Drawing.Point(548, 74);
             this.btnLock.Name = "btnLock";
             this.btnLock.Size = new System.Drawing.Size(75, 23);
             this.btnLock.TabIndex = 3;
@@ -106,7 +107,7 @@
             this.deconnexionBtn.BackColor = System.Drawing.Color.WhiteSmoke;
             this.deconnexionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
             this.deconnexionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deconnexionBtn.Location = new System.Drawing.Point(629, 75);
+            this.deconnexionBtn.Location = new System.Drawing.Point(629, 74);
             this.deconnexionBtn.Name = "deconnexionBtn";
             this.deconnexionBtn.Size = new System.Drawing.Size(93, 23);
             this.deconnexionBtn.TabIndex = 4;
@@ -257,12 +258,18 @@
             // 
             this.roleLbl.BackColor = System.Drawing.Color.Transparent;
             this.roleLbl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roleLbl.Location = new System.Drawing.Point(548, 53);
+            this.roleLbl.Location = new System.Drawing.Point(548, 52);
             this.roleLbl.Name = "roleLbl";
             this.roleLbl.Size = new System.Drawing.Size(174, 19);
             this.roleLbl.TabIndex = 23;
             this.roleLbl.Text = "ROLE";
             this.roleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // HomeForm
             // 
@@ -291,6 +298,7 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ouatelse - Accueil";
+            this.Load += new System.EventHandler(this.HomeForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -312,5 +320,6 @@
         private System.Windows.Forms.Button venteBtn;
         private System.Windows.Forms.Button produitBtn;
         private System.Windows.Forms.Label roleLbl;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
