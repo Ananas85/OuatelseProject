@@ -29,7 +29,6 @@ namespace Ouatelse
             als = new ActivationService("h61v6b7f","ouatelse","Ouatelse",Path.Combine(AppData,"ouatelse-eaf"));
             if(!als.CheckActivation())
                 Application.Exit();
-            Utils.InitNotifyIcon();
             InitializeComponent();
             Utils.SetNotifyIcon(this.notifyIcon1);
             //Gère la connexion
