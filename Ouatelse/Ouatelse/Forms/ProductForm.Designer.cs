@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse.Forms
 {
-    partial class ProductsForm
+    partial class ProductForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             this.Statistiques = new System.Windows.Forms.TabPage();
             this.Comments = new System.Windows.Forms.TextBox();
             this.CommentsContainer = new System.Windows.Forms.TabPage();
@@ -42,20 +42,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PurchasePrice = new System.Windows.Forms.TextBox();
-            this.NameP = new System.Windows.Forms.TextBox();
+            this.Name = new System.Windows.Forms.TextBox();
             this.Designation = new System.Windows.Forms.TextBox();
             this.SellPrice = new System.Windows.Forms.TextBox();
             this.TVA = new System.Windows.Forms.TextBox();
             this.EANCode = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.CommentsContainer.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Statistiques
@@ -136,10 +135,10 @@
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cancelButton.Location = new System.Drawing.Point(384, 25);
+            this.cancelButton.Location = new System.Drawing.Point(368, 31);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 40);
-            this.cancelButton.TabIndex = 8;
+            this.cancelButton.TabIndex = 122;
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
@@ -150,13 +149,12 @@
             this.validateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.validateButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.validateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.validateButton.Location = new System.Drawing.Point(483, 25);
+            this.validateButton.Location = new System.Drawing.Point(467, 31);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(89, 40);
-            this.validateButton.TabIndex = 9;
+            this.validateButton.TabIndex = 121;
             this.validateButton.Text = "Valider";
             this.validateButton.UseVisualStyleBackColor = false;
-            this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
             // 
             // label7
             // 
@@ -192,44 +190,44 @@
             // 
             this.PurchasePrice.Location = new System.Drawing.Point(114, 203);
             this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.Size = new System.Drawing.Size(265, 20);
-            this.PurchasePrice.TabIndex = 4;
+            this.PurchasePrice.Size = new System.Drawing.Size(442, 20);
+            this.PurchasePrice.TabIndex = 102;
             // 
-            // NameP
+            // Name
             // 
-            this.NameP.Location = new System.Drawing.Point(114, 149);
-            this.NameP.Name = "NameP";
-            this.NameP.Size = new System.Drawing.Size(265, 20);
-            this.NameP.TabIndex = 2;
+            this.Name.Location = new System.Drawing.Point(114, 149);
+            this.Name.Name = "Name";
+            this.Name.Size = new System.Drawing.Size(171, 20);
+            this.Name.TabIndex = 100;
             // 
             // Designation
             // 
             this.Designation.Location = new System.Drawing.Point(114, 177);
             this.Designation.Name = "Designation";
-            this.Designation.Size = new System.Drawing.Size(265, 20);
-            this.Designation.TabIndex = 3;
+            this.Designation.Size = new System.Drawing.Size(171, 20);
+            this.Designation.TabIndex = 101;
             // 
             // SellPrice
             // 
             this.SellPrice.Location = new System.Drawing.Point(114, 229);
             this.SellPrice.Name = "SellPrice";
-            this.SellPrice.Size = new System.Drawing.Size(265, 20);
-            this.SellPrice.TabIndex = 5;
+            this.SellPrice.Size = new System.Drawing.Size(442, 20);
+            this.SellPrice.TabIndex = 103;
             // 
             // TVA
             // 
             this.TVA.Location = new System.Drawing.Point(114, 255);
             this.TVA.Name = "TVA";
             this.TVA.Size = new System.Drawing.Size(69, 20);
-            this.TVA.TabIndex = 6;
+            this.TVA.TabIndex = 104;
             // 
             // EANCode
             // 
             this.EANCode.Location = new System.Drawing.Point(114, 283);
-            this.EANCode.MaxLength = 13;
+            this.EANCode.MaxLength = 10;
             this.EANCode.Name = "EANCode";
-            this.EANCode.Size = new System.Drawing.Size(265, 20);
-            this.EANCode.TabIndex = 7;
+            this.EANCode.Size = new System.Drawing.Size(111, 20);
+            this.EANCode.TabIndex = 106;
             // 
             // Id
             // 
@@ -237,19 +235,28 @@
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
-            this.Id.TabIndex = 1;
+            this.Id.TabIndex = 98;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(133, 25);
+            this.label1.Location = new System.Drawing.Point(107, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(246, 40);
             this.label1.TabIndex = 111;
             this.label1.Text = "Détails du produit";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 110;
+            this.pictureBox1.TabStop = false;
             // 
             // label6
             // 
@@ -271,32 +278,13 @@
             this.label8.TabIndex = 116;
             this.label8.Text = "Code EAN :";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBox2.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
-            this.pictureBox2.Location = new System.Drawing.Point(-8, -2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(147, 91);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 127;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.Location = new System.Drawing.Point(111, -1);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(525, 90);
-            this.label13.TabIndex = 128;
-            // 
-            // ProductsForm
+            // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(584, 620);
+            this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -308,26 +296,22 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PurchasePrice);
-            this.Controls.Add(this.NameP);
+            this.Controls.Add(this.Name);
             this.Controls.Add(this.Designation);
             this.Controls.Add(this.SellPrice);
             this.Controls.Add(this.TVA);
             this.Controls.Add(this.EANCode);
             this.Controls.Add(this.Id);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProductsForm";
-            this.ShowIcon = false;
-            this.Load += new System.EventHandler(this.ProductsForm_Load);
+            this.Name = "ProductForm";
             this.CommentsContainer.ResumeLayout(false);
             this.CommentsContainer.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,17 +332,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PurchasePrice;
-        private System.Windows.Forms.TextBox NameP;
+        private System.Windows.Forms.TextBox Name;
         private System.Windows.Forms.TextBox Designation;
         private System.Windows.Forms.TextBox SellPrice;
         private System.Windows.Forms.TextBox TVA;
         private System.Windows.Forms.TextBox EANCode;
         private System.Windows.Forms.TextBox Id;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label13;
 
 
 
