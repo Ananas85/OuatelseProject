@@ -337,23 +337,19 @@ namespace Ouatelse.Forms
             }
 
 
-            int workingDate = 0;
-            for (DateTime p = startingDate; p <= endingDate; p = p.AddDays(1))
-            {
-                if(isWorkingDate(p))
-                    workingDate++;
-            }
-            if (workingDate + alreadyPresent > 30)
+            int nbHollidays = holidaysSelected.Except(unworkingDate).ToList().Count;
+
+            if (nbHollidays + alreadyPresent > 30)
             {
                 Utils.Error("Vous ne pouvez pas poser plus de congés que vous en avez le droit.");
                 return;
             }
 
-            int nbHollidays = holidaysSelected.Except(unworkingDate).ToList().Count;
-            int amplitude = holidaysSelected.Count;
+            Holiday holiday = new Holiday(startingDate, endingDate, AuthManager.Instance.User);
+            
 
-            if (new NewHolidaysForm(startingDate, endingDate, nbHollidays, amplitude,
-                    30 - (workingDate + alreadyPresent)).ShowDialog() != DialogResult.OK) return;
+            if (new NewHolidaysForm(holiday, nbHollidays,
+                    30 - (nbHollidays + alreadyPresent)).ShowDialog() != DialogResult.OK) return;
             
             HolidayManager.Instance.Save(new Holiday(startingDate, endingDate, AuthManager.Instance.User));
             this.holidays.ClearSelection();
@@ -421,8 +417,13 @@ namespace Ouatelse.Forms
                 return;
             }
 
-            HolidayManager.Instance.Delete(holiday);
-            UpdateCalendar();
+            if (
+                Utils.Prompt("Voulez-vous vraiment supprimer votre demande de congé du" + holiday.StartingDate.ToShortDateString() +
+                             " au " + holiday.EndingDate.ToShortDateString() + " ? "))
+            {
+                HolidayManager.Instance.Delete(holiday);
+                UpdateCalendar();
+            }
         }
         #endregion
     }
