@@ -45,8 +45,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -208,9 +206,6 @@
     <EmbeddedResource Include="Forms\HolidayForm.resx">
       <DependentUpon>HolidayForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InvoiceForm.resx">
-      <DependentUpon>InvoiceForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LockForm.resx">
       <DependentUpon>LockForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,9 +235,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SupportForm.resx">
-      <DependentUpon>SupportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -318,9 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ouatelse-06.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\support.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

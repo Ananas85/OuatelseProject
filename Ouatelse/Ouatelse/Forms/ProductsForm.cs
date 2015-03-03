@@ -121,103 +121,10 @@ namespace Ouatelse.Forms
                 return;
             }
 
-            else
-            {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            }
-        }
-        #endregion
-
-        #region Getter du produit en cours
-        public Product getProduct()
+        private void newProductBtn_Click(object sender, EventArgs e)
         {
-            return obj;
+            NewProductForm newProductForm = new NewProductForm();
+            newProductForm.ShowDialog();  
         }
-        #endregion
-
-        private void PurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
-        }
-
-        private void SellPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
-        }
-
-        private void TVA_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
-        }
-
-        //#region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone fixe
-        //private void PhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-        //    {
-        //        Utils.Info("Uniquement les chiffres sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone mobile
-        //private void MobilePhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-        //    {
-        //        Utils.Info("Uniquement les chiffres sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniqument de l'entrée de chiffre pour le code postal
-        //private void CityPostalCode_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-        //    {
-        //        Utils.Info("Uniquement les chiffres sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniquement de l'entrée de lettre ou - pour le prénom
-        //private void FirstName_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
-        //    {
-
-        //        Utils.Info("Uniquement les lettres ou - sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniquement de l'entrée de lettre ou - pour le nom
-        //private void LastName_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
-        //    {
-        //        Utils.Info("Uniquement les lettres ou - sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-
     }
 }

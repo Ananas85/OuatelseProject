@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse.Forms
 {
-    partial class ProductsForm
+    partial class ProductForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             this.Statistiques = new System.Windows.Forms.TabPage();
             this.Comments = new System.Windows.Forms.TextBox();
             this.CommentsContainer = new System.Windows.Forms.TabPage();
@@ -42,7 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PurchasePrice = new System.Windows.Forms.TextBox();
-            this.NameP = new System.Windows.Forms.TextBox();
+            this.Name = new System.Windows.Forms.TextBox();
             this.Designation = new System.Windows.Forms.TextBox();
             this.SellPrice = new System.Windows.Forms.TextBox();
             this.TVA = new System.Windows.Forms.TextBox();
@@ -138,7 +138,7 @@
             this.cancelButton.Location = new System.Drawing.Point(368, 31);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 40);
-            this.cancelButton.TabIndex = 8;
+            this.cancelButton.TabIndex = 122;
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = false;
             // 
@@ -152,10 +152,9 @@
             this.validateButton.Location = new System.Drawing.Point(467, 31);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(89, 40);
-            this.validateButton.TabIndex = 9;
+            this.validateButton.TabIndex = 121;
             this.validateButton.Text = "Valider";
             this.validateButton.UseVisualStyleBackColor = false;
-            this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
             // 
             // label7
             // 
@@ -192,46 +191,43 @@
             this.PurchasePrice.Location = new System.Drawing.Point(114, 203);
             this.PurchasePrice.Name = "PurchasePrice";
             this.PurchasePrice.Size = new System.Drawing.Size(442, 20);
-            this.PurchasePrice.TabIndex = 4;
-            this.PurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PurchasePrice_KeyPress);
+            this.PurchasePrice.TabIndex = 102;
             // 
-            // NameP
+            // Name
             // 
-            this.NameP.Location = new System.Drawing.Point(114, 149);
-            this.NameP.Name = "NameP";
-            this.NameP.Size = new System.Drawing.Size(171, 20);
-            this.NameP.TabIndex = 2;
+            this.Name.Location = new System.Drawing.Point(114, 149);
+            this.Name.Name = "Name";
+            this.Name.Size = new System.Drawing.Size(171, 20);
+            this.Name.TabIndex = 100;
             // 
             // Designation
             // 
             this.Designation.Location = new System.Drawing.Point(114, 177);
             this.Designation.Name = "Designation";
             this.Designation.Size = new System.Drawing.Size(171, 20);
-            this.Designation.TabIndex = 3;
+            this.Designation.TabIndex = 101;
             // 
             // SellPrice
             // 
             this.SellPrice.Location = new System.Drawing.Point(114, 229);
             this.SellPrice.Name = "SellPrice";
             this.SellPrice.Size = new System.Drawing.Size(442, 20);
-            this.SellPrice.TabIndex = 5;
-            this.SellPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SellPrice_KeyPress);
+            this.SellPrice.TabIndex = 103;
             // 
             // TVA
             // 
             this.TVA.Location = new System.Drawing.Point(114, 255);
             this.TVA.Name = "TVA";
             this.TVA.Size = new System.Drawing.Size(69, 20);
-            this.TVA.TabIndex = 6;
-            this.TVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TVA_KeyPress);
+            this.TVA.TabIndex = 104;
             // 
             // EANCode
             // 
             this.EANCode.Location = new System.Drawing.Point(114, 283);
-            this.EANCode.MaxLength = 13;
+            this.EANCode.MaxLength = 10;
             this.EANCode.Name = "EANCode";
             this.EANCode.Size = new System.Drawing.Size(111, 20);
-            this.EANCode.TabIndex = 7;
+            this.EANCode.TabIndex = 106;
             // 
             // Id
             // 
@@ -239,7 +235,7 @@
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
-            this.Id.TabIndex = 1;
+            this.Id.TabIndex = 98;
             // 
             // label1
             // 
@@ -282,12 +278,11 @@
             this.label8.TabIndex = 116;
             this.label8.Text = "Code EAN :";
             // 
-            // ProductsForm
+            // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(584, 620);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
@@ -301,7 +296,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PurchasePrice);
-            this.Controls.Add(this.NameP);
+            this.Controls.Add(this.Name);
             this.Controls.Add(this.Designation);
             this.Controls.Add(this.SellPrice);
             this.Controls.Add(this.TVA);
@@ -312,8 +307,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProductsForm";
-            this.Load += new System.EventHandler(this.ProductsForm_Load);
+            this.Name = "ProductForm";
             this.CommentsContainer.ResumeLayout(false);
             this.CommentsContainer.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -338,7 +332,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PurchasePrice;
-        private System.Windows.Forms.TextBox NameP;
+        private System.Windows.Forms.TextBox Name;
         private System.Windows.Forms.TextBox Designation;
         private System.Windows.Forms.TextBox SellPrice;
         private System.Windows.Forms.TextBox TVA;
