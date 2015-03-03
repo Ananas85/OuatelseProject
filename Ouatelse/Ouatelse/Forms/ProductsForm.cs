@@ -86,7 +86,6 @@ namespace Ouatelse.Forms
                 Utils.Warning("TVA incorrecte");
                 return;
             };
-
             obj.TVA = val;
 
             //On regarde si notre entité peut être validé en base
@@ -121,10 +120,18 @@ namespace Ouatelse.Forms
                 return;
             }
 
-        private void newProductBtn_Click(object sender, EventArgs e)
-        {
-            NewProductForm newProductForm = new NewProductForm();
-            newProductForm.ShowDialog();  
+            else
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
+        #endregion
+
+        #region Getter du produit en cours
+        public Product getProduct()
+        {
+            return obj;
+        }
+        #endregion
     }
 }

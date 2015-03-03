@@ -192,31 +192,29 @@
             // 
             this.PurchasePrice.Location = new System.Drawing.Point(114, 203);
             this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.Size = new System.Drawing.Size(442, 20);
+            this.PurchasePrice.Size = new System.Drawing.Size(265, 20);
             this.PurchasePrice.TabIndex = 4;
-            this.PurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PurchasePrice_KeyPress);
             // 
             // NameP
             // 
             this.NameP.Location = new System.Drawing.Point(114, 149);
             this.NameP.Name = "NameP";
-            this.NameP.Size = new System.Drawing.Size(171, 20);
+            this.NameP.Size = new System.Drawing.Size(265, 20);
             this.NameP.TabIndex = 2;
             // 
             // Designation
             // 
             this.Designation.Location = new System.Drawing.Point(114, 177);
             this.Designation.Name = "Designation";
-            this.Designation.Size = new System.Drawing.Size(171, 20);
+            this.Designation.Size = new System.Drawing.Size(265, 20);
             this.Designation.TabIndex = 3;
             // 
             // SellPrice
             // 
             this.SellPrice.Location = new System.Drawing.Point(114, 229);
             this.SellPrice.Name = "SellPrice";
-            this.SellPrice.Size = new System.Drawing.Size(442, 20);
+            this.SellPrice.Size = new System.Drawing.Size(265, 20);
             this.SellPrice.TabIndex = 5;
-            this.SellPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SellPrice_KeyPress);
             // 
             // TVA
             // 
@@ -224,14 +222,13 @@
             this.TVA.Name = "TVA";
             this.TVA.Size = new System.Drawing.Size(69, 20);
             this.TVA.TabIndex = 6;
-            this.TVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TVA_KeyPress);
             // 
             // EANCode
             // 
             this.EANCode.Location = new System.Drawing.Point(114, 283);
             this.EANCode.MaxLength = 13;
             this.EANCode.Name = "EANCode";
-            this.EANCode.Size = new System.Drawing.Size(111, 20);
+            this.EANCode.Size = new System.Drawing.Size(265, 20);
             this.EANCode.TabIndex = 7;
             // 
             // Id
