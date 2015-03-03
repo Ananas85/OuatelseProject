@@ -79,7 +79,7 @@ namespace Ouatelse
             catch
             {
                 if (Utils.CheckServer())
-                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
         }
@@ -107,7 +107,7 @@ namespace Ouatelse
             catch
             {
                 if (Utils.CheckServer())
-                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
         }
@@ -132,7 +132,7 @@ namespace Ouatelse
             catch
             {
                 if (Utils.CheckServer())
-                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }
             
