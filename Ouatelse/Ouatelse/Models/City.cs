@@ -47,6 +47,13 @@ namespace Ouatelse.Models
 
             return query;
         }
+
+        public static string CreationIndex()
+        {
+            string query = " CREATE INDEX \"fk_villes_pays1_idx\" ON villes (pays_id);" + Environment.NewLine;
+            query += " CREATE INDEX \"code_postal_idx\" ON villes (code_postal);";
+            return query;
+        }
     }
 
 }

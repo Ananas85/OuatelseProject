@@ -28,9 +28,19 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("type", Type);
+            Dictionary<string, string> res = new Dictionary<string, string> {{"type", Type}};
             return res;
         }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"moyen_de_paiements\";" + Environment.NewLine;
+            query += " CREATE TABLE \"moyen_de_paiements\" (" + Environment.NewLine;
+            query += " \"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"type\" TEXT(45,0) NOT NULL," + Environment.NewLine;
+            query += " PRIMARY KEY(\"id\"));";
+            return query;
+        }
+
     }
 }

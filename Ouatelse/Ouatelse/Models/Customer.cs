@@ -261,5 +261,12 @@ namespace Ouatelse.Models
 
             return query;
         }
+
+        public static string CreationIndex()
+        {
+            string query = " CREATE INDEX \"fk_clients_villes1_idx\" ON clients (villes_id);" + Environment.NewLine;
+            query += " CREATE INDEX \"fk_clients_civilite1_idx\" ON clients (civilite_id);";
+            return query;
+        }
     }
 }

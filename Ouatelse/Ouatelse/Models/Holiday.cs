@@ -70,7 +70,7 @@ namespace Ouatelse.Models
             return res;
         }
 
-        public string CreationQuery()
+        public static string CreationQuery()
         {
             string query = "DROP TABLE IF EXISTS \"conge\";" + Environment.NewLine;
             query += " CREATE TABLE \"conge\" ( " + Environment.NewLine;
@@ -81,6 +81,11 @@ namespace Ouatelse.Models
             query += " \"accepte\" INTEGER(1,0) NOT NULL, " + Environment.NewLine;
             query += " PRIMARY KEY(\"id\") ); ";
             return query;
+        }
+
+        public static string CreationIndex()
+        {
+            return " CREATE INDEX \"fk_conge_salaries1_idx\" ON conge (salaries_id);";
         }
     }
 }
