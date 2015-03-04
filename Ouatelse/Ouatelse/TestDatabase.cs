@@ -1,50 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Data;
-using System.Diagnostics;
-using System.Net.NetworkInformation;
+using System.Data.SQLite;
 
 namespace Ouatelse
 {
-    /// <summary>
-    /// Classe Singleton permettant de gérer la base de données
-    /// IDisposable permet de dire qu'il y a une méthode qui libère les ressources
-    /// </summary>
-    public class Database : AbstactDatabase, IDatabase
+    public class TestDatabase : AbstactDatabase, IDatabase 
     {
         /// <summary>
         /// instance static propriétaire de la classe pour le pattern Singleton
         /// </summary>
-        private static Database _instance = null;
+        private static TestDatabase _instance = null;
 
         /// <summary>
-        /// Permet de gérer la connection MySQL
+        /// Permet de gérer la connection SQLite
         /// </summary>
-        private MySqlConnection connection = null;
+        private SQLiteConnection connection = null;
 
         /// <summary>
         /// Methode indispensable pour le pattern singleton Database.Instance.function
         /// </summary>
-        public static Database Instance
+        public static TestDatabase Instance
         {
-            get { return _instance ?? (_instance = new Database()); }
+            get { return _instance ?? (_instance = new TestDatabase()); }
         }
 
         /// <summary>
-        /// Constructeur privé qui permet de se connecter à la base de données grâce aux credentials.
+        /// Constructeur privé qui permet de se créer la base
         /// </summary>
-        private Database()
+        private TestDatabase()
         {
+            SQLiteConnection.CreateFile("MyDatabase.sqlite");
             this.isLoggingEnabled = true;
             if (!Utils.CheckServer()) return;
-            this.connection = new MySqlConnection("SERVER=" + DatabaseCredentials.Host + ";DATABASE=" + DatabaseCredentials.DatabaseName + ";UID=" + DatabaseCredentials.Username + ";PASSWORD=" + DatabaseCredentials.Password + ";PORT=" + DatabaseCredentials.Port);
+            this.connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
             this.connection.Open();
         }
-
         public bool Execute(string query, Dictionary<string, object> parameters = null)
         {
             if (!Utils.CheckServer())
@@ -55,43 +46,14 @@ namespace Ouatelse
                 parameters = new Dictionary<string, object>();
             try
             {
-                MySqlCommand cmd = this.connection.CreateCommand();
+                SQLiteCommand cmd = this.connection.CreateCommand();
                 runningQuery = query;
                 cmd.CommandText = runningQuery;
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
                 cmd.ExecuteNonQuery();
-                lastInsertId = cmd.LastInsertedId;
                 if (isLoggingEnabled) queryLog.Add(query);
                 return true;
-            }
-            catch
-            {
-                if (Utils.CheckServer())
-                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
-                return false;
-            }
-        }
-
-        public object ExecuteScalar(string query, Dictionary<string, object> parameters = null)
-        {
-            if (!Utils.CheckServer())
-            {
-                return false;
-            }
-
-            if (parameters == null)
-                parameters = new Dictionary<string, object>();
-
-            try
-            {
-                MySqlCommand cmd = this.connection.CreateCommand();
-                runningQuery = query;
-                cmd.CommandText = runningQuery;
-                foreach (string paramName in parameters.Keys)
-                    cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
-                if (isLoggingEnabled) queryLog.Add(query);
-                return cmd.ExecuteScalar();
             }
             catch
             {
@@ -107,12 +69,12 @@ namespace Ouatelse
                 parameters = new Dictionary<string, object>();
             try
             {
-                MySqlCommand cmd = this.connection.CreateCommand();
+                SQLiteCommand cmd = this.connection.CreateCommand();
                 runningQuery = query;
                 cmd.CommandText = runningQuery;
                 foreach (string paramName in parameters.Keys)
                     cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
                 if (isLoggingEnabled) queryLog.Add(query);
@@ -124,15 +86,41 @@ namespace Ouatelse
                     Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }
-
         }
 
-        /// <summary>
-        /// Libère les ressources ( ici ferme la connexion ) 
-        /// </summary>
+        public object ExecuteScalar(string query, Dictionary<string, object> parameters = null)
+        {
+            if (!Utils.CheckServer())
+            {
+                return false;
+            }
+
+            if (parameters == null)
+                parameters = new Dictionary<string, object>();
+
+            try
+            {
+                SQLiteCommand cmd = this.connection.CreateCommand();
+                runningQuery = query;
+                cmd.CommandText = runningQuery;
+                foreach (string paramName in parameters.Keys)
+                    cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
+                if (isLoggingEnabled) queryLog.Add(query);
+                return cmd.ExecuteScalar();
+            }
+            catch
+            {
+                if (Utils.CheckServer())
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
+                return false;
+            }
+        }
+
         public void Dispose()
         {
+            System.IO.File.Delete("MyDatabase.sqlite");
             this.connection.Close();
         }
+
     }
 }

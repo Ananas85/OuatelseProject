@@ -336,6 +336,12 @@ namespace Ouatelse.Forms
                 return;
             }
 
+            if (startingDate < DateTime.Now)
+            {
+                Utils.Error("Il n'est pas possible de poser des congés sur des jours passés");
+                return;
+            }
+
 
             int nbHollidays = holidaysSelected.Except(unworkingDate).ToList().Count;
 

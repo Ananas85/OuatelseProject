@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Ouatelse.Models
 {
@@ -24,11 +26,26 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("libelle", Name);
-            res.Add("code_postal", PostalCode);
-            res.Add("pays_id", Country.Id.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"libelle", Name},
+                {"code_postal", PostalCode},
+                {"pays_id", Country.Id.ToString()}
+            };
             return res;
+        }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"villes\"; " + Environment.NewLine;
+            query+= "CREATE TABLE \"villes\" ( " + Environment.NewLine;
+            query+="\"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+	        query+="\"libelle\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+	        query+="\"code_postal\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+	        query+="\"pays_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+	        query+= "PRIMARY KEY(\"id\",\"pays_id\"))";
+
+            return query;
         }
     }
 
