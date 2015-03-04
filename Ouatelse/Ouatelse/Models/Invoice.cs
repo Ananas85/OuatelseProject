@@ -1,6 +1,7 @@
 ﻿using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Ouatelse.Models
         public Employee Employee { get; set; }
         public Customer Customer { get; set; }
         public Payment Payment { get; set; }
+        public bool IsPaid { get; set; }
+        public float PaidAmount { get; set; }
 
         public ManyCollection<InvoiceProduct> Products;
 
@@ -33,6 +36,8 @@ namespace Ouatelse.Models
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
             this.Customer = CustomerManager.Instance.Find(cursor.Read().ToString());
             this.Payment = PaymentManager.Instance.Find(cursor.Read().ToString());
+            this.IsPaid = cursor.Read().ToString() == "1";
+            this.PaidAmount = Convert.ToSingle(cursor.Read().ToString());
         }
 
         public Dictionary<string, string> Fetch()
@@ -43,6 +48,8 @@ namespace Ouatelse.Models
             res.Add("salaries_id", Employee.Id.ToString());
             res.Add("clients_id", Customer == null ? "0" : Customer.Id.ToString());
             res.Add("moyen_de_paiements_id", Payment.Id.ToString());
+            res.Add("estPaye", IsPaid ? "1" : "0");
+            res.Add("montantPaye", PaidAmount.ToString(CultureInfo.InvariantCulture));
             return res;
         }
 
@@ -77,6 +84,26 @@ namespace Ouatelse.Models
             {
                 double total= TotalHT + TotalTVA;
                 return total - ((DiscountPercent / 100) * total); 
+            }
+        }
+
+        public double Reste
+        {
+            get { return TotalTTC - PaidAmount; }
+        }
+
+        public double Arendre
+        {
+            get { return PaidAmount - TotalTTC; }
+        }
+
+        public string ProductsString
+        {
+            get
+            {
+                Products.Reload();
+                List<string> res = Products.Items.Select(invoiceProduct => string.Format("{0}x {1}", invoiceProduct.Quantity, invoiceProduct.Product.Name)).ToList();
+                return String.Join(@", ", res);
             }
         }
     }
