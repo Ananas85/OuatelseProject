@@ -14,7 +14,7 @@ namespace Ouatelse
     /// Classe Singleton permettant de gérer la base de données
     /// IDisposable permet de dire qu'il y a une méthode qui libère les ressources
     /// </summary>
-    public class Database : IDisposable
+    public class Database : AbstactDatabase, IDatabase
     {
         /// <summary>
         /// instance static propriétaire de la classe pour le pattern Singleton
@@ -22,20 +22,9 @@ namespace Ouatelse
         private static Database _instance = null;
 
         /// <summary>
-        /// La query que l'on veut utiliser
-        /// </summary>
-        private string runningQuery = "";
-
-        /// <summary>
         /// Permet de gérer la connection MySQL
         /// </summary>
         private MySqlConnection connection = null;
-
-        private long? lastInsertId = null;
-
-        public bool isLoggingEnabled { get; private set; }
-
-        private List<string> queryLog = new List<string>(); 
 
         /// <summary>
         /// Methode indispensable pour le pattern singleton Database.Instance.function
@@ -79,7 +68,7 @@ namespace Ouatelse
             catch
             {
                 if (Utils.CheckServer())
-                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
         }
@@ -107,7 +96,7 @@ namespace Ouatelse
             catch
             {
                 if (Utils.CheckServer())
-                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return false;
             }
         }
@@ -132,20 +121,10 @@ namespace Ouatelse
             catch
             {
                 if (Utils.CheckServer())
-                    Utils.Error("Impossible d'éxécuter une requête \"" + runningQuery + "\" sur la base");
+                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
                 return null;
             }
-            
-        }
 
-        public long? LastInsertId
-        {
-            get { return lastInsertId; }
-        }
-
-        public string[] LoggedQueries
-        {
-            get { return queryLog.ToArray(); }
         }
 
         /// <summary>

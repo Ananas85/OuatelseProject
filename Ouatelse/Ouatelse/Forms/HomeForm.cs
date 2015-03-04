@@ -6,18 +6,29 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IrisALS;
 
 namespace Ouatelse
 {
     public partial class HomeForm : Form
     {
+        private ActivationService als;
+
+        public static string AppData = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ouatelse");
         public HomeForm()
         {
+            if (!Directory.Exists(AppData))
+                Directory.CreateDirectory(AppData);
+            als = new ActivationService("h61v6b7f","ouatelse","Ouatelse",Path.Combine(AppData,"ouatelse-eaf"));
+            if(!als.CheckActivation())
+                Application.Exit();
             InitializeComponent();
             Utils.SetNotifyIcon(this.notifyIcon1);
             //Gère la connexion
@@ -137,7 +148,7 @@ namespace Ouatelse
         /// <param name="e"></param>
         private void produitBtn_Click(object sender, EventArgs e)
         {
-            new ProductsForm().ShowDialog();
+            new ManageProductsForm().ShowDialog();
         }
 
         /// <summary>
@@ -169,9 +180,16 @@ namespace Ouatelse
             new HolidayForm().ShowDialog();
         }
 
-        private void HomeForm_Load(object sender, EventArgs e)
+private void HomeForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            als.ShowState();
+            if(!als.CheckActivation())
+                Application.Exit();
         }
     }
 }

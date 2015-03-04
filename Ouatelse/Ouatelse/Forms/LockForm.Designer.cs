@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LockForm));
             this.username = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.passwordEntry = new System.Windows.Forms.TextBox();
@@ -125,6 +126,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.username);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LockForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Session verrouillée";

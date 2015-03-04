@@ -60,12 +60,27 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("date_debut", StartingDate.ToString("yyyy-MM-dd"));
-            res.Add("date_fin", EndingDate.ToString("yyyy-MM-dd"));
-            res.Add("salaries_id", Employee.Id.ToString());
-            res.Add("accepte", Convert.ToInt16(Accepted).ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"date_debut", StartingDate.ToString("yyyy-MM-dd")},
+                {"date_fin", EndingDate.ToString("yyyy-MM-dd")},
+                {"salaries_id", Employee.Id.ToString()},
+                {"accepte", Convert.ToInt16(Accepted).ToString()}
+            };
             return res;
+        }
+
+        public string CreationQuery()
+        {
+            string query = "DROP TABLE IF EXISTS \"conge\";" + Environment.NewLine;
+            query += " CREATE TABLE \"conge\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
+            query += " \"date_debut\" TEXT NOT NULL, " + Environment.NewLine;
+            query += "\"date_fin\" TEXT NOT NULL, " + Environment.NewLine;
+            query += " \"salaries_id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
+            query += " \"accepte\" INTEGER(1,0) NOT NULL, " + Environment.NewLine;
+            query += " PRIMARY KEY(\"id\") ); ";
+            return query;
         }
     }
 }

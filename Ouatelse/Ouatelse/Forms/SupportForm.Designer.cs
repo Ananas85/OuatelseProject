@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupportForm));
             this.cancelButton = new System.Windows.Forms.Button();
             this.validateButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.osLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.userLabel = new System.Windows.Forms.Label();
@@ -46,6 +45,8 @@
             this.categoryLabel = new System.Windows.Forms.Label();
             this.storeLabel = new System.Windows.Forms.Label();
             this.storeTB = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cancelButton.Location = new System.Drawing.Point(514, 18);
+            this.cancelButton.Location = new System.Drawing.Point(515, 18);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 40);
             this.cancelButton.TabIndex = 123;
@@ -73,7 +74,7 @@
             this.validateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.validateButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.validateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.validateButton.Location = new System.Drawing.Point(613, 18);
+            this.validateButton.Location = new System.Drawing.Point(614, 18);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(89, 40);
             this.validateButton.TabIndex = 122;
@@ -86,31 +87,13 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(139, 18);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(161, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(299, 40);
             this.label1.TabIndex = 125;
             this.label1.Text = "Demande d\'assistance";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(147, 91);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 124;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label15.Location = new System.Drawing.Point(118, -8);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(715, 90);
-            this.label15.TabIndex = 126;
             // 
             // osLabel
             // 
@@ -236,11 +219,31 @@
             this.storeTB.Size = new System.Drawing.Size(236, 20);
             this.storeTB.TabIndex = 141;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
+            this.pictureBox1.Location = new System.Drawing.Point(-8, -4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 91);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 143;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Location = new System.Drawing.Point(111, -3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(625, 90);
+            this.label13.TabIndex = 144;
+            // 
             // SupportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 427);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(714, 427);
             this.Controls.Add(this.storeLabel);
             this.Controls.Add(this.storeTB);
             this.Controls.Add(this.categoryLabel);
@@ -258,11 +261,14 @@
             this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(730, 466);
             this.Name = "SupportForm";
+            this.ShowIcon = false;
             this.Text = "Ouatelse - Assistance";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -275,8 +281,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label osLabel;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label userLabel;
@@ -290,5 +294,7 @@
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label storeLabel;
         private System.Windows.Forms.TextBox storeTB;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label13;
     }
 }
