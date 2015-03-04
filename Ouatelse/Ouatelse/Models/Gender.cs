@@ -24,7 +24,7 @@ namespace Ouatelse.Models
             return res;
         }
 
-        public string CreationQuery()
+        public static string CreationQuery()
         {
             //Necessary to create table in test environment with SQLite syntax
             var query = "DROP TABLE IF EXISTS \"civilite\";" + Environment.NewLine;
