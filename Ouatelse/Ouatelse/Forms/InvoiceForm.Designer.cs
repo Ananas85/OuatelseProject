@@ -362,6 +362,7 @@
             this.methodePaiement.Name = "methodePaiement";
             this.methodePaiement.Size = new System.Drawing.Size(170, 33);
             this.methodePaiement.TabIndex = 1;
+            this.methodePaiement.SelectedIndexChanged += new System.EventHandler(this.methodePaiement_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -377,6 +378,7 @@
             this.button1.TabIndex = 111;
             this.button1.Text = "Régler la Facture";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 

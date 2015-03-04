@@ -46,6 +46,7 @@ namespace Ouatelse.Forms
             this.code.Text = string.Format("{0}{1}", invoice.Id, (newInvoice ? " (Nouveau)" : ""));
             ReloadCustomer();
             ReloadProducts();
+            ReloadLock();
         }
 
         public void ReloadCustomer()
@@ -82,6 +83,7 @@ namespace Ouatelse.Forms
             this.totalTVA.Text = invoice.TotalTVA.ToString("C", fr);
             this.totalTTC.Text = invoice.TotalTTC.ToString("C", fr);
             this.aRegler.Text = invoice.TotalTTC.ToString("C", fr);
+            this.regle.Value = this.regle.Enabled ? (decimal) invoice.PaidAmount : (decimal) invoice.TotalTTC;
             ReloadArendre();
         }
 
@@ -91,6 +93,18 @@ namespace Ouatelse.Forms
             double reste = invoice.TotalTTC - montant;
             this.aRendreLabel.Text = reste > 0 ? "Reste" : "A rendre";
             this.aRendre.Text = Math.Abs(reste).ToString("C", CultureInfo.GetCultureInfo("fr-FR"));
+        }
+
+        public void ReloadLock()
+        {
+            this.button1.Enabled = !invoice.IsPaid;
+            this.button2.Enabled = !invoice.IsPaid;
+            // this.button3.Enabled = !invoice.IsPaid;
+            this.quickAdd.Enabled = !invoice.IsPaid;
+            this.regle.Enabled = !invoice.IsPaid;
+            this.items.Enabled = !invoice.IsPaid;
+            this.date.Enabled = !invoice.IsPaid;
+            this.reduction.Enabled = !invoice.IsPaid;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -112,6 +126,8 @@ namespace Ouatelse.Forms
                 return;
             }
 
+            InvoiceManager.Instance.Save(invoice);
+            DialogResult = DialogResult.OK;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -170,6 +186,49 @@ namespace Ouatelse.Forms
         private void regle_ValueChanged(object sender, EventArgs e)
         {
             ReloadArendre();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            invoice.PaidAmount = (float) this.regle.Value;
+            if (invoice.PaidAmount < (float) invoice.TotalTTC)
+            {
+                Utils.Warning(
+                    string.Format(
+                        "Attention !\n\nLa facture n'a pas été réglé dans son intégralité !\nIl reste {0} à régler",
+                        invoice.Reste.ToString("C", CultureInfo.GetCultureInfo("fr"))));
+            }
+            else if (invoice.PaidAmount > (float) invoice.TotalTTC)
+            {
+                Utils.Warning(
+                    string.Format(
+                        "Attention !\n\nIl faut rendre {0} !",
+                        invoice.Arendre.ToString("C", CultureInfo.GetCultureInfo("fr"))));
+                invoice.PaidAmount = (float) invoice.TotalTTC;
+            }
+
+            if (invoice.PaidAmount == (float)invoice.TotalTTC)
+            {
+                invoice.IsPaid = true;
+                InvoiceManager.Instance.Save(invoice);
+                Utils.Notify("Facture réglée");
+                ReloadTotals();
+                ReloadLock();
+            }
+        }
+
+        private void methodePaiement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.methodePaiement.Text == @"CB" || this.methodePaiement.Text == @"Chèque")
+            {
+                this.regle.Value = (decimal) invoice.TotalTTC;
+                this.regle.Enabled = false;
+            }
+            else
+            {
+                this.regle.Value = (decimal)invoice.PaidAmount;
+                this.regle.Enabled = true;
+            }
         }
     }
 }
