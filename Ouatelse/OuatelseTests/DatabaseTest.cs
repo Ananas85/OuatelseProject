@@ -10,7 +10,7 @@ namespace OuatelseTests
         [TestMethod]
         public void DatabaseConnection()
         {
-            Database db = Database.Instance;
+            IDatabase db = DatabaseInjector.Database;
         }
     }
 }

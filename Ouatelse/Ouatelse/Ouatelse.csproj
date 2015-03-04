@@ -64,6 +64,7 @@
     <Compile Include="ArrayCursor.cs" />
     <Compile Include="Bind.cs" />
     <Compile Include="Binding.cs" />
+    <Compile Include="DatabaseInjector.cs" />
     <Compile Include="Forms\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
