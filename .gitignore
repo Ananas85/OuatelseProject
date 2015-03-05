@@ -3,6 +3,7 @@
 
 #Exempt sensible data
 DatabaseCredentials.cs
+MailCredentials.cs
 
 # User-specific files
 *.suo
