@@ -46,10 +46,9 @@ namespace Ouatelse.Models
         {
             string query = " DROP TABLE IF EXISTS \"magasin\";" + Environment.NewLine;
             query += " CREATE TABLE \"magasin\" ( " + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
             query += " \"adresse\" TEXT NOT NULL," + Environment.NewLine;
-            query += " \"villes_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\"));";
+            query += " \"villes_id\" INTEGER(11,0) NOT NULL);";
 
             return query;
         }

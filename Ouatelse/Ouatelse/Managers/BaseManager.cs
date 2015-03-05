@@ -14,10 +14,6 @@ namespace Ouatelse.Managers
     public abstract class BaseManager<T> : IManager<T>
     {
         #region Les attributs de la classe
-        /// <summary>
-        /// l'instance du pattern singleton
-        /// </summary>
-        IDatabase db = DatabaseInjector.Database;
 
         /// <summary>
         /// Le nom de la table dans la base de données
@@ -33,7 +29,7 @@ namespace Ouatelse.Managers
         public T[] All()
         {
             // On récupère le DataSet
-            DataSet ds =  db.GetDataSet("SELECT * FROM " + TableName);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName);
             if (ds == null)
             {
                 return default(T[]);
@@ -65,7 +61,7 @@ namespace Ouatelse.Managers
         /// <returns>Un Tableau d'objets</returns>
         public T[] Filter(string filter)
         {
-            DataSet ds = db.GetDataSet("SELECT * FROM " + TableName + " " + filter);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName + " " + filter);
             if (ds == null)
             {
                 return default(T[]);
@@ -96,7 +92,7 @@ namespace Ouatelse.Managers
         /// <returns>Le premier objet trouvé dans la table</returns>
         public T First(string filter)
         {
-            DataSet ds = db.GetDataSet("SELECT * FROM " + TableName + " " + filter);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName + " " + filter);
             if (ds == null)
             {
                 return default(T);
@@ -126,8 +122,8 @@ namespace Ouatelse.Managers
         /// <returns>Le nomre d'entité</returns>
         public int Count(string filter = "")
         {
-            object resp = db.ExecuteScalar("SELECT count(*) FROM " + TableName + " " + filter);
-            if (resp == null || (bool) resp == false)
+            object resp = DatabaseInjector.Database.ExecuteScalar("SELECT count(*) FROM " + TableName + " " + filter);
+            if (resp == null)
                 return 0;
             return Int32.Parse(resp.ToString());
         }
@@ -141,7 +137,7 @@ namespace Ouatelse.Managers
         /// <returns>L'entité désirée</returns>
         public T Find(object id)
         {
-            DataSet ds = db.GetDataSet("SELECT * FROM " + TableName + " WHERE id=" + id);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName + " WHERE id=" + id);
             if (ds == null)
             {
                 return default(T);
@@ -194,11 +190,15 @@ namespace Ouatelse.Managers
 
                 query.AppendFormat(" WHERE id={0}", model.Id);
             }
-            bool res = Database.Instance.Execute(query.ToString());
+            bool res = DatabaseInjector.Database.Execute(query.ToString());
             if (!model.Exists && res)
             {
                 model.MakeExistant();
-                model.Id = Int32.Parse(Database.Instance.LastInsertId.ToString());
+                if (!DatabaseInjector.IsInUnitTest)
+                {
+                    Database mySqlDb = (Database)DatabaseInjector.Database;
+                    model.Id = Int32.Parse(mySqlDb.LastInsertId.ToString());
+                }
             }
             return res;
 
@@ -218,7 +218,7 @@ namespace Ouatelse.Managers
                 return false;
             }
             string query = String.Format("DELETE FROM {0} WHERE id={1}", TableName, model.Id);
-            return Database.Instance.Execute(query);
+            return DatabaseInjector.Database.Execute(query);
         }
         #endregion
     }

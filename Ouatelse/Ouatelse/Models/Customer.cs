@@ -244,7 +244,7 @@ namespace Ouatelse.Models
         {
             string query = " DROP TABLE IF EXISTS \"clients\"; " + Environment.NewLine;
             query += " CREATE TABLE \"clients\" ( " + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
             query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
             query += " \"prenom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
             query += " \"adresse1\" TEXT NOT NULL," + Environment.NewLine;
@@ -256,16 +256,15 @@ namespace Ouatelse.Models
             query += " \"notes\" TEXT," + Environment.NewLine;
             query += " \"villes_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
             query += " \"civilite_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-            query += " \"email_modification\" INTEGER(1,0) NOT NULL," + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\",\"villes_id\",\"civilite_id\")); ";
+            query += " \"email_modification\" INTEGER(1,0) NOT NULL);";
 
             return query;
         }
 
         public static string CreationIndex()
         {
-            string query = " CREATE INDEX \"fk_clients_villes1_idx\" ON clients (villes_id);" + Environment.NewLine;
-            query += " CREATE INDEX \"fk_clients_civilite1_idx\" ON clients (civilite_id);";
+            string query = " CREATE UNIQUE INDEX \"fk_clients_villes1_idx\" ON clients (villes_id);" + Environment.NewLine;
+            query += " CREATE UNIQUE INDEX \"fk_clients_civilite1_idx\" ON clients (civilite_id);";
             return query;
         }
     }

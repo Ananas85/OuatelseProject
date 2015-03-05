@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -34,89 +35,54 @@ namespace Ouatelse
         {
             SQLiteConnection.CreateFile("MyDatabase.sqlite");
             this.isLoggingEnabled = true;
-            if (!Utils.CheckServer()) return;
             this.connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
             this.connection.Open();
             InitDatabase();
         }
         public bool Execute(string query, Dictionary<string, object> parameters = null)
         {
-            if (!Utils.CheckServer())
-            {
-                return false;
-            }
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
-            try
-            {
-                SQLiteCommand cmd = this.connection.CreateCommand();
-                runningQuery = query;
-                cmd.CommandText = runningQuery;
-                foreach (string paramName in parameters.Keys)
-                    cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
-                cmd.ExecuteNonQuery();
-                if (isLoggingEnabled) queryLog.Add(query);
-                return true;
-            }
-            catch
-            {
-                if (Utils.CheckServer())
-                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
-                return false;
-            }
+
+            SQLiteCommand cmd = this.connection.CreateCommand();
+            runningQuery = query;
+            cmd.CommandText = runningQuery;
+            foreach (string paramName in parameters.Keys)
+                cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
+            cmd.ExecuteNonQuery();
+            if (isLoggingEnabled) queryLog.Add(query);
+            return true;
         }
 
         public DataSet GetDataSet(string query, Dictionary<string, object> parameters = null)
         {
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
-            try
-            {
-                SQLiteCommand cmd = this.connection.CreateCommand();
-                runningQuery = query;
-                cmd.CommandText = runningQuery;
-                foreach (string paramName in parameters.Keys)
-                    cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-                if (isLoggingEnabled) queryLog.Add(query);
-                return ds;
-            }
-            catch
-            {
-                if (Utils.CheckServer())
-                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
-                return null;
-            }
+
+            SQLiteCommand cmd = this.connection.CreateCommand();
+            runningQuery = query;
+            cmd.CommandText = runningQuery;
+            foreach (string paramName in parameters.Keys)
+                cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            if (isLoggingEnabled) queryLog.Add(query);
+            return ds;
         }
 
         public object ExecuteScalar(string query, Dictionary<string, object> parameters = null)
         {
-            if (!Utils.CheckServer())
-            {
-                return false;
-            }
-
             if (parameters == null)
                 parameters = new Dictionary<string, object>();
 
-            try
-            {
-                SQLiteCommand cmd = this.connection.CreateCommand();
-                runningQuery = query;
-                cmd.CommandText = runningQuery;
-                foreach (string paramName in parameters.Keys)
-                    cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
-                if (isLoggingEnabled) queryLog.Add(query);
-                return cmd.ExecuteScalar();
-            }
-            catch
-            {
-                if (Utils.CheckServer())
-                    Utils.Error("Impossible d'exécuter une requête \"" + runningQuery + "\" sur la base");
-                return false;
-            }
+            SQLiteCommand cmd = this.connection.CreateCommand();
+            runningQuery = query;
+            cmd.CommandText = runningQuery;
+            foreach (string paramName in parameters.Keys)
+                cmd.Parameters.AddWithValue("@" + paramName, parameters[paramName]);
+            if (isLoggingEnabled) queryLog.Add(query);
+            return cmd.ExecuteScalar();
         }
 
         public void Dispose()

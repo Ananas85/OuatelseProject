@@ -74,12 +74,11 @@ namespace Ouatelse.Models
         {
             string query = "DROP TABLE IF EXISTS \"conge\";" + Environment.NewLine;
             query += " CREATE TABLE \"conge\" ( " + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
             query += " \"date_debut\" TEXT NOT NULL, " + Environment.NewLine;
             query += "\"date_fin\" TEXT NOT NULL, " + Environment.NewLine;
             query += " \"salaries_id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
-            query += " \"accepte\" INTEGER(1,0) NOT NULL, " + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\") ); ";
+            query += " \"accepte\" INTEGER(1,0) NOT NULL);";
             return query;
         }
 

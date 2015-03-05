@@ -8,10 +8,10 @@ namespace Ouatelse
 
         public static IDatabase Database
         {
-            get { return IsInUnitTest ? (IDatabase) TestDatabase.Instance : Ouatelse.Database.Instance; }
+            get { return IsInUnitTest ? (IDatabase)TestDatabase.Instance : Ouatelse.Database.Instance; }
         }
 
-        private static bool IsInUnitTest
+        public static bool IsInUnitTest
         {
             get
             {
@@ -20,6 +20,5 @@ namespace Ouatelse
                     .Any(a => a.FullName.StartsWith(testAssemblyName));
             }
         }
-
     }
 }

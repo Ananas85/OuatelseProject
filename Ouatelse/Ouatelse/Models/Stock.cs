@@ -38,18 +38,17 @@ namespace Ouatelse.Models
         {
             string query = " DROP TABLE IF EXISTS \"mouvement_stock\";" + Environment.NewLine;
             query += " CREATE TABLE \"mouvement_stock\" (" + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
             query += " \"quantite\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
             query += " \"produits_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-            query += " \"magasin_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\",\"produits_id\"));";
+            query += " \"magasin_id\" INTEGER(11,0) NOT NULL);";
 
             return query;
         }
 
         public static string CreationIndex()
         {
-            string query = " CREATE INDEX \"fk_mouvement_stock_produits1_idx\" ON mouvement_stock (produits_id);" + Environment.NewLine;
+            string query = " CREATE UNIQUE INDEX \"fk_mouvement_stock_produits1_idx\" ON mouvement_stock (produits_id);" + Environment.NewLine;
             query += " CREATE INDEX \"fk_mouvement_stock_magasin1_idx\" ON mouvement_stock (magasin_id);";
 
             return query;

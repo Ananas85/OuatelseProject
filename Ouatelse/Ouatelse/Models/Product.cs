@@ -167,14 +167,13 @@ namespace Ouatelse.Models
         {
             string query = " DROP TABLE IF EXISTS \"produits\";" + Environment.NewLine;
             query += " CREATE TABLE \"produits\" (" + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
             query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
             query += " \"designation\" TEXT NOT NULL," + Environment.NewLine;
             query += " \"prix_achat\" REAL NOT NULL," + Environment.NewLine;
             query += " \"prix_vente\" REAL NOT NULL," + Environment.NewLine;
             query += " \"tva\" REAL NOT NULL," + Environment.NewLine;
-            query += " \"code_ean\" TEXT(255,0)," + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\"));";
+            query += " \"code_ean\" TEXT(255,0));";
 
             return query;
         }

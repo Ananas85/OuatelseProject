@@ -39,18 +39,17 @@ namespace Ouatelse.Models
         {
             string query = " DROP TABLE IF EXISTS \"villes\"; " + Environment.NewLine;
             query+= "CREATE TABLE \"villes\" ( " + Environment.NewLine;
-            query+="\"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-	        query+="\"libelle\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += "\"libelle\" TEXT(255,0) NOT NULL," + Environment.NewLine;
 	        query+="\"code_postal\" TEXT(255,0) NOT NULL," + Environment.NewLine;
-	        query+="\"pays_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-	        query+= "PRIMARY KEY(\"id\",\"pays_id\"))";
+            query += "\"pays_id\" INTEGER(11,0) NOT NULL);";
 
             return query;
         }
 
         public static string CreationIndex()
         {
-            string query = " CREATE INDEX \"fk_villes_pays1_idx\" ON villes (pays_id);" + Environment.NewLine;
+            string query = " CREATE UNIQUE INDEX \"fk_villes_pays1_idx\" ON villes (pays_id);" + Environment.NewLine;
             query += " CREATE INDEX \"code_postal_idx\" ON villes (code_postal);";
             return query;
         }

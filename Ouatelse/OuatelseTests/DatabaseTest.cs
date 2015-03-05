@@ -10,13 +10,24 @@ namespace OuatelseTests
     public class DatabaseTest
     {
         [TestMethod]
-        public void DatabaseConnection()
+        public void unitTestDatabase()
         {
-            IDatabase db = DatabaseInjector.Database;
+            Assert.AreEqual(true, DatabaseInjector.IsInUnitTest);
+        }
+
+
+        [TestMethod]
+        public void TestAddGender()
+        {
             Gender gender = new Gender();
-            gender.Name = "Monsieur";
+            gender.Name = "Mr";
             GenderManager.Instance.Save(gender);
-            Assert.Equals(1, GenderManager.Instance.Count());
+            Assert.AreEqual(1,GenderManager.Instance.Count());
+        }
+
+        public void TestRemoveGender()
+        {
+
         }
     }
 }

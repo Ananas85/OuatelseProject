@@ -38,10 +38,9 @@ namespace Ouatelse.Models
         {
             string query = " DROP TABLE IF EXISTS \"roles\";" + Environment.NewLine;
             query += " CREATE TABLE \"roles\" (" + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
             query += " \"libelle_role\" TEXT(255,0) NOT NULL," + Environment.NewLine;
-            query += " \"parent_role_id\" INTEGER(11,0)," + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\"));";
+            query += " \"parent_role_id\" INTEGER(11,0));";
 
             return query;
         }

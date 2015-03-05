@@ -20,7 +20,7 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string> {{"libelle", Name}};
+            Dictionary<string, string> res = new Dictionary<string, string> {{"nom", Name}};
             return res;
         }
 
@@ -29,10 +29,8 @@ namespace Ouatelse.Models
             //Necessary to create table in test environment with SQLite syntax
             var query = "DROP TABLE IF EXISTS \"civilite\";" + Environment.NewLine;
             query += "CREATE TABLE \"civilite\" (" + Environment.NewLine;
-            query += " \"id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
-            query += " \"nom\" TEXT(3,0) NOT NULL, " + Environment.NewLine;
-            query += " PRIMARY KEY(\"id\"));";
-
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"nom\" TEXT(3,0) NOT NULL);";
             return query;
         }
 
