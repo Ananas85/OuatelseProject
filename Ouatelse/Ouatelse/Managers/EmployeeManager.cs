@@ -13,6 +13,20 @@ namespace Ouatelse.Managers
     public class EmployeeManager : BaseManager<Employee>
     {
         private static EmployeeManager _instance = null;
+        private bool userChanged;
+        private bool mailChanged;
+
+        public bool MailChanged
+        {
+            get { return mailChanged; }
+            set { mailChanged = value; }
+        }
+
+        public bool UserChanged
+        {
+            get { return userChanged; }
+            set { userChanged = value; }
+        }
 
         public static EmployeeManager Instance
         {
@@ -27,6 +41,35 @@ namespace Ouatelse.Managers
         private EmployeeManager()
         {
             this.TableName = "salaries";
+            this.userChanged = false;
+            this.mailChanged = false;
         }
+
+        #region Création d'un employé
+        public void Create(Employee emp)
+        {
+            //Enregistrement dans la base de données
+            EmployeeManager.Instance.Save(emp);
+
+            //Message d'information
+            //Utils.Info("Salarié enregistré avec succès");
+
+            //Envoi du mail au nouveau salarié
+            if (!String.IsNullOrWhiteSpace(emp.Email))
+                MailSender.Instance.newEmployee(emp);
+        }
+        #endregion
+
+        #region Permet de modifier un client
+        public void Modify(Employee emp)
+        {
+            EmployeeManager.Instance.Save(emp);
+            //Utils.Info("Salarié modifié avec succès");
+            if (emp.EmailOnUpdate)
+            {
+                MailSender.Instance.modifyEmployee(emp);
+            }
+        }
+        #endregion
     }
 }
