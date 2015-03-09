@@ -222,6 +222,7 @@
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(200, 20);
             this.start.TabIndex = 116;
+            this.start.ValueChanged += new System.EventHandler(this.start_ValueChanged);
             // 
             // end
             // 
@@ -229,6 +230,7 @@
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(200, 20);
             this.end.TabIndex = 117;
+            this.end.ValueChanged += new System.EventHandler(this.end_ValueChanged);
             // 
             // NewHolidaysForm
             // 

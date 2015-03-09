@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 
 namespace Ouatelse.Models
@@ -74,13 +75,15 @@ namespace Ouatelse.Models
         /// <returns> Le dictionnaire </returns>
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("nom", Name);
-            res.Add("designation", Designation);
-            res.Add("prix_achat", PurchasePrice.ToString());
-            res.Add("prix_vente", SellPrice.ToString());
-            res.Add("tva", TVA.ToString());
-            res.Add("code_ean", EANCode.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"nom", Name},
+                {"designation", Designation},
+                {"prix_achat", PurchasePrice.ToString(CultureInfo.CurrentCulture)},
+                {"prix_vente", SellPrice.ToString(CultureInfo.CurrentCulture)},
+                {"tva", TVA.ToString(CultureInfo.CurrentCulture)},
+                {"code_ean", EANCode}
+            };
             return res;
         }
         #endregion
@@ -159,5 +162,21 @@ namespace Ouatelse.Models
             return this.MemberwiseClone();
         }
         #endregion
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"produits\";" + Environment.NewLine;
+            query += " CREATE TABLE \"produits\" (" + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"designation\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"prix_achat\" REAL NOT NULL," + Environment.NewLine;
+            query += " \"prix_vente\" REAL NOT NULL," + Environment.NewLine;
+            query += " \"tva\" REAL NOT NULL," + Environment.NewLine;
+            query += " \"code_ean\" TEXT(255,0));";
+
+            return query;
+        }
+
     }
 }

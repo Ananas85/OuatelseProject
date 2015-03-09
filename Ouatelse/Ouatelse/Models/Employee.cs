@@ -139,5 +139,39 @@ namespace Ouatelse.Models
             }
             return response;
         }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"salaries\"; " + Environment.NewLine;
+            query += " CREATE TABLE \"salaries\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"prenom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"identifiant\" TEXT(45,0) NOT NULL," + Environment.NewLine;
+            query += " \"mot_de_passe\" TEXT(45,0) NOT NULL," + Environment.NewLine;
+            query += " \"adresse1\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"adresse2\" TEXT," + Environment.NewLine;
+            query += " \"fixe\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"portable\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"mail\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"naissance\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"notes\" TEXT," + Environment.NewLine;
+            query += " \"villes_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"roles_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"magasin_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"civilite_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"email_modification\" INTEGER(1,0) NOT NULL);";
+
+            return query;
+        }
+
+        public static string CreationIndex()
+        {
+            string query = " CREATE UNIQUE INDEX \"fk_salaries_villes1_idx\" ON salaries (villes_id); " + Environment.NewLine;
+            query += "  CREATE UNIQUE INDEX \"fk_salaries_roles1_idx\" ON salaries (roles_id); " + Environment.NewLine;
+            query += " CREATE UNIQUE INDEX \"fk_salaries_magasin1_id\" ON salaries (magasin_id); " + Environment.NewLine;
+            query += " CREATE INDEX \"fk_salaries_civilite1_idx\" ON salaries (civilite_id); ";
+            return query;
+        }
     }
 }

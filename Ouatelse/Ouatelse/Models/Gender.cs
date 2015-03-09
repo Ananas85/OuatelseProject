@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace Ouatelse.Models
 {
@@ -19,9 +20,19 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("libelle", Name);
+            Dictionary<string, string> res = new Dictionary<string, string> {{"nom", Name}};
             return res;
         }
+
+        public static string CreationQuery()
+        {
+            //Necessary to create table in test environment with SQLite syntax
+            var query = "DROP TABLE IF EXISTS \"civilite\";" + Environment.NewLine;
+            query += "CREATE TABLE \"civilite\" (" + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"nom\" TEXT(3,0) NOT NULL);";
+            return query;
+        }
+
     }
 }
