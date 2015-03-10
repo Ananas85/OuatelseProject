@@ -16,12 +16,7 @@ namespace Ouatelse.Managers
 
         public static CustomerManager Instance
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = new CustomerManager();
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new CustomerManager()); }
         }
 
         #region Constructeur de la classe
@@ -38,7 +33,7 @@ namespace Ouatelse.Managers
             CustomerManager.Instance.Save(cust);
 
             //Message d'information
-            //Utils.Info("Client enregistré avec succès");
+            Utils.Notify("Client enregistré avec succès");
 
             //Envoi du mail au nouveau client
             if (!String.IsNullOrWhiteSpace(cust.Email))
@@ -50,7 +45,7 @@ namespace Ouatelse.Managers
         public void Modify(Customer cust)
         {
             CustomerManager.Instance.Save(cust);
-            //Utils.Info("Client modifié avec succès");
+            Utils.Notify("Client modifié avec succès");
             if (cust.EmailOnUpdate)
             {
                 MailSender.Instance.modifyCustomer(cust);
