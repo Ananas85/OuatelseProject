@@ -79,7 +79,6 @@ namespace Ouatelse
                 smtpClient.Port = MailCredentials.Port;
                 smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
                 smtpClient.Send(message);
-                //Utils.Info("Mail envoyé avec succès");
                 Utils.Notify("Mail envoyé avec succès");
             }
             catch
