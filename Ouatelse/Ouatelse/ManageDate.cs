@@ -34,7 +34,12 @@ namespace Ouatelse
             FillPermanentUnworkingDate();
         }
 
-
+        #region Méthode pour savoir si un jour existe
+        public bool IsExistingDay(int month, int day)
+        {
+            return day < DateTime.DaysInMonth(currentYear, month);
+        }
+        #endregion
 
         #region Méthode qui permet d'enregistrer tous les jours fériés de l'année courante
         public void FillPermanentUnworkingDate()

@@ -193,6 +193,7 @@ namespace Ouatelse.Forms
         }
         #endregion
 
+        #region Sécurité passage entre les années et manipulation du datagridView
         #region On annule le tri des colonnes
         public void preventSortingColumns()
         {
@@ -219,6 +220,28 @@ namespace Ouatelse.Forms
             }
             this.nextYear.Enabled = true;
         }
+        #endregion
+
+        #region Méthode pour gérer le clique sur l'année suivante
+        private void nextYear_Click(object sender, EventArgs e)
+        {
+            currentYear++;
+            UpdateCalendar();
+            this.year.Text = currentYear.ToString();
+        }
+        #endregion
+
+        #region Méthode pour gérer le clique sur l'année précédente
+        private void previousYear_Click(object sender, EventArgs e)
+        {
+            if (currentYear > DateTime.Now.Year)
+            {
+                currentYear--;
+                UpdateCalendar();
+                this.year.Text = currentYear.ToString();
+            }
+        }
+        #endregion
         #endregion
 
         #region Méthode pour gérer l'ajout de congés
@@ -300,41 +323,7 @@ namespace Ouatelse.Forms
         }
         #endregion
 
-        #region Méthode pour gérer le clique sur l'année précédente
-        private void previousYear_Click(object sender, EventArgs e)
-        {
-            if (currentYear > DateTime.Now.Year)
-            {
-                currentYear--;
-                UpdateCalendar();
-                this.year.Text = currentYear.ToString();
-            }
-        }
-        #endregion
-
-        #region Méthode pour savoir si un jour existe
-        public bool isExistingDay(int month, int day)
-        {
-            return day < DateTime.DaysInMonth(currentYear, month);
-        }
-        #endregion
-
-        #region Méthode pour gérer le clique sur l'année suivante
-        private void nextYear_Click(object sender, EventArgs e)
-        {
-            currentYear++;
-            UpdateCalendar();
-            this.year.Text = currentYear.ToString();
-        }
-        #endregion
-
-        #region Méthode pour gérer la suppression de congés
-        private void deleteholiday_Click(object sender, EventArgs e)
-        {
-            SelectHolidays(false);
-        }
-        #endregion
-
+        #region Méthode pour gérer la sélection de jour pour suppression et modification
         private void SelectHolidays(bool modif)
         {
             if (this.holidays.SelectedCells.Count > 1)
@@ -343,7 +332,7 @@ namespace Ouatelse.Forms
                 return;
             }
             if (
-                !isExistingDay(this.holidays.SelectedCells[0].RowIndex + 1,
+                !ManageDate.Instance.IsExistingDay(this.holidays.SelectedCells[0].RowIndex + 1,
                     this.holidays.SelectedCells[0].ColumnIndex + 1))
             {
                 Utils.Error("Ce jour n'existe pas");
@@ -389,12 +378,21 @@ namespace Ouatelse.Forms
 
             
         }
+        #endregion
 
+        #region Méthode pour gérer la modification
         private void modifyHoliday_Click(object sender, EventArgs e)
         {
             SelectHolidays(true);
         }
+        #endregion
 
+        #region Méthode pour gérer la suppression de congés
+        private void deleteholiday_Click(object sender, EventArgs e)
+        {
+            SelectHolidays(false);
+        }
+        #endregion
     }
 }
 
