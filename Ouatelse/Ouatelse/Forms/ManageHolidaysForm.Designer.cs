@@ -77,7 +77,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
             this.label7 = new System.Windows.Forms.Label();
             this.modifyHoliday = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
@@ -470,6 +470,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Orange;
+            this.button1.Enabled = false;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(12, 501);
@@ -499,6 +500,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.LimeGreen;
+            this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(159, 501);
@@ -518,7 +520,8 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.LightGray;
+            this.button3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button3.Enabled = false;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(292, 501);
@@ -527,13 +530,13 @@
             this.button3.TabIndex = 41;
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // listView1
+            // listView
             // 
-            this.listView1.Location = new System.Drawing.Point(1052, 218);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(204, 277);
-            this.listView1.TabIndex = 43;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView.Location = new System.Drawing.Point(1052, 218);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(204, 277);
+            this.listView.TabIndex = 43;
+            this.listView.UseCompatibleStateImageBehavior = false;
             // 
             // label7
             // 
@@ -569,7 +572,7 @@
             this.ClientSize = new System.Drawing.Size(1268, 536);
             this.Controls.Add(this.modifyHoliday);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label4);
@@ -651,7 +654,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button modifyHoliday;
     }

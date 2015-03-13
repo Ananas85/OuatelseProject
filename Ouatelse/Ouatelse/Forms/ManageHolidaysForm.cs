@@ -123,11 +123,14 @@ namespace Ouatelse.Forms
         #region Affichage des jours posés en tant que congés
         public void UpdateAlreadyPost()
         {
+            //On met également à jour les congés des autres
+            UpdateAlreadyPostByOther();
+
             //On remet à 0 les jours posés
             alreadyPresent = 0;
             
             //On récupère tous les congés déjà posés
-            List<Holiday> putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)").ToList();
+            List<Holiday> putHolidays = HolidayManager.Instance.FilterByYearForCurrentEmployee(currentYear);
 
             //On place les congés déjà posés sur le calendrier
             foreach (Holiday holiday in putHolidays)
@@ -144,6 +147,35 @@ namespace Ouatelse.Forms
             }
             this.nbPut.Text = alreadyPresent.ToString();
             this.nbRest.Text = (30 - alreadyPresent).ToString();
+        }
+        #endregion
+
+        #region Affichage des jours posés par les autres
+        public void UpdateAlreadyPostByOther()
+        {
+            List<Employee> employeeWithHolidays = EmployeeManager.Instance.FilterByEmployeesWithHolidays(currentYear);
+
+            int emp = 0;
+            foreach (Employee e in employeeWithHolidays)
+            {
+                listView.Groups.Add(new ListViewGroup(e.FirstName + " " + e.LastName, HorizontalAlignment.Center));
+                List<Holiday> holidayCurrent = HolidayManager.Instance.FilterByYearForEmployee(currentYear, e.Id);
+                foreach (Holiday holiday in holidayCurrent)
+                {
+                    string progress = holiday.Accepted ? "Validé " : "En cours";
+                    listView.Items.Add(holiday.StartingDate.ToShortDateString() + "-" + holiday.EndingDate.ToShortDateString() + " " + progress).Group = listView.Groups[emp];
+
+                    Color day = Color.LightSkyBlue;
+                    DateTime current = holiday.StartingDate;
+                    for (int i = 0; i <= holiday.numberOfDays(); ++i)
+                    {
+                        holidays.Rows[current.Month - 1].Cells[current.Day - 1].Style.BackColor = day;
+                        current = current.AddDays(1);
+                    }
+                }
+                emp++;
+
+            }
         }
         #endregion
 
