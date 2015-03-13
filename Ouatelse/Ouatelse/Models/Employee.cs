@@ -173,5 +173,11 @@ namespace Ouatelse.Models
             query += " CREATE INDEX \"fk_salaries_civilite1_idx\" ON salaries (civilite_id); ";
             return query;
         }
+
+        public static string Fixtures()
+        {
+            return
+                "INSERT INTO \"salaries\" VALUES ('SALVADOR', 'Jean-Jacques', 'test', 'test', '10, rue d''info-timde', null, null, null, 'contact@ouatelse.fr', '1975-02-04', null, 1, 1, 1, 1, 0);";
+        }
     }
 }

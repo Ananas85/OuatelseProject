@@ -53,5 +53,10 @@ namespace Ouatelse.Models
 
             return query;
         }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO magasin VALUES (\"Rue du Magasin de Test\", 1);";
+        }
     }
 }

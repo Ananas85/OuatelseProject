@@ -178,5 +178,12 @@ namespace Ouatelse.Models
             return query;
         }
 
+        public static string Fixtures()
+        {
+            string query = "INSERT INTO produits VALUES (2, \"Volluto\", \"Volluto\", 2, 5, 19, \"123\");";
+            query += "INSERT INTO produits VALUES (5, \"Test\", \"Test\", 10, 10, 10, \"456\");";
+            return query;
+        }
+
     }
 }

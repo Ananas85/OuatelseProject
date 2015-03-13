@@ -53,6 +53,14 @@ namespace Ouatelse.Models
             query += " CREATE INDEX \"code_postal_idx\" ON villes (code_postal);";
             return query;
         }
+
+        public static string Fixtures()
+        {
+            string query = " INSERT INTO \"villes\" VALUES ('Marseille', 13001, 1);";
+            query += "INSERT INTO \"villes\" VALUES ('Bordeaux', 33000, 1);";
+            query += "INSERT INTO \"villes\" VALUES ('Sérigné', 85200, 1);";
+            return query;
+        }
     }
 
 }

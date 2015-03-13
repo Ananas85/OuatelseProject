@@ -33,7 +33,7 @@ namespace Ouatelse.Models
         public List<DateTime> ConcernedDays()
         {
             List<DateTime> concerned = new List<DateTime>();
-            for (DateTime i = StartingDate.Date; i.Date <= EndingDate.Date; i.AddDays(1))
+            for (DateTime i = StartingDate.Date; i.Date <= EndingDate.Date; i = i.AddDays(1))
             {
                 concerned.Add(i);
             }
@@ -85,6 +85,11 @@ namespace Ouatelse.Models
         public static string CreationIndex()
         {
             return " CREATE INDEX \"fk_conge_salaries1_idx\" ON conge (salaries_id);";
+        }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO conge VALUES (\"2015-08-02\", \"2015-08-09\", 15, 0);";
         }
     }
 }
