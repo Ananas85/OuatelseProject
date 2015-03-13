@@ -37,7 +37,7 @@ namespace Ouatelse.Models
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
             this.Customer = CustomerManager.Instance.Find(cursor.Read().ToString());
             this.Payment = PaymentManager.Instance.Find(cursor.Read().ToString());
-            this.IsPaid = cursor.Read().ToString() == "1";
+            this.IsPaid = cursor.Read().ToString() == "True";
             this.PaidAmount = Convert.ToSingle(cursor.Read().ToString());
         }
 
