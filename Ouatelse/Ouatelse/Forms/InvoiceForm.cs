@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Ouatelse.Managers;
@@ -42,6 +43,10 @@ namespace Ouatelse.Forms
             this.methodePaiement.ValueMember = "Id";
             this.methodePaiement.DisplayMember = "Type";
             this.methodePaiement.DataSource = methodes;
+
+            this.reduction.Value = (decimal) invoice.DiscountPercent;
+            this.methodePaiement.SelectedItem = invoice.Payment;
+            this.date.Value = invoice.Date;
 
             this.code.Text = string.Format("{0}{1}", invoice.Id, (newInvoice ? " (Nouveau)" : ""));
             ReloadCustomer();
@@ -125,6 +130,11 @@ namespace Ouatelse.Forms
                 DialogResult = DialogResult.None;
                 return;
             }
+
+            invoice.Date = this.date.Value;
+            invoice.DiscountPercent = (float) this.reduction.Value;
+            invoice.PaidAmount = (float) this.regle.Value;
+            invoice.Payment = (Payment) this.methodePaiement.SelectedItem;
 
             InvoiceManager.Instance.Save(invoice);
             DialogResult = DialogResult.OK;

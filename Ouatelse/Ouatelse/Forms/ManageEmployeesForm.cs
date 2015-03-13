@@ -161,7 +161,7 @@ namespace Ouatelse.Forms
                     return;
 
                 // Sauvegarde en base
-                EmployeeManager.Instance.Save(ef.getEmployee());
+                EmployeeManager.Instance.Modify(ef.getEmployee());
                 Reload(EmployeeManager.Instance.All());
                 Utils.Info("Salarié enregistré avec succès");
             }
