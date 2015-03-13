@@ -74,6 +74,11 @@ namespace Ouatelse.Models
         /// Si le client veut un mail en cas de modification de sa fiche
         /// </summary>
         public bool EmailOnUpdate { get; set; }
+
+        /// <summary>
+        /// Représente la relation récupérant les factures du client
+        /// </summary>
+        public ManyCollection<Invoice> Invoices { get; set; } 
         
 
         /// <summary>
@@ -90,6 +95,8 @@ namespace Ouatelse.Models
         {
             //Par défaut le client est né aujourd'hui
             DateOfBirth = DateTime.Now;
+
+            Invoices = new ManyCollection<Invoice>(this, InvoiceManager.Instance, "clients_id", "Customer");
         }
         #endregion
 
@@ -239,6 +246,8 @@ namespace Ouatelse.Models
                    " Gender : " + this.Gender.Name + Environment.NewLine;
         }
         #endregion
+
+        
 
         public static string CreationQuery()
         {
