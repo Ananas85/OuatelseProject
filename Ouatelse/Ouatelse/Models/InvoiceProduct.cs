@@ -54,5 +54,15 @@ namespace Ouatelse.Models
             query += " CREATE UNIQUE INDEX \"fk_factures_produits_produits1_idx\" ON factures_produits (produits_id);" + Environment.NewLine;
             return query;
         }
+
+        public static string Fixtures()
+        {
+            string query = "INSERT INTO factures_produits  VALUES (3, 3, 2);";
+            query += "INSERT INTO factures_produits  VALUES (3, 3, 5);";
+            query += "INSERT INTO factures_produits  VALUES (1, 4, 5);";
+            query += "INSERT INTO factures_produits  VALUES (1, 9, 5);";
+            query += "INSERT INTO factures_produits  VALUES (1, 9, 2);";
+            return query;
+        }
     }
 }

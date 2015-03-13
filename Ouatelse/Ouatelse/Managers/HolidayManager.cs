@@ -23,5 +23,17 @@ namespace Ouatelse.Managers
         {
             this.TableName = "conge";
         }
+
+        public Holiday FilterByDate(DateTime date)
+        {
+            return HolidayManager.Instance.First("WHERE salaries_id = " + AuthManager.Instance.User.Id + " AND '" +
+                                          String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin");
+        }
+
+        public Holiday FilterByDateAndNotCurrent(int id, DateTime date)
+        {
+            return HolidayManager.Instance.First("WHERE salaries_id = " + AuthManager.Instance.User.Id + " AND conge.id <> " + id +" AND '" +
+                                          String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin");
+        }
     }
 }

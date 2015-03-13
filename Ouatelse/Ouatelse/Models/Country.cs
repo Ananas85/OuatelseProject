@@ -31,5 +31,10 @@ namespace Ouatelse.Models
             query += "\"libelle\" TEXT(255,0) NOT NULL);";
             return query;
         }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO \"pays\" VALUES ('France');";
+        }
     }
 }

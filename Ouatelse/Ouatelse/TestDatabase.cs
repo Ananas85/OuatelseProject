@@ -91,129 +91,144 @@ namespace Ouatelse
             this.connection.Close();
         }
 
+        #region Pour générer la base de données de tests avec des données
         private void InitDatabase()
         {
             SQLiteCommand cmd = this.connection.CreateCommand();
             //Setup the Pragma
-            runningQuery = " PRAGMA foreign_keys = false;";
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = " PRAGMA foreign_keys = false;";
             cmd.ExecuteNonQuery();
 
             //Init Table City
-            runningQuery = City.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = City.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Country
-            runningQuery = Country.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Country.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Customer
-            runningQuery = Customer.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Customer.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Employee
-            runningQuery = Employee.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Employee.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Gender
-            runningQuery = Gender.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Gender.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Holiday
-            runningQuery = Holiday.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Holiday.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Invoice
-            runningQuery = Invoice.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Invoice.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table InvoiceProduct
-            runningQuery = InvoiceProduct.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = InvoiceProduct.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Payment;
-            runningQuery = Payment.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Payment.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Product
-            runningQuery = Product.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Product.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Role
-            runningQuery = Role.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Role.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Stock
-            runningQuery = Stock.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Stock.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Store
-            runningQuery = Store.CreationQuery();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Store.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init the Index City
-            runningQuery = City.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = City.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the Index Customer
-            runningQuery = Customer.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Customer.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index Employee
-            runningQuery = Employee.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Employee.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index Holiday
-            runningQuery = Holiday.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Holiday.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index Invoice
-            runningQuery = Invoice.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Invoice.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index InvoiceProduct
-            runningQuery = InvoiceProduct.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = InvoiceProduct.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index role
-            runningQuery = Role.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Role.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index stock
-            runningQuery = Stock.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Stock.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index store
-            runningQuery = Store.CreationIndex();
-            cmd.CommandText = runningQuery;
+            cmd.CommandText = Store.CreationIndex();
             cmd.ExecuteNonQuery();
 
-            //Close the pragama
-            runningQuery = " PRAGMA foreign_keys = true;";
-            cmd.CommandText = runningQuery;
+            //Fill Fixtures
+            cmd.CommandText = Country.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = City.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Store.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Payment.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Gender.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Role.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Customer.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Employee.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Product.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Invoice.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = InvoiceProduct.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = Holiday.Fixtures();
+            cmd.ExecuteNonQuery();
+
+            //Close the pragma
+            cmd.CommandText = " PRAGMA foreign_keys = true;";
             cmd.ExecuteNonQuery();
         }
+        #endregion
 
     }
 }
