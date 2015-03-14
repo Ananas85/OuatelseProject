@@ -57,7 +57,7 @@ namespace Ouatelse.Managers
             return HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)").ToList();
         }
 
-        public List<Holiday> FilterByYearForEmployee(int currentYear, int idEmployee)
+        public List<Holiday> FilterByYearByEmployee(int currentYear, int idEmployee)
         {
             return HolidayManager.Instance.Filter("WHERE salaries_id =" + idEmployee + " AND " + currentYear + " = YEAR(date_debut)").ToList();
         } 

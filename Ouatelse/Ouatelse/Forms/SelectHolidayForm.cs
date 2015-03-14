@@ -49,13 +49,17 @@ namespace Ouatelse.Forms
                 Utils.Error("Veuillez sélectionner un congé");
                 return;
             }
-            else {
+            else
+            {
                 int indexRow = holidaysListView.SelectedRows[0].Index;
-                DateTime startingDateTime = DateTime.ParseExact(holidaysListView.SelectedRows[0].Cells[1].Value.ToString(), "dd/MM/yyyy",null);
+                DateTime startingDateTime = DateTime.ParseExact(holidaysListView.SelectedRows[0].Cells[1].Value.ToString(), "dd/MM/yyyy", null);
                 DateTime endingDateTime = DateTime.ParseExact(holidaysListView.SelectedRows[0].Cells[2].Value.ToString(), "dd/MM/yyyy", null);
                 Employee emp = EmployeeManager.Instance.Find(employees[indexRow].Key);
 
-                holiday = new Holiday(startingDateTime,endingDateTime,emp);
+                holiday = HolidayManager.Instance.First("WHERE date_debut = '" 
+                    + String.Format("{0:yyyy-MM-dd}", startingDateTime) 
+                    + "' AND date_fin = '" + String.Format("{0:yyyy-MM-dd}", endingDateTime) 
+                    + "' AND salaries_id = '" + emp.Id + "'");
             }
             this.DialogResult = DialogResult.OK;
         }

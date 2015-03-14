@@ -555,6 +555,7 @@
             // 
             // listView
             // 
+            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView.Location = new System.Drawing.Point(1052, 218);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(204, 277);
@@ -566,9 +567,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(1100, 199);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.Size = new System.Drawing.Size(133, 13);
             this.label7.TabIndex = 44;
-            this.label7.Text = "Tous les congés";
+            this.label7.Text = "Congés des autres salariés";
             // 
             // modifyHoliday
             // 
