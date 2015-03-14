@@ -142,7 +142,7 @@
             // startingDate
             // 
             this.startingDate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startingDate.ForeColor = System.Drawing.Color.Green;
+            this.startingDate.ForeColor = System.Drawing.Color.LimeGreen;
             this.startingDate.Location = new System.Drawing.Point(95, 124);
             this.startingDate.Name = "startingDate";
             this.startingDate.Size = new System.Drawing.Size(235, 32);

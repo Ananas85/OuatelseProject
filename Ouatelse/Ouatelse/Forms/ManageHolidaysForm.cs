@@ -15,26 +15,64 @@ namespace Ouatelse.Forms
 {
     public partial class ManageHolidaysForm : Form
     {
+
+        public enum AdminEventType { ACCEPT_HOLIDAYS, DISMISS_HOLIDAYS };
+
         #region Les attributs de la classe
         //L'année courante à la construction de la forme
         private int currentYear = DateTime.Now.Year;
 
         //Nombre de jour déjà posés
         private int alreadyPresent;
+
+        private bool allEmployeesHolidays;
+
+        private ToolTip tooltip;
+
+        private Point oldCell;
+
+        private string tooltipText;
         #endregion
 
         #region Constructeur de la forme
         public ManageHolidaysForm()
         {
             InitializeComponent();
-            //On retire la séleciton par défaut
-            this.holidays.ClearSelection();
+
+            if (AuthManager.Instance.User.Role.Id == RoleManager.Instance.Find(1).Id)
+            {
+                this.admin.Visible = true;
+                this.acceptButton.Visible = true;
+                this.dismissButton.Visible = true;
+            }
+            else
+            {
+                this.admin.Visible = false;
+                this.acceptButton.Visible = false;
+                this.dismissButton.Visible = false;
+            }
+
+
+
+            this.allEmployeesHolidays = checkBox.Checked;
 
             designCalendar();
 
             FillCalendar();
 
+            designForm();
+
             this.year.Text = currentYear.ToString();
+
+            //On retire la sélection par défaut
+            this.holidays.ClearSelection();
+
+            this.tooltip = new ToolTip();
+
+            oldCell = new Point(0, 0);
+
+            tooltipText = "";
+
         }
         #endregion
 
@@ -127,12 +165,16 @@ namespace Ouatelse.Forms
             alreadyPresent = 0;
             
             //On récupère tous les congés déjà posés
-            List<Holiday> putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)").ToList();
+            List<Holiday> putHolidays;
+            if(allEmployeesHolidays)
+                putHolidays = HolidayManager.Instance.Filter("WHERE " + currentYear + " = YEAR(date_debut)").ToList();
+            else
+                putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)").ToList();
 
             //On place les congés déjà posés sur le calendrier
             foreach (Holiday holiday in putHolidays)
             {
-                Color day = holiday.Accepted ? Color.Green : Color.Orange;
+                Color day = holiday.Accepted ? Color.LimeGreen : Color.Orange;
                 DateTime current = holiday.StartingDate;
                 for (int i = 0; i <= holiday.numberOfDays(); ++i)
                 {
@@ -190,6 +232,7 @@ namespace Ouatelse.Forms
                 }
             }
             UpdateAlreadyPost();
+            this.holidays.ClearSelection();
         }
         #endregion
 
@@ -247,6 +290,12 @@ namespace Ouatelse.Forms
         #region Méthode pour gérer l'ajout de congés
         private void newholiday_Click(object sender, EventArgs e)
         {
+            if (holidays.SelectedCells.Count == 0)
+            {
+                Utils.Error("Veuillez sélectionner au moins un jour pour créer un congé");
+                return;
+            }
+
             //On vérifie directemrnt le nombre de jour déjà posé
             if (alreadyPresent == 30)
             {
@@ -266,7 +315,7 @@ namespace Ouatelse.Forms
 
             //On regarde s'il n'y a pas des congés déjà posé
             if (holidays.SelectedCells.Cast<DataGridViewCell>()
-                    .Where(c => c.Style.BackColor == Color.Orange)
+                    .Where(c => c.Style.BackColor == Color.Orange || c.Style.BackColor == Color.LimeGreen)
                     .ToList()
                     .Count > 0)
             {
@@ -317,7 +366,6 @@ namespace Ouatelse.Forms
             if (new NewHolidaysForm(holiday, nbHollidays,alreadyPresent).ShowDialog() != DialogResult.OK) return;
             
             HolidayManager.Instance.Save(new Holiday(startingDate, endingDate, AuthManager.Instance.User));
-            this.holidays.ClearSelection();
             UpdateCalendar();
             Utils.Info("Votre demande de congé a bien été prise en compte");
         }
@@ -326,6 +374,12 @@ namespace Ouatelse.Forms
         #region Méthode pour gérer la sélection de jour pour suppression et modification
         private void SelectHolidays(bool modif)
         {
+            if (holidays.SelectedCells.Count == 0)
+            {
+                Utils.Error("Veuillez sélectionner un jour");
+                return;
+            }
+
             if (this.holidays.SelectedCells.Count > 1)
             {
                 Utils.Error("Sélectionnez uniquement une journée dans le congé concerné");
@@ -358,7 +412,7 @@ namespace Ouatelse.Forms
             if (!modif)
             {
                 if (
-                    Utils.Prompt("Voulez-vous vraiment supprimer votre demande de congé du" +
+                    Utils.Prompt("Voulez-vous vraiment supprimer votre demande de congé du " +
                                  holiday.StartingDate.ToShortDateString() +
                                  " au " + holiday.EndingDate.ToShortDateString() + " ? "))
                 {
@@ -380,6 +434,57 @@ namespace Ouatelse.Forms
         }
         #endregion
 
+        public void adminOperation(AdminEventType e)
+        {
+            if (this.holidays.SelectedCells.Count > 1)
+            {
+                Utils.Error("Sélectionnez uniquement une journée dans le congé concerné");
+                return;
+            }
+
+            if (this.holidays.SelectedCells[0].Style.BackColor != Color.Orange)
+            {
+                Utils.Error("Le jour sélectionné n'est pas un dans un congé en attente d'approbation");
+                return;
+            }
+
+            DateTime date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex + 1, this.holidays.SelectedCells[0].ColumnIndex + 1);
+            List<Holiday> holidaysInstances = new List<Holiday>();
+            holidaysInstances = HolidayManager.Instance.FilterAllByDate(date);
+
+            Holiday holiday;
+            if (holidaysInstances.Count > 1)
+            {
+                SelectHolidayForm selectForm = new SelectHolidayForm(holidaysInstances);
+                if (selectForm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return;
+
+                holiday = selectForm.getHoliday();
+            }
+            else
+                holiday = holidaysInstances[0];
+
+            if (e == AdminEventType.DISMISS_HOLIDAYS)
+            {
+                if (
+                    Utils.Prompt("Voulez-vous vraiment supprimer cette demande de congé du " +
+                                 holiday.StartingDate.ToShortDateString() +
+                                 " au " + holiday.EndingDate.ToShortDateString() + " ? "))
+                {
+                    HolidayManager.Instance.Delete(holiday);
+                    Utils.Notify("Suppression effectuée");
+                }
+            }
+            else if(e == AdminEventType.ACCEPT_HOLIDAYS)
+            {
+                holiday.Accepted = true;
+                HolidayManager.Instance.Save(holiday);
+                Utils.Notify("Congé validé");
+            }
+            UpdateCalendar();
+        }
+
+
         #region Méthode pour gérer la modification
         private void modifyHoliday_Click(object sender, EventArgs e)
         {
@@ -393,6 +498,124 @@ namespace Ouatelse.Forms
             SelectHolidays(false);
         }
         #endregion
+
+        private void acceptButton_Click(object sender, EventArgs e)
+        {
+            adminOperation(AdminEventType.ACCEPT_HOLIDAYS);
+        }
+
+        private void dismissButton_Click(object sender, EventArgs e)
+        {
+            adminOperation(AdminEventType.DISMISS_HOLIDAYS);
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            this.allEmployeesHolidays = checkBox.Checked;
+            UpdateCalendar();
+            designForm();
+        }
+
+        public void designForm()
+        {
+            if (this.allEmployeesHolidays)
+            {
+                customEnabledStyle(acceptButton);
+                customEnabledStyle(dismissButton);
+                customDisabledStyle(newholiday);
+                customDisabledStyle(modifyHoliday);
+                customDisabledStyle(deleteholiday);
+
+                holidayLabel.Visible = false;
+                remainingHolidayLabel.Visible = false;
+                nbPut.Visible = false;
+                nbRest.Visible = false;
+            }
+            else
+            {
+                customDisabledStyle(acceptButton);
+                customDisabledStyle(dismissButton);
+                customEnabledStyle(newholiday);
+                customEnabledStyle(modifyHoliday);
+                customEnabledStyle(deleteholiday);
+
+                holidayLabel.Visible = true;
+                remainingHolidayLabel.Visible = true;
+                nbPut.Visible = true;
+                nbRest.Visible = true;
+            }
+        }
+
+        public void customDisabledStyle(Button b)
+        {
+            b.Enabled = false;
+            b.BackColor = Color.LightGray;
+            b.ForeColor = Color.DarkGray;
+        }
+
+        public void customEnabledStyle(Button b)
+        {
+            b.Enabled = true;
+            if (b.Tag == "ACCEPT" || b.Tag == "NEW")
+                b.BackColor = Color.MediumSeaGreen;
+            else if (b.Tag == "DISMISS" || b.Tag == "DELETE")
+                b.BackColor = Color.IndianRed;
+            else
+                b.BackColor = Color.DarkOrange;
+            b.ForeColor = SystemColors.ButtonFace;
+        }
+
+        private void holidays_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (allEmployeesHolidays)
+            {
+                if (oldCell != new Point(e.RowIndex, e.ColumnIndex))
+                {
+                    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                    {
+                        if (holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Orange ||
+                        holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LimeGreen)
+                        {
+                            tooltipText = "";
+                            DateTime date = new DateTime(currentYear, e.RowIndex + 1, e.ColumnIndex + 1);
+                            List<Holiday> holidaysInCell = HolidayManager.Instance.FilterAllByDateToolTip(date);
+
+                            // Set up the delays for the ToolTip.
+                            tooltip.AutoPopDelay = 5000;
+                            tooltip.InitialDelay = 1000;
+                            tooltip.ReshowDelay = 500;
+
+                            tooltip.ShowAlways = true;
+
+                            if (holidaysInCell.Count > 1)
+                            {
+                                for (int i = 0; i < holidaysInCell.Count; i++)
+                                {
+                                    tooltipText += "- " + holidaysInCell[i].Employee.FirstName + " " + holidaysInCell[i].Employee.LastName
+                                        + " (du " + holidaysInCell[i].StartingDate.ToShortDateString() + " au " + holidaysInCell[i].EndingDate.ToShortDateString() + ")";
+                                    if (i != holidaysInCell.Count)
+                                        tooltipText += Environment.NewLine;
+                                }
+                            }
+                            else
+                                tooltipText += "- " + holidaysInCell[0].Employee.FirstName + " " + holidaysInCell[0].Employee.LastName
+                                    + " (du " + holidaysInCell[0].StartingDate.ToShortDateString() + " au " + holidaysInCell[0].EndingDate.ToShortDateString() + ")"; ;
+
+                            // show and adjust tooltip
+                            tooltip.Show(tooltipText, this, PointToClient(Cursor.Position).X + 25, PointToClient(Cursor.Position).Y+15);
+                            oldCell = new Point(e.RowIndex,e.ColumnIndex);
+                        }
+                        else
+                            tooltip.Hide(this);
+                    }
+                }
+               }
+        }
+
+        private void holidays_MouseLeave(object sender, EventArgs e)
+        {
+            tooltip.Hide(this);
+        }
     }
 }
 

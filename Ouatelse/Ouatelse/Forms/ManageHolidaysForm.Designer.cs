@@ -67,10 +67,10 @@
             this.year = new System.Windows.Forms.Label();
             this.previousYear = new System.Windows.Forms.Button();
             this.nextYear = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.holidayLabel = new System.Windows.Forms.Label();
             this.nbPut = new System.Windows.Forms.Label();
             this.nbRest = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.remainingHolidayLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -80,7 +80,12 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.label7 = new System.Windows.Forms.Label();
             this.modifyHoliday = new System.Windows.Forms.Button();
+            this.dismissButton = new System.Windows.Forms.Button();
+            this.acceptButton = new System.Windows.Forms.Button();
+            this.admin = new System.Windows.Forms.GroupBox();
+            this.checkBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
+            this.admin.SuspendLayout();
             this.SuspendLayout();
             // 
             // holidays
@@ -132,6 +137,8 @@
             this.holidays.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.holidays.Size = new System.Drawing.Size(1034, 296);
             this.holidays.TabIndex = 0;
+            this.holidays.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.holidays_CellMouseMove);
+            this.holidays.MouseLeave += new System.EventHandler(this.holidays_MouseLeave);
             // 
             // one
             // 
@@ -361,6 +368,7 @@
             this.deleteholiday.Name = "deleteholiday";
             this.deleteholiday.Size = new System.Drawing.Size(205, 41);
             this.deleteholiday.TabIndex = 28;
+            this.deleteholiday.Tag = "DELETE";
             this.deleteholiday.Text = "Retirer une demande";
             this.deleteholiday.UseVisualStyleBackColor = false;
             this.deleteholiday.Click += new System.EventHandler(this.deleteholiday_Click);
@@ -376,6 +384,7 @@
             this.newholiday.Name = "newholiday";
             this.newholiday.Size = new System.Drawing.Size(192, 41);
             this.newholiday.TabIndex = 26;
+            this.newholiday.Tag = "NEW";
             this.newholiday.Text = "Demander un congé";
             this.newholiday.UseVisualStyleBackColor = false;
             this.newholiday.Click += new System.EventHandler(this.newholiday_Click);
@@ -397,7 +406,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.label1.Location = new System.Drawing.Point(668, -12);
+            this.label1.Location = new System.Drawing.Point(668, -13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(626, 130);
             this.label1.TabIndex = 29;
@@ -405,67 +414,81 @@
             // year
             // 
             this.year.AutoSize = true;
-            this.year.Location = new System.Drawing.Point(1108, 160);
+            this.year.BackColor = System.Drawing.Color.White;
+            this.year.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.year.Location = new System.Drawing.Point(696, 154);
             this.year.Name = "year";
-            this.year.Size = new System.Drawing.Size(29, 13);
+            this.year.Size = new System.Drawing.Size(38, 20);
             this.year.TabIndex = 30;
             this.year.Text = "Year";
             // 
             // previousYear
             // 
-            this.previousYear.Location = new System.Drawing.Point(1070, 155);
+            this.previousYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.previousYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previousYear.Location = new System.Drawing.Point(648, 149);
             this.previousYear.Name = "previousYear";
-            this.previousYear.Size = new System.Drawing.Size(32, 23);
+            this.previousYear.Size = new System.Drawing.Size(42, 30);
             this.previousYear.TabIndex = 31;
             this.previousYear.Text = "<-";
-            this.previousYear.UseVisualStyleBackColor = true;
+            this.previousYear.UseVisualStyleBackColor = false;
             this.previousYear.Click += new System.EventHandler(this.previousYear_Click);
             // 
             // nextYear
             // 
-            this.nextYear.Location = new System.Drawing.Point(1143, 155);
+            this.nextYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.nextYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextYear.Location = new System.Drawing.Point(740, 149);
             this.nextYear.Name = "nextYear";
-            this.nextYear.Size = new System.Drawing.Size(32, 23);
+            this.nextYear.Size = new System.Drawing.Size(42, 30);
             this.nextYear.TabIndex = 32;
             this.nextYear.Text = "->";
-            this.nextYear.UseVisualStyleBackColor = true;
+            this.nextYear.UseVisualStyleBackColor = false;
             this.nextYear.Click += new System.EventHandler(this.nextYear_Click);
             // 
-            // label2
+            // holidayLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(648, 160);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 13);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Nombre de jours posés : ";
+            this.holidayLabel.AutoSize = true;
+            this.holidayLabel.BackColor = System.Drawing.Color.White;
+            this.holidayLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.holidayLabel.Location = new System.Drawing.Point(800, 128);
+            this.holidayLabel.Name = "holidayLabel";
+            this.holidayLabel.Size = new System.Drawing.Size(221, 25);
+            this.holidayLabel.TabIndex = 33;
+            this.holidayLabel.Text = "Nombre de jours posés : ";
             // 
             // nbPut
             // 
             this.nbPut.AutoSize = true;
-            this.nbPut.Location = new System.Drawing.Point(770, 160);
+            this.nbPut.BackColor = System.Drawing.Color.White;
+            this.nbPut.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nbPut.Location = new System.Drawing.Point(1044, 128);
             this.nbPut.Name = "nbPut";
-            this.nbPut.Size = new System.Drawing.Size(35, 13);
+            this.nbPut.Size = new System.Drawing.Size(67, 25);
             this.nbPut.TabIndex = 34;
             this.nbPut.Text = "nbPut";
             // 
             // nbRest
             // 
             this.nbRest.AutoSize = true;
-            this.nbRest.Location = new System.Drawing.Point(972, 160);
+            this.nbRest.BackColor = System.Drawing.Color.White;
+            this.nbRest.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nbRest.Location = new System.Drawing.Point(1044, 153);
             this.nbRest.Name = "nbRest";
-            this.nbRest.Size = new System.Drawing.Size(41, 13);
+            this.nbRest.Size = new System.Drawing.Size(73, 25);
             this.nbRest.TabIndex = 36;
             this.nbRest.Text = "nbRest";
             // 
-            // label5
+            // remainingHolidayLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(836, 160);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 13);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Nombre de jours restants :";
+            this.remainingHolidayLabel.AutoSize = true;
+            this.remainingHolidayLabel.BackColor = System.Drawing.Color.White;
+            this.remainingHolidayLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remainingHolidayLabel.Location = new System.Drawing.Point(798, 153);
+            this.remainingHolidayLabel.Name = "remainingHolidayLabel";
+            this.remainingHolidayLabel.Size = new System.Drawing.Size(234, 25);
+            this.remainingHolidayLabel.TabIndex = 35;
+            this.remainingHolidayLabel.Text = "Nombre de jours restants :";
             // 
             // button1
             // 
@@ -540,9 +563,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(1100, 199);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.Size = new System.Drawing.Size(85, 13);
             this.label7.TabIndex = 44;
-            this.label7.Text = "Congé de l\'équipe";
+            this.label7.Text = "Tous les congés";
             // 
             // modifyHoliday
             // 
@@ -555,9 +578,67 @@
             this.modifyHoliday.Name = "modifyHoliday";
             this.modifyHoliday.Size = new System.Drawing.Size(216, 41);
             this.modifyHoliday.TabIndex = 45;
+            this.modifyHoliday.Tag = "MODIFY";
             this.modifyHoliday.Text = "Modifier une demande";
             this.modifyHoliday.UseVisualStyleBackColor = false;
             this.modifyHoliday.Click += new System.EventHandler(this.modifyHoliday_Click);
+            // 
+            // dismissButton
+            // 
+            this.dismissButton.BackColor = System.Drawing.Color.IndianRed;
+            this.dismissButton.FlatAppearance.BorderSize = 0;
+            this.dismissButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dismissButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dismissButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.dismissButton.Location = new System.Drawing.Point(1042, 58);
+            this.dismissButton.Name = "dismissButton";
+            this.dismissButton.Size = new System.Drawing.Size(205, 41);
+            this.dismissButton.TabIndex = 46;
+            this.dismissButton.Tag = "DISMISS";
+            this.dismissButton.Text = "Rejeter une demande";
+            this.dismissButton.UseVisualStyleBackColor = false;
+            this.dismissButton.Click += new System.EventHandler(this.dismissButton_Click);
+            // 
+            // acceptButton
+            // 
+            this.acceptButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.acceptButton.FlatAppearance.BorderSize = 0;
+            this.acceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.acceptButton.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acceptButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.acceptButton.Location = new System.Drawing.Point(805, 58);
+            this.acceptButton.Name = "acceptButton";
+            this.acceptButton.Size = new System.Drawing.Size(231, 41);
+            this.acceptButton.TabIndex = 47;
+            this.acceptButton.Tag = "ACCEPT";
+            this.acceptButton.Text = "Approuver une demande";
+            this.acceptButton.UseVisualStyleBackColor = false;
+            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
+            // 
+            // admin
+            // 
+            this.admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.admin.Controls.Add(this.checkBox);
+            this.admin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.admin.Location = new System.Drawing.Point(794, 7);
+            this.admin.Name = "admin";
+            this.admin.Size = new System.Drawing.Size(462, 101);
+            this.admin.TabIndex = 49;
+            this.admin.TabStop = false;
+            this.admin.Text = "Administration";
+            // 
+            // checkBox
+            // 
+            this.checkBox.AutoSize = true;
+            this.checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.checkBox.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.checkBox.Location = new System.Drawing.Point(11, 24);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(177, 21);
+            this.checkBox.TabIndex = 50;
+            this.checkBox.Text = "Visualiser tous les congés";
+            this.checkBox.UseVisualStyleBackColor = false;
+            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // ManageHolidaysForm
             // 
@@ -567,6 +648,9 @@
             this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1268, 536);
+            this.Controls.Add(this.dismissButton);
+            this.Controls.Add(this.acceptButton);
+            this.Controls.Add(this.admin);
             this.Controls.Add(this.modifyHoliday);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listView1);
@@ -577,9 +661,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nbRest);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.remainingHolidayLabel);
             this.Controls.Add(this.nbPut);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.holidayLabel);
             this.Controls.Add(this.nextYear);
             this.Controls.Add(this.previousYear);
             this.Controls.Add(this.year);
@@ -588,6 +672,7 @@
             this.Controls.Add(this.holidaysLabel);
             this.Controls.Add(this.holidays);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -595,6 +680,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse  - Gestion des congés";
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).EndInit();
+            this.admin.ResumeLayout(false);
+            this.admin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -641,10 +728,10 @@
         private System.Windows.Forms.Label year;
         private System.Windows.Forms.Button previousYear;
         private System.Windows.Forms.Button nextYear;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label holidayLabel;
         private System.Windows.Forms.Label nbPut;
         private System.Windows.Forms.Label nbRest;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label remainingHolidayLabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -654,5 +741,9 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button modifyHoliday;
+        private System.Windows.Forms.Button dismissButton;
+        private System.Windows.Forms.Button acceptButton;
+        private System.Windows.Forms.GroupBox admin;
+        private System.Windows.Forms.CheckBox checkBox;
     }
 }

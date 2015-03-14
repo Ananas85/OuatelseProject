@@ -24,10 +24,21 @@ namespace Ouatelse.Managers
             this.TableName = "conge";
         }
 
+        public List<Holiday> FilterAllByDate(DateTime date)
+        {
+            List<Holiday> holidaysList = HolidayManager.Instance.Filter("WHERE accepte = 0 AND '" + String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin").ToList();
+            return holidaysList;
+        }
+
+        public List<Holiday> FilterAllByDateToolTip(DateTime date)
+        {
+            List<Holiday> holidaysList = HolidayManager.Instance.Filter("WHERE '" + String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin").ToList();
+            return holidaysList;
+        }
+
         public Holiday FilterByDate(DateTime date)
         {
-            return HolidayManager.Instance.First("WHERE salaries_id = " + AuthManager.Instance.User.Id + " AND '" +
-                                          String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin");
+            return HolidayManager.Instance.First("WHERE salaries_id = " + AuthManager.Instance.User.Id + " AND '" + String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin");          
         }
 
         public Holiday FilterByDateAndNotCurrent(int id, DateTime date)
