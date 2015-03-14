@@ -64,12 +64,17 @@ namespace Ouatelse.Managers
         public void Modify(Employee emp)
         {
             EmployeeManager.Instance.Save(emp);
-            //Utils.Info("Salarié modifié avec succès");
+            Utils.Notify("Salarié modifié avec succès");
             if (emp.EmailOnUpdate)
             {
                 MailSender.Instance.modifyEmployee(emp);
             }
         }
         #endregion
+
+        public List<Employee> FilterByEmployeesWithHolidays(int currentYear)
+        {
+            return EmployeeManager.Instance.Filter("INNER JOIN conge ON salaries.id = conge.salaries_id INNER JOIN magasin ON salaries.magasin_id = magasin.id WHERE salaries_id <>" + AuthManager.Instance.User.Id + " AND magasin.id =" + AuthManager.Instance.User.Store.Id + " AND " + currentYear + " = YEAR(conge.date_debut)").ToList();
+        } 
     }
 }
