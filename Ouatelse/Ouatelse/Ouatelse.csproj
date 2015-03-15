@@ -146,6 +146,12 @@
     <Compile Include="Forms\newHolidaysForm.Designer.cs">
       <DependentUpon>newHolidaysForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StockForm.Designer.cs">
+      <DependentUpon>StockForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IDatabase.cs" />
     <Compile Include="MailCredentials.cs" />
     <Compile Include="MailSender.cs" />
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\newHolidaysForm.resx">
       <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StockForm.resx">
+      <DependentUpon>StockForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>

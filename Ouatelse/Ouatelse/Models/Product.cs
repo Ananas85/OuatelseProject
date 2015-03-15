@@ -131,31 +131,6 @@ namespace Ouatelse.Models
         }
         #endregion
 
-        //#region surcharge de la méthode equals
-        //public override bool Equals(object obj)
-        //{
-        //    return obj is Product && this == (Product)obj;
-        //}
-        //#endregion
-
-        //#region sucharge de l'opérateur ==
-        //public static bool operator ==(Product x, Product y)
-        //{
-        //    if ((Product)y != null)
-        //    {
-        //        return x.Name == y.Name && x.Designation == y.Designation && x.EANCode == y.EANCode;
-        //    }
-        //    return false;
-        //}
-        //#endregion
-
-        //#region surcharge de l'opérateur !=
-        //public static bool operator !=(Product x, Product y)
-        //{
-        //    return !(x == y);
-        //}
-        //#endregion
-
         #region Utilisation de Clone pour passer un objet par copie
         public object Clone()
         {
