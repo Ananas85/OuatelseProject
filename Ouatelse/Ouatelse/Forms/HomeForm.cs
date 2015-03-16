@@ -29,8 +29,7 @@ namespace Ouatelse
             als = new ActivationService("h61v6b7f","ouatelse","Ouatelse",Path.Combine(AppData,"ouatelse-eaf"));
             InitializeComponent();
             Utils.SetNotifyIcon(this.notifyIcon1);
-
-           }
+        }
 
         /// <summary>
         /// Fonction qui permet de vérifier si l'utilisateur est connecté
@@ -183,6 +182,17 @@ namespace Ouatelse
             {
                 Application.Exit();
                 return;
+            }
+
+            // On vérifie si l'app est lié à un magasin
+
+            if (Properties.Settings.Default.CurrentStore == null)
+            {
+                if (new StorePicker().ShowDialog() != DialogResult.OK)
+                {
+                    Application.Exit();
+                    return;
+                }
             }
 
             //Gère la connexion

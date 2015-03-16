@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Ouatelse.Models
 {
@@ -14,10 +15,12 @@ namespace Ouatelse.Models
 
         public string Name
         {
-            get
-            {
-                return String.Format("{0} - {1}", Address, City.Name);
-            }
+            get { return string.Format("{0}, {1} {2}", Address, City.PostalCode, City.Name); }
+        }
+
+        public string NameTwoLines
+        {
+            get { return string.Format("{0} {3} {1} {2}", Address, City.PostalCode, City.Name, Environment.NewLine); }
         }
 
         /// <summary>
