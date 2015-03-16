@@ -237,7 +237,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.label1.Location = new System.Drawing.Point(630, -2);
+            this.label1.Location = new System.Drawing.Point(630, -1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 118);
             this.label1.TabIndex = 4;

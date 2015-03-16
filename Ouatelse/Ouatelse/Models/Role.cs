@@ -49,5 +49,14 @@ namespace Ouatelse.Models
         {
             return " CREATE INDEX \"fk_roles_roles1_idx\" ON roles (parent_role_id);";
         }
+
+        public static string Fixtures()
+        {
+            string query = "INSERT INTO \"roles\" VALUES ('Administrateur', null);";
+            query += "INSERT INTO \"roles\" VALUES ('Responsable des ventes', 1);";
+            query += "INSERT INTO \"roles\" VALUES ('Responsable des stocks', 1);";
+            query += "INSERT INTO \"roles\" VALUES ('Vendeur', 4);";
+            return query;
+        }
     }
 }

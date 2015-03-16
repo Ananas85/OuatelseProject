@@ -1,6 +1,6 @@
 ﻿namespace Ouatelse.Forms
 {
-    partial class HolidayForm
+    partial class NewHolidaysForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,572 +28,242 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.holidays = new System.Windows.Forms.DataGridView();
-            this.one = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.two = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.three = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.four = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.five = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.six = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seven = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.onze = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.douze = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.treize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quatorze = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quinze = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dixsept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dixhuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dixneuf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtun = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtdeux = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingttrois = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtquatre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtcinq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtsix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtsept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingthuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vingtneuf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trenteun = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteholiday = new System.Windows.Forms.Button();
-            this.newholiday = new System.Windows.Forms.Button();
-            this.holidaysLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.year = new System.Windows.Forms.Label();
-            this.previousYear = new System.Windows.Forms.Button();
-            this.nextYear = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.validateButton = new System.Windows.Forms.Button();
+            this.title = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.nbPut = new System.Windows.Forms.Label();
-            this.nbRest = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.startingDate = new System.Windows.Forms.Label();
+            this.endingDate = new System.Windows.Forms.Label();
+            this.nbDay = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.amplitude = new System.Windows.Forms.Label();
+            this.rest = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.start = new System.Windows.Forms.DateTimePicker();
+            this.end = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // holidays
-            // 
-            this.holidays.AllowUserToAddRows = false;
-            this.holidays.AllowUserToDeleteRows = false;
-            this.holidays.AllowUserToResizeColumns = false;
-            this.holidays.AllowUserToResizeRows = false;
-            this.holidays.BackgroundColor = System.Drawing.Color.White;
-            this.holidays.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.holidays.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.holidays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.holidays.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.one,
-            this.two,
-            this.three,
-            this.four,
-            this.five,
-            this.six,
-            this.seven,
-            this.eight,
-            this.nine,
-            this.ten,
-            this.onze,
-            this.douze,
-            this.treize,
-            this.quatorze,
-            this.quinze,
-            this.seize,
-            this.dixsept,
-            this.dixhuit,
-            this.dixneuf,
-            this.vingt,
-            this.vingtun,
-            this.vingtdeux,
-            this.vingttrois,
-            this.vingtquatre,
-            this.vingtcinq,
-            this.vingtsix,
-            this.vingtsept,
-            this.vingthuit,
-            this.vingtneuf,
-            this.trente,
-            this.trenteun});
-            this.holidays.GridColor = System.Drawing.Color.White;
-            this.holidays.Location = new System.Drawing.Point(12, 199);
-            this.holidays.Name = "holidays";
-            this.holidays.ReadOnly = true;
-            this.holidays.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.holidays.Size = new System.Drawing.Size(1034, 296);
-            this.holidays.TabIndex = 0;
-            // 
-            // one
-            // 
-            this.one.HeaderText = "1";
-            this.one.Name = "one";
-            this.one.ReadOnly = true;
-            this.one.Width = 32;
-            // 
-            // two
-            // 
-            this.two.HeaderText = "2";
-            this.two.Name = "two";
-            this.two.ReadOnly = true;
-            this.two.Width = 32;
-            // 
-            // three
-            // 
-            this.three.HeaderText = "3";
-            this.three.Name = "three";
-            this.three.ReadOnly = true;
-            this.three.Width = 32;
-            // 
-            // four
-            // 
-            this.four.HeaderText = "4";
-            this.four.Name = "four";
-            this.four.ReadOnly = true;
-            this.four.Width = 32;
-            // 
-            // five
-            // 
-            this.five.HeaderText = "5";
-            this.five.Name = "five";
-            this.five.ReadOnly = true;
-            this.five.Width = 32;
-            // 
-            // six
-            // 
-            this.six.HeaderText = "6";
-            this.six.Name = "six";
-            this.six.ReadOnly = true;
-            this.six.Width = 32;
-            // 
-            // seven
-            // 
-            this.seven.HeaderText = "7";
-            this.seven.Name = "seven";
-            this.seven.ReadOnly = true;
-            this.seven.Width = 32;
-            // 
-            // eight
-            // 
-            this.eight.HeaderText = "8";
-            this.eight.Name = "eight";
-            this.eight.ReadOnly = true;
-            this.eight.Width = 32;
-            // 
-            // nine
-            // 
-            this.nine.HeaderText = "9";
-            this.nine.Name = "nine";
-            this.nine.ReadOnly = true;
-            this.nine.Width = 32;
-            // 
-            // ten
-            // 
-            this.ten.HeaderText = "10";
-            this.ten.Name = "ten";
-            this.ten.ReadOnly = true;
-            this.ten.Width = 32;
-            // 
-            // onze
-            // 
-            this.onze.HeaderText = "11";
-            this.onze.Name = "onze";
-            this.onze.ReadOnly = true;
-            this.onze.Width = 32;
-            // 
-            // douze
-            // 
-            this.douze.HeaderText = "12";
-            this.douze.Name = "douze";
-            this.douze.ReadOnly = true;
-            this.douze.Width = 32;
-            // 
-            // treize
-            // 
-            this.treize.HeaderText = "13";
-            this.treize.Name = "treize";
-            this.treize.ReadOnly = true;
-            this.treize.Width = 32;
-            // 
-            // quatorze
-            // 
-            this.quatorze.HeaderText = "14";
-            this.quatorze.Name = "quatorze";
-            this.quatorze.ReadOnly = true;
-            this.quatorze.Width = 32;
-            // 
-            // quinze
-            // 
-            this.quinze.HeaderText = "15";
-            this.quinze.Name = "quinze";
-            this.quinze.ReadOnly = true;
-            this.quinze.Width = 32;
-            // 
-            // seize
-            // 
-            this.seize.HeaderText = "16";
-            this.seize.Name = "seize";
-            this.seize.ReadOnly = true;
-            this.seize.Width = 33;
-            // 
-            // dixsept
-            // 
-            this.dixsept.HeaderText = "17";
-            this.dixsept.Name = "dixsept";
-            this.dixsept.ReadOnly = true;
-            this.dixsept.Width = 32;
-            // 
-            // dixhuit
-            // 
-            this.dixhuit.HeaderText = "18";
-            this.dixhuit.Name = "dixhuit";
-            this.dixhuit.ReadOnly = true;
-            this.dixhuit.Width = 32;
-            // 
-            // dixneuf
-            // 
-            this.dixneuf.HeaderText = "19";
-            this.dixneuf.Name = "dixneuf";
-            this.dixneuf.ReadOnly = true;
-            this.dixneuf.Width = 32;
-            // 
-            // vingt
-            // 
-            this.vingt.HeaderText = "20";
-            this.vingt.Name = "vingt";
-            this.vingt.ReadOnly = true;
-            this.vingt.Width = 32;
-            // 
-            // vingtun
-            // 
-            this.vingtun.HeaderText = "21";
-            this.vingtun.Name = "vingtun";
-            this.vingtun.ReadOnly = true;
-            this.vingtun.Width = 32;
-            // 
-            // vingtdeux
-            // 
-            this.vingtdeux.HeaderText = "22";
-            this.vingtdeux.Name = "vingtdeux";
-            this.vingtdeux.ReadOnly = true;
-            this.vingtdeux.Width = 32;
-            // 
-            // vingttrois
-            // 
-            this.vingttrois.HeaderText = "23";
-            this.vingttrois.Name = "vingttrois";
-            this.vingttrois.ReadOnly = true;
-            this.vingttrois.Width = 32;
-            // 
-            // vingtquatre
-            // 
-            this.vingtquatre.HeaderText = "24";
-            this.vingtquatre.Name = "vingtquatre";
-            this.vingtquatre.ReadOnly = true;
-            this.vingtquatre.Width = 32;
-            // 
-            // vingtcinq
-            // 
-            this.vingtcinq.HeaderText = "25";
-            this.vingtcinq.Name = "vingtcinq";
-            this.vingtcinq.ReadOnly = true;
-            this.vingtcinq.Width = 32;
-            // 
-            // vingtsix
-            // 
-            this.vingtsix.HeaderText = "26";
-            this.vingtsix.Name = "vingtsix";
-            this.vingtsix.ReadOnly = true;
-            this.vingtsix.Width = 32;
-            // 
-            // vingtsept
-            // 
-            this.vingtsept.HeaderText = "27";
-            this.vingtsept.Name = "vingtsept";
-            this.vingtsept.ReadOnly = true;
-            this.vingtsept.Width = 32;
-            // 
-            // vingthuit
-            // 
-            this.vingthuit.HeaderText = "28";
-            this.vingthuit.Name = "vingthuit";
-            this.vingthuit.ReadOnly = true;
-            this.vingthuit.Width = 32;
-            // 
-            // vingtneuf
-            // 
-            this.vingtneuf.HeaderText = "29";
-            this.vingtneuf.Name = "vingtneuf";
-            this.vingtneuf.ReadOnly = true;
-            this.vingtneuf.Width = 32;
-            // 
-            // trente
-            // 
-            this.trente.HeaderText = "30";
-            this.trente.Name = "trente";
-            this.trente.ReadOnly = true;
-            this.trente.Width = 32;
-            // 
-            // trenteun
-            // 
-            this.trenteun.HeaderText = "31";
-            this.trenteun.Name = "trenteun";
-            this.trenteun.ReadOnly = true;
-            this.trenteun.Width = 32;
-            // 
-            // deleteholiday
-            // 
-            this.deleteholiday.BackColor = System.Drawing.Color.IndianRed;
-            this.deleteholiday.FlatAppearance.BorderSize = 0;
-            this.deleteholiday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteholiday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteholiday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.deleteholiday.Location = new System.Drawing.Point(432, 143);
-            this.deleteholiday.Name = "deleteholiday";
-            this.deleteholiday.Size = new System.Drawing.Size(205, 41);
-            this.deleteholiday.TabIndex = 28;
-            this.deleteholiday.Text = "Retirer une demande";
-            this.deleteholiday.UseVisualStyleBackColor = false;
-            this.deleteholiday.Click += new System.EventHandler(this.deleteholiday_Click);
-            // 
-            // newholiday
-            // 
-            this.newholiday.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.newholiday.FlatAppearance.BorderSize = 0;
-            this.newholiday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newholiday.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newholiday.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.newholiday.Location = new System.Drawing.Point(12, 143);
-            this.newholiday.Name = "newholiday";
-            this.newholiday.Size = new System.Drawing.Size(192, 41);
-            this.newholiday.TabIndex = 26;
-            this.newholiday.Text = "Demander un congé";
-            this.newholiday.UseVisualStyleBackColor = false;
-            this.newholiday.Click += new System.EventHandler(this.newholiday_Click);
-            // 
-            // holidaysLabel
-            // 
-            this.holidaysLabel.AutoSize = true;
-            this.holidaysLabel.BackColor = System.Drawing.Color.Transparent;
-            this.holidaysLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.holidaysLabel.ForeColor = System.Drawing.Color.White;
-            this.holidaysLabel.Location = new System.Drawing.Point(191, 35);
-            this.holidaysLabel.Name = "holidaysLabel";
-            this.holidaysLabel.Size = new System.Drawing.Size(336, 47);
-            this.holidaysLabel.TabIndex = 25;
-            this.holidaysLabel.Text = "Gestion des congés";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.label1.Location = new System.Drawing.Point(668, -12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(626, 130);
-            this.label1.TabIndex = 29;
-            // 
-            // year
-            // 
-            this.year.AutoSize = true;
-            this.year.Location = new System.Drawing.Point(1108, 160);
-            this.year.Name = "year";
-            this.year.Size = new System.Drawing.Size(29, 13);
-            this.year.TabIndex = 30;
-            this.year.Text = "Year";
-            // 
-            // previousYear
-            // 
-            this.previousYear.Location = new System.Drawing.Point(1070, 155);
-            this.previousYear.Name = "previousYear";
-            this.previousYear.Size = new System.Drawing.Size(32, 23);
-            this.previousYear.TabIndex = 31;
-            this.previousYear.Text = "<-";
-            this.previousYear.UseVisualStyleBackColor = true;
-            this.previousYear.Click += new System.EventHandler(this.previousYear_Click);
-            // 
-            // nextYear
-            // 
-            this.nextYear.Location = new System.Drawing.Point(1143, 155);
-            this.nextYear.Name = "nextYear";
-            this.nextYear.Size = new System.Drawing.Size(32, 23);
-            this.nextYear.TabIndex = 32;
-            this.nextYear.Text = "->";
-            this.nextYear.UseVisualStyleBackColor = true;
-            this.nextYear.Click += new System.EventHandler(this.nextYear_Click);
+            // cancelButton
+            // 
+            this.cancelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cancelButton.Location = new System.Drawing.Point(451, 24);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(89, 40);
+            this.cancelButton.TabIndex = 102;
+            this.cancelButton.Text = "Annuler";
+            this.cancelButton.UseVisualStyleBackColor = false;
+            // 
+            // validateButton
+            // 
+            this.validateButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.validateButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.validateButton.FlatAppearance.BorderSize = 0;
+            this.validateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.validateButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.validateButton.Location = new System.Drawing.Point(559, 24);
+            this.validateButton.Name = "validateButton";
+            this.validateButton.Size = new System.Drawing.Size(89, 40);
+            this.validateButton.TabIndex = 101;
+            this.validateButton.Text = "Valider";
+            this.validateButton.UseVisualStyleBackColor = false;
+            this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
+            // 
+            // title
+            // 
+            this.title.AutoSize = true;
+            this.title.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.title.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(132, 24);
+            this.title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(218, 40);
+            this.title.TabIndex = 100;
+            this.title.Text = "Nouveau congé";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.Ouatelse_full_05;
+            this.pictureBox1.Location = new System.Drawing.Point(-8, -3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 91);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 99;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Location = new System.Drawing.Point(111, -2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(607, 90);
+            this.label13.TabIndex = 103;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(648, 160);
+            this.label2.Location = new System.Drawing.Point(45, 236);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 13);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Nombre de jours posés : ";
-            // 
-            // nbPut
-            // 
-            this.nbPut.AutoSize = true;
-            this.nbPut.Location = new System.Drawing.Point(770, 160);
-            this.nbPut.Name = "nbPut";
-            this.nbPut.Size = new System.Drawing.Size(35, 13);
-            this.nbPut.TabIndex = 34;
-            this.nbPut.Text = "nbPut";
-            // 
-            // nbRest
-            // 
-            this.nbRest.AutoSize = true;
-            this.nbRest.Location = new System.Drawing.Point(972, 160);
-            this.nbRest.Name = "nbRest";
-            this.nbRest.Size = new System.Drawing.Size(41, 13);
-            this.nbRest.TabIndex = 36;
-            this.nbRest.Text = "nbRest";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(836, 160);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 13);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Nombre de jours restants :";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Orange;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(12, 501);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 23);
-            this.button1.TabIndex = 37;
-            this.button1.UseVisualStyleBackColor = false;
+            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.TabIndex = 104;
+            this.label2.Text = " ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 506);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(302, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Demande en attente";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(196, 506);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Demande validée";
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LimeGreen;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(159, 501);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 23);
-            this.button2.TabIndex = 39;
-            this.button2.UseVisualStyleBackColor = false;
+            this.label3.Size = new System.Drawing.Size(114, 19);
+            this.label3.TabIndex = 105;
+            this.label3.Text = "Durée du congé :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(329, 506);
+            this.label6.Location = new System.Drawing.Point(182, 188);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 13);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Jour déjà demandé";
+            this.label6.Size = new System.Drawing.Size(181, 13);
+            this.label6.TabIndex = 108;
+            this.label6.Text = "Nombre de jours ouvrés concernés : ";
             // 
-            // button3
+            // startingDate
             // 
-            this.button3.BackColor = System.Drawing.Color.LightGray;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(292, 501);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 23);
-            this.button3.TabIndex = 41;
-            this.button3.UseVisualStyleBackColor = false;
+            this.startingDate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startingDate.ForeColor = System.Drawing.Color.LimeGreen;
+            this.startingDate.Location = new System.Drawing.Point(95, 124);
+            this.startingDate.Name = "startingDate";
+            this.startingDate.Size = new System.Drawing.Size(235, 32);
+            this.startingDate.TabIndex = 109;
+            this.startingDate.Text = "-";
+            this.startingDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // listView1
+            // endingDate
             // 
-            this.listView1.Location = new System.Drawing.Point(1052, 218);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(204, 277);
-            this.listView1.TabIndex = 43;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.endingDate.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endingDate.ForeColor = System.Drawing.Color.Firebrick;
+            this.endingDate.Location = new System.Drawing.Point(388, 124);
+            this.endingDate.Name = "endingDate";
+            this.endingDate.Size = new System.Drawing.Size(235, 32);
+            this.endingDate.TabIndex = 110;
+            this.endingDate.Text = "-";
+            this.endingDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nbDay
+            // 
+            this.nbDay.AutoSize = true;
+            this.nbDay.Location = new System.Drawing.Point(369, 188);
+            this.nbDay.Name = "nbDay";
+            this.nbDay.Size = new System.Drawing.Size(10, 13);
+            this.nbDay.TabIndex = 111;
+            this.nbDay.Text = "-";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1100, 199);
+            this.label7.Location = new System.Drawing.Point(249, 165);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Congé de l\'équipe";
+            this.label7.Size = new System.Drawing.Size(114, 13);
+            this.label7.TabIndex = 112;
+            this.label7.Text = "Amplitude ( en jours ) : ";
             // 
-            // button4
+            // label8
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkOrange;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.Location = new System.Drawing.Point(210, 143);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(216, 41);
-            this.button4.TabIndex = 45;
-            this.button4.Text = "Modifier une demande";
-            this.button4.UseVisualStyleBackColor = false;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(200, 211);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(159, 13);
+            this.label8.TabIndex = 113;
+            this.label8.Text = "Nombre de jours restants après :";
             // 
-            // HolidayForm
+            // amplitude
+            // 
+            this.amplitude.AutoSize = true;
+            this.amplitude.Location = new System.Drawing.Point(369, 165);
+            this.amplitude.Name = "amplitude";
+            this.amplitude.Size = new System.Drawing.Size(10, 13);
+            this.amplitude.TabIndex = 114;
+            this.amplitude.Text = "-";
+            // 
+            // rest
+            // 
+            this.rest.AutoSize = true;
+            this.rest.Location = new System.Drawing.Point(369, 211);
+            this.rest.Name = "rest";
+            this.rest.Size = new System.Drawing.Size(10, 13);
+            this.rest.TabIndex = 115;
+            this.rest.Text = "-";
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Wingdings", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.LightGray;
+            this.label4.Location = new System.Drawing.Point(336, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 32);
+            this.label4.TabIndex = 109;
+            this.label4.Text = "►";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(142, 131);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(200, 20);
+            this.start.TabIndex = 116;
+            this.start.ValueChanged += new System.EventHandler(this.start_ValueChanged);
+            // 
+            // end
+            // 
+            this.end.Location = new System.Drawing.Point(372, 131);
+            this.end.Name = "end";
+            this.end.Size = new System.Drawing.Size(200, 20);
+            this.end.TabIndex = 117;
+            this.end.ValueChanged += new System.EventHandler(this.end_ValueChanged);
+            // 
+            // NewHolidaysForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1268, 536);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(718, 235);
+            this.Controls.Add(this.end);
+            this.Controls.Add(this.start);
+            this.Controls.Add(this.rest);
+            this.Controls.Add(this.amplitude);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.nbDay);
+            this.Controls.Add(this.endingDate);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.startingDate);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.nbRest);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.nbPut);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.nextYear);
-            this.Controls.Add(this.previousYear);
-            this.Controls.Add(this.year);
-            this.Controls.Add(this.deleteholiday);
-            this.Controls.Add(this.newholiday);
-            this.Controls.Add(this.holidaysLabel);
-            this.Controls.Add(this.holidays);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.validateButton);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "HolidayForm";
+            this.Name = "NewHolidaysForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Ouatelse  - Gestion des congés";
-            ((System.ComponentModel.ISupportInitialize)(this.holidays)).EndInit();
+            this.Text = "Ouatelse - Demande de congé";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,57 +271,23 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView holidays;
-        private System.Windows.Forms.Button deleteholiday;
-        private System.Windows.Forms.Button newholiday;
-        private System.Windows.Forms.Label holidaysLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn one;
-        private System.Windows.Forms.DataGridViewTextBoxColumn two;
-        private System.Windows.Forms.DataGridViewTextBoxColumn three;
-        private System.Windows.Forms.DataGridViewTextBoxColumn four;
-        private System.Windows.Forms.DataGridViewTextBoxColumn five;
-        private System.Windows.Forms.DataGridViewTextBoxColumn six;
-        private System.Windows.Forms.DataGridViewTextBoxColumn seven;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nine;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ten;
-        private System.Windows.Forms.DataGridViewTextBoxColumn onze;
-        private System.Windows.Forms.DataGridViewTextBoxColumn douze;
-        private System.Windows.Forms.DataGridViewTextBoxColumn treize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quatorze;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quinze;
-        private System.Windows.Forms.DataGridViewTextBoxColumn seize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dixsept;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dixhuit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dixneuf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtun;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtdeux;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingttrois;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtquatre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtcinq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtsix;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtsept;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingthuit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vingtneuf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trenteun;
-        private System.Windows.Forms.Label year;
-        private System.Windows.Forms.Button previousYear;
-        private System.Windows.Forms.Button nextYear;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button validateButton;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label nbPut;
-        private System.Windows.Forms.Label nbRest;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label startingDate;
+        private System.Windows.Forms.Label endingDate;
+        private System.Windows.Forms.Label nbDay;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label amplitude;
+        private System.Windows.Forms.Label rest;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker start;
+        private System.Windows.Forms.DateTimePicker end;
     }
 }

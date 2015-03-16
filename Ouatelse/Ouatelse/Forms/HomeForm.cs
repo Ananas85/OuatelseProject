@@ -177,7 +177,7 @@ namespace Ouatelse
 
         private void holliday_Click(object sender, EventArgs e)
         {
-            new HolidayForm().ShowDialog();
+            new ManageHolidaysForm().ShowDialog();
         }
 
 private void HomeForm_Load(object sender, EventArgs e)

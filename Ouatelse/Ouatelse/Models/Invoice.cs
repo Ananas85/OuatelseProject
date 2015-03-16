@@ -37,7 +37,7 @@ namespace Ouatelse.Models
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
             this.Customer = CustomerManager.Instance.Find(cursor.Read().ToString());
             this.Payment = PaymentManager.Instance.Find(cursor.Read().ToString());
-            this.IsPaid = cursor.Read().ToString() == "1";
+            this.IsPaid = cursor.Read().ToString() == "True";
             this.PaidAmount = Convert.ToSingle(cursor.Read().ToString());
         }
 
@@ -129,6 +129,14 @@ namespace Ouatelse.Models
             query += " CREATE UNIQUE INDEX \"fk_factures_clients1_idx\" ON factures (clients_id);" + Environment.NewLine;
             query += "CREATE UNIQUE INDEX \"fk_factures_moyen_de_paiements1_idx\" ON factures (moyen_de_paiements_id); " + Environment.NewLine;
 
+            return query;
+        }
+
+        public static string Fixtures()
+        {
+            string query = "INSERT INTO factures VALUES (3, \"2015-03-09\", 0, 15, 41, 1, 0, 0);";
+            query += "INSERT INTO factures VALUES (4, \"2015-03-09\", 0, 15, 42, 1, 1, 11);";
+            query += "INSERT INTO factures VALUES (9, \"2015-03-13\", 0, 15, 44, 1, 1, 16.95);";
             return query;
         }
     }

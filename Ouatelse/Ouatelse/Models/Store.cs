@@ -57,5 +57,10 @@ namespace Ouatelse.Models
         {
             return " CREATE INDEX \"fk_magasin_villes1_idx\" ON magasin (villes_id);" + Environment.NewLine;
         }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO magasin VALUES (\"Rue du Magasin de Test\", 1);";
+        }
     }
 }

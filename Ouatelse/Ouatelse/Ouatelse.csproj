@@ -78,11 +78,11 @@
     <Compile Include="Forms\CustomerPickerForm.Designer.cs">
       <DependentUpon>CustomerPickerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\HolidayForm.cs">
+    <Compile Include="Forms\ManageHolidaysForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HolidayForm.Designer.cs">
-      <DependentUpon>HolidayForm.cs</DependentUpon>
+    <Compile Include="Forms\ManageHolidaysForm.Designer.cs">
+      <DependentUpon>ManageHolidaysForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LockForm.cs">
       <SubType>Form</SubType>
@@ -140,11 +140,17 @@
     <Compile Include="Forms\ManageProductsForm.Designer.cs">
       <DependentUpon>ManageProductsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\newHolidaysForm.cs">
+    <Compile Include="Forms\HolidayForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\newHolidaysForm.Designer.cs">
-      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    <Compile Include="Forms\HolidayForm.Designer.cs">
+      <DependentUpon>HolidayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectHolidayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectHolidayForm.Designer.cs">
+      <DependentUpon>SelectHolidayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StockForm.cs">
       <SubType>Form</SubType>
@@ -214,14 +220,15 @@
     </Compile>
     <Compile Include="TestDatabase.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="ManageDate.cs" />
     <EmbeddedResource Include="Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerPickerForm.resx">
       <DependentUpon>CustomerPickerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\HolidayForm.resx">
-      <DependentUpon>HolidayForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ManageHolidaysForm.resx">
+      <DependentUpon>ManageHolidaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
@@ -250,8 +257,8 @@
     <EmbeddedResource Include="Forms\ManageProductsForm.resx">
       <DependentUpon>ManageProductsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\newHolidaysForm.resx">
-      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HolidayForm.resx">
+      <DependentUpon>HolidayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StockForm.resx">
       <DependentUpon>StockForm.cs</DependentUpon>
@@ -261,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectHolidayForm.resx">
+      <DependentUpon>SelectHolidayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupportForm.resx">
       <DependentUpon>SupportForm.cs</DependentUpon>
