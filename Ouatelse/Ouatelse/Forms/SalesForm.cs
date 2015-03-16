@@ -26,10 +26,8 @@ namespace Ouatelse.Forms
         {
             Invoice[] items = InvoiceManager.Instance.All();
 
-            bool alternateColor = false;
-
             this.items.Items.Clear();
-            foreach (Invoice invoice in items)
+            foreach (Invoice invoice in items.Where(invoice => invoice.Customer != null))
             {
                 ListViewItem item = this.items.Items.Add(invoice.Id.ToString());
                 item.UseItemStyleForSubItems = false;

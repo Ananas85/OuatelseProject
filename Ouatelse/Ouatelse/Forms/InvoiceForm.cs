@@ -198,6 +198,11 @@ namespace Ouatelse.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (invoice.Customer == null)
+            {
+                Utils.Warning("Veuillez sélectionner un client d'abord !");
+                return;
+            }
             invoice.PaidAmount = (float) this.regle.Value;
             if (invoice.PaidAmount < (float) invoice.TotalTTC)
             {
