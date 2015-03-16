@@ -46,6 +46,7 @@ namespace Ouatelse.Forms
         private void addBtn_Click(object sender, EventArgs e)
         {
             new InvoiceForm(new Invoice()).ShowDialog();
+            Reload();
         }
 
         public void EditSelected()
