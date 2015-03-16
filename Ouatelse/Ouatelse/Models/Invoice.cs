@@ -1,9 +1,11 @@
-﻿using Ouatelse.Managers;
+using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace Ouatelse.Models
 {
@@ -14,6 +16,8 @@ namespace Ouatelse.Models
         public Employee Employee { get; set; }
         public Customer Customer { get; set; }
         public Payment Payment { get; set; }
+        public bool IsPaid { get; set; }
+        public float PaidAmount { get; set; }
 
         public ManyCollection<InvoiceProduct> Products;
 
@@ -33,6 +37,8 @@ namespace Ouatelse.Models
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
             this.Customer = CustomerManager.Instance.Find(cursor.Read().ToString());
             this.Payment = PaymentManager.Instance.Find(cursor.Read().ToString());
+            this.IsPaid = cursor.Read().ToString() == "True";
+            this.PaidAmount = Convert.ToSingle(cursor.Read().ToString());
         }
 
         public Dictionary<string, string> Fetch()
@@ -43,6 +49,8 @@ namespace Ouatelse.Models
             res.Add("salaries_id", Employee.Id.ToString());
             res.Add("clients_id", Customer == null ? "0" : Customer.Id.ToString());
             res.Add("moyen_de_paiements_id", Payment.Id.ToString());
+            res.Add("estPaye", IsPaid ? "1" : "0");
+            res.Add("montantPaye", PaidAmount.ToString(CultureInfo.InvariantCulture));
             return res;
         }
 
@@ -66,7 +74,7 @@ namespace Ouatelse.Models
         {
             get
             {
-                return Products.Items.Aggregate<InvoiceProduct, double>(0, (current, invoiceProduct) => current + (invoiceProduct.Price + ((invoiceProduct.Product.TVA / 100) * invoiceProduct.Price)));
+                return Products.Items.Aggregate<InvoiceProduct, double>(0, (current, item) => current + ((item.Product.TVA/100)*item.Price));
             }
         }
 
@@ -78,6 +86,58 @@ namespace Ouatelse.Models
                 double total= TotalHT + TotalTVA;
                 return total - ((DiscountPercent / 100) * total); 
             }
+        }
+
+        public double Reste
+        {
+            get { return TotalTTC - PaidAmount; }
+        }
+
+        public double Arendre
+        {
+            get { return PaidAmount - TotalTTC; }
+        }
+
+        public string ProductsString
+        {
+            get
+            {
+                Products.Reload();
+                List<string> res = Products.Items.Select(invoiceProduct => string.Format("{0}x {1}", invoiceProduct.Quantity, invoiceProduct.Product.Name)).ToList();
+                return String.Join(@", ", res);
+            }
+        }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"factures\"; " + Environment.NewLine;
+            query += " CREATE TABLE \"factures\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"date\" TEXT NOT NULL, " + Environment.NewLine;
+            query += " \"pourcentage_remise\" REAL NOT NULL," + Environment.NewLine;
+            query += " \"salaries_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"clients_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"moyen_de_paiements_id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
+            query += " \"estPaye\" INTEGER(1,0) NOT NULL," + Environment.NewLine;
+            query += " \"montantPaye\" REAL);";
+            return query;
+        }
+
+        public static string CreationIndex()
+        {
+            string query = "CREATE UNIQUE INDEX \"fk_factures_salaries1_idx\" ON factures (salaries_id); " + Environment.NewLine;
+            query += " CREATE UNIQUE INDEX \"fk_factures_clients1_idx\" ON factures (clients_id);" + Environment.NewLine;
+            query += "CREATE UNIQUE INDEX \"fk_factures_moyen_de_paiements1_idx\" ON factures (moyen_de_paiements_id); " + Environment.NewLine;
+
+            return query;
+        }
+
+        public static string Fixtures()
+        {
+            string query = "INSERT INTO factures VALUES (3, \"2015-03-09\", 0, 15, 41, 1, 0, 0);";
+            query += "INSERT INTO factures VALUES (4, \"2015-03-09\", 0, 15, 42, 1, 1, 11);";
+            query += "INSERT INTO factures VALUES (9, \"2015-03-13\", 0, 15, 44, 1, 1, 16.95);";
+            return query;
         }
     }
 }

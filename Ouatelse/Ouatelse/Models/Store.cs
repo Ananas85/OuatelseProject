@@ -34,10 +34,33 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("adresse", Address);
-            res.Add("villes_id", City.Id.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"adresse", Address},
+                {"villes_id", City.Id.ToString()}
+            };
             return res;
+        }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"magasin\";" + Environment.NewLine;
+            query += " CREATE TABLE \"magasin\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"adresse\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"villes_id\" INTEGER(11,0) NOT NULL);";
+
+            return query;
+        }
+
+        public static string CreationIndex()
+        {
+            return " CREATE INDEX \"fk_magasin_villes1_idx\" ON magasin (villes_id);" + Environment.NewLine;
+        }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO magasin VALUES (\"Rue du Magasin de Test\", 1);";
         }
     }
 }

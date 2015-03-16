@@ -21,6 +21,8 @@ namespace Ouatelse.Forms
         List<City> cities = null;
         List<Role> roles = null;
         List<Store> stores = null;
+        string currentUser;
+        string currentMail;
         #endregion
 
         #region Constructeur
@@ -69,6 +71,8 @@ namespace Ouatelse.Forms
 
             b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
+            this.currentUser = this.Username.Text;
+            this.currentMail = this.Email.Text;
         }
         #endregion
 
@@ -84,7 +88,18 @@ namespace Ouatelse.Forms
             obj.Gender = (Gender)this.GenderName.SelectedItem;
             obj.City = (City)this.CityName.SelectedItem;
             obj.Store = (Store)this.Store.SelectedItem;
-            obj.Role = (Role)this.Role.SelectedItem; 
+            obj.Role = (Role)this.Role.SelectedItem;
+
+            if (currentUser == this.Username.Text)
+                EmployeeManager.Instance.UserChanged = false;
+            else
+                EmployeeManager.Instance.UserChanged = true;
+
+            if (currentMail == this.Email.Text)
+                EmployeeManager.Instance.MailChanged = false;
+            else
+                EmployeeManager.Instance.MailChanged = true;
+
             if (obj.validate().Count != 0)
             {
                 string error = String.Empty;

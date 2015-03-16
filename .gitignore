@@ -3,6 +3,7 @@
 
 #Exempt sensible data
 DatabaseCredentials.cs
+MailCredentials.cs
 
 # User-specific files
 *.suo
@@ -157,3 +158,4 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+Ouatelse.userprefs

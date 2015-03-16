@@ -45,6 +45,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.95.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -57,9 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstactDatabase.cs" />
     <Compile Include="ArrayCursor.cs" />
     <Compile Include="Bind.cs" />
     <Compile Include="Binding.cs" />
+    <Compile Include="DatabaseInjector.cs" />
     <Compile Include="Forms\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,11 +78,11 @@
     <Compile Include="Forms\CustomerPickerForm.Designer.cs">
       <DependentUpon>CustomerPickerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\HolidayForm.cs">
+    <Compile Include="Forms\ManageHolidaysForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\HolidayForm.Designer.cs">
-      <DependentUpon>HolidayForm.cs</DependentUpon>
+    <Compile Include="Forms\ManageHolidaysForm.Designer.cs">
+      <DependentUpon>ManageHolidaysForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LockForm.cs">
       <SubType>Form</SubType>
@@ -134,12 +140,20 @@
     <Compile Include="Forms\ManageProductsForm.Designer.cs">
       <DependentUpon>ManageProductsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\newHolidaysForm.cs">
+    <Compile Include="Forms\HolidayForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\newHolidaysForm.Designer.cs">
-      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    <Compile Include="Forms\HolidayForm.Designer.cs">
+      <DependentUpon>HolidayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SelectHolidayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectHolidayForm.Designer.cs">
+      <DependentUpon>SelectHolidayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="MailCredentials.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
@@ -198,15 +212,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TestDatabase.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="ManageDate.cs" />
     <EmbeddedResource Include="Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerPickerForm.resx">
       <DependentUpon>CustomerPickerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\HolidayForm.resx">
-      <DependentUpon>HolidayForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ManageHolidaysForm.resx">
+      <DependentUpon>ManageHolidaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
@@ -235,14 +251,17 @@
     <EmbeddedResource Include="Forms\ManageProductsForm.resx">
       <DependentUpon>ManageProductsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\newHolidaysForm.resx">
-      <DependentUpon>newHolidaysForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HolidayForm.resx">
+      <DependentUpon>HolidayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectHolidayForm.resx">
+      <DependentUpon>SelectHolidayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupportForm.resx">
       <DependentUpon>SupportForm.cs</DependentUpon>

@@ -43,8 +43,8 @@ namespace Ouatelse
                 if (_instance == null)
                 {
                     _instance = new MailSender();
-                    SendersAddress = "ouatelse.contact@gmail.com";
-                    SendersPassword = "ouatelse";
+                    SendersAddress = MailCredentials.Username;
+                    SendersPassword = MailCredentials.Password;
                 }
                 return _instance;
             }
@@ -74,12 +74,11 @@ namespace Ouatelse
                 // We use gmail as our smtp client
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.UseDefaultCredentials = false;
-                smtpClient.EnableSsl = true;
-                smtpClient.Host = "smtp.gmail.com";
-                smtpClient.Port = 587;
+                smtpClient.EnableSsl = false;
+                smtpClient.Host = MailCredentials.SMTPServer;
+                smtpClient.Port = MailCredentials.Port;
                 smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
                 smtpClient.Send(message);
-                //Utils.Info("Mail envoyé avec succès");
                 Utils.Notify("Mail envoyé avec succès");
             }
             catch
@@ -129,13 +128,15 @@ namespace Ouatelse
             string body = htmlContent.Replace("GENDER", cust.Gender.Name);
             body = body.Replace("LASTNAME",cust.LastName);
             body = body.Replace("FIRSTNAME",cust.FirstName);
-            if (!String.IsNullOrWhiteSpace(cust.Address2))
+            if (String.IsNullOrWhiteSpace(cust.Address2))
             {
-                body = body.Replace("ADDRESS", cust.Address1 + "<br/>" + cust.Address2);
+                body = body.Replace("ADDRESS", cust.Address1);
+                body = body.Replace("COMPL", "Aucun");
             }
             else
             {
                 body = body.Replace("ADDRESS", cust.Address1);
+                body = body.Replace("COMPL", cust.Address2);
 
             }
             body = body.Replace("CITY", cust.City.Name);
@@ -205,13 +206,15 @@ namespace Ouatelse
             string body = htmlContent.Replace("GENDER", emp.Gender.Name);
             body = body.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
-            if (!String.IsNullOrWhiteSpace(emp.Address2))
+            if (String.IsNullOrWhiteSpace(emp.Address2))
             {
-                body = body.Replace("ADDRESS", emp.Address1 + "<br/>" + emp.Address2);
+                body = body.Replace("ADDRESS", emp.Address1);
+                body = body.Replace("COMPL", "Aucun");
             }
             else
             {
                 body = body.Replace("ADDRESS", emp.Address1);
+                body = body.Replace("COMPL", emp.Address2);
 
             }
             body = body.Replace("CITY", emp.City.Name);

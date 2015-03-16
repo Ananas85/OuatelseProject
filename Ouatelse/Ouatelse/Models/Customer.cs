@@ -74,6 +74,11 @@ namespace Ouatelse.Models
         /// Si le client veut un mail en cas de modification de sa fiche
         /// </summary>
         public bool EmailOnUpdate { get; set; }
+
+        /// <summary>
+        /// Représente la relation récupérant les factures du client
+        /// </summary>
+        public ManyCollection<Invoice> Invoices { get; set; } 
         
 
         /// <summary>
@@ -90,6 +95,8 @@ namespace Ouatelse.Models
         {
             //Par défaut le client est né aujourd'hui
             DateOfBirth = DateTime.Now;
+
+            Invoices = new ManyCollection<Invoice>(this, InvoiceManager.Instance, "clients_id", "Customer");
         }
         #endregion
 
@@ -238,6 +245,52 @@ namespace Ouatelse.Models
                    "Address1 : " + this.Address1 + Environment.NewLine +
                    " Gender : " + this.Gender.Name + Environment.NewLine;
         }
+        #endregion
+
+        #region La gesion de la base de données
+        #region Méthode pour créer la table
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"clients\"; " + Environment.NewLine;
+            query += " CREATE TABLE \"clients\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"prenom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"adresse1\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"adresse2\" TEXT," + Environment.NewLine;
+            query += " \"fixe\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"portable\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"mail\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"naissance\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"notes\" TEXT," + Environment.NewLine;
+            query += " \"villes_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"civilite_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"email_modification\" INTEGER(1,0) NOT NULL);";
+
+            return query;
+        }
+        #endregion
+
+        #region Méthode pour ajouter les index
+        public static string CreationIndex()
+        {
+            string query = " CREATE UNIQUE INDEX \"fk_clients_villes1_idx\" ON clients (villes_id);" + Environment.NewLine;
+            query += " CREATE UNIQUE INDEX \"fk_clients_civilite1_idx\" ON clients (civilite_id);";
+            return query;
+        }
+        #endregion
+
+        #region Méthode pour créer les données de test
+        public static string Fixtures()
+        {
+            string query =
+                "INSERT INTO clients  VALUES (\"Moreau\", \"Corentin\", \"10, rue du général Margueritte\", \"Appart 9i\", \", \", \"corentin.moreau2@gmail.com\", \"1995-07-10\", \", 13023, 1, 1);";
+            query += "INSERT INTO clients VALUES (\"le magnifique\", \"Nanou\", \"10 rue de la murène\", \", \", \", \"anael@chardan.net\", \"2015-03-06\", \"test2345\", 17328, 1, 1);";
+            query += "INSERT INTO clients VALUES (\"Binois\", \"Clément\", \"rue de liiut\", \", \"6734567456\", \"3423645654\", \"clement.binois@iut.u-bordeaux.fr\", \"2015-03-12\", \", 13026, 1, 1);";
+            query += "INSERT INTO clients VALUES (\"Boursier\", \"Sébastien\", \"rue des poneys\", \", \"3450234034\", \"2345234234\", \"seb.boursier.33@gmail.com\", \"2015-03-13\", \", 12607, 1, 1);";
+            return query;
+        }
+        #endregion
         #endregion
     }
 }

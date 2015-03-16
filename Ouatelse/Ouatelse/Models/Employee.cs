@@ -100,13 +100,16 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_LASTNAME);
             }
-            if (!String.IsNullOrWhiteSpace(this.Username))
+            if (EmployeeManager.Instance.UserChanged)
             {
-                if (EmployeeManager.Instance.Filter("WHERE identifiant = \"" + this.Username + "\"").Length >= 1)
-                    response.Add(ValidationResult.ALREADY_USED_USERNAME);
+                if (!String.IsNullOrWhiteSpace(this.Username))
+                {
+                    if (EmployeeManager.Instance.Filter("WHERE identifiant = \"" + this.Username + "\"").Length >= 1)
+                        response.Add(ValidationResult.ALREADY_USED_USERNAME);
+                }
+                else
+                    response.Add(ValidationResult.WRONG_USERNAME);
             }
-            else
-                response.Add(ValidationResult.WRONG_USERNAME);
             if (String.IsNullOrWhiteSpace(this.Address1))
             {
                 response.Add(ValidationResult.WRONG_ADRESS);
@@ -119,13 +122,15 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_STORE);
             }
-            if (!String.IsNullOrWhiteSpace(this.Email))
-            {
-                if (!new EmailAddressAttribute().IsValid(this.Email))
-                    response.Add(ValidationResult.WRONG_EMAIL);
-                else
-                    if (EmployeeManager.Instance.Filter("WHERE mail = \"" + this.Email + "\"").Length >= 1)
-                        response.Add(ValidationResult.ALREADY_USED_MAIL);
+            if (EmployeeManager.Instance.MailChanged) { 
+                if (!String.IsNullOrWhiteSpace(this.Email))
+                {
+                    if (!new EmailAddressAttribute().IsValid(this.Email))
+                        response.Add(ValidationResult.WRONG_EMAIL);
+                    else
+                        if (EmployeeManager.Instance.Filter("WHERE mail = \"" + this.Email + "\"").Length >= 1)
+                            response.Add(ValidationResult.ALREADY_USED_MAIL);
+                }
             }
             if (!String.IsNullOrWhiteSpace(this.PhoneNumber))
             {
@@ -138,6 +143,46 @@ namespace Ouatelse.Models
                     response.Add(ValidationResult.WRONG_MOBILEPHONENUMBER);
             }
             return response;
+        }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"salaries\"; " + Environment.NewLine;
+            query += " CREATE TABLE \"salaries\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"prenom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
+            query += " \"identifiant\" TEXT(45,0) NOT NULL," + Environment.NewLine;
+            query += " \"mot_de_passe\" TEXT(45,0) NOT NULL," + Environment.NewLine;
+            query += " \"adresse1\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"adresse2\" TEXT," + Environment.NewLine;
+            query += " \"fixe\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"portable\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"mail\" TEXT(255,0)," + Environment.NewLine;
+            query += " \"naissance\" TEXT NOT NULL," + Environment.NewLine;
+            query += " \"notes\" TEXT," + Environment.NewLine;
+            query += " \"villes_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"roles_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"magasin_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"civilite_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
+            query += " \"email_modification\" INTEGER(1,0) NOT NULL);";
+
+            return query;
+        }
+
+        public static string CreationIndex()
+        {
+            string query = " CREATE UNIQUE INDEX \"fk_salaries_villes1_idx\" ON salaries (villes_id); " + Environment.NewLine;
+            query += "  CREATE UNIQUE INDEX \"fk_salaries_roles1_idx\" ON salaries (roles_id); " + Environment.NewLine;
+            query += " CREATE UNIQUE INDEX \"fk_salaries_magasin1_id\" ON salaries (magasin_id); " + Environment.NewLine;
+            query += " CREATE INDEX \"fk_salaries_civilite1_idx\" ON salaries (civilite_id); ";
+            return query;
+        }
+
+        public static string Fixtures()
+        {
+            return
+                "INSERT INTO \"salaries\" VALUES ('SALVADOR', 'Jean-Jacques', 'test', 'test', '10, rue d''info-timde', null, null, null, 'contact@ouatelse.fr', '1975-02-04', null, 1, 1, 1, 1, 0);";
         }
     }
 }
