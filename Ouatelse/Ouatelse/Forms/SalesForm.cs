@@ -85,6 +85,7 @@ namespace Ouatelse.Forms
             if (!Utils.Prompt("Voulez-vous vraiment supprimer cette facture ?"))
                 return;
 
+            selectedInvoice.Products.Reload();
             selectedInvoice.Products.DeleteAll();
             InvoiceManager.Instance.Delete(selectedInvoice);
             Reload();

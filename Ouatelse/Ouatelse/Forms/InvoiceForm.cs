@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
@@ -168,17 +169,14 @@ namespace Ouatelse.Forms
             }
 
             // On regarde si il n'existe pas déjà un produit
-            foreach (InvoiceProduct invoiceProduct in invoice.Products.Items)
+            foreach (InvoiceProduct invoiceProduct in invoice.Products.Items.Where(invoiceProduct => product.EANCode == invoiceProduct.Product.EANCode))
             {
-                if (product.EANCode == invoiceProduct.Product.EANCode)
-                {
-                    invoiceProduct.Quantity++;
-                    InvoiceProductManager.Instance.Save(invoiceProduct);
-                    ReloadProducts();
-                    this.quickAdd.Text = "";
-                    this.quickAdd.SelectAll();
-                    return;
-                }
+                invoiceProduct.Quantity++;
+                InvoiceProductManager.Instance.Save(invoiceProduct);
+                ReloadProducts();
+                this.quickAdd.Text = "";
+                this.quickAdd.SelectAll();
+                return;
             }
 
             invoice.AddProduct(product);
@@ -239,6 +237,20 @@ namespace Ouatelse.Forms
                 this.regle.Value = (decimal)invoice.PaidAmount;
                 this.regle.Enabled = true;
             }
+        }
+
+        private void items_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = this.items.GetItemAt(e.X, e.Y);
+            if (item == null)
+                return;
+            InvoiceProduct product = (InvoiceProduct) item.Tag;
+
+            QuantityForm form = new QuantityForm(product);
+            if (form.ShowDialog() != DialogResult.OK)
+                return;
+            product.Quantity = (int) form.Quantity;
+            ReloadProducts();
         }
     }
 }
