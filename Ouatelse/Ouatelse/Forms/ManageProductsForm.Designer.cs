@@ -83,6 +83,7 @@
             this.button3.TabIndex = 41;
             this.button3.Text = "Réapprovisionner";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.restockProduct_Click);
             // 
             // deleteProduct
             // 
@@ -127,6 +128,7 @@
             this.button4.TabIndex = 42;
             this.button4.Text = "Déstocker";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.destockProduct_Click);
             // 
             // productListView
             // 
@@ -230,6 +232,7 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 26);
             this.searchBox.TabIndex = 43;
+            this.searchBox.TextChanged += new System.EventHandler(this.Reload);
             // 
             // customerLabel
             // 
