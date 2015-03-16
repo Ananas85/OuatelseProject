@@ -171,7 +171,7 @@ namespace Ouatelse.Forms
             if(allEmployeesHolidays)
                 putHolidays = HolidayManager.Instance.Filter("WHERE " + currentYear + " = YEAR(date_debut)").ToList();
             else
-                putHolidays = HolidayManager.Instance.Filter("WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut)").ToList();
+                putHolidays = HolidayManager.Instance.Filter("INNER JOIN salaries ON conge.salaries_id = salaries.id WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut) AND magasin_id ='" + AuthManager.Instance.User.Store.Id + "'").ToList();
 
             //On place les congés déjà posés sur le calendrier
             foreach (Holiday holiday in putHolidays)
@@ -195,8 +195,7 @@ namespace Ouatelse.Forms
 
         public void UpdateAlreadyPostByOther()
         {
-            /**          BUG          **/
-            listView.Clear();
+            listView.Items.Clear();
             List<Employee> employeeWithHolidays = EmployeeManager.Instance.FilterByEmployeesWithHolidays(currentYear);
 
             int emp = 0;
