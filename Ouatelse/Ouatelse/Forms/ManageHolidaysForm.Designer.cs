@@ -84,6 +84,7 @@
             this.acceptButton = new System.Windows.Forms.Button();
             this.admin = new System.Windows.Forms.GroupBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
+            this.holidaysColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
             this.admin.SuspendLayout();
             this.SuspendLayout();
@@ -555,12 +556,15 @@
             // 
             // listView
             // 
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.holidaysColumn});
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView.Location = new System.Drawing.Point(1052, 218);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(204, 277);
             this.listView.TabIndex = 43;
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // label7
             // 
@@ -643,6 +647,11 @@
             this.checkBox.Text = "Visualiser tous les congés";
             this.checkBox.UseVisualStyleBackColor = false;
             this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // holidaysColumn
+            // 
+            this.holidaysColumn.Text = "Congés du magasin";
+            this.holidaysColumn.Width = 179;
             // 
             // ManageHolidaysForm
             // 
@@ -749,5 +758,6 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.GroupBox admin;
         private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.ColumnHeader holidaysColumn;
     }
 }
