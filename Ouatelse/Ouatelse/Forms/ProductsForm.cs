@@ -54,39 +54,18 @@ namespace Ouatelse.Forms
             b.Bind(this.NameP, "Text", obj, "Name");
             b.Bind(this.Designation, "Text", obj, "Designation");
             b.Bind(this.EANCode, "Text", obj, "EANCode");
-
+            b.Bind(this.PurchasePrice, "Text", obj, "PurchasePriceString");
+            b.Bind(this.SellPrice, "Text", obj, "SellPriceString");
+            b.Bind(this.TVA, "Text", obj, "TVAString");
             b.Populate();
+
         }
         #endregion
 
         #region Gestion de la validation du formulaire
         private void validateButton_Click(object sender, EventArgs e)
         {
-            //On hydrate notre binding
             b.Hydrate();
-            float val = new float();
-            if (!float.TryParse(this.PurchasePrice.Text, out val))
-            {
-                Utils.Warning("Prix d'achat incorrect");
-                return;
-            };
-            obj.PurchasePrice = val;
-
-            if (!float.TryParse(this.SellPrice.Text, out val))
-            {
-                Utils.Warning("Prix de vente incorrect");
-                return;
-            };
-            obj.SellPrice = val;
-
-            obj.TVA = float.Parse(this.TVA.Text);
-
-            if (!float.TryParse(this.TVA.Text, out val))
-            {
-                Utils.Warning("TVA incorrecte");
-                return;
-            };
-            obj.TVA = val;
 
             //On regarde si notre entité peut être validé en base
             if (obj.validate().Count != 0)
@@ -124,6 +103,16 @@ namespace Ouatelse.Forms
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
+        }
+
+        #endregion
+
+        #region Autorisation uniqument de l'entrée de chiffre pour le code EAN
+        private void EANCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)) return;
+            Utils.Info("Uniquement les chiffres sont autorisés");
+            e.Handled = true;
         }
         #endregion
 

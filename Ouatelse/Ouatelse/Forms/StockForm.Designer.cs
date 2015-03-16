@@ -45,10 +45,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericQuantity = new System.Windows.Forms.NumericUpDown();
             this.stockLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Address = new System.Windows.Forms.ComboBox();
+            this.numericQuantity = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
             this.SuspendLayout();
@@ -214,18 +214,6 @@
             this.label6.TabIndex = 124;
             this.label6.Text = "Adresse: ";
             // 
-            // numericQuantity
-            // 
-            this.numericQuantity.Location = new System.Drawing.Point(483, 150);
-            this.numericQuantity.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericQuantity.Name = "numericQuantity";
-            this.numericQuantity.Size = new System.Drawing.Size(120, 20);
-            this.numericQuantity.TabIndex = 129;
-            // 
             // stockLabel
             // 
             this.stockLabel.AutoSize = true;
@@ -256,6 +244,21 @@
             this.Address.TabIndex = 130;
             this.Address.SelectedIndexChanged += new System.EventHandler(this.Address_SelectedIndexChanged);
             // 
+            // numericQuantity
+            // 
+            this.numericQuantity.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
+            this.numericQuantity.Location = new System.Drawing.Point(483, 149);
+            this.numericQuantity.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numericQuantity.Name = "numericQuantity";
+            this.numericQuantity.Size = new System.Drawing.Size(120, 20);
+            this.numericQuantity.TabIndex = 131;
+            this.numericQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericQuantity.ThousandsSeparator = true;
+            // 
             // StockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,8 +266,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(632, 335);
-            this.Controls.Add(this.Address);
             this.Controls.Add(this.numericQuantity);
+            this.Controls.Add(this.Address);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
@@ -315,10 +318,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericQuantity;
         private System.Windows.Forms.Label stockLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Address;
+        private System.Windows.Forms.NumericUpDown numericQuantity;
 
 
 

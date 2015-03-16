@@ -130,6 +130,7 @@
             this.items.FullRowSelect = true;
             this.items.GridLines = true;
             this.items.Location = new System.Drawing.Point(12, 181);
+            this.items.MultiSelect = false;
             this.items.Name = "items";
             this.items.Size = new System.Drawing.Size(983, 424);
             this.items.TabIndex = 126;

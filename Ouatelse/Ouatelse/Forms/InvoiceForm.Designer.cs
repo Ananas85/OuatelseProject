@@ -221,6 +221,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.items.FullRowSelect = true;
             this.items.GridLines = true;
             this.items.Location = new System.Drawing.Point(12, 230);
             this.items.MaximumSize = new System.Drawing.Size(723, 300);
@@ -231,6 +232,7 @@
             this.items.TabIndex = 116;
             this.items.UseCompatibleStateImageBehavior = false;
             this.items.View = System.Windows.Forms.View.Details;
+            this.items.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.items_MouseDoubleClick);
             // 
             // columnHeader1
             // 

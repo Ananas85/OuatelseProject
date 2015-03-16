@@ -34,6 +34,9 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>OuatelseIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IrisALS">
       <HintPath>..\..\IrisALS.dll</HintPath>
@@ -146,6 +149,12 @@
     <Compile Include="Forms\HolidayForm.Designer.cs">
       <DependentUpon>HolidayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\QuantityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuantityForm.Designer.cs">
+      <DependentUpon>QuantityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectHolidayForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +166,12 @@
     </Compile>
     <Compile Include="Forms\StockForm.Designer.cs">
       <DependentUpon>StockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StorePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StorePicker.Designer.cs">
+      <DependentUpon>StorePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="IDatabase.cs" />
     <Compile Include="MailCredentials.cs" />
@@ -266,11 +281,17 @@
     <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuantityForm.resx">
+      <DependentUpon>QuantityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectHolidayForm.resx">
       <DependentUpon>SelectHolidayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StorePicker.resx">
+      <DependentUpon>StorePicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupportForm.resx">
       <DependentUpon>SupportForm.cs</DependentUpon>
@@ -352,6 +373,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\support.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OuatelseIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

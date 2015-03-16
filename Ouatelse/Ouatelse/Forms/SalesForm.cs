@@ -26,10 +26,8 @@ namespace Ouatelse.Forms
         {
             Invoice[] items = InvoiceManager.Instance.All();
 
-            bool alternateColor = false;
-
             this.items.Items.Clear();
-            foreach (Invoice invoice in items)
+            foreach (Invoice invoice in items.Where(invoice => invoice.Customer != null))
             {
                 ListViewItem item = this.items.Items.Add(invoice.Id.ToString());
                 item.UseItemStyleForSubItems = false;
@@ -48,6 +46,7 @@ namespace Ouatelse.Forms
         private void addBtn_Click(object sender, EventArgs e)
         {
             new InvoiceForm(new Invoice()).ShowDialog();
+            Reload();
         }
 
         public void EditSelected()
@@ -85,6 +84,7 @@ namespace Ouatelse.Forms
             if (!Utils.Prompt("Voulez-vous vraiment supprimer cette facture ?"))
                 return;
 
+            selectedInvoice.Products.Reload();
             selectedInvoice.Products.DeleteAll();
             InvoiceManager.Instance.Delete(selectedInvoice);
             Reload();

@@ -28,15 +28,54 @@ namespace Ouatelse.Models
         /// </summary>
         public float PurchasePrice { get; set; }
 
+        public String PurchasePriceString
+        {
+            get
+            {
+                return this.PurchasePrice.ToString();
+            }
+
+            set
+            {
+                this.PurchasePrice = Single.Parse(value);
+            }
+        }
+
         /// <summary>
         /// Obligatoire : Le prix de vente du produit
         /// </summary>
         public float SellPrice { get; set; }
 
+        public String SellPriceString
+        {
+            get
+            {
+                return this.SellPrice.ToString();
+            }
+
+            set
+            {
+                this.SellPrice = Single.Parse(value);
+            }
+        }
+
         /// <summary>
         /// Obligatoire : La TVA du produit
         /// </summary>
         public float TVA { get; set; }
+
+        public String TVAString
+        {
+            get
+            {
+                return this.TVA.ToString();
+            }
+
+            set
+            {
+                this.TVA = Single.Parse(value);
+            }
+        }
 
         /// <summary>
         /// Obligatoire : Le code EAN du produit

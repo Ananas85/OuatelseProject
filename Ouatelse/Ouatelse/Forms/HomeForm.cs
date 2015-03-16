@@ -27,14 +27,9 @@ namespace Ouatelse
             if (!Directory.Exists(AppData))
                 Directory.CreateDirectory(AppData);
             als = new ActivationService("h61v6b7f","ouatelse","Ouatelse",Path.Combine(AppData,"ouatelse-eaf"));
-            if(!als.CheckActivation())
-                Application.Exit();
             InitializeComponent();
             Utils.SetNotifyIcon(this.notifyIcon1);
-            //Gère la connexion
-            DoLogin();
-
-           }
+        }
 
         /// <summary>
         /// Fonction qui permet de vérifier si l'utilisateur est connecté
@@ -180,9 +175,28 @@ namespace Ouatelse
             new ManageHolidaysForm().ShowDialog();
         }
 
-private void HomeForm_Load(object sender, EventArgs e)
+        private void HomeForm_Load(object sender, EventArgs e)
         {
 
+            if (!als.CheckActivation())
+            {
+                Application.Exit();
+                return;
+            }
+
+            // On vérifie si l'app est lié à un magasin
+
+            if (Properties.Settings.Default.CurrentStore == null)
+            {
+                if (new StorePicker().ShowDialog() != DialogResult.OK)
+                {
+                    Application.Exit();
+                    return;
+                }
+            }
+
+            //Gère la connexion
+            DoLogin();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
