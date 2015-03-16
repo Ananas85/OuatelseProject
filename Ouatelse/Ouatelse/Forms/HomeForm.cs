@@ -27,12 +27,8 @@ namespace Ouatelse
             if (!Directory.Exists(AppData))
                 Directory.CreateDirectory(AppData);
             als = new ActivationService("h61v6b7f","ouatelse","Ouatelse",Path.Combine(AppData,"ouatelse-eaf"));
-            if(!als.CheckActivation())
-                Application.Exit();
             InitializeComponent();
             Utils.SetNotifyIcon(this.notifyIcon1);
-            //Gère la connexion
-            DoLogin();
 
            }
 
@@ -180,9 +176,17 @@ namespace Ouatelse
             new ManageHolidaysForm().ShowDialog();
         }
 
-private void HomeForm_Load(object sender, EventArgs e)
+        private void HomeForm_Load(object sender, EventArgs e)
         {
 
+            if (!als.CheckActivation())
+            {
+                Application.Exit();
+                return;
+            }
+
+            //Gère la connexion
+            DoLogin();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
