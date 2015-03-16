@@ -233,6 +233,7 @@
             this.EANCode.Name = "EANCode";
             this.EANCode.Size = new System.Drawing.Size(111, 20);
             this.EANCode.TabIndex = 7;
+            this.EANCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EANCode_KeyUp);
             // 
             // Id
             // 
