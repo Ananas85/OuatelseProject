@@ -14,150 +14,121 @@ namespace Ouatelse.Forms
 {
     public partial class StockForm : Form
     {
-        //#region Les attributs de la classe
-        ///// <summary>
-        ///// Le produit courant du formulaire
-        ///// </summary>
-        //Product obj = null;
+        #region Les attributs de la classe
+        /// <summary>
+        /// Le produit courant du formulaire
+        /// </summary>
+        Product product = null;
+        List<Store> storeList = null;
+        List<Stock> stockList = null;
+        int action = 0;
+        Stock obj = new Stock();
 
-        ///// <summary>
-        ///// La cohérence entre le formulaire et notre produit
-        ///// </summary>
-        //Binding b = new Binding();
-        //#endregion
+        /// <summary>
+        /// La cohérence entre le formulaire et notre produit
+        /// </summary>
+        Binding b = new Binding();
+        #endregion
 
-        //#region Le constructeur de la classe
-        ///// <summary>
-        ///// Le constructeur de la classe
-        ///// </summary>
-        ///// <param name="obj"></param>
-        //public ProductsForm(Product obj)
-        //{
-        //    InitializeComponent();
-        //    //Cohérence pour l'affichage des titres
-        //    this.Text = this.label1.Text = obj.Exists ? "Détail du produit " : " Nouveau produit";
-        //    this.obj = obj;
-        //}
-        //#endregion
+        #region Le constructeur de la classe
+        /// <summary>
+        /// Le constructeur de la classe
+        /// </summary>
+        /// <param name="obj"></param>
+        public StockForm(Product product, int action)
+        {
+            InitializeComponent();
+            this.action = action;
+            //Cohérence pour l'affichage des titres
+            this.Text = this.label1.Text = this.action == 1 ? "Réapprovisionner " : " Déstocker";
+            this.product = product;
+            obj.Product = product;
+        }
+        #endregion
 
-        //#region Gestion du chargement de l'affichage du formulaire
-        ///// <summary>
-        ///// Chargement de l'affichage du formulaire
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void ProductsForm_Load(object sender, EventArgs e)
-        //{
+        #region Gestion du chargement de l'affichage du formulaire
+        /// <summary>
+        /// Chargement de l'affichage du formulaire
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StockForm_Load(object sender, EventArgs e)
+        {
 
-        //    //On lie notre objet à notre binding
-        //    this.Id.Text = obj.StringId;
-        //    b.Bind(this.NameP, "Text", obj, "Name");
-        //    b.Bind(this.Designation, "Text", obj, "Designation");
-        //    b.Bind(this.EANCode, "Text", obj, "EANCode");
+            //On lie notre objet à notre binding
+            this.IdProduct.Text = product.Id.ToString();
+            this.NameProduct.Text = product.Name;
+            this.Designation.Text = product.Designation;
+            loadStores(StoreManager.Instance.All());
+        
+        }
+        #endregion
 
-        //    b.Populate();
-        //}
-        //#endregion
+        #region Chargement des magasins dans la combobox
+        /// <summary>
+        /// Chargement des magasins dans la comboBox
+        /// </summary>
+        /// <param name="cities"></param>
+        private void loadStores(Store[] stores)
+        {
+            this.storeList = new List<Store>(stores);
+            this.Address.DataSource = storeList;
+            this.Address.ValueMember = "Id";
+            this.Address.DisplayMember = "Address";
+        }
+        #endregion
 
-        //#region Gestion de la validation du formulaire
-        //private void validateButton_Click(object sender, EventArgs e)
-        //{
-        //    //On hydrate notre binding
-        //    b.Hydrate();
-        //    float val = new float();
-        //    if (!float.TryParse(this.PurchasePrice.Text, out val))
-        //    {
-        //        Utils.Warning("Prix d'achat incorrect");
-        //        return;
-        //    };
-        //    obj.PurchasePrice = val;
+        #region Affichage de la ville et du stock selon l'adresse
+        private void Address_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.Address != null)
+            {
+                this.City.Text = ((Store)this.Address.SelectedItem).City.Name;
+                this.IdStore.Text = ((Store)this.Address.SelectedItem).Id.ToString();
+                this.stockList = new List<Stock>(StockManager.Instance.Filter("WHERE produits_id = " + this.product.Id + " AND magasin_id = " + ((Store)this.Address.SelectedItem).Id + ";"));
+                this.obj.Store = (Store)this.Address.SelectedItem;
+                this.obj.Quantity = 0;
+                foreach (Stock s in stockList)
+                {
+                    this.obj.Quantity += s.Quantity;
+                }
+                this.stockLabel.Text = "En stock : " + this.obj.Quantity;
+                return;
+            }
+            this.City.Text = String.Empty;
+        }
+        #endregion
 
-        //    if (!float.TryParse(this.SellPrice.Text, out val))
-        //    {
-        //        Utils.Warning("Prix de vente incorrect");
-        //        return;
-        //    };
-        //    obj.SellPrice = val;
+        #region Gestion de la validation du formulaire
+        private void validateButton_Click(object sender, EventArgs e)
+        {
 
-        //    obj.TVA = float.Parse(this.TVA.Text);
+            //On regarde si le mouvement de stock est valide
+            if (this.Address == null)
+            {
+                Utils.Warning("Aucun magasin selectionné");
+            }
 
-        //    if (!float.TryParse(this.TVA.Text, out val))
-        //    {
-        //        Utils.Warning("TVA incorrecte");
-        //        return;
-        //    };
-        //    obj.TVA = val;
+            else if ((this.action * this.numericQuantity.Value) == 0 || (this.obj.Quantity + (this.action * this.numericQuantity.Value)) < 0)
+            {
+                Utils.Warning("Quantité selectionnée invalide");
+            }
 
-        //    //On regarde si notre entité peut être validé en base
-        //    if (obj.validate().Count != 0)
-        //    {
-        //        string error = String.Empty;
-        //        foreach (Product.ValidationResult warning in obj.validate())
-        //        {
-        //            switch (warning)
-        //            {
-        //                case Product.ValidationResult.WRONG_NAME:
-        //                    error += "Erreur dans la saisie du nom ( il doit obligatoirement être rempli )" + Environment.NewLine;
-        //                    break;
-        //                case Product.ValidationResult.WRONG_DESIGNATION:
-        //                    error += "Erreur dans la saisie de la désignation ( elle doit obligatoirement être remplie )" + Environment.NewLine;
-        //                    break;
-        //                case Product.ValidationResult.WRONG_PURCHASEPRICE:
-        //                    error += "Erreur dans la saisie du prix d'achat ( il doit obligatoirement être rempli )" + Environment.NewLine;
-        //                    break;
-        //                case Product.ValidationResult.WRONG_SELLPRICE:
-        //                    error += "Erreur dans la saisie du prix de vente ( il doit obligatoirement être rempli )" + Environment.NewLine;
-        //                    break;
-        //                case Product.ValidationResult.WRONG_TVA:
-        //                    error += "Erreur dans la saisie de la TVA ( elle doit obligatoirement être remplie )" + Environment.NewLine;
-        //                    break;
-        //                case Product.ValidationResult.WRONG_EANCODE:
-        //                    error += "Erreur dans la saisie du code EAN ( 13 caractères obligatoire )" + Environment.NewLine;
-        //                    break;
-        //            }
-        //        }
-        //        Utils.Warning(error);
-        //        return;
-        //    }
+            else
+            {
+                obj.Quantity = (int) (this.action * this.numericQuantity.Value);
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
 
-        //    else
-        //    {
-        //        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        //    }
-        //}
-        //#endregion
+        }
+        #endregion
 
-        //#region Getter du produit en cours
-        //public Product getProduct()
-        //{
-        //    return obj;
-        //}
-        //#endregion
+        #region Getter du stock en cours
+        public Stock getStock()
+        {
+            return obj;
+        }
+        #endregion
 
-        //#region Chargement des villes dans la combobox
-        ///// <summary>
-        ///// Chargement des villes dans la comboBox
-        ///// </summary>
-        ///// <param name="cities"></param>
-        //private void loadCities(City[] cities)
-        //{
-        //    this.citiesList = new List<City>(cities);
-        //    this.CityName.DataSource = citiesList;
-        //    this.CityName.ValueMember = "Id";
-        //    this.CityName.DisplayMember = "Name";
-        //}
-        //#endregion
-
-        //#region Affichage du pays selon la ville
-        //private void CityName_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (this.CityName != null)
-        //    {
-        //        this.Country.Text = ((City)this.CityName.SelectedItem).Country.Name;
-        //        return;
-        //    }
-        //    this.Country.Text = String.Empty;
-        //}
-        //#endregion
     }
 }

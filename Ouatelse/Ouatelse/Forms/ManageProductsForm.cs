@@ -102,7 +102,8 @@ namespace Ouatelse
         /// <summary>
         /// Edition d'un produit
         /// </summary>
-        /// 
+        /// <param name="sender"></param>
+        /// <param name="e"></param> 
         private void newProduct_Click(object sender, EventArgs e)
         {
             ProductsForm p = new ProductsForm(new Product());
@@ -149,6 +150,56 @@ namespace Ouatelse
                 return;
             }
             Utils.Warning("Vous n'avez pas sélectionné de produit");
+        }
+        #endregion
+
+        #region Gestion du click sur les boutons réapprovisionner/déstoker
+        /// <summary>
+        /// Gestion du click sur le bouton réapprovisionner pour le produit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void restockProduct_Click(object sender, EventArgs e)
+        {
+            if (currentProduct != null)
+            {
+                NewStock(currentProduct, 1);
+                return;
+            }
+            Utils.Warning("Vous n'avez pas sélectionné de produit");
+        }
+
+        /// <summary>
+        /// Gestion du click sur le bouton déstocker pour le produit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void destockProduct_Click(object sender, EventArgs e)
+        {
+            if (currentProduct != null)
+            {
+                NewStock(currentProduct, -1);
+                return;
+            }
+            Utils.Warning("Vous n'avez pas sélectionné de produit");
+        }
+        #endregion
+
+        #region Édition d'un nouveau stock
+        /// <summary>
+        /// Edition d'un stock
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="action"></param> 
+        private void NewStock(Product p, int action)
+        {
+            StockForm s = new StockForm((Product)currentProduct.Clone(), action);
+            if (s.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+            StockManager.Instance.Save(s.getStock());
+            Reload(ProductManager.Instance.All());
+            Utils.Info("Stock du produit modifié");
+            return;
         }
         #endregion
 

@@ -34,23 +34,23 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.validateButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.NameP = new System.Windows.Forms.TextBox();
+            this.NameProduct = new System.Windows.Forms.TextBox();
             this.Designation = new System.Windows.Forms.TextBox();
-            this.Id = new System.Windows.Forms.TextBox();
+            this.IdProduct = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.IdStore = new System.Windows.Forms.TextBox();
+            this.City = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
+            this.numericQuantity = new System.Windows.Forms.NumericUpDown();
+            this.stockLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Address = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -101,6 +101,7 @@
             this.validateButton.TabIndex = 9;
             this.validateButton.Text = "Valider";
             this.validateButton.UseVisualStyleBackColor = false;
+            this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
             // 
             // label8
             // 
@@ -112,27 +113,29 @@
             this.label8.TabIndex = 113;
             this.label8.Text = "Quantité:";
             // 
-            // NameP
+            // NameProduct
             // 
-            this.NameP.Location = new System.Drawing.Point(114, 149);
-            this.NameP.Name = "NameP";
-            this.NameP.Size = new System.Drawing.Size(265, 20);
-            this.NameP.TabIndex = 2;
+            this.NameProduct.Location = new System.Drawing.Point(114, 149);
+            this.NameProduct.Name = "NameProduct";
+            this.NameProduct.ReadOnly = true;
+            this.NameProduct.Size = new System.Drawing.Size(265, 20);
+            this.NameProduct.TabIndex = 2;
             // 
             // Designation
             // 
             this.Designation.Location = new System.Drawing.Point(114, 177);
             this.Designation.Name = "Designation";
+            this.Designation.ReadOnly = true;
             this.Designation.Size = new System.Drawing.Size(265, 20);
             this.Designation.TabIndex = 3;
             // 
-            // Id
+            // IdProduct
             // 
-            this.Id.Location = new System.Drawing.Point(114, 123);
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Size = new System.Drawing.Size(69, 20);
-            this.Id.TabIndex = 1;
+            this.IdProduct.Location = new System.Drawing.Point(114, 123);
+            this.IdProduct.Name = "IdProduct";
+            this.IdProduct.ReadOnly = true;
+            this.IdProduct.Size = new System.Drawing.Size(69, 20);
+            this.IdProduct.TabIndex = 1;
             // 
             // label1
             // 
@@ -165,27 +168,21 @@
             this.label13.Size = new System.Drawing.Size(653, 90);
             this.label13.TabIndex = 128;
             // 
-            // textBox1
+            // IdStore
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 220);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(69, 20);
-            this.textBox1.TabIndex = 1;
+            this.IdStore.Location = new System.Drawing.Point(114, 220);
+            this.IdStore.Name = "IdStore";
+            this.IdStore.ReadOnly = true;
+            this.IdStore.Size = new System.Drawing.Size(69, 20);
+            this.IdStore.TabIndex = 1;
             // 
-            // textBox2
+            // City
             // 
-            this.textBox2.Location = new System.Drawing.Point(114, 274);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(265, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(114, 246);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(265, 20);
-            this.textBox3.TabIndex = 2;
+            this.City.Location = new System.Drawing.Point(114, 274);
+            this.City.Name = "City";
+            this.City.ReadOnly = true;
+            this.City.Size = new System.Drawing.Size(265, 20);
+            this.City.TabIndex = 3;
             // 
             // label5
             // 
@@ -217,22 +214,27 @@
             this.label6.TabIndex = 124;
             this.label6.Text = "Adresse: ";
             // 
-            // numericUpDown1
+            // numericQuantity
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(483, 150);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 129;
+            this.numericQuantity.Location = new System.Drawing.Point(483, 150);
+            this.numericQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericQuantity.Name = "numericQuantity";
+            this.numericQuantity.Size = new System.Drawing.Size(120, 20);
+            this.numericQuantity.TabIndex = 129;
             // 
-            // label9
+            // stockLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(422, 184);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
-            this.label9.TabIndex = 113;
-            this.label9.Text = "En stock :";
+            this.stockLabel.AutoSize = true;
+            this.stockLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockLabel.Location = new System.Drawing.Point(422, 184);
+            this.stockLabel.Name = "stockLabel";
+            this.stockLabel.Size = new System.Drawing.Size(56, 13);
+            this.stockLabel.TabIndex = 113;
+            this.stockLabel.Text = "En stock :";
             // 
             // label2
             // 
@@ -244,6 +246,16 @@
             this.label2.TabIndex = 113;
             this.label2.Text = "Code Produit:";
             // 
+            // Address
+            // 
+            this.Address.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Address.FormattingEnabled = true;
+            this.Address.Location = new System.Drawing.Point(114, 246);
+            this.Address.Name = "Address";
+            this.Address.Size = new System.Drawing.Size(265, 21);
+            this.Address.TabIndex = 130;
+            this.Address.SelectedIndexChanged += new System.EventHandler(this.Address_SelectedIndexChanged);
+            // 
             // StockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,7 +263,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(632, 335);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.Address);
+            this.Controls.Add(this.numericQuantity);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
@@ -260,14 +273,13 @@
             this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.stockLabel);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.NameP);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NameProduct);
+            this.Controls.Add(this.City);
+            this.Controls.Add(this.IdStore);
             this.Controls.Add(this.Designation);
-            this.Controls.Add(this.Id);
+            this.Controls.Add(this.IdProduct);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label13);
@@ -277,8 +289,9 @@
             this.MinimizeBox = false;
             this.Name = "StockForm";
             this.ShowIcon = false;
+            this.Load += new System.EventHandler(this.StockForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,21 +304,21 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox NameP;
+        private System.Windows.Forms.TextBox NameProduct;
         private System.Windows.Forms.TextBox Designation;
-        private System.Windows.Forms.TextBox Id;
+        private System.Windows.Forms.TextBox IdProduct;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox IdStore;
+        private System.Windows.Forms.TextBox City;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericQuantity;
+        private System.Windows.Forms.Label stockLabel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox Address;
 
 
 
