@@ -269,6 +269,7 @@
             this.MinimumSize = new System.Drawing.Size(730, 466);
             this.Name = "SupportForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse - Assistance";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
