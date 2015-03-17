@@ -34,7 +34,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            return "INSERT INTO \"pays\" VALUES ('France');";
+            return "INSERT INTO pays VALUES (1,'France');";
         }
     }
 }

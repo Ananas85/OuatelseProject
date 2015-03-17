@@ -52,11 +52,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            string query = "INSERT INTO \"roles\" VALUES ('Administrateur', null);";
-            query += "INSERT INTO \"roles\" VALUES ('Responsable des ventes', 1);";
-            query += "INSERT INTO \"roles\" VALUES ('Responsable des stocks', 1);";
-            query += "INSERT INTO \"roles\" VALUES ('Vendeur', 4);";
-            return query;
+            return "INSERT INTO \"roles\" VALUES (1,'Administrateur', null);";
         }
     }
 }

@@ -33,9 +33,8 @@ namespace Ouatelse
         /// </summary>
         private TestDatabase()
         {
-            SQLiteConnection.CreateFile("MyDatabase.sqlite");
             this.isLoggingEnabled = true;
-            this.connection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+            this.connection = new SQLiteConnection("Data Source=:memory:");
             this.connection.Open();
             InitDatabase();
         }
@@ -87,7 +86,6 @@ namespace Ouatelse
 
         public void Dispose()
         {
-            System.IO.File.Delete("MyDatabase.sqlite");
             this.connection.Close();
         }
 

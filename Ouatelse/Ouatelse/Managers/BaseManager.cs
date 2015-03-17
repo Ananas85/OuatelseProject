@@ -169,9 +169,9 @@ namespace Ouatelse.Managers
             StringBuilder query = new StringBuilder();
             if (!model.Exists)
             {
-                query.AppendFormat("INSERT INTO {0} (", TableName);
+                query.AppendFormat("INSERT INTO {0} (id,", TableName);
                 query.Append(String.Join(", ", ((IModel)model).Fetch().Keys));
-                query.Append(") VALUES('");
+                query.Append(") VALUES(NULL,'");
                 query.Append(String.Join("', '", ((IModel)model).Fetch().Values.Select(value => value.Replace(@"'", @"\'"))));
                 query.Append("')");
             }
