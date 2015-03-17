@@ -75,7 +75,28 @@ namespace Ouatelse.Forms
             }
             b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
+
+            // Chargement des factures
+            ReloadInvoices();
         }
+
+        private void ReloadInvoices()
+        {
+            this.obj.Invoices.Reload();
+            foreach (Invoice invoice in this.obj.Invoices.Items)
+            {
+                ListViewItem item = this.invoices.Items.Add(invoice.Id.ToString());
+                item.UseItemStyleForSubItems = false;
+                item.SubItems.Add(invoice.Date.ToShortDateString());
+                item.SubItems.Add(invoice.ProductsString);
+                item.SubItems.Add(invoice.TotalTTC.ToString("C"));
+                item.SubItems.Add(invoice.PaidAmount.ToString("C"));
+                item.SubItems[0].BackColor = invoice.IsPaid ? Color.LimeGreen : Color.Orange;
+                item.SubItems[0].ForeColor = invoice.IsPaid ? Color.White : Color.Black;
+                item.Tag = invoice;
+            }
+        }
+
         #endregion
 
         #region Gestion de la validation du formulaire
@@ -230,6 +251,17 @@ namespace Ouatelse.Forms
             }
         }
         #endregion
+
+        private void invoices_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = this.invoices.GetItemAt(e.X, e.Y);
+            if (item == null)
+                return;
+
+            Invoice invoice = (Invoice) item.Tag;
+            if (new InvoiceForm(invoice).ShowDialog() == DialogResult.OK)
+                ReloadInvoices();
+        }
 
     }
 }

@@ -287,6 +287,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(855, 555);
             this.Name = "ManageProductsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Gestion des produits / stock";
             this.rightClickProduct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

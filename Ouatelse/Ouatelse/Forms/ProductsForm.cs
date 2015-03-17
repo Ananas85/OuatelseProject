@@ -161,6 +161,14 @@ namespace Ouatelse.Forms
             }
         }
 
+        private void EANCode_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Return || e.KeyData == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
         //#region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone fixe
         //private void PhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         //{

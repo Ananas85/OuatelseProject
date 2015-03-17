@@ -41,6 +41,7 @@ namespace Ouatelse
                 new LoginForm().ShowDialog();
                 if (AuthManager.Instance.User != null)
                 {
+                    this.Show();
                     ReloadUser();
                     return;
                 }
@@ -56,6 +57,8 @@ namespace Ouatelse
         {
             this.username.Text = AuthManager.Instance.User.FirstName + " " + AuthManager.Instance.User.LastName;
             this.roleLbl.Text = " (" + AuthManager.Instance.User.Role.Name + ") ";
+
+            this.linkLabel2.Visible = (AuthManager.Instance.User.Role.Name == "Administrateur");
         }
 
         /// <summary>
@@ -195,6 +198,14 @@ namespace Ouatelse
                 }
             }
 
+            if (Properties.Settings.Default.CurrentStore == null)
+            {
+                Application.Exit();
+                return;
+            }
+            
+            this.magasin.Text = Properties.Settings.Default.CurrentStore.Name;
+
             //Gère la connexion
             DoLogin();
         }
@@ -204,6 +215,16 @@ namespace Ouatelse
             als.ShowState();
             if(!als.CheckActivation())
                 Application.Exit();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!Utils.Prompt("Voulez-vous vraiment changer de magasin ?")) return;
+            Properties.Settings.Default.CurrentStore = null;
+            Properties.Settings.Default.Save();
+            AuthManager.Instance.Logout();
+            this.Hide();
+            HomeForm_Load(null, null);
         }
     }
 }
