@@ -134,10 +134,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            string query = "INSERT INTO factures VALUES (3, \"2015-03-09\", 0, 15, 41, 1, 0, 0);";
-            query += "INSERT INTO factures VALUES (4, \"2015-03-09\", 0, 15, 42, 1, 1, 11);";
-            query += "INSERT INTO factures VALUES (9, \"2015-03-13\", 0, 15, 44, 1, 1, 16.95);";
-            return query;
+            return "INSERT INTO factures VALUES (1, \"2015-03-09\", 0, 15, 41, 1, 0, 0);";
         }
     }
 }

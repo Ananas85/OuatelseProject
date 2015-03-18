@@ -14,20 +14,5 @@ namespace OuatelseTests
         {
             Assert.AreEqual(true, DatabaseInjector.IsInUnitTest);
         }
-
-
-        [TestMethod]
-        public void TestAddGender()
-        {
-            Gender gender = new Gender();
-            gender.Name = "Mr";
-            GenderManager.Instance.Save(gender);
-            Assert.AreEqual(1,GenderManager.Instance.Count());
-        }
-
-        public void TestRemoveGender()
-        {
-
-        }
     }
 }

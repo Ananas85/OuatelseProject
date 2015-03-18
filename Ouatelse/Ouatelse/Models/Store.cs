@@ -63,7 +63,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            return "INSERT INTO magasin VALUES (\"Rue du Magasin de Test\", 1);";
+            return "INSERT INTO magasin VALUES (1,\"Rue du Magasin de Test\", 1);";
         }
     }
 }

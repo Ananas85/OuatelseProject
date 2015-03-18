@@ -89,7 +89,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            return "INSERT INTO conge VALUES (\"2015-08-02\", \"2015-08-09\", 15, 0);";
+            return "INSERT INTO conge VALUES (1,\"2015-08-02\", \"2015-08-09\", 15, 0);";
         }
     }
 }
