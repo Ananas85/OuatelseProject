@@ -196,8 +196,13 @@ namespace Ouatelse.Managers
                 model.MakeExistant();
                 if (!DatabaseInjector.IsInUnitTest)
                 {
-                    Database mySqlDb = (Database)DatabaseInjector.Database;
+                    Database mySqlDb = (Database) DatabaseInjector.Database;
                     model.Id = Int32.Parse(mySqlDb.LastInsertId.ToString());
+                }
+                else
+                {
+                    TestDatabase sqliteDatabase = (TestDatabase) DatabaseInjector.Database;
+                    model.Id = (int) sqliteDatabase.ExecuteScalar("SELECT id FROM " + TableName + " ORDER BY id LIMIT 1");
                 }
             }
             return res;
