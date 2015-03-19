@@ -202,12 +202,22 @@ namespace Ouatelse.Managers
                 else
                 {
                     TestDatabase sqliteDatabase = (TestDatabase) DatabaseInjector.Database;
-                    model.Id = (int) sqliteDatabase.ExecuteScalar("SELECT id FROM " + TableName + " ORDER BY id LIMIT 1");
+                    object result = sqliteDatabase.ExecuteScalar("SELECT id FROM " + TableName + " ORDER BY id LIMIT 1");
+                    model.Id = Int32.Parse(result.ToString());
                 }
             }
             return res;
 
         }
+
+        public bool Truncate()
+        {
+            IDatabase db = DatabaseInjector.Database;
+            return DatabaseInjector.IsInUnitTest
+                ? db.Execute("DELETE FROM " + TableName)
+                : db.Execute("TRUNCATE TABLE " + TableName);
+        }
+
         #endregion
 
         #region Suppression d'une entité dans la base de données

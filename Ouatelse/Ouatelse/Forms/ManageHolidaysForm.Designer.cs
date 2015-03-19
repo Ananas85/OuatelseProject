@@ -78,13 +78,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
-            this.label7 = new System.Windows.Forms.Label();
+            this.holidaysColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.modifyHoliday = new System.Windows.Forms.Button();
             this.dismissButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
             this.admin = new System.Windows.Forms.GroupBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
-            this.holidaysColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.holidays)).BeginInit();
             this.admin.SuspendLayout();
             this.SuspendLayout();
@@ -138,8 +137,7 @@
             this.holidays.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.holidays.Size = new System.Drawing.Size(1034, 296);
             this.holidays.TabIndex = 0;
-            this.holidays.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.holidays_CellMouseMove);
-            this.holidays.MouseLeave += new System.EventHandler(this.holidays_MouseLeave);
+            this.holidays.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.holidays_CellClick);
             // 
             // one
             // 
@@ -558,22 +556,21 @@
             // 
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.holidaysColumn});
+            this.listView.FullRowSelect = true;
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView.Location = new System.Drawing.Point(1052, 218);
+            this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(204, 277);
             this.listView.TabIndex = 43;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.Click += new System.EventHandler(this.listView_Click);
             // 
-            // label7
+            // holidaysColumn
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1100, 199);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 13);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Congés des autres salariés";
+            this.holidaysColumn.Text = "Congé(s) dans la plage";
+            this.holidaysColumn.Width = 179;
             // 
             // modifyHoliday
             // 
@@ -648,11 +645,6 @@
             this.checkBox.UseVisualStyleBackColor = false;
             this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
-            // holidaysColumn
-            // 
-            this.holidaysColumn.Text = "Congés du magasin";
-            this.holidaysColumn.Width = 179;
-            // 
             // ManageHolidaysForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,7 +657,6 @@
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.admin);
             this.Controls.Add(this.modifyHoliday);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
@@ -752,7 +743,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button modifyHoliday;
         private System.Windows.Forms.Button dismissButton;
         private System.Windows.Forms.Button acceptButton;
