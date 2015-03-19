@@ -55,10 +55,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="IModelTest.cs" />
-    <Compile Include="BaseManagerTest.cs" />
+    <Compile Include="Models\IModelTest.cs" />
+    <Compile Include="Managers\BaseManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseTest.cs" />
+    <Compile Include="Models\CustomerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ouatelse\Ouatelse.csproj">
