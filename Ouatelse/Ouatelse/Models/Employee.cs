@@ -189,7 +189,7 @@ namespace Ouatelse.Models
         public static string Fixtures()
         {
             return
-                "INSERT INTO salaries VALUES (1,\"SALVADOR\", \"Jean-Jacques\", \"test\", \"test\", \"10, rue d'info-timde\", null, null, null, \"contact@ouatelse.fr\", \"1975-02-04\", null, 1, 1, 1, 1, 1);";
+                "INSERT INTO salaries VALUES (1, \"SALVADOR\", \"Jean-Jacques\", \"test\", \"test\", \"10, rue d'info-timde\", null, null, null, \"contact@ouatelse.fr\", \"1975-02-04\", null, 1, 1, 1, 1, 1);";
         }
     }
 }
