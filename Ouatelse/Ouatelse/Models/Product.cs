@@ -29,15 +29,54 @@ namespace Ouatelse.Models
         /// </summary>
         public float PurchasePrice { get; set; }
 
+        public String PurchasePriceString
+        {
+            get
+            {
+                return this.PurchasePrice.ToString();
+            }
+
+            set
+            {
+                this.PurchasePrice = Single.Parse(value);
+            }
+        }
+
         /// <summary>
         /// Obligatoire : Le prix de vente du produit
         /// </summary>
         public float SellPrice { get; set; }
 
+        public String SellPriceString
+        {
+            get
+            {
+                return this.SellPrice.ToString();
+            }
+
+            set
+            {
+                this.SellPrice = Single.Parse(value);
+            }
+        }
+
         /// <summary>
         /// Obligatoire : La TVA du produit
         /// </summary>
         public float TVA { get; set; }
+
+        public String TVAString
+        {
+            get
+            {
+                return this.TVA.ToString();
+            }
+
+            set
+            {
+                this.TVA = Single.Parse(value);
+            }
+        }
 
         /// <summary>
         /// Obligatoire : Le code EAN du produit
@@ -131,31 +170,6 @@ namespace Ouatelse.Models
             return response;
         }
         #endregion
-
-        //#region surcharge de la méthode equals
-        //public override bool Equals(object obj)
-        //{
-        //    return obj is Product && this == (Product)obj;
-        //}
-        //#endregion
-
-        //#region sucharge de l'opérateur ==
-        //public static bool operator ==(Product x, Product y)
-        //{
-        //    if ((Product)y != null)
-        //    {
-        //        return x.Name == y.Name && x.Designation == y.Designation && x.EANCode == y.EANCode;
-        //    }
-        //    return false;
-        //}
-        //#endregion
-
-        //#region surcharge de l'opérateur !=
-        //public static bool operator !=(Product x, Product y)
-        //{
-        //    return !(x == y);
-        //}
-        //#endregion
 
         #region Utilisation de Clone pour passer un objet par copie
         public object Clone()

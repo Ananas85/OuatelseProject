@@ -54,39 +54,18 @@ namespace Ouatelse.Forms
             b.Bind(this.NameP, "Text", obj, "Name");
             b.Bind(this.Designation, "Text", obj, "Designation");
             b.Bind(this.EANCode, "Text", obj, "EANCode");
-
+            b.Bind(this.PurchasePrice, "Text", obj, "PurchasePriceString");
+            b.Bind(this.SellPrice, "Text", obj, "SellPriceString");
+            b.Bind(this.TVA, "Text", obj, "TVAString");
             b.Populate();
+
         }
         #endregion
 
         #region Gestion de la validation du formulaire
         private void validateButton_Click(object sender, EventArgs e)
         {
-            //On hydrate notre binding
             b.Hydrate();
-            float val = new float();
-            if (!float.TryParse(this.PurchasePrice.Text, out val))
-            {
-                Utils.Warning("Prix d'achat incorrect");
-                return;
-            };
-            obj.PurchasePrice = val;
-
-            if (!float.TryParse(this.SellPrice.Text, out val))
-            {
-                Utils.Warning("Prix de vente incorrect");
-                return;
-            };
-            obj.SellPrice = val;
-
-            obj.TVA = float.Parse(this.TVA.Text);
-
-            if (!float.TryParse(this.TVA.Text, out val))
-            {
-                Utils.Warning("TVA incorrecte");
-                return;
-            };
-            obj.TVA = val;
 
             //On regarde si notre entité peut être validé en base
             if (obj.validate().Count != 0)
@@ -125,6 +104,18 @@ namespace Ouatelse.Forms
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
+
+        #endregion
+
+        #region Autorisation uniqument de l'entrée de chiffre pour le code EAN
+        private void EAN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }        
         #endregion
 
         #region Getter du produit en cours
@@ -134,97 +125,12 @@ namespace Ouatelse.Forms
         }
         #endregion
 
-        private void PurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
-        }
-
-        private void SellPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
-        }
-
-        private void TVA_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                Utils.Info("Uniquement les chiffres sont autorisés");
-                e.Handled = true;
-            }
-        }
-
-        private void EANCode_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Return || e.KeyData == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        //#region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone fixe
-        //private void PhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        //private void EANCode_KeyUp(object sender, KeyEventArgs e)
         //{
-        //    if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+        //    if (e.KeyData == Keys.Return || e.KeyData == Keys.Enter)
         //    {
-        //        Utils.Info("Uniquement les chiffres sont autorisés");
-        //        e.Handled = true;
+        //        e.SuppressKeyPress = true;
         //    }
         //}
-        //#endregion
-
-        //#region Autorisation uniquement de l'entrée de chiffre pour le numéro de téléphone mobile
-        //private void MobilePhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-        //    {
-        //        Utils.Info("Uniquement les chiffres sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniqument de l'entrée de chiffre pour le code postal
-        //private void CityPostalCode_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-        //    {
-        //        Utils.Info("Uniquement les chiffres sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniquement de l'entrée de lettre ou - pour le prénom
-        //private void FirstName_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
-        //    {
-
-        //        Utils.Info("Uniquement les lettres ou - sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-        //#region Autorisation uniquement de l'entrée de lettre ou - pour le nom
-        //private void LastName_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
-        //    {
-        //        Utils.Info("Uniquement les lettres ou - sont autorisés");
-        //        e.Handled = true;
-        //    }
-        //}
-        //#endregion
-
-
     }
 }
