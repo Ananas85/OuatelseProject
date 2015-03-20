@@ -283,7 +283,7 @@ namespace Ouatelse.Models
         #region Méthode pour créer les données de test
         public static string Fixtures()
         {
-            return "INSERT INTO clients  VALUES (1,\"Moreau\", \"Corentin\", \"10, rue du général Margueritte\", \"Appart 9i\", \"\", \"\", \"corentin.moreau2@gmail.com\", \"1995-07-10\",\"\", 1, 1, 1);"; 
+            return "INSERT INTO clients  VALUES (1, \"Moreau\", \"Corentin\", \"10, rue du général Margueritte\", \"Appart 9i\", \"\", \"\", \"corentin.moreau2@gmail.com\", \"1995-07-10\",\"\", 1, 1, 1);"; 
         }
         #endregion
         #endregion

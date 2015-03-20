@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageProductsForm));
-            this.newProduct = new System.Windows.Forms.Button();
+            this.newProductButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.deleteProduct = new System.Windows.Forms.Button();
-            this.modifyProduct = new System.Windows.Forms.Button();
+            this.deleteProductButton = new System.Windows.Forms.Button();
+            this.modifyProductButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.productListView = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,20 +55,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // newProduct
+            // newProductButton
             // 
-            this.newProduct.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.newProduct.FlatAppearance.BorderSize = 0;
-            this.newProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newProduct.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.newProduct.Location = new System.Drawing.Point(5, 143);
-            this.newProduct.Name = "newProduct";
-            this.newProduct.Size = new System.Drawing.Size(204, 41);
-            this.newProduct.TabIndex = 38;
-            this.newProduct.Text = "Nouveau produit";
-            this.newProduct.UseVisualStyleBackColor = false;
-            this.newProduct.Click += new System.EventHandler(this.newProduct_Click);
+            this.newProductButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.newProductButton.FlatAppearance.BorderSize = 0;
+            this.newProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newProductButton.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newProductButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.newProductButton.Location = new System.Drawing.Point(5, 143);
+            this.newProductButton.Name = "newProductButton";
+            this.newProductButton.Size = new System.Drawing.Size(204, 41);
+            this.newProductButton.TabIndex = 38;
+            this.newProductButton.Text = "Nouveau produit";
+            this.newProductButton.UseVisualStyleBackColor = false;
+            this.newProductButton.Click += new System.EventHandler(this.NewProduct_Click);
             // 
             // button3
             // 
@@ -83,37 +83,37 @@
             this.button3.TabIndex = 41;
             this.button3.Text = "Réapprovisionner";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.restockProduct_Click);
+            this.button3.Click += new System.EventHandler(this.RestockProduct_Click);
             // 
-            // deleteProduct
+            // deleteProductButton
             // 
-            this.deleteProduct.BackColor = System.Drawing.Color.IndianRed;
-            this.deleteProduct.FlatAppearance.BorderSize = 0;
-            this.deleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteProduct.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.deleteProduct.Location = new System.Drawing.Point(425, 143);
-            this.deleteProduct.Name = "deleteProduct";
-            this.deleteProduct.Size = new System.Drawing.Size(204, 41);
-            this.deleteProduct.TabIndex = 40;
-            this.deleteProduct.Text = "Supprimer un produit";
-            this.deleteProduct.UseVisualStyleBackColor = false;
-            this.deleteProduct.Click += new System.EventHandler(this.deleteProduct_Click);
+            this.deleteProductButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteProductButton.FlatAppearance.BorderSize = 0;
+            this.deleteProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteProductButton.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteProductButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.deleteProductButton.Location = new System.Drawing.Point(425, 143);
+            this.deleteProductButton.Name = "deleteProductButton";
+            this.deleteProductButton.Size = new System.Drawing.Size(204, 41);
+            this.deleteProductButton.TabIndex = 40;
+            this.deleteProductButton.Text = "Supprimer un produit";
+            this.deleteProductButton.UseVisualStyleBackColor = false;
+            this.deleteProductButton.Click += new System.EventHandler(this.DeleteProduct_Click);
             // 
-            // modifyProduct
+            // modifyProductButton
             // 
-            this.modifyProduct.BackColor = System.Drawing.Color.DodgerBlue;
-            this.modifyProduct.FlatAppearance.BorderSize = 0;
-            this.modifyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.modifyProduct.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.modifyProduct.Location = new System.Drawing.Point(215, 143);
-            this.modifyProduct.Name = "modifyProduct";
-            this.modifyProduct.Size = new System.Drawing.Size(204, 41);
-            this.modifyProduct.TabIndex = 39;
-            this.modifyProduct.Text = "Modifier un produit";
-            this.modifyProduct.UseVisualStyleBackColor = false;
-            this.modifyProduct.Click += new System.EventHandler(this.modifyProduct_Click);
+            this.modifyProductButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.modifyProductButton.FlatAppearance.BorderSize = 0;
+            this.modifyProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.modifyProductButton.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifyProductButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.modifyProductButton.Location = new System.Drawing.Point(215, 143);
+            this.modifyProductButton.Name = "modifyProductButton";
+            this.modifyProductButton.Size = new System.Drawing.Size(204, 41);
+            this.modifyProductButton.TabIndex = 39;
+            this.modifyProductButton.Text = "Modifier un produit";
+            this.modifyProductButton.UseVisualStyleBackColor = false;
+            this.modifyProductButton.Click += new System.EventHandler(this.ModifyProduct_Click);
             // 
             // button4
             // 
@@ -128,7 +128,7 @@
             this.button4.TabIndex = 42;
             this.button4.Text = "Déstocker";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.destockProduct_Click);
+            this.button4.Click += new System.EventHandler(this.DestockProduct_Click);
             // 
             // productListView
             // 
@@ -153,8 +153,8 @@
             this.productListView.TabIndex = 37;
             this.productListView.UseCompatibleStateImageBehavior = false;
             this.productListView.View = System.Windows.Forms.View.Details;
-            this.productListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.productListView_ColumnClick);
-            this.productListView.ItemActivate += new System.EventHandler(this.productListView_ItemActivate);
+            this.productListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ProductListView_ColumnClick);
+            this.productListView.ItemActivate += new System.EventHandler(this.ProductListView_ItemActivate);
             this.productListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.productListView_MouseClick);
             this.productListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.productListView_MouseDoubleClick);
             // 
@@ -280,10 +280,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.newProduct);
+            this.Controls.Add(this.newProductButton);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.deleteProduct);
-            this.Controls.Add(this.modifyProduct);
+            this.Controls.Add(this.deleteProductButton);
+            this.Controls.Add(this.modifyProductButton);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.productListView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -301,10 +301,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button newProduct;
+        private System.Windows.Forms.Button newProductButton;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button deleteProduct;
-        private System.Windows.Forms.Button modifyProduct;
+        private System.Windows.Forms.Button deleteProductButton;
+        private System.Windows.Forms.Button modifyProductButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListView productListView;
         private System.Windows.Forms.ColumnHeader id;

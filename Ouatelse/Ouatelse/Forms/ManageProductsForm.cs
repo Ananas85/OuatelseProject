@@ -104,7 +104,7 @@ namespace Ouatelse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param> 
-        private void newProduct_Click(object sender, EventArgs e)
+        private void NewProduct_Click(object sender, EventArgs e)
         {
             ProductsForm p = new ProductsForm(new Product());
             if (p.ShowDialog() != System.Windows.Forms.DialogResult.OK)
@@ -142,11 +142,11 @@ namespace Ouatelse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void modifyProduct_Click(object sender, EventArgs e)
+        private void ModifyProduct_Click(object sender, EventArgs e)
         {
             if (currentProduct != null)
             {
-                EditProduct();
+                ModifyProduct();
                 return;
             }
             Utils.Warning("Vous n'avez pas sélectionné de produit");
@@ -159,7 +159,7 @@ namespace Ouatelse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void restockProduct_Click(object sender, EventArgs e)
+        private void RestockProduct_Click(object sender, EventArgs e)
         {
             if (currentProduct != null)
             {
@@ -174,7 +174,7 @@ namespace Ouatelse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void destockProduct_Click(object sender, EventArgs e)
+        private void DestockProduct_Click(object sender, EventArgs e)
         {
             if (currentProduct != null)
             {
@@ -213,7 +213,7 @@ namespace Ouatelse
         {
             if (currentProduct != null)
             {
-                EditProduct();
+                ModifyProduct();
                 return;
             }
             Utils.Warning("Vous n'avez pas sélectionné de produit");
@@ -224,7 +224,7 @@ namespace Ouatelse
         /// <summary>
         /// Edition d'un produit
         /// </summary>
-        private void EditProduct()
+        private void ModifyProduct()
         {
             //Passage d'un objet par copie
             ProductsForm p = new ProductsForm((Product)currentProduct.Clone());
@@ -243,18 +243,28 @@ namespace Ouatelse
         }
         #endregion
 
+        #region Suppression d'un produit
+        /// <summary>
+        /// Suppression d'un produit
+        /// </summary>
+        private bool DeleteProduct()
+        {
+            return ProductManager.Instance.Delete(currentProduct);
+        }
+        #endregion
+
         #region Gestion du bouton Supprimer
         /// <summary>
         /// Gestion de la suppression d'un produit
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void deleteProduct_Click(object sender, EventArgs e)
+        private void DeleteProduct_Click(object sender, EventArgs e)
         {
             if (currentProduct != null)
             {
                 if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentProduct.Name + " ? "))
-                    if (ProductManager.Instance.Delete(currentProduct))
+                    if (DeleteProduct())
                     {
                         Reload(ProductManager.Instance.All());
                         Utils.Info("Produit supprimé avec succès");
@@ -264,7 +274,7 @@ namespace Ouatelse
         #endregion
 
         #region Gestion des tris sur les colonnes
-        private void productListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void ProductListView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             switch (this.productListView.Columns[e.Column].Name)
             {
@@ -376,17 +386,25 @@ namespace Ouatelse
         }
         #endregion
 
-        private void modifierCeProduitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ModifierCeProduitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditProduct();
+            ModifyProduct();
         }
 
-        private void supprimerCeProduitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SupprimerCeProduitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (currentProduct != null)
+            {
+                if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentProduct.Name + " ? "))
+                    if (DeleteProduct())
+                    {
+                        Reload(ProductManager.Instance.All());
+                        Utils.Info("Produit supprimé avec succès");
+                    }
+            }
         }
 
-        private void productListView_ItemActivate(object sender, EventArgs e)
+        private void ProductListView_ItemActivate(object sender, EventArgs e)
         {
             ListViewItem item = ((ListView)sender).SelectedItems[0];
             if (item == null)
