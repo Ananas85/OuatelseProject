@@ -8,6 +8,10 @@ using Ouatelse.Models;
 
 namespace OuatelseTests
 {
+    /// <summary>
+    /// Classe de test du base manager, les méthodes particulières seront testées dans les autres manager
+    /// Le count n'a pas besoin d'être tester, il est tester lors de l'exécution des autres tests
+    /// </summary>
     [TestClass]
     public class BaseManagerTest
     {
@@ -33,6 +37,14 @@ namespace OuatelseTests
         }
 
         [TestMethod]
+        public void TestFirst()
+        {
+           Assert.IsTrue(GenderManager.Instance.Count() > 1);
+           Assert.IsTrue(GenderManager.Instance.First("").Id == 1); 
+            
+        }
+
+        [TestMethod]
         public void TestSave()
         {
             int count = GenderManager.Instance.Count();
@@ -41,6 +53,12 @@ namespace OuatelseTests
             Assert.AreEqual(count + 1, GenderManager.Instance.Count());
             Assert.AreEqual("Autres", GenderManager.Instance.First("WHERE nom = 'Autres' ").Name);
 
+        }
+
+        [TestMethod]
+        public void TestFind()
+        {
+            Assert.AreEqual(1, GenderManager.Instance.Find(1).Id);
         }
 
         [TestMethod]
@@ -68,10 +86,5 @@ namespace OuatelseTests
             Assert.AreEqual(0, GenderManager.Instance.Count());
 
         }
-
-
-
-
-
     }
 }
