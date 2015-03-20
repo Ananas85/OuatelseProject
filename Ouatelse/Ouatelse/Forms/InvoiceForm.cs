@@ -11,12 +11,18 @@ using Ouatelse.Models;
 
 namespace Ouatelse.Forms
 {
+    /// <summary>
+    /// Classe pour gérer les nouvelles factures
+    /// </summary>
     public partial class InvoiceForm : Form
     {
+        #region Les attributs de la classe
         private Invoice invoice;
         private bool newInvoice = false;
         private Product preferedProduct = null;
+        #endregion
 
+        #region Le constructeur de la classe
         public InvoiceForm(Invoice invoice)
         {
             this.invoice = invoice;
@@ -29,26 +35,18 @@ namespace Ouatelse.Forms
             }
             InitializeComponent();
         }
+        #endregion
 
+        #region La réaction au chargement de la forme
         private void InvoiceForm_Load(object sender, EventArgs e)
         {
-            /*Invoice invoice = new Invoice()
-            {
-                Employee = EmployeeManager.Instance.First(""),
-                Payment = PaymentManager.Instance.First(""),
-                Customer = CustomerManager.Instance.First("")
-            };
-            InvoiceManager.Instance.Save(invoice);
+            List<Payment> methods = new List<Payment>(PaymentManager.Instance.All());
+            this.PaymentMethods.ValueMember = "Id";
+            this.PaymentMethods.DisplayMember = "Type";
+            this.PaymentMethods.DataSource = methods;
 
-            Utils.Info(Database.Instance.LastInsertId.ToString());*/
-
-            List<Payment> methodes = new List<Payment>(PaymentManager.Instance.All());
-            this.methodePaiement.ValueMember = "Id";
-            this.methodePaiement.DisplayMember = "Type";
-            this.methodePaiement.DataSource = methodes;
-
-            this.reduction.Value = (decimal) invoice.DiscountPercent;
-            this.methodePaiement.SelectedItem = invoice.Payment;
+            this.reduct.Value = (decimal) invoice.DiscountPercent;
+            this.PaymentMethods.SelectedItem = invoice.Payment;
             this.date.Value = invoice.Date;
 
             this.code.Text = string.Format("{0}{1}", invoice.Id, (newInvoice ? " (Nouveau)" : ""));
@@ -56,13 +54,15 @@ namespace Ouatelse.Forms
             ReloadProducts();
             ReloadLock();
         }
+        #endregion
 
+        #region Le chargement des données clients
         public void ReloadCustomer()
         {
-            this.nomClient.Text = invoice.Customer == null ? "" : (invoice.Customer.Gender.Name + " " + invoice.Customer.FullName);
-            this.adresseClient.Text = invoice.Customer == null ? "" : invoice.Customer.Address1;
-            this.adresseClient2.Text = invoice.Customer == null ? "" : invoice.Customer.Address2;
-            this.villeClient.Text = invoice.Customer == null
+            this.customerName.Text = invoice.Customer == null ? "" : (invoice.Customer.Gender.Name + " " + invoice.Customer.FullName);
+            this.customerAdress.Text = invoice.Customer == null ? "" : invoice.Customer.Address1;
+            this.customerAdress2.Text = invoice.Customer == null ? "" : invoice.Customer.Address2;
+            this.customerCity.Text = invoice.Customer == null
                 ? ""
                 : (invoice.Customer.City.PostalCode + " " + invoice.Customer.City.Name);
 
@@ -77,7 +77,9 @@ namespace Ouatelse.Forms
                 }
             }
         }
+        #endregion
 
+        #region Le chargement des produits
         public void ReloadProducts()
         {
             this.items.Items.Clear();
@@ -96,38 +98,45 @@ namespace Ouatelse.Forms
 
             ReloadTotals();
         }
+        #endregion
 
+        #region Le chargement du total
         private void ReloadTotals()
         {
             CultureInfo fr = CultureInfo.GetCultureInfo("fr-FR");
             this.totalHT.Text = invoice.TotalHT.ToString("C", fr);
             this.totalTVA.Text = invoice.TotalTVA.ToString("C", fr);
             this.totalTTC.Text = invoice.TotalTTC.ToString("C", fr);
-            this.aRegler.Text = invoice.TotalTTC.ToString("C", fr);
-            this.regle.Value = this.regle.Enabled ? (decimal) invoice.PaidAmount : (decimal) invoice.TotalTTC;
-            ReloadArendre();
+            this.toPay.Text = invoice.TotalTTC.ToString("C", fr);
+            this.rule.Value = this.rule.Enabled ? (decimal) invoice.PaidAmount : (decimal) invoice.TotalTTC;
+            ReloadToPay();
         }
+        #endregion
 
-        public void ReloadArendre()
+        #region Le chargement du reste à payer
+        public void ReloadToPay()
         {
-            double montant = (double)this.regle.Value;
-            double reste = invoice.TotalTTC - montant;
-            this.aRendreLabel.Text = reste > 0 ? "Reste" : "A rendre";
-            this.aRendre.Text = Math.Abs(reste).ToString("C", CultureInfo.GetCultureInfo("fr-FR"));
+            double amount = (double)this.rule.Value;
+            double rest = invoice.TotalTTC - amount;
+            this.toPayLabel.Text = rest > 0 ? "Reste" : "A rendre";
+            this.toPayText.Text = Math.Abs(rest).ToString("C", CultureInfo.GetCultureInfo("fr-FR"));
         }
+        #endregion
 
+        #region Pout gérer les interdits
         public void ReloadLock()
         {
             this.button1.Enabled = !invoice.IsPaid;
             this.button2.Enabled = !invoice.IsPaid;
-            // this.button3.Enabled = !invoice.IsPaid;
             this.quickAdd.Enabled = !invoice.IsPaid;
-            this.regle.Enabled = !invoice.IsPaid;
+            this.rule.Enabled = !invoice.IsPaid;
             this.items.Enabled = !invoice.IsPaid;
             this.date.Enabled = !invoice.IsPaid;
-            this.reduction.Enabled = !invoice.IsPaid;
+            this.reduct.Enabled = !invoice.IsPaid;
         }
+        #endregion
 
+        #region Gestion du bouton annuler
         private void cancelButton_Click(object sender, EventArgs e)
         {
             if (newInvoice)
@@ -137,7 +146,9 @@ namespace Ouatelse.Forms
             }
             this.DialogResult = DialogResult.Cancel;
         }
+        #endregion
 
+        #region Gestion du bouton valider
         private void validateButton_Click(object sender, EventArgs e)
         {
             if (invoice.Customer == null)
@@ -148,14 +159,16 @@ namespace Ouatelse.Forms
             }
 
             invoice.Date = this.date.Value;
-            invoice.DiscountPercent = (float) this.reduction.Value;
-            invoice.PaidAmount = (float) this.regle.Value;
-            invoice.Payment = (Payment) this.methodePaiement.SelectedItem;
+            invoice.DiscountPercent = (float) this.reduct.Value;
+            invoice.PaidAmount = (float) this.rule.Value;
+            invoice.Payment = (Payment) this.PaymentMethods.SelectedItem;
 
             InvoiceManager.Instance.Save(invoice);
             DialogResult = DialogResult.OK;
         }
+        #endregion
 
+        #region Gestion de la sélection de client
         private void button2_Click(object sender, EventArgs e)
         {
             CustomerPickerForm form = new CustomerPickerForm();
@@ -165,12 +178,9 @@ namespace Ouatelse.Forms
             invoice.Customer = form.GetCustomer();
             ReloadCustomer();
         }
+        #endregion
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        #region Gestion des entrées 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Return) return;
@@ -199,18 +209,24 @@ namespace Ouatelse.Forms
             this.quickAdd.Text = "";
             this.quickAdd.SelectAll();
         }
+        #endregion
 
+        #region Si la valeur de la réduction change
         private void reduction_ValueChanged(object sender, EventArgs e)
         {
-            invoice.DiscountPercent = (float)this.reduction.Value;
+            invoice.DiscountPercent = (float)this.reduct.Value;
             ReloadTotals();
         }
+        #endregion
 
+        #region Si la valeur de la règle change
         private void regle_ValueChanged(object sender, EventArgs e)
         {
-            ReloadArendre();
+            ReloadToPay();
         }
+        #endregion
 
+        #region Si l'on clique sur le bouton valider
         private void button1_Click(object sender, EventArgs e)
         {
             if (invoice.Customer == null)
@@ -218,7 +234,7 @@ namespace Ouatelse.Forms
                 Utils.Warning("Veuillez sélectionner un client d'abord !");
                 return;
             }
-            invoice.PaidAmount = (float) this.regle.Value;
+            invoice.PaidAmount = (float) this.rule.Value;
             if (invoice.PaidAmount < (float) invoice.TotalTTC)
             {
                 Utils.Warning(
@@ -244,21 +260,25 @@ namespace Ouatelse.Forms
                 ReloadLock();
             }
         }
+        #endregion
 
+        #region Si la méthode de paiement change
         private void methodePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.methodePaiement.Text == @"CB" || this.methodePaiement.Text == @"Chèque")
+            if (this.PaymentMethods.Text == @"CB" || this.PaymentMethods.Text == @"Chèque")
             {
-                this.regle.Value = (decimal) invoice.TotalTTC;
-                this.regle.Enabled = false;
+                this.rule.Value = (decimal) invoice.TotalTTC;
+                this.rule.Enabled = false;
             }
             else
             {
-                this.regle.Value = (decimal)invoice.PaidAmount;
-                this.regle.Enabled = true;
+                this.rule.Value = (decimal)invoice.PaidAmount;
+                this.rule.Enabled = true;
             }
         }
+        #endregion
 
+        #region Si La l'on double clique sur un produit
         private void items_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = this.items.GetItemAt(e.X, e.Y);
@@ -272,5 +292,6 @@ namespace Ouatelse.Forms
             product.Quantity = (int) form.Quantity;
             ReloadProducts();
         }
+        #endregion
     }
 }

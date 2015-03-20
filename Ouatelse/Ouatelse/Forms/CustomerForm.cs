@@ -252,6 +252,7 @@ namespace Ouatelse.Forms
         }
         #endregion
 
+        #region Si l'on clique sur le facture
         private void invoices_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = this.invoices.GetItemAt(e.X, e.Y);
@@ -262,6 +263,7 @@ namespace Ouatelse.Forms
             if (new InvoiceForm(invoice).ShowDialog() == DialogResult.OK)
                 ReloadInvoices();
         }
+        #endregion
 
     }
 }

@@ -299,7 +299,7 @@
             // Id
             // 
             this.Id.Location = new System.Drawing.Point(114, 123);
-            this.Id.Name = "Id";
+            this.Id.Name = "Identifiant";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
             this.Id.TabIndex = 0;
@@ -439,7 +439,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Name = "id";
+            this.columnHeader1.Name = "Iden";
             this.columnHeader1.Text = "Ref";
             this.columnHeader1.Width = 50;
             // 
