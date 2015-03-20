@@ -43,10 +43,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            string query = "INSERT INTO \"moyen_de_paiements\" VALUES ('Espèces');";
-            query += "INSERT INTO \"moyen_de_paiements\" VALUES ('CB');";
-            query += "INSERT INTO \"moyen_de_paiements\" VALUES ('Chèque');";
-            return query;
+            return "INSERT INTO moyen_de_paiements VALUES (1,'CB');";
         }
 
     }

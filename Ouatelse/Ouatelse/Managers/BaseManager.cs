@@ -169,9 +169,9 @@ namespace Ouatelse.Managers
             StringBuilder query = new StringBuilder();
             if (!model.Exists)
             {
-                query.AppendFormat("INSERT INTO {0} (", TableName);
+                query.AppendFormat("INSERT INTO {0} (id,", TableName);
                 query.Append(String.Join(", ", ((IModel)model).Fetch().Keys));
-                query.Append(") VALUES('");
+                query.Append(") VALUES(NULL,'");
                 query.Append(String.Join("', '", ((IModel)model).Fetch().Values.Select(value => value.Replace(@"'", @"\'"))));
                 query.Append("')");
             }
@@ -196,13 +196,28 @@ namespace Ouatelse.Managers
                 model.MakeExistant();
                 if (!DatabaseInjector.IsInUnitTest)
                 {
-                    Database mySqlDb = (Database)DatabaseInjector.Database;
+                    Database mySqlDb = (Database) DatabaseInjector.Database;
                     model.Id = Int32.Parse(mySqlDb.LastInsertId.ToString());
+                }
+                else
+                {
+                    TestDatabase sqliteDatabase = (TestDatabase) DatabaseInjector.Database;
+                    object result = sqliteDatabase.ExecuteScalar("SELECT id FROM " + TableName + " ORDER BY id LIMIT 1");
+                    model.Id = Int32.Parse(result.ToString());
                 }
             }
             return res;
 
         }
+
+        public bool Truncate()
+        {
+            IDatabase db = DatabaseInjector.Database;
+            return DatabaseInjector.IsInUnitTest
+                ? db.Execute("DELETE FROM " + TableName)
+                : db.Execute("TRUNCATE TABLE " + TableName);
+        }
+
         #endregion
 
         #region Suppression d'une entité dans la base de données

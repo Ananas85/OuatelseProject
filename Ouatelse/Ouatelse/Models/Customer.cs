@@ -283,12 +283,7 @@ namespace Ouatelse.Models
         #region Méthode pour créer les données de test
         public static string Fixtures()
         {
-            string query =
-                "INSERT INTO clients  VALUES (\"Moreau\", \"Corentin\", \"10, rue du général Margueritte\", \"Appart 9i\", \", \", \"corentin.moreau2@gmail.com\", \"1995-07-10\", \", 13023, 1, 1);";
-            query += "INSERT INTO clients VALUES (\"le magnifique\", \"Nanou\", \"10 rue de la murène\", \", \", \", \"anael@chardan.net\", \"2015-03-06\", \"test2345\", 17328, 1, 1);";
-            query += "INSERT INTO clients VALUES (\"Binois\", \"Clément\", \"rue de liiut\", \", \"6734567456\", \"3423645654\", \"clement.binois@iut.u-bordeaux.fr\", \"2015-03-12\", \", 13026, 1, 1);";
-            query += "INSERT INTO clients VALUES (\"Boursier\", \"Sébastien\", \"rue des poneys\", \", \"3450234034\", \"2345234234\", \"seb.boursier.33@gmail.com\", \"2015-03-13\", \", 12607, 1, 1);";
-            return query;
+            return "INSERT INTO clients  VALUES (1,\"Moreau\", \"Corentin\", \"10, rue du général Margueritte\", \"Appart 9i\", \"\", \"\", \"corentin.moreau2@gmail.com\", \"1995-07-10\",\"\", 1, 1, 1);"; 
         }
         #endregion
         #endregion

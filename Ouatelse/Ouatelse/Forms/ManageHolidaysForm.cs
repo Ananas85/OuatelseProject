@@ -27,11 +27,8 @@ namespace Ouatelse.Forms
 
         private bool allEmployeesHolidays;
 
-        private ToolTip tooltip;
+        private bool onlyOneHolidayFound;
 
-        private Point oldCell;
-
-        private string tooltipText;
         #endregion
 
         #region Constructeur de la forme
@@ -67,12 +64,7 @@ namespace Ouatelse.Forms
             //On retire la sélection par défaut
             this.holidays.ClearSelection();
 
-            this.tooltip = new ToolTip();
-
-            oldCell = new Point(0, 0);
-
-            tooltipText = "";
-
+            onlyOneHolidayFound = false;
         }
         #endregion
 
@@ -169,7 +161,7 @@ namespace Ouatelse.Forms
             //On récupère tous les congés déjà posés
             List<Holiday> putHolidays;
             if(allEmployeesHolidays)
-                putHolidays = HolidayManager.Instance.Filter("WHERE " + currentYear + " = YEAR(date_debut)").ToList();
+                putHolidays = HolidayManager.Instance.Filter("INNER JOIN salaries ON conge.salaries_id = salaries.id INNER JOIN magasin ON salaries.magasin_id = magasin.id WHERE magasin_id ='" + AuthManager.Instance.User.Store.Id + "' AND " + currentYear + " = YEAR(date_debut)").ToList();
             else
                 putHolidays = HolidayManager.Instance.Filter("INNER JOIN salaries ON conge.salaries_id = salaries.id WHERE salaries_id =" + AuthManager.Instance.User.Id + " AND " + currentYear + " = YEAR(date_debut) AND magasin_id ='" + AuthManager.Instance.User.Store.Id + "'").ToList();
 
@@ -195,19 +187,14 @@ namespace Ouatelse.Forms
 
         public void UpdateAlreadyPostByOther()
         {
-            listView.Items.Clear();
             List<Employee> employeeWithHolidays = EmployeeManager.Instance.FilterByEmployeesWithHolidays(currentYear);
 
             int emp = 0;
             foreach (Employee e in employeeWithHolidays)
             {
-                listView.Groups.Add(new ListViewGroup(e.FirstName + " " + e.LastName, HorizontalAlignment.Center));
                 List<Holiday> holidayCurrent = HolidayManager.Instance.FilterByYearByEmployee(currentYear, e.Id);
                 foreach (Holiday holiday in holidayCurrent)
                 {
-                    string progress = holiday.Accepted ? "Validé " : "En cours";
-                    listView.Items.Add(holiday.StartingDate.ToShortDateString() + "-" + holiday.EndingDate.ToShortDateString() + " " + progress).Group = listView.Groups[emp];
-
                     Color day = Color.LightSkyBlue;
                     DateTime current = holiday.StartingDate;
                     for (int i = 0; i <= holiday.numberOfDays(); ++i)
@@ -467,34 +454,33 @@ namespace Ouatelse.Forms
 
         public void adminOperation(AdminEventType e)
         {
-            if (this.holidays.SelectedCells.Count > 1)
-            {
-                Utils.Error("Sélectionnez uniquement une journée dans le congé concerné");
-                return;
-            }
-
-            if (this.holidays.SelectedCells[0].Style.BackColor != Color.Orange)
-            {
-                Utils.Error("Le jour sélectionné n'est pas un dans un congé en attente d'approbation");
-                return;
-            }
-
-            DateTime date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex + 1, this.holidays.SelectedCells[0].ColumnIndex + 1);
-            List<Holiday> holidaysInstances = new List<Holiday>();
-            holidaysInstances = HolidayManager.Instance.FilterAllByDate(date);
-
+            DateTime date;
             Holiday holiday;
-            if (holidaysInstances.Count > 1)
-            {
-                SelectHolidayForm selectForm = new SelectHolidayForm(holidaysInstances);
-                if (selectForm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                    return;
 
-                holiday = selectForm.getHoliday();
+            if (!onlyOneHolidayFound)
+            {
+                if (this.listView.SelectedItems.Count == 0)
+                {
+                    Utils.Error("Veuillez sélectionner un congé à l'aide de la liste de droite");
+                    return;
+                }
+                if (this.listView.SelectedItems[0].BackColor != Color.Orange)
+                {
+                    Utils.Error("Le congé sélectionné est déja validé");
+                    return;
+                }
+
+                date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex + 1, this.holidays.SelectedCells[0].ColumnIndex + 1);
+                Employee emp = EmployeeManager.Instance.FindByName(listView.SelectedItems[0].Group.Header);
+                holiday = HolidayManager.Instance.FilterAllByDateByEmployee(date,emp);
+
             }
             else
-                holiday = holidaysInstances[0];
-
+            {
+                date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex + 1, this.holidays.SelectedCells[0].ColumnIndex + 1);
+                holiday = HolidayManager.Instance.FilterAllByDate(date)[0];
+            }
+                
             if (e == AdminEventType.DISMISS_HOLIDAYS)
             {
                 if (
@@ -596,56 +582,54 @@ namespace Ouatelse.Forms
             b.ForeColor = SystemColors.ButtonFace;
         }
 
-        private void holidays_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        private void holidays_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (allEmployeesHolidays)
+            listView.Groups.Clear();
+            listView.Items.Clear();
+            listView.SelectedItems.Clear();
+            listView.Update();
+            if (holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Orange ||
+                holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LimeGreen ||
+                holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LightSkyBlue)
             {
-                if (oldCell != new Point(e.RowIndex, e.ColumnIndex))
-                {
-                    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                DateTime date = new DateTime(currentYear, e.RowIndex + 1, e.ColumnIndex + 1);
+                List<Holiday> holidaysInCell = HolidayManager.Instance.FilterAllByDate(date);
+                if (holidaysInCell.Count > 0) 
+                { 
+                    if(holidaysInCell.Count == 1)
+                        onlyOneHolidayFound = true;
+
+                    for (int i = 0; i < holidaysInCell.Count; i++)
                     {
-                        if (holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Orange ||
-                        holidays.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LimeGreen)
-                        {
-                            tooltipText = "";
-                            DateTime date = new DateTime(currentYear, e.RowIndex + 1, e.ColumnIndex + 1);
-                            List<Holiday> holidaysInCell = HolidayManager.Instance.FilterAllByDateToolTip(date);
+                        listView.Groups.Add(new ListViewGroup(holidaysInCell[i].Employee.FirstName + " " + holidaysInCell[i].Employee.LastName));
 
-                            // Set up the delays for the ToolTip.
-                            tooltip.AutoPopDelay = 5000;
-                            tooltip.InitialDelay = 1000;
-                            tooltip.ReshowDelay = 500;
-
-                            tooltip.ShowAlways = true;
-
-                            if (holidaysInCell.Count > 1)
-                            {
-                                for (int i = 0; i < holidaysInCell.Count; i++)
-                                {
-                                    tooltipText += "- " + holidaysInCell[i].Employee.FirstName + " " + holidaysInCell[i].Employee.LastName
-                                        + " (du " + holidaysInCell[i].StartingDate.ToShortDateString() + " au " + holidaysInCell[i].EndingDate.ToShortDateString() + ")";
-                                    if (i != holidaysInCell.Count)
-                                        tooltipText += Environment.NewLine;
-                                }
-                            }
-                            else
-                                tooltipText += "- " + holidaysInCell[0].Employee.FirstName + " " + holidaysInCell[0].Employee.LastName
-                                    + " (du " + holidaysInCell[0].StartingDate.ToShortDateString() + " au " + holidaysInCell[0].EndingDate.ToShortDateString() + ")"; ;
-
-                            // show and adjust tooltip
-                            tooltip.Show(tooltipText, this, PointToClient(Cursor.Position).X + 25, PointToClient(Cursor.Position).Y+15);
-                            oldCell = new Point(e.RowIndex,e.ColumnIndex);
-                        }
+                        listView.Items.Add(holidaysInCell[i].StartingDate.ToShortDateString() + "-" + holidaysInCell[i].EndingDate.ToShortDateString()).Group = listView.Groups[i];
+                        if(holidaysInCell[i].Accepted)
+                            listView.Items[i].BackColor = Color.LimeGreen;
                         else
-                            tooltip.Hide(this);
+                            listView.Items[i].BackColor = Color.Orange;
                     }
                 }
-               }
+            }
         }
 
-        private void holidays_MouseLeave(object sender, EventArgs e)
+        private void listView_Click(object sender, EventArgs e)
         {
-            tooltip.Hide(this);
+            holidays.ClearSelection();
+            if(listView.SelectedItems[0].Selected)
+            {
+                ListViewItem item = listView.SelectedItems[0];
+                string[] dates = item.Text.Split('-');
+                string startingDateClickedItem = dates[0];
+                string endingDateClickedItem = dates[1];
+
+                DateTime dtStartingDate = Convert.ToDateTime(startingDateClickedItem);
+                DateTime dtEndingDate = Convert.ToDateTime(endingDateClickedItem);
+
+
+                for (int i = dtStartingDate.Day-1; i < dtEndingDate.Day; i++)
+                    holidays.Rows[dtStartingDate.Month-1].Cells[i].Selected = true;
+            }
         }
     }
 }

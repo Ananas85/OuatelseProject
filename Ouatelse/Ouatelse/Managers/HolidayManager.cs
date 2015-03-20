@@ -24,13 +24,13 @@ namespace Ouatelse.Managers
             this.TableName = "conge";
         }
 
-        public List<Holiday> FilterAllByDate(DateTime date)
+        public Holiday FilterAllByDateByEmployee(DateTime date, Employee emp)
         {
-            List<Holiday> holidaysList = HolidayManager.Instance.Filter("WHERE accepte = 0 AND '" + String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin").ToList();
-            return holidaysList;
+           Holiday holiday = HolidayManager.Instance.First("WHERE salaries_id='"+ emp.Id +"' AND accepte = 0 AND '" + String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin");
+            return holiday;
         }
 
-        public List<Holiday> FilterAllByDateToolTip(DateTime date)
+        public List<Holiday> FilterAllByDate(DateTime date)
         {
             List<Holiday> holidaysList = HolidayManager.Instance.Filter("WHERE '" + String.Format("{0:yyyy-MM-dd}", date) + "' BETWEEN date_debut AND date_fin").ToList();
             return holidaysList;

@@ -36,9 +36,7 @@ namespace Ouatelse.Models
 
         public static string Fixtures()
         {
-            string query = " INSERT INTO \"civilite\" VALUES (1, 'M.') ";
-            query += "INSERT INTO \"civilite\" VALUES (2, 'Mme')";
-            return query;
+            return "INSERT INTO civilite VALUES (1, 'M.'); ";
         }
 
     }

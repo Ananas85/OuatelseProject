@@ -49,17 +49,14 @@ namespace Ouatelse.Models
 
         public static string CreationIndex()
         {
-            string query = " CREATE UNIQUE INDEX \"fk_villes_pays1_idx\" ON villes (pays_id);" + Environment.NewLine;
+            string query = " CREATE INDEX \"fk_villes_pays1_idx\" ON villes (pays_id);" + Environment.NewLine;
             query += " CREATE INDEX \"code_postal_idx\" ON villes (code_postal);";
             return query;
         }
 
         public static string Fixtures()
         {
-            string query = " INSERT INTO \"villes\" VALUES ('Marseille', 13001, 1);";
-            query += "INSERT INTO \"villes\" VALUES ('Bordeaux', 33000, 1);";
-            query += "INSERT INTO \"villes\" VALUES ('Sérigné', 85200, 1);";
-            return query;
+            return "INSERT INTO \"villes\" VALUES (1,'Marseille', 13001, 1);";
         }
     }
 
