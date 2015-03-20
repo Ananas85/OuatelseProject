@@ -574,7 +574,7 @@
             // 
             // modifyHoliday
             // 
-            this.modifyHoliday.BackColor = System.Drawing.Color.DarkOrange;
+            this.modifyHoliday.BackColor = System.Drawing.Color.DodgerBlue;
             this.modifyHoliday.FlatAppearance.BorderSize = 0;
             this.modifyHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modifyHoliday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

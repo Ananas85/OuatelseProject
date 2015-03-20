@@ -59,6 +59,7 @@ namespace Ouatelse
             this.roleLbl.Text = " (" + AuthManager.Instance.User.Role.Name + ") ";
 
             this.linkLabel2.Visible = (AuthManager.Instance.User.Role.Name == "Administrateur");
+            this.linkLabel1.Visible = (AuthManager.Instance.User.Role.Name == "Administrateur");
         }
 
         /// <summary>
