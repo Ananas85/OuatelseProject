@@ -215,7 +215,7 @@
             this.EANCode.Name = "EANCode";
             this.EANCode.Size = new System.Drawing.Size(175, 20);
             this.EANCode.TabIndex = 7;
-            this.EANCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EANCode_KeyPress);
+            this.EANCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EAN_KeyPress);
             // 
             // Id
             // 

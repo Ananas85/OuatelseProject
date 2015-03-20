@@ -108,12 +108,14 @@ namespace Ouatelse.Forms
         #endregion
 
         #region Autorisation uniqument de l'entrée de chiffre pour le code EAN
-        private void EANCode_KeyPress(object sender, KeyPressEventArgs e)
+        private void EAN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)) return;
-            Utils.Info("Uniquement les chiffres sont autorisés");
-            e.Handled = true;
-        }
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                Utils.Info("Uniquement les chiffres sont autorisés");
+                e.Handled = true;
+            }
+        }        
         #endregion
 
         #region Getter du produit en cours
@@ -122,5 +124,13 @@ namespace Ouatelse.Forms
             return obj;
         }
         #endregion
+
+        //private void EANCode_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyData == Keys.Return || e.KeyData == Keys.Enter)
+        //    {
+        //        e.SuppressKeyPress = true;
+        //    }
+        //}
     }
 }

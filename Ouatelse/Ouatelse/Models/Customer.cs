@@ -292,5 +292,27 @@ namespace Ouatelse.Models
         }
         #endregion
         #endregion
+
+        public Dictionary<Product, int> PreferedProdcuts
+        {
+            get
+            {
+                Dictionary<Product, int> res = new Dictionary<Product, int>();
+                Invoices.Reload();
+
+                foreach (Invoice invoice in Invoices.Items)
+                {
+                    invoice.Products.Reload();
+                    foreach (InvoiceProduct product in invoice.Products.Items)
+                    {
+                        if (!res.ContainsKey(product.Product))
+                            res.Add(product.Product, 0);
+                        res[product.Product] += product.Quantity;
+                    }
+                }
+
+                return res.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+            }
+        }
     }
 }

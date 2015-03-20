@@ -40,5 +40,10 @@ namespace Ouatelse.Managers
 
             return true;
         }
+
+        public void Logout()
+        {
+            User = null;
+        }
     }
 }

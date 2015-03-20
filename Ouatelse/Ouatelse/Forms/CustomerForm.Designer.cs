@@ -64,9 +64,16 @@
             this.Factures = new System.Windows.Forms.TabPage();
             this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.invoices = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.adresse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.code_postal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CommentsContainer.SuspendLayout();
+            this.Factures.SuspendLayout();
             this.SuspendLayout();
             // 
             // label12
@@ -383,6 +390,7 @@
             // 
             // Factures
             // 
+            this.Factures.Controls.Add(this.invoices);
             this.Factures.Location = new System.Drawing.Point(4, 22);
             this.Factures.Name = "Factures";
             this.Factures.Size = new System.Drawing.Size(486, 220);
@@ -408,6 +416,57 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(525, 90);
             this.label13.TabIndex = 98;
+            // 
+            // invoices
+            // 
+            this.invoices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.adresse,
+            this.code_postal,
+            this.pays,
+            this.columnHeader2});
+            this.invoices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoices.FullRowSelect = true;
+            this.invoices.GridLines = true;
+            this.invoices.Location = new System.Drawing.Point(0, 0);
+            this.invoices.MultiSelect = false;
+            this.invoices.Name = "invoices";
+            this.invoices.Size = new System.Drawing.Size(486, 220);
+            this.invoices.TabIndex = 127;
+            this.invoices.UseCompatibleStateImageBehavior = false;
+            this.invoices.View = System.Windows.Forms.View.Details;
+            this.invoices.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.invoices_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Name = "id";
+            this.columnHeader1.Text = "Ref";
+            this.columnHeader1.Width = 50;
+            // 
+            // adresse
+            // 
+            this.adresse.Name = "adresse";
+            this.adresse.Text = "Date";
+            this.adresse.Width = 80;
+            // 
+            // code_postal
+            // 
+            this.code_postal.Name = "code_postal";
+            this.code_postal.Text = "Produits";
+            this.code_postal.Width = 170;
+            // 
+            // pays
+            // 
+            this.pays.Name = "pays";
+            this.pays.Text = "Prix TTC";
+            this.pays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.pays.Width = 70;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Reglé";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 70;
             // 
             // CustomerForm
             // 
@@ -458,6 +517,7 @@
             this.tabControl1.ResumeLayout(false);
             this.CommentsContainer.ResumeLayout(false);
             this.CommentsContainer.PerformLayout();
+            this.Factures.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,5 +560,11 @@
         private System.Windows.Forms.TabPage Factures;
         private System.Windows.Forms.CheckBox EmailOnUpdate;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ListView invoices;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader adresse;
+        private System.Windows.Forms.ColumnHeader code_postal;
+        private System.Windows.Forms.ColumnHeader pays;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

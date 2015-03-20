@@ -47,6 +47,8 @@ namespace Ouatelse
             this.roleLbl = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.magasin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // connexionText
@@ -119,9 +121,9 @@ namespace Ouatelse
             // date
             // 
             this.date.BackColor = System.Drawing.Color.Transparent;
-            this.date.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date.ForeColor = System.Drawing.Color.White;
-            this.date.Location = new System.Drawing.Point(307, 28);
+            this.date.Location = new System.Drawing.Point(307, 51);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(226, 31);
             this.date.TabIndex = 7;
@@ -133,7 +135,7 @@ namespace Ouatelse
             this.hour.BackColor = System.Drawing.Color.Transparent;
             this.hour.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hour.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(105)))), ((int)(((byte)(54)))));
-            this.hour.Location = new System.Drawing.Point(335, 56);
+            this.hour.Location = new System.Drawing.Point(335, 79);
             this.hour.Name = "hour";
             this.hour.Size = new System.Drawing.Size(192, 40);
             this.hour.TabIndex = 8;
@@ -283,6 +285,29 @@ namespace Ouatelse
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(3, 400);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(105, 13);
+            this.linkLabel2.TabIndex = 24;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Changer de Magasin";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // magasin
+            // 
+            this.magasin.BackColor = System.Drawing.Color.Transparent;
+            this.magasin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.magasin.ForeColor = System.Drawing.Color.White;
+            this.magasin.Location = new System.Drawing.Point(134, 7);
+            this.magasin.Name = "magasin";
+            this.magasin.Size = new System.Drawing.Size(411, 31);
+            this.magasin.TabIndex = 7;
+            this.magasin.Text = "MAGASIN";
+            this.magasin.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +315,7 @@ namespace Ouatelse
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
             this.ClientSize = new System.Drawing.Size(732, 417);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.roleLbl);
             this.Controls.Add(this.produitBtn);
@@ -299,6 +325,7 @@ namespace Ouatelse
             this.Controls.Add(this.salarieBtn);
             this.Controls.Add(this.clientsBtn);
             this.Controls.Add(this.hour);
+            this.Controls.Add(this.magasin);
             this.Controls.Add(this.date);
             this.Controls.Add(this.deconnexionBtn);
             this.Controls.Add(this.btnLock);
@@ -336,5 +363,7 @@ namespace Ouatelse
         private System.Windows.Forms.Label roleLbl;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Label magasin;
     }
 }

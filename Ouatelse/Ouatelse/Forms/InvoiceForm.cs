@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,6 +15,7 @@ namespace Ouatelse.Forms
     {
         private Invoice invoice;
         private bool newInvoice = false;
+        private Product preferedProduct = null;
 
         public InvoiceForm(Invoice invoice)
         {
@@ -63,6 +65,17 @@ namespace Ouatelse.Forms
             this.villeClient.Text = invoice.Customer == null
                 ? ""
                 : (invoice.Customer.City.PostalCode + " " + invoice.Customer.City.Name);
+
+            if (invoice.Customer != null)
+            {
+                Dictionary<Product, int> preferedProdcuts = invoice.Customer.PreferedProdcuts;
+                if (preferedProdcuts.Count > 0)
+                {
+                    int qty = preferedProdcuts.First().Value;
+                    if (qty > 0)
+                        preferedProduct = preferedProdcuts.First().Key;
+                }
+            }
         }
 
         public void ReloadProducts()
@@ -76,6 +89,8 @@ namespace Ouatelse.Forms
                 item.SubItems.Add(invoiceProduct.Quantity.ToString());
                 item.SubItems.Add(product.SellPrice.ToString("0.00", CultureInfo.InvariantCulture));
                 item.SubItems.Add(invoiceProduct.Price.ToString("0.00", CultureInfo.InvariantCulture));
+                if (product.Id == preferedProduct.Id)
+                    item.BackColor = Color.AntiqueWhite;
                 item.Tag = invoiceProduct;
             }
 
