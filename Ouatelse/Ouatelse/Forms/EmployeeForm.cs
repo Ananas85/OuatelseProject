@@ -131,7 +131,6 @@ namespace Ouatelse.Forms
                             error += "Erreur dans la saisie du magasin ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_ROLE:
-
                             error += "Erreur dans la saisie du rôle ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_EMAIL:

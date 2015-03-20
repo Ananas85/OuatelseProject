@@ -100,9 +100,9 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_LASTNAME);
             }
-            if (EmployeeManager.Instance.UserChanged)
+            if (!String.IsNullOrWhiteSpace(this.Username))
             {
-                if (!String.IsNullOrWhiteSpace(this.Username))
+                if (EmployeeManager.Instance.UserChanged)
                 {
                     if (EmployeeManager.Instance.Filter("WHERE identifiant = \"" + this.Username + "\"").Length >= 1)
                         response.Add(ValidationResult.ALREADY_USED_USERNAME);
@@ -110,6 +110,8 @@ namespace Ouatelse.Models
                 else
                     response.Add(ValidationResult.WRONG_USERNAME);
             }
+            else
+                response.Add(ValidationResult.WRONG_USERNAME);
             if (String.IsNullOrWhiteSpace(this.Address1))
             {
                 response.Add(ValidationResult.WRONG_ADRESS);
@@ -122,16 +124,21 @@ namespace Ouatelse.Models
             {
                 response.Add(ValidationResult.WRONG_STORE);
             }
-            if (EmployeeManager.Instance.MailChanged) { 
-                if (!String.IsNullOrWhiteSpace(this.Email))
+            if (!String.IsNullOrWhiteSpace(this.Email))
+            {
+                if (EmployeeManager.Instance.MailChanged)
                 {
                     if (!new EmailAddressAttribute().IsValid(this.Email))
                         response.Add(ValidationResult.WRONG_EMAIL);
                     else
+                    {
                         if (EmployeeManager.Instance.Filter("WHERE mail = \"" + this.Email + "\"").Length >= 1)
                             response.Add(ValidationResult.ALREADY_USED_MAIL);
+                    }
                 }
             }
+            else
+                response.Add(ValidationResult.WRONG_EMAIL);
             if (!String.IsNullOrWhiteSpace(this.PhoneNumber))
             {
                 if(this.PhoneNumber.Length != 10)
