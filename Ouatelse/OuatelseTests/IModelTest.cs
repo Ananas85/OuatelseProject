@@ -8,7 +8,7 @@ namespace OuatelseTests
     public class IModelTest
     {
         [TestMethod]
-        public void makeExistant()
+        public void TestMakeExistant()
         {
             Gender gender = new Gender {Name = "TestMakeExistant"};
             Assert.IsFalse(gender.Exists);
