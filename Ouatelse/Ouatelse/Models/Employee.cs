@@ -58,7 +58,7 @@ namespace Ouatelse.Models
             this.Role = RoleManager.Instance.Find(cursor.Read().ToString());
             this.Store = StoreManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
-            this.EmailOnUpdate = bool.Parse(cursor.Read().ToString());
+            this.EmailOnUpdate = Convert.ToBoolean(cursor.Read());
 
         }
 

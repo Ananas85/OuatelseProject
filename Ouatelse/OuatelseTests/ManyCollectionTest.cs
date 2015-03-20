@@ -70,7 +70,7 @@ namespace OuatelseTests
             int i = 0;
             foreach (Invoice test in testCustomer.Invoices.Items)
             {
-                Assert.Equals(testInvoice, test);
+                Assert.AreEqual(testInvoice, test);
             }
         }
     }

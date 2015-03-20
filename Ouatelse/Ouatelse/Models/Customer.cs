@@ -120,7 +120,7 @@ namespace Ouatelse.Models
             this.Comments = cursor.Read().ToString();
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
-            this.EmailOnUpdate = bool.Parse(cursor.Read().ToString());
+            this.EmailOnUpdate = Convert.ToBoolean(cursor.Read());
 
         }
         #endregion
