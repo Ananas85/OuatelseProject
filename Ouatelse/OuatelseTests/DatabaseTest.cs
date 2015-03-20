@@ -10,7 +10,7 @@ namespace OuatelseTests
     public class DatabaseTest
     {
         [TestMethod]
-        public void unitTestDatabase()
+        public void TestDatabase()
         {
             Assert.AreEqual(true, DatabaseInjector.IsInUnitTest);
         }

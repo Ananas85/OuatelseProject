@@ -9,12 +9,20 @@ namespace Ouatelse
 {
     public class Bind
     {
+
         public object o1, o2;
         public string p1, p2;
 
         public PropertyInfo srcPropInfo;
         public PropertyInfo destPropInfo;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o1">L'objet forme du composant</param>
+        /// <param name="p1">Le nom de la propriété du forme</param>
+        /// <param name="o2">L'objet en cohérence avec le formulaire</param>
+        /// <param name="p2">La propriété de l'objet lié</param>
         public Bind(object o1, string p1, object o2, string p2)
         {
             this.o1 = o1;

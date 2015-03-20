@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ouatelse
 {
-    class ManageDate
+    public class ManageDate
     {
         private static ManageDate _instance = null;
 
@@ -42,7 +42,7 @@ namespace Ouatelse
         #endregion
 
         #region Méthode qui permet d'enregistrer tous les jours fériés de l'année courante
-        public void FillPermanentUnworkingDate()
+        private void FillPermanentUnworkingDate()
         {
             permanentUnworkingDate = new List<DateTime>
             {

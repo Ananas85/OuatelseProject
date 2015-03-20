@@ -35,10 +35,10 @@
             this.validateButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.adresseClient = new System.Windows.Forms.TextBox();
-            this.nomClient = new System.Windows.Forms.TextBox();
-            this.adresseClient2 = new System.Windows.Forms.TextBox();
-            this.villeClient = new System.Windows.Forms.TextBox();
+            this.customerAdress = new System.Windows.Forms.TextBox();
+            this.customerName = new System.Windows.Forms.TextBox();
+            this.customerAdress2 = new System.Windows.Forms.TextBox();
+            this.customerCity = new System.Windows.Forms.TextBox();
             this.code = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DateTimePicker();
@@ -51,19 +51,19 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.aRendre = new System.Windows.Forms.TextBox();
-            this.aRegler = new System.Windows.Forms.TextBox();
-            this.aRendreLabel = new System.Windows.Forms.Label();
+            this.toPayText = new System.Windows.Forms.TextBox();
+            this.toPay = new System.Windows.Forms.TextBox();
+            this.toPayLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.regle = new System.Windows.Forms.NumericUpDown();
-            this.methodePaiement = new System.Windows.Forms.ComboBox();
+            this.rule = new System.Windows.Forms.NumericUpDown();
+            this.PaymentMethods = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.reduction = new System.Windows.Forms.NumericUpDown();
+            this.reduct = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,8 +75,8 @@
             this.totalTVA = new System.Windows.Forms.TextBox();
             this.totalTTC = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.regle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reduction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,35 +145,35 @@
             // 
             // adresseClient
             // 
-            this.adresseClient.Location = new System.Drawing.Point(443, 145);
-            this.adresseClient.Name = "adresseClient";
-            this.adresseClient.ReadOnly = true;
-            this.adresseClient.Size = new System.Drawing.Size(236, 20);
-            this.adresseClient.TabIndex = 99;
+            this.customerAdress.Location = new System.Drawing.Point(443, 145);
+            this.customerAdress.Name = "adresseClient";
+            this.customerAdress.ReadOnly = true;
+            this.customerAdress.Size = new System.Drawing.Size(236, 20);
+            this.customerAdress.TabIndex = 99;
             // 
             // nomClient
             // 
-            this.nomClient.Location = new System.Drawing.Point(443, 119);
-            this.nomClient.Name = "nomClient";
-            this.nomClient.ReadOnly = true;
-            this.nomClient.Size = new System.Drawing.Size(236, 20);
-            this.nomClient.TabIndex = 98;
+            this.customerName.Location = new System.Drawing.Point(443, 119);
+            this.customerName.Name = "nomClient";
+            this.customerName.ReadOnly = true;
+            this.customerName.Size = new System.Drawing.Size(236, 20);
+            this.customerName.TabIndex = 98;
             // 
             // adresseClient2
             // 
-            this.adresseClient2.Location = new System.Drawing.Point(443, 171);
-            this.adresseClient2.Name = "adresseClient2";
-            this.adresseClient2.ReadOnly = true;
-            this.adresseClient2.Size = new System.Drawing.Size(236, 20);
-            this.adresseClient2.TabIndex = 100;
+            this.customerAdress2.Location = new System.Drawing.Point(443, 171);
+            this.customerAdress2.Name = "adresseClient2";
+            this.customerAdress2.ReadOnly = true;
+            this.customerAdress2.Size = new System.Drawing.Size(236, 20);
+            this.customerAdress2.TabIndex = 100;
             // 
             // villeClient
             // 
-            this.villeClient.Location = new System.Drawing.Point(443, 197);
-            this.villeClient.Name = "villeClient";
-            this.villeClient.ReadOnly = true;
-            this.villeClient.Size = new System.Drawing.Size(236, 20);
-            this.villeClient.TabIndex = 101;
+            this.customerCity.Location = new System.Drawing.Point(443, 197);
+            this.customerCity.Name = "villeClient";
+            this.customerCity.ReadOnly = true;
+            this.customerCity.Size = new System.Drawing.Size(236, 20);
+            this.customerCity.TabIndex = 101;
             // 
             // code
             // 
@@ -272,13 +272,13 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.aRendre);
-            this.groupBox1.Controls.Add(this.aRegler);
-            this.groupBox1.Controls.Add(this.aRendreLabel);
+            this.groupBox1.Controls.Add(this.toPayText);
+            this.groupBox1.Controls.Add(this.toPay);
+            this.groupBox1.Controls.Add(this.toPayLabel);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.regle);
-            this.groupBox1.Controls.Add(this.methodePaiement);
+            this.groupBox1.Controls.Add(this.rule);
+            this.groupBox1.Controls.Add(this.PaymentMethods);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(12, 502);
@@ -290,34 +290,34 @@
             // 
             // aRendre
             // 
-            this.aRendre.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aRendre.Location = new System.Drawing.Point(261, 83);
-            this.aRendre.Name = "aRendre";
-            this.aRendre.ReadOnly = true;
-            this.aRendre.Size = new System.Drawing.Size(103, 26);
-            this.aRendre.TabIndex = 112;
-            this.aRendre.Text = "0,00";
-            this.aRendre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toPayText.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toPayText.Location = new System.Drawing.Point(261, 83);
+            this.toPayText.Name = "aRendre";
+            this.toPayText.ReadOnly = true;
+            this.toPayText.Size = new System.Drawing.Size(103, 26);
+            this.toPayText.TabIndex = 112;
+            this.toPayText.Text = "0,00";
+            this.toPayText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // aRegler
             // 
-            this.aRegler.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aRegler.Location = new System.Drawing.Point(261, 20);
-            this.aRegler.Name = "aRegler";
-            this.aRegler.ReadOnly = true;
-            this.aRegler.Size = new System.Drawing.Size(103, 26);
-            this.aRegler.TabIndex = 112;
-            this.aRegler.Text = "0,00";
-            this.aRegler.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toPay.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toPay.Location = new System.Drawing.Point(261, 20);
+            this.toPay.Name = "aRegler";
+            this.toPay.ReadOnly = true;
+            this.toPay.Size = new System.Drawing.Size(103, 26);
+            this.toPay.TabIndex = 112;
+            this.toPay.Text = "0,00";
+            this.toPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // aRendreLabel
             // 
-            this.aRendreLabel.Location = new System.Drawing.Point(166, 83);
-            this.aRendreLabel.Name = "aRendreLabel";
-            this.aRendreLabel.Size = new System.Drawing.Size(88, 26);
-            this.aRendreLabel.TabIndex = 3;
-            this.aRendreLabel.Text = "A rendre :";
-            this.aRendreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toPayLabel.Location = new System.Drawing.Point(166, 83);
+            this.toPayLabel.Name = "aRendreLabel";
+            this.toPayLabel.Size = new System.Drawing.Size(88, 26);
+            this.toPayLabel.TabIndex = 3;
+            this.toPayLabel.Text = "A rendre :";
+            this.toPayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -340,31 +340,31 @@
             // 
             // regle
             // 
-            this.regle.DecimalPlaces = 2;
-            this.regle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.regle.Location = new System.Drawing.Point(261, 52);
-            this.regle.Maximum = new decimal(new int[] {
+            this.rule.DecimalPlaces = 2;
+            this.rule.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rule.Location = new System.Drawing.Point(261, 52);
+            this.rule.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
-            this.regle.Name = "regle";
-            this.regle.Size = new System.Drawing.Size(103, 26);
-            this.regle.TabIndex = 2;
-            this.regle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.regle.ThousandsSeparator = true;
-            this.regle.ValueChanged += new System.EventHandler(this.regle_ValueChanged);
+            this.rule.Name = "regle";
+            this.rule.Size = new System.Drawing.Size(103, 26);
+            this.rule.TabIndex = 2;
+            this.rule.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.rule.ThousandsSeparator = true;
+            this.rule.ValueChanged += new System.EventHandler(this.regle_ValueChanged);
             // 
             // methodePaiement
             // 
-            this.methodePaiement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.methodePaiement.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.methodePaiement.FormattingEnabled = true;
-            this.methodePaiement.Location = new System.Drawing.Point(6, 46);
-            this.methodePaiement.Name = "methodePaiement";
-            this.methodePaiement.Size = new System.Drawing.Size(170, 33);
-            this.methodePaiement.TabIndex = 1;
-            this.methodePaiement.SelectedIndexChanged += new System.EventHandler(this.methodePaiement_SelectedIndexChanged);
+            this.PaymentMethods.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PaymentMethods.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PaymentMethods.FormattingEnabled = true;
+            this.PaymentMethods.Location = new System.Drawing.Point(6, 46);
+            this.PaymentMethods.Name = "methodePaiement";
+            this.PaymentMethods.Size = new System.Drawing.Size(170, 33);
+            this.PaymentMethods.TabIndex = 1;
+            this.PaymentMethods.SelectedIndexChanged += new System.EventHandler(this.methodePaiement_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -427,16 +427,16 @@
             // 
             // reduction
             // 
-            this.reduction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.reduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.reduction.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reduction.Location = new System.Drawing.Point(591, 536);
-            this.reduction.Name = "reduction";
-            this.reduction.Size = new System.Drawing.Size(120, 26);
-            this.reduction.TabIndex = 2;
-            this.reduction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.reduction.ThousandsSeparator = true;
-            this.reduction.ValueChanged += new System.EventHandler(this.reduction_ValueChanged);
+            this.reduct.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reduct.Location = new System.Drawing.Point(591, 536);
+            this.reduct.Name = "reduction";
+            this.reduct.Size = new System.Drawing.Size(120, 26);
+            this.reduct.TabIndex = 2;
+            this.reduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.reduct.ThousandsSeparator = true;
+            this.reduct.ValueChanged += new System.EventHandler(this.reduction_ValueChanged);
             // 
             // label14
             // 
@@ -497,7 +497,6 @@
             this.quickAdd.Name = "quickAdd";
             this.quickAdd.Size = new System.Drawing.Size(113, 20);
             this.quickAdd.TabIndex = 122;
-            this.quickAdd.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.quickAdd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // button3
@@ -576,17 +575,17 @@
             this.Controls.Add(this.date);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.reduction);
+            this.Controls.Add(this.reduct);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.validateButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.adresseClient);
+            this.Controls.Add(this.customerAdress);
             this.Controls.Add(this.code);
-            this.Controls.Add(this.nomClient);
-            this.Controls.Add(this.adresseClient2);
-            this.Controls.Add(this.villeClient);
+            this.Controls.Add(this.customerName);
+            this.Controls.Add(this.customerAdress2);
+            this.Controls.Add(this.customerCity);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label15);
@@ -603,8 +602,8 @@
             this.Load += new System.EventHandler(this.InvoiceForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.regle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reduction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -618,10 +617,10 @@
         private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox adresseClient;
-        private System.Windows.Forms.TextBox nomClient;
-        private System.Windows.Forms.TextBox adresseClient2;
-        private System.Windows.Forms.TextBox villeClient;
+        private System.Windows.Forms.TextBox customerAdress;
+        private System.Windows.Forms.TextBox customerName;
+        private System.Windows.Forms.TextBox customerAdress2;
+        private System.Windows.Forms.TextBox customerCity;
         private System.Windows.Forms.TextBox code;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker date;
@@ -634,17 +633,17 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox methodePaiement;
+        private System.Windows.Forms.ComboBox PaymentMethods;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label aRendreLabel;
+        private System.Windows.Forms.Label toPayLabel;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown regle;
+        private System.Windows.Forms.NumericUpDown rule;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown reduction;
+        private System.Windows.Forms.NumericUpDown reduct;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
@@ -652,8 +651,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox quickAdd;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox aRendre;
-        private System.Windows.Forms.TextBox aRegler;
+        private System.Windows.Forms.TextBox toPayText;
+        private System.Windows.Forms.TextBox toPay;
         private System.Windows.Forms.TextBox totalHT;
         private System.Windows.Forms.TextBox totalTVA;
         private System.Windows.Forms.TextBox totalTTC;
