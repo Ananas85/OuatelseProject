@@ -302,6 +302,17 @@ namespace Ouatelse.Models
         #region Le client peut prétendre à une réduction si depuis la dernière facture avec réduction il y'a eu au moins 100€ de dépenser
         public bool ReductionAvailable()
         {
+            if (Invoices.Items.Where(i => i.IsPaid && i.DiscountPercent > 0)
+                .OrderByDescending(i => i.Date).ToList().Count == 0)
+            {
+
+                if (this.NumberOfExpenseCompleteTotal() >= 100)
+                    return true;
+                else
+                    return false;
+            }
+                
+
             return
                 Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date >=
                                                 Invoices.Items.Where(i => i.IsPaid && i.DiscountPercent > 0)

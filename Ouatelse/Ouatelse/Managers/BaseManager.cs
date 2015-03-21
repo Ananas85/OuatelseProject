@@ -236,5 +236,7 @@ namespace Ouatelse.Managers
             return DatabaseInjector.Database.Execute(query);
         }
         #endregion
+
+
     }
 }

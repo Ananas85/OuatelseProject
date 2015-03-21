@@ -75,7 +75,7 @@ namespace Ouatelse.Forms
                 if (qty > 0)
                     preferedProduct = preferedProdcuts.First().Key;
             }
-            `ReloadReduct();
+            
         }
         #endregion
 
@@ -181,6 +181,7 @@ namespace Ouatelse.Forms
             if (invoice.Customer.ReductionAvailable())
             {
                 Utils.Info("Une réduction peut être proposé à ce client !");
+                ReloadReduct();
             }
         }
         #endregion
@@ -228,6 +229,7 @@ namespace Ouatelse.Forms
         private void ReloadReduct()
         {
             invoice.DiscountPercent = invoice.Customer.ReductionAvailable() ? 10 : 0;
+            this.reduct.Value = (decimal)invoice.DiscountPercent;
             ReloadTotals();
             
         }

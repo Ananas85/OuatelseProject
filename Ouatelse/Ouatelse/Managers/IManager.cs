@@ -16,6 +16,5 @@ namespace Ouatelse.Managers
 
         bool Save(BaseModel model);
         bool Truncate();
-
     }
 }

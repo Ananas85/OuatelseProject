@@ -1,7 +1,10 @@
 ﻿using Ouatelse.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,5 +45,7 @@ namespace Ouatelse.Managers
         {
             return "INSERT INTO pays VALUES (1,'France');";
         }
+
+
     }
 }
