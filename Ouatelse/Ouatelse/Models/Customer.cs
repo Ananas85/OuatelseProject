@@ -304,15 +304,11 @@ namespace Ouatelse.Models
         #region Le client peut prétendre à une réduction tous les 100€
         public bool ReductionAvailable()
         {
-            Invoice lastFactureWithDiscount =
-                Invoices.Items.Where(invoice => invoice.IsPaid && invoice.DiscountPercent > 0)
-                    .OrderByDescending(invoice => invoice.Date).First();
-
-            double paymentAfter =
-                Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date >= lastFactureWithDiscount.Date)
-                    .Sum(invoice => invoice.TotalTTC);
-
-            return paymentAfter >= 100;
+            return
+                Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date >=
+                                                Invoices.Items.Where(i => i.IsPaid && i.DiscountPercent > 0)
+                                                    .OrderByDescending(i => i.Date).First().Date)
+                    .Sum(invoice => invoice.TotalTTC) >= 100;
         }
         #endregion
 
