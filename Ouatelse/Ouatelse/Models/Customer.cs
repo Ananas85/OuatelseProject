@@ -254,14 +254,29 @@ namespace Ouatelse.Models
             return Invoices.Items.Count(invoice => invoice.IsPaid);
         }
 
+        public double NumberOfExpenseCompleteTotal()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+        }
+
         public int NumberOfInCompleteInvoices()
         {
             return Invoices.Items.Count(invoice => !invoice.IsPaid);
         }
 
+        public double NumberOfExpenseUnCompleteTotal()
+        {
+            return Invoices.Items.Where(invoice => !invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+        }
+
         public int NumberOfTotalInvoices()
         {
             return Invoices.Items.Length;
+        }
+
+        public double NumberOfExpenseTotal()
+        {
+            return Invoices.Items.Sum(invoice => invoice.TotalTTC);
         }
 
         public int NumberOfInvoicesCompleteInMonth()
@@ -284,15 +299,16 @@ namespace Ouatelse.Models
             return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
         }
 
-        public double NumberOfExpenseTotal()
-        {
-            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
-        }
 
-        #region Le client peut prétendre à une réduction tous les 100€
+
+        #region Le client peut prétendre à une réduction si depuis la dernière facture avec réduction il y'a eu au moins 100€ de dépenser
         public bool ReductionAvailable()
         {
-            return (int)Math.Truncate(Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC)%100) == 0;
+            return
+                Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date >=
+                                                Invoices.Items.Where(i => i.IsPaid && i.DiscountPercent > 0)
+                                                    .OrderByDescending(i => i.Date).First().Date)
+                    .Sum(invoice => invoice.TotalTTC) >= 100;
         }
         #endregion
 
