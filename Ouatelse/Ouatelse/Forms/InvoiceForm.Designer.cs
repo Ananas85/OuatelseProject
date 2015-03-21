@@ -74,6 +74,10 @@
             this.totalHT = new System.Windows.Forms.TextBox();
             this.totalTVA = new System.Windows.Forms.TextBox();
             this.totalTTC = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.employee = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reduct)).BeginInit();
@@ -143,34 +147,34 @@
             this.label4.TabIndex = 108;
             this.label4.Text = "Adresse: ";
             // 
-            // adresseClient
+            // customerAdress
             // 
             this.customerAdress.Location = new System.Drawing.Point(443, 145);
-            this.customerAdress.Name = "adresseClient";
+            this.customerAdress.Name = "customerAdress";
             this.customerAdress.ReadOnly = true;
             this.customerAdress.Size = new System.Drawing.Size(236, 20);
             this.customerAdress.TabIndex = 99;
             // 
-            // nomClient
+            // customerName
             // 
             this.customerName.Location = new System.Drawing.Point(443, 119);
-            this.customerName.Name = "nomClient";
+            this.customerName.Name = "customerName";
             this.customerName.ReadOnly = true;
             this.customerName.Size = new System.Drawing.Size(236, 20);
             this.customerName.TabIndex = 98;
             // 
-            // adresseClient2
+            // customerAdress2
             // 
             this.customerAdress2.Location = new System.Drawing.Point(443, 171);
-            this.customerAdress2.Name = "adresseClient2";
+            this.customerAdress2.Name = "customerAdress2";
             this.customerAdress2.ReadOnly = true;
             this.customerAdress2.Size = new System.Drawing.Size(236, 20);
             this.customerAdress2.TabIndex = 100;
             // 
-            // villeClient
+            // customerCity
             // 
             this.customerCity.Location = new System.Drawing.Point(443, 197);
-            this.customerCity.Name = "villeClient";
+            this.customerCity.Name = "customerCity";
             this.customerCity.ReadOnly = true;
             this.customerCity.Size = new System.Drawing.Size(236, 20);
             this.customerCity.TabIndex = 101;
@@ -288,32 +292,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Réglement de la Facture";
             // 
-            // aRendre
+            // toPayText
             // 
             this.toPayText.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toPayText.Location = new System.Drawing.Point(261, 83);
-            this.toPayText.Name = "aRendre";
+            this.toPayText.Name = "toPayText";
             this.toPayText.ReadOnly = true;
             this.toPayText.Size = new System.Drawing.Size(103, 26);
             this.toPayText.TabIndex = 112;
             this.toPayText.Text = "0,00";
             this.toPayText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // aRegler
+            // toPay
             // 
             this.toPay.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toPay.Location = new System.Drawing.Point(261, 20);
-            this.toPay.Name = "aRegler";
+            this.toPay.Name = "toPay";
             this.toPay.ReadOnly = true;
             this.toPay.Size = new System.Drawing.Size(103, 26);
             this.toPay.TabIndex = 112;
             this.toPay.Text = "0,00";
             this.toPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // aRendreLabel
+            // toPayLabel
             // 
             this.toPayLabel.Location = new System.Drawing.Point(166, 83);
-            this.toPayLabel.Name = "aRendreLabel";
+            this.toPayLabel.Name = "toPayLabel";
             this.toPayLabel.Size = new System.Drawing.Size(88, 26);
             this.toPayLabel.TabIndex = 3;
             this.toPayLabel.Text = "A rendre :";
@@ -338,7 +342,7 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "A régler :";
             // 
-            // regle
+            // rule
             // 
             this.rule.DecimalPlaces = 2;
             this.rule.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -348,20 +352,20 @@
             0,
             0,
             0});
-            this.rule.Name = "regle";
+            this.rule.Name = "rule";
             this.rule.Size = new System.Drawing.Size(103, 26);
             this.rule.TabIndex = 2;
             this.rule.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.rule.ThousandsSeparator = true;
             this.rule.ValueChanged += new System.EventHandler(this.regle_ValueChanged);
             // 
-            // methodePaiement
+            // PaymentMethods
             // 
             this.PaymentMethods.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaymentMethods.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PaymentMethods.FormattingEnabled = true;
             this.PaymentMethods.Location = new System.Drawing.Point(6, 46);
-            this.PaymentMethods.Name = "methodePaiement";
+            this.PaymentMethods.Name = "PaymentMethods";
             this.PaymentMethods.Size = new System.Drawing.Size(170, 33);
             this.PaymentMethods.TabIndex = 1;
             this.PaymentMethods.SelectedIndexChanged += new System.EventHandler(this.methodePaiement_SelectedIndexChanged);
@@ -425,13 +429,13 @@
             this.label13.TabIndex = 3;
             this.label13.Text = "Total TTC :";
             // 
-            // reduction
+            // reduct
             // 
             this.reduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reduct.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reduct.Location = new System.Drawing.Point(591, 536);
-            this.reduct.Name = "reduction";
+            this.reduct.Name = "reduct";
             this.reduct.Size = new System.Drawing.Size(120, 26);
             this.reduct.TabIndex = 2;
             this.reduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -515,6 +519,7 @@
             this.button3.TabIndex = 111;
             this.button3.Text = "Rechercher un produit...";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
             // 
             // totalHT
             // 
@@ -553,6 +558,50 @@
             this.totalTTC.Text = "0,00";
             this.totalTTC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button4.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button4.Location = new System.Drawing.Point(12, 196);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(126, 28);
+            this.button4.TabIndex = 111;
+            this.button4.Text = "Imprimer...";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(252, 107);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(77, 46);
+            this.webBrowser1.TabIndex = 123;
+            this.webBrowser1.Visible = false;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            // 
+            // employee
+            // 
+            this.employee.Location = new System.Drawing.Point(56, 159);
+            this.employee.Name = "employee";
+            this.employee.ReadOnly = true;
+            this.employee.Size = new System.Drawing.Size(190, 20);
+            this.employee.TabIndex = 98;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 162);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 113;
+            this.label9.Text = "Salarié :";
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,6 +609,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(747, 630);
             this.ControlBox = false;
+            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.totalTTC);
             this.Controls.Add(this.totalTVA);
@@ -574,6 +625,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.date);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.reduct);
             this.Controls.Add(this.label11);
@@ -582,6 +634,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.customerAdress);
+            this.Controls.Add(this.employee);
             this.Controls.Add(this.code);
             this.Controls.Add(this.customerName);
             this.Controls.Add(this.customerAdress2);
@@ -656,5 +709,9 @@
         private System.Windows.Forms.TextBox totalHT;
         private System.Windows.Forms.TextBox totalTVA;
         private System.Windows.Forms.TextBox totalTTC;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.TextBox employee;
+        private System.Windows.Forms.Label label9;
     }
 }
