@@ -177,5 +177,10 @@ namespace Ouatelse.Models
             return this.MemberwiseClone();
         }
         #endregion
+
+        public int CurrentStock
+        {
+            get { return Stock.getCurrentStock(this, Properties.Settings.Default.CurrentStore); }
+        }
     }
 }
