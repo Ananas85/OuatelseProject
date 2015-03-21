@@ -60,7 +60,28 @@ namespace Ouatelse.Managers
         public List<Holiday> FilterByYearByEmployee(int currentYear, int idEmployee)
         {
             return HolidayManager.Instance.Filter("WHERE salaries_id =" + idEmployee + " AND " + currentYear + " = YEAR(date_debut)").ToList();
-        } 
+        }
 
+        public static string CreationQuery()
+        {
+            string query = "DROP TABLE IF EXISTS \"conge\";" + Environment.NewLine;
+            query += " CREATE TABLE \"conge\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += " \"date_debut\" TEXT NOT NULL, " + Environment.NewLine;
+            query += "\"date_fin\" TEXT NOT NULL, " + Environment.NewLine;
+            query += " \"salaries_id\" INTEGER(11,0) NOT NULL, " + Environment.NewLine;
+            query += " \"accepte\" INTEGER(1,0) NOT NULL);";
+            return query;
+        }
+
+        public static string CreationIndex()
+        {
+            return " CREATE INDEX \"fk_conge_salaries1_idx\" ON conge (salaries_id);";
+        }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO conge VALUES (1,\"2015-08-02\", \"2015-08-09\", 15, 0);";
+        }
     }
 }

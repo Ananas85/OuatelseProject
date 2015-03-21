@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms.VisualStyles;
+using Ouatelse.Managers;
 using Ouatelse.Models;
 
 namespace Ouatelse
@@ -98,128 +99,128 @@ namespace Ouatelse
             cmd.ExecuteNonQuery();
 
             //Init Table City
-            cmd.CommandText = City.CreationQuery();
+            cmd.CommandText = CityManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Country
-            cmd.CommandText = Country.CreationQuery();
+            cmd.CommandText = CountryManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Customer
-            cmd.CommandText = Customer.CreationQuery();
+            cmd.CommandText = CustomerManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Employee
-            cmd.CommandText = Employee.CreationQuery();
+            cmd.CommandText = EmployeeManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Gender
-            cmd.CommandText = Gender.CreationQuery();
+            cmd.CommandText = GenderManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Holiday
-            cmd.CommandText = Holiday.CreationQuery();
+            cmd.CommandText = HolidayManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Invoice
-            cmd.CommandText = Invoice.CreationQuery();
+            cmd.CommandText = InvoiceManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table InvoiceProduct
-            cmd.CommandText = InvoiceProduct.CreationQuery();
+            cmd.CommandText = InvoiceProductManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Payment;
-            cmd.CommandText = Payment.CreationQuery();
+            cmd.CommandText = PaymentManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Product
-            cmd.CommandText = Product.CreationQuery();
+            cmd.CommandText = ProductManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Role
-            cmd.CommandText = Role.CreationQuery();
+            cmd.CommandText = RoleManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Stock
-            cmd.CommandText = Stock.CreationQuery();
+            cmd.CommandText = StockManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init Table Store
-            cmd.CommandText = Store.CreationQuery();
+            cmd.CommandText = StoreManager.CreationQuery();
             cmd.ExecuteNonQuery();
 
             //Init the Index City
-            cmd.CommandText = City.CreationIndex();
+            cmd.CommandText = CityManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the Index Customer
-            cmd.CommandText = Customer.CreationIndex();
+            cmd.CommandText = CustomerManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index Employee
-            cmd.CommandText = Employee.CreationIndex();
+            cmd.CommandText = EmployeeManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index Holiday
-            cmd.CommandText = Holiday.CreationIndex();
+            cmd.CommandText = HolidayManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index Invoice
-            cmd.CommandText = Invoice.CreationIndex();
+            cmd.CommandText = InvoiceManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index InvoiceProduct
-            cmd.CommandText = InvoiceProduct.CreationIndex();
+            cmd.CommandText = InvoiceProductManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index role
-            cmd.CommandText = Role.CreationIndex();
+            cmd.CommandText = RoleManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index stock
-            cmd.CommandText = Stock.CreationIndex();
+            cmd.CommandText = StockManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Init the index store
-            cmd.CommandText = Store.CreationIndex();
+            cmd.CommandText = StoreManager.CreationIndex();
             cmd.ExecuteNonQuery();
 
             //Fill Fixtures
-            cmd.CommandText = Country.Fixtures();
+            cmd.CommandText = CountryManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = City.Fixtures();
+            cmd.CommandText = CityManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Store.Fixtures();
+            cmd.CommandText = StoreManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Payment.Fixtures();
+            cmd.CommandText = PaymentManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Gender.Fixtures();
+            cmd.CommandText = GenderManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Role.Fixtures();
+            cmd.CommandText = RoleManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Customer.Fixtures();
+            cmd.CommandText = CustomerManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Employee.Fixtures();
+            cmd.CommandText = EmployeeManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Product.Fixtures();
+            cmd.CommandText = ProductManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Invoice.Fixtures();
+            cmd.CommandText = InvoiceManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = InvoiceProduct.Fixtures();
+            cmd.CommandText = InvoiceProductManager.Fixtures();
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = Holiday.Fixtures();
+            cmd.CommandText = HolidayManager.Fixtures();
             cmd.ExecuteNonQuery();
 
             //Close the pragma

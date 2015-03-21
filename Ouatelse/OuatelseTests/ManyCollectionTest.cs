@@ -22,9 +22,6 @@ namespace OuatelseTests
             testInvoice = InvoiceManager.Instance.Find(1);
         }
 
-        private TestContext testContextInstance;
-
-        
         [TestMethod]
         public void TestAdd()
         {

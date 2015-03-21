@@ -22,19 +22,5 @@ namespace Ouatelse.Models
             Dictionary<string, string> res = new Dictionary<string, string> {{"libelle", Name}};
             return res;
         }
-
-        public static string CreationQuery()
-        {
-            string query = " DROP TABLE IF EXISTS \"pays\"; " + Environment.NewLine;
-            query += "CREATE TABLE \"pays\" ( " + Environment.NewLine;
-            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
-            query += "\"libelle\" TEXT(255,0) NOT NULL);";
-            return query;
-        }
-
-        public static string Fixtures()
-        {
-            return "INSERT INTO pays VALUES (1,'France');";
-        }
     }
 }

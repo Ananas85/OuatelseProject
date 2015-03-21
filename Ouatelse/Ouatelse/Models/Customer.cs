@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing.Design;
 using System.Runtime.Remoting;
+using System.Web.Hosting;
 
 
 namespace Ouatelse.Models
@@ -247,45 +249,51 @@ namespace Ouatelse.Models
         }
         #endregion
 
-        #region La gesion de la base de données
-        #region Méthode pour créer la table
-        public static string CreationQuery()
+        public int NumberOfCompleteInvoices()
         {
-            string query = " DROP TABLE IF EXISTS \"clients\"; " + Environment.NewLine;
-            query += " CREATE TABLE \"clients\" ( " + Environment.NewLine;
-            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
-            query += " \"nom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
-            query += " \"prenom\" TEXT(255,0) NOT NULL," + Environment.NewLine;
-            query += " \"adresse1\" TEXT NOT NULL," + Environment.NewLine;
-            query += " \"adresse2\" TEXT," + Environment.NewLine;
-            query += " \"fixe\" TEXT(255,0)," + Environment.NewLine;
-            query += " \"portable\" TEXT(255,0)," + Environment.NewLine;
-            query += " \"mail\" TEXT(255,0)," + Environment.NewLine;
-            query += " \"naissance\" TEXT NOT NULL," + Environment.NewLine;
-            query += " \"notes\" TEXT," + Environment.NewLine;
-            query += " \"villes_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-            query += " \"civilite_id\" INTEGER(11,0) NOT NULL," + Environment.NewLine;
-            query += " \"email_modification\" INTEGER(1,0) NOT NULL);";
-
-            return query;
+            return Invoices.Items.Count(invoice => invoice.IsPaid);
         }
-        #endregion
 
-        #region Méthode pour ajouter les index
-        public static string CreationIndex()
+        public int NumberOfInCompleteInvoices()
         {
-            string query = " CREATE UNIQUE INDEX \"fk_clients_villes1_idx\" ON clients (villes_id);" + Environment.NewLine;
-            query += " CREATE UNIQUE INDEX \"fk_clients_civilite1_idx\" ON clients (civilite_id);";
-            return query;
+            return Invoices.Items.Count(invoice => !invoice.IsPaid);
         }
-        #endregion
 
-        #region Méthode pour créer les données de test
-        public static string Fixtures()
+        public int NumberOfTotalInvoices()
         {
-            return "INSERT INTO clients  VALUES (1, \"Moreau\", \"Corentin\", \"10, rue du général Margueritte\", \"Appart 9i\", \"\", \"\", \"corentin.moreau2@gmail.com\", \"1995-07-10\",\"\", 1, 1, 1);"; 
+            return Invoices.Items.Length;
         }
-        #endregion
+
+        public int NumberOfInvoicesCompleteInMonth()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month);
+        }
+
+        public double NumberOfExpenseInMonth()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public int NumberOfInvoicesCompleteInYear()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year);
+        }
+
+        public double NumberOfExpenseInYear()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public double NumberOfExpenseTotal()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+        }
+
+        #region Le client peut prétendre à une réduction tous les 100€
+        public bool ReductionAvailable()
+        {
+            return (int)Math.Truncate(Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC)%100) == 0;
+        }
         #endregion
 
         public Dictionary<Product, int> PreferedProdcuts
