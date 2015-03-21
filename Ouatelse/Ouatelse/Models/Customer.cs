@@ -299,8 +299,6 @@ namespace Ouatelse.Models
             return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
         }
 
-
-
         #region Le client peut prétendre à une réduction si depuis la dernière facture avec réduction il y'a eu au moins 100€ de dépenser
         public bool ReductionAvailable()
         {

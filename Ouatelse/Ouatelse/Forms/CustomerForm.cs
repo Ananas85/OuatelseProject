@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,17 @@ namespace Ouatelse.Forms
             }
             b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
+
+            this.NumberTotalOfInvoice.Text = obj.NumberOfTotalInvoices().ToString();
+            this.ExpenseTotalOfInvoice.Text = obj.NumberOfExpenseTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfPaidInvoices.Text = obj.NumberOfCompleteInvoices().ToString();
+            this.ExpenseTotalOfPaidInvoices.Text = obj.NumberOfExpenseCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfUnpaidInvoices.Text = obj.NumberOfInCompleteInvoices().ToString();
+            this.ExpenseTotalOfUnpaidInvoices.Text = obj.NumberOfExpenseUnCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInMonth.Text = obj.NumberOfInvoicesCompleteInMonth().ToString();
+            this.ExpenseOfCompleteInvoiceInMonth.Text = obj.NumberOfExpenseInMonth().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInYear.Text = obj.NumberOfInvoicesCompleteInYear().ToString();
+            this.ExpenseOfCompleteInvoiceInYear.Text = obj.NumberOfExpenseInYear().ToString(CultureInfo.CurrentCulture);
 
             // Chargement des factures
             ReloadInvoices();

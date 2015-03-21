@@ -62,17 +62,38 @@
             this.Comments = new System.Windows.Forms.TextBox();
             this.Statistiques = new System.Windows.Forms.TabPage();
             this.Factures = new System.Windows.Forms.TabPage();
-            this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.invoices = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Iden = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.adresse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.code_postal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EmailOnUpdate = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.NumberTotalOfPaidInvoices = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ExpenseTotalOfPaidInvoices = new System.Windows.Forms.Label();
+            this.NumberTotalOfUnpaidInvoices = new System.Windows.Forms.Label();
+            this.ExpenseTotalOfUnpaidInvoices = new System.Windows.Forms.Label();
+            this.numberOfCompleteInvoiceInMonth = new System.Windows.Forms.Label();
+            this.ExpenseOfCompleteInvoiceInMonth = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.NumberTotalOfInvoice = new System.Windows.Forms.Label();
+            this.ExpenseTotalOfInvoice = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.ExpenseOfCompleteInvoiceInYear = new System.Windows.Forms.Label();
+            this.numberOfCompleteInvoiceInYear = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.CommentsContainer.SuspendLayout();
+            this.Statistiques.SuspendLayout();
             this.Factures.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -299,7 +320,7 @@
             // Id
             // 
             this.Id.Location = new System.Drawing.Point(114, 123);
-            this.Id.Name = "Identifiant";
+            this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Size = new System.Drawing.Size(69, 20);
             this.Id.TabIndex = 0;
@@ -380,6 +401,26 @@
             // 
             // Statistiques
             // 
+            this.Statistiques.Controls.Add(this.label34);
+            this.Statistiques.Controls.Add(this.ExpenseOfCompleteInvoiceInYear);
+            this.Statistiques.Controls.Add(this.numberOfCompleteInvoiceInYear);
+            this.Statistiques.Controls.Add(this.label40);
+            this.Statistiques.Controls.Add(this.label31);
+            this.Statistiques.Controls.Add(this.label30);
+            this.Statistiques.Controls.Add(this.label29);
+            this.Statistiques.Controls.Add(this.label28);
+            this.Statistiques.Controls.Add(this.ExpenseTotalOfInvoice);
+            this.Statistiques.Controls.Add(this.NumberTotalOfInvoice);
+            this.Statistiques.Controls.Add(this.label25);
+            this.Statistiques.Controls.Add(this.ExpenseOfCompleteInvoiceInMonth);
+            this.Statistiques.Controls.Add(this.numberOfCompleteInvoiceInMonth);
+            this.Statistiques.Controls.Add(this.ExpenseTotalOfUnpaidInvoices);
+            this.Statistiques.Controls.Add(this.NumberTotalOfUnpaidInvoices);
+            this.Statistiques.Controls.Add(this.ExpenseTotalOfPaidInvoices);
+            this.Statistiques.Controls.Add(this.label16);
+            this.Statistiques.Controls.Add(this.label15);
+            this.Statistiques.Controls.Add(this.NumberTotalOfPaidInvoices);
+            this.Statistiques.Controls.Add(this.label14);
             this.Statistiques.Location = new System.Drawing.Point(4, 22);
             this.Statistiques.Name = "Statistiques";
             this.Statistiques.Padding = new System.Windows.Forms.Padding(3);
@@ -398,29 +439,10 @@
             this.Factures.Text = "Factures";
             this.Factures.UseVisualStyleBackColor = true;
             // 
-            // EmailOnUpdate
-            // 
-            this.EmailOnUpdate.AutoSize = true;
-            this.EmailOnUpdate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EmailOnUpdate.Location = new System.Drawing.Point(428, 311);
-            this.EmailOnUpdate.Name = "EmailOnUpdate";
-            this.EmailOnUpdate.Size = new System.Drawing.Size(130, 17);
-            this.EmailOnUpdate.TabIndex = 97;
-            this.EmailOnUpdate.Text = "Email à la modification";
-            this.EmailOnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.Location = new System.Drawing.Point(111, -2);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(525, 90);
-            this.label13.TabIndex = 98;
-            // 
             // invoices
             // 
             this.invoices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
+            this.Iden,
             this.adresse,
             this.code_postal,
             this.pays,
@@ -437,11 +459,11 @@
             this.invoices.View = System.Windows.Forms.View.Details;
             this.invoices.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.invoices_MouseDoubleClick);
             // 
-            // columnHeader1
+            // Iden
             // 
-            this.columnHeader1.Name = "Iden";
-            this.columnHeader1.Text = "Ref";
-            this.columnHeader1.Width = 50;
+            this.Iden.Name = "Iden";
+            this.Iden.Text = "Ref";
+            this.Iden.Width = 50;
             // 
             // adresse
             // 
@@ -467,6 +489,205 @@
             this.columnHeader2.Text = "Reglé";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader2.Width = 70;
+            // 
+            // EmailOnUpdate
+            // 
+            this.EmailOnUpdate.AutoSize = true;
+            this.EmailOnUpdate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EmailOnUpdate.Location = new System.Drawing.Point(428, 311);
+            this.EmailOnUpdate.Name = "EmailOnUpdate";
+            this.EmailOnUpdate.Size = new System.Drawing.Size(130, 17);
+            this.EmailOnUpdate.TabIndex = 97;
+            this.EmailOnUpdate.Text = "Email à la modification";
+            this.EmailOnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Location = new System.Drawing.Point(111, -2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(525, 90);
+            this.label13.TabIndex = 98;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 84);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(169, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Nombre total de factures payées : ";
+            // 
+            // NumberTotalOfPaidInvoices
+            // 
+            this.NumberTotalOfPaidInvoices.AutoSize = true;
+            this.NumberTotalOfPaidInvoices.Location = new System.Drawing.Point(224, 85);
+            this.NumberTotalOfPaidInvoices.Name = "NumberTotalOfPaidInvoices";
+            this.NumberTotalOfPaidInvoices.Size = new System.Drawing.Size(41, 13);
+            this.NumberTotalOfPaidInvoices.TabIndex = 1;
+            this.NumberTotalOfPaidInvoices.Text = "label15";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 114);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(179, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Nombre total de factures impayées : ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 24);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(182, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Nombre de factures payées ce mois :";
+            // 
+            // ExpenseTotalOfPaidInvoices
+            // 
+            this.ExpenseTotalOfPaidInvoices.AutoSize = true;
+            this.ExpenseTotalOfPaidInvoices.Location = new System.Drawing.Point(328, 85);
+            this.ExpenseTotalOfPaidInvoices.Name = "ExpenseTotalOfPaidInvoices";
+            this.ExpenseTotalOfPaidInvoices.Size = new System.Drawing.Size(41, 13);
+            this.ExpenseTotalOfPaidInvoices.TabIndex = 5;
+            this.ExpenseTotalOfPaidInvoices.Text = "label18";
+            // 
+            // NumberTotalOfUnpaidInvoices
+            // 
+            this.NumberTotalOfUnpaidInvoices.AutoSize = true;
+            this.NumberTotalOfUnpaidInvoices.Location = new System.Drawing.Point(224, 115);
+            this.NumberTotalOfUnpaidInvoices.Name = "NumberTotalOfUnpaidInvoices";
+            this.NumberTotalOfUnpaidInvoices.Size = new System.Drawing.Size(41, 13);
+            this.NumberTotalOfUnpaidInvoices.TabIndex = 6;
+            this.NumberTotalOfUnpaidInvoices.Text = "label19";
+            // 
+            // ExpenseTotalOfUnpaidInvoices
+            // 
+            this.ExpenseTotalOfUnpaidInvoices.AutoSize = true;
+            this.ExpenseTotalOfUnpaidInvoices.Location = new System.Drawing.Point(328, 115);
+            this.ExpenseTotalOfUnpaidInvoices.Name = "ExpenseTotalOfUnpaidInvoices";
+            this.ExpenseTotalOfUnpaidInvoices.Size = new System.Drawing.Size(41, 13);
+            this.ExpenseTotalOfUnpaidInvoices.TabIndex = 7;
+            this.ExpenseTotalOfUnpaidInvoices.Text = "label20";
+            // 
+            // numberOfCompleteInvoiceInMonth
+            // 
+            this.numberOfCompleteInvoiceInMonth.AutoSize = true;
+            this.numberOfCompleteInvoiceInMonth.Location = new System.Drawing.Point(224, 25);
+            this.numberOfCompleteInvoiceInMonth.Name = "numberOfCompleteInvoiceInMonth";
+            this.numberOfCompleteInvoiceInMonth.Size = new System.Drawing.Size(41, 13);
+            this.numberOfCompleteInvoiceInMonth.TabIndex = 8;
+            this.numberOfCompleteInvoiceInMonth.Text = "label21";
+            // 
+            // ExpenseOfCompleteInvoiceInMonth
+            // 
+            this.ExpenseOfCompleteInvoiceInMonth.AutoSize = true;
+            this.ExpenseOfCompleteInvoiceInMonth.Location = new System.Drawing.Point(328, 25);
+            this.ExpenseOfCompleteInvoiceInMonth.Name = "ExpenseOfCompleteInvoiceInMonth";
+            this.ExpenseOfCompleteInvoiceInMonth.Size = new System.Drawing.Size(41, 13);
+            this.ExpenseOfCompleteInvoiceInMonth.TabIndex = 10;
+            this.ExpenseOfCompleteInvoiceInMonth.Text = "label23";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 144);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(132, 13);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "Nombre total de factures : ";
+            // 
+            // NumberTotalOfInvoice
+            // 
+            this.NumberTotalOfInvoice.AutoSize = true;
+            this.NumberTotalOfInvoice.Location = new System.Drawing.Point(224, 145);
+            this.NumberTotalOfInvoice.Name = "NumberTotalOfInvoice";
+            this.NumberTotalOfInvoice.Size = new System.Drawing.Size(41, 13);
+            this.NumberTotalOfInvoice.TabIndex = 13;
+            this.NumberTotalOfInvoice.Text = "label15";
+            // 
+            // ExpenseTotalOfInvoice
+            // 
+            this.ExpenseTotalOfInvoice.AutoSize = true;
+            this.ExpenseTotalOfInvoice.Location = new System.Drawing.Point(328, 145);
+            this.ExpenseTotalOfInvoice.Name = "ExpenseTotalOfInvoice";
+            this.ExpenseTotalOfInvoice.Size = new System.Drawing.Size(41, 13);
+            this.ExpenseTotalOfInvoice.TabIndex = 14;
+            this.ExpenseTotalOfInvoice.Text = "label27";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(286, 145);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(23, 13);
+            this.label28.TabIndex = 15;
+            this.label28.Text = "soit";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(286, 85);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(23, 13);
+            this.label29.TabIndex = 16;
+            this.label29.Text = "soit";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(286, 115);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(23, 13);
+            this.label30.TabIndex = 17;
+            this.label30.Text = "soit";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(286, 25);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(23, 13);
+            this.label31.TabIndex = 18;
+            this.label31.Text = "soit";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(286, 55);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(23, 13);
+            this.label34.TabIndex = 26;
+            this.label34.Text = "soit";
+            // 
+            // ExpenseOfCompleteInvoiceInYear
+            // 
+            this.ExpenseOfCompleteInvoiceInYear.AutoSize = true;
+            this.ExpenseOfCompleteInvoiceInYear.Location = new System.Drawing.Point(328, 55);
+            this.ExpenseOfCompleteInvoiceInYear.Name = "ExpenseOfCompleteInvoiceInYear";
+            this.ExpenseOfCompleteInvoiceInYear.Size = new System.Drawing.Size(41, 13);
+            this.ExpenseOfCompleteInvoiceInYear.TabIndex = 24;
+            this.ExpenseOfCompleteInvoiceInYear.Text = "label36";
+            // 
+            // numberOfCompleteInvoiceInYear
+            // 
+            this.numberOfCompleteInvoiceInYear.AutoSize = true;
+            this.numberOfCompleteInvoiceInYear.Location = new System.Drawing.Point(224, 55);
+            this.numberOfCompleteInvoiceInYear.Name = "numberOfCompleteInvoiceInYear";
+            this.numberOfCompleteInvoiceInYear.Size = new System.Drawing.Size(41, 13);
+            this.numberOfCompleteInvoiceInYear.TabIndex = 22;
+            this.numberOfCompleteInvoiceInYear.Text = "label38";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(5, 54);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(203, 13);
+            this.label40.TabIndex = 20;
+            this.label40.Text = "Nombre de factures payées cette année :";
             // 
             // CustomerForm
             // 
@@ -517,6 +738,8 @@
             this.tabControl1.ResumeLayout(false);
             this.CommentsContainer.ResumeLayout(false);
             this.CommentsContainer.PerformLayout();
+            this.Statistiques.ResumeLayout(false);
+            this.Statistiques.PerformLayout();
             this.Factures.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -566,5 +789,26 @@
         private System.Windows.Forms.ColumnHeader code_postal;
         private System.Windows.Forms.ColumnHeader pays;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ColumnHeader Iden;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label NumberTotalOfPaidInvoices;
+        private System.Windows.Forms.Label ExpenseOfCompleteInvoiceInMonth;
+        private System.Windows.Forms.Label numberOfCompleteInvoiceInMonth;
+        private System.Windows.Forms.Label ExpenseTotalOfUnpaidInvoices;
+        private System.Windows.Forms.Label NumberTotalOfUnpaidInvoices;
+        private System.Windows.Forms.Label ExpenseTotalOfPaidInvoices;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label ExpenseTotalOfInvoice;
+        private System.Windows.Forms.Label NumberTotalOfInvoice;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label ExpenseOfCompleteInvoiceInYear;
+        private System.Windows.Forms.Label numberOfCompleteInvoiceInYear;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
     }
 }
