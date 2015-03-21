@@ -37,11 +37,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // usernameEntry
             // 
-            this.usernameEntry.Location = new System.Drawing.Point(54, 231);
+            this.usernameEntry.Location = new System.Drawing.Point(55, 408);
             this.usernameEntry.Name = "usernameEntry";
             this.usernameEntry.Size = new System.Drawing.Size(129, 20);
             this.usernameEntry.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             // passwordEntry
             // 
-            this.passwordEntry.Location = new System.Drawing.Point(189, 231);
+            this.passwordEntry.Location = new System.Drawing.Point(190, 408);
             this.passwordEntry.Name = "passwordEntry";
             this.passwordEntry.PasswordChar = '*';
             this.passwordEntry.Size = new System.Drawing.Size(129, 20);
@@ -65,7 +66,7 @@
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOk.ForeColor = System.Drawing.Color.White;
-            this.btnOk.Location = new System.Drawing.Point(239, 278);
+            this.btnOk.Location = new System.Drawing.Point(241, 458);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(118, 33);
             this.btnOk.TabIndex = 4;
@@ -77,7 +78,7 @@
             // forgetPassword
             // 
             this.forgetPassword.AutoSize = true;
-            this.forgetPassword.Location = new System.Drawing.Point(186, 254);
+            this.forgetPassword.Location = new System.Drawing.Point(187, 431);
             this.forgetPassword.Name = "forgetPassword";
             this.forgetPassword.Size = new System.Drawing.Size(111, 13);
             this.forgetPassword.TabIndex = 5;
@@ -94,7 +95,7 @@
             this.quitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.quitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quitBtn.ForeColor = System.Drawing.Color.White;
-            this.quitBtn.Location = new System.Drawing.Point(12, 278);
+            this.quitBtn.Location = new System.Drawing.Point(12, 458);
             this.quitBtn.Name = "quitBtn";
             this.quitBtn.Size = new System.Drawing.Size(118, 33);
             this.quitBtn.TabIndex = 8;
@@ -106,7 +107,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 215);
+            this.label1.Location = new System.Drawing.Point(52, 392);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 9;
@@ -115,7 +116,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 215);
+            this.label2.Location = new System.Drawing.Point(187, 392);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 9;
@@ -126,12 +127,20 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label3.Location = new System.Drawing.Point(54, 151);
+            this.label3.Location = new System.Drawing.Point(55, 328);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(264, 57);
             this.label3.TabIndex = 10;
             this.label3.Text = "Adresse\r\nVille";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(23, 157);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(336, 168);
+            this.webBrowser1.TabIndex = 11;
             // 
             // LoginForm
             // 
@@ -140,9 +149,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_04;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(369, 323);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(371, 503);
             this.ControlBox = false;
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -172,6 +182,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

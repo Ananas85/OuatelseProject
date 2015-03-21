@@ -18,6 +18,7 @@ namespace Ouatelse
         {
             InitializeComponent();
             this.label3.Text = Properties.Settings.Default.CurrentStore.NameTwoLines;
+            
         }
 
         private void forgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
