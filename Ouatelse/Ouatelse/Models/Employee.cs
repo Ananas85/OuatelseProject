@@ -28,11 +28,16 @@ namespace Ouatelse.Models
         public Gender Gender { get; set; }
         public bool EmailOnUpdate { get; set; }
         public enum ValidationResult { OK, WRONG_LASTNAME, WRONG_FIRSTNAME, WRONG_USERNAME, WRONG_PASSWORD, WRONG_ADRESS, WRONG_CITY, WRONG_ROLE, WRONG_STORE, WRONG_EMAIL, WRONG_PHONENUMBER, WRONG_MOBILEPHONENUMBER, ALREADY_USED_MAIL, ALREADY_USED_USERNAME }
+        /// <summary>
+        /// Représente la relation récupérant les factures faites pas le salariés
+        /// </summary>
+        public ManyCollection<Invoice> Invoices { get; set; } 
 
         public Employee()
         {
             DateOfBirth = DateTime.Now;
             this.EmailOnUpdate = false;
+            Invoices = new ManyCollection<Invoice>(this, InvoiceManager.Instance, "salaries_id", "Employee");
         }
 
         /// <summary>
@@ -150,6 +155,46 @@ namespace Ouatelse.Models
                     response.Add(ValidationResult.WRONG_MOBILEPHONENUMBER);
             }
             return response;
+        }
+
+        public int NumberOfCompleteInvoices()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid);
+        }
+
+        public int NumberOfInCompleteInvoices()
+        {
+            return Invoices.Items.Count(invoice => !invoice.IsPaid);
+        }
+
+        public int NumberOfTotalInvoices()
+        {
+            return Invoices.Items.Length;
+        }
+
+        public int NumberOfInvoicesCompleteInMonth()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month);
+        }
+
+        public double NumberOfExpenseInMonth()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public int NumberOfInvoicesCompleteInYear()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year);
+        }
+
+        public double NumberOfSellInYear()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public double NumberOfSellTotal()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
         }
     }
 }
