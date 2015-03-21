@@ -76,6 +76,7 @@ namespace Ouatelse.Forms
                         preferedProduct = preferedProdcuts.First().Key;
                 }
             }
+            `ReloadReduct();
         }
         #endregion
 
@@ -216,6 +217,15 @@ namespace Ouatelse.Forms
         {
             invoice.DiscountPercent = (float)this.reduct.Value;
             ReloadTotals();
+        }
+        #endregion
+
+        #region Chargement de la reduction
+        private void ReloadReduct()
+        {
+            invoice.DiscountPercent = invoice.Customer.ReductionAvailable() ? 10 : 0;
+            ReloadTotals();
+            
         }
         #endregion
 
