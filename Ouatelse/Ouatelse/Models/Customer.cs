@@ -301,7 +301,7 @@ namespace Ouatelse.Models
 
 
 
-        #region Le client peut prétendre à une réduction tous les 100€
+        #region Le client peut prétendre à une réduction si depuis la dernière facture avec réduction il y'a eu au moins 100€ de dépenser
         public bool ReductionAvailable()
         {
             return
