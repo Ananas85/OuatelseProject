@@ -46,16 +46,16 @@ namespace Ouatelse.Managers
 
         public static string CreationIndex()
         {
-            string query = "CREATE UNIQUE INDEX \"fk_factures_salaries1_idx\" ON factures (salaries_id); " + Environment.NewLine;
-            query += " CREATE UNIQUE INDEX \"fk_factures_clients1_idx\" ON factures (clients_id);" + Environment.NewLine;
-            query += "CREATE UNIQUE INDEX \"fk_factures_moyen_de_paiements1_idx\" ON factures (moyen_de_paiements_id); " + Environment.NewLine;
+            string query = "CREATE INDEX \"fk_factures_salaries1_idx\" ON factures (salaries_id); " + Environment.NewLine;
+            query += " CREATE INDEX \"fk_factures_clients1_idx\" ON factures (clients_id);" + Environment.NewLine;
+            query += "CREATE INDEX \"fk_factures_moyen_de_paiements1_idx\" ON factures (moyen_de_paiements_id); " + Environment.NewLine;
 
             return query;
         }
 
         public static string Fixtures()
         {
-            return "INSERT INTO factures VALUES (1, \"2015-03-09\", 0, 1, 41, 1, 0, 0);";
+            return "INSERT INTO factures VALUES (1, \"2015-03-09\", 0, 1, 41, 1, 0, 0); INSERT INTO factures VALUES (2, \"2016-03-09\", 10, 1, 41, 1, 1, 10);";
         }
     }
 }

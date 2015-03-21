@@ -91,7 +91,7 @@ namespace Ouatelse
         }
 
         #region Pour générer la base de données de tests avec des données
-        private void InitDatabase()
+        public void InitDatabase()
         {
             SQLiteCommand cmd = this.connection.CreateCommand();
             //Setup the Pragma
