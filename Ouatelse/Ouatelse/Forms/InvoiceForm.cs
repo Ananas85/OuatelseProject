@@ -202,11 +202,25 @@ namespace Ouatelse.Forms
             // On regarde si il n'existe pas déjà un produit
             foreach (InvoiceProduct invoiceProduct in invoice.Products.Items.Where(invoiceProduct => product.EANCode == invoiceProduct.Product.EANCode))
             {
+                if (product.CurrentStock - invoiceProduct.Quantity - 1 < 0)
+                {
+                    Utils.Error(string.Format("Impossible ! Le stock n'est pas suffisant !\nStock restant : {0}", product.CurrentStock));
+                    this.quickAdd.Text = "";
+                    return;
+                }
+
                 invoiceProduct.Quantity++;
                 InvoiceProductManager.Instance.Save(invoiceProduct);
                 ReloadProducts();
                 this.quickAdd.Text = "";
                 this.quickAdd.SelectAll();
+                return;
+            }
+
+            if (product.CurrentStock - 1 < 0)
+            {
+                Utils.Error(string.Format("Impossible ! Le stock n'est pas suffisant !\nStock restant : {0}", product.CurrentStock));
+                this.quickAdd.Text = "";
                 return;
             }
 
@@ -305,7 +319,16 @@ namespace Ouatelse.Forms
             QuantityForm form = new QuantityForm(product);
             if (form.ShowDialog() != DialogResult.OK)
                 return;
-            product.Quantity = (int) form.Quantity;
+
+            int qte = (int) form.Quantity;
+
+            if (product.Product.CurrentStock - qte < 0)
+            {
+                Utils.Error(string.Format("Impossible ! Le stock n'est pas suffisant !\nStock restant : {0}", product.Product.CurrentStock));
+                return;
+            }
+
+            product.Quantity = qte;
             ReloadProducts();
         }
         #endregion
