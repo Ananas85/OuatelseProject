@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
@@ -37,7 +38,8 @@ namespace Ouatelse.Models
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
             this.Customer = CustomerManager.Instance.Find(cursor.Read().ToString());
             this.Payment = PaymentManager.Instance.Find(cursor.Read().ToString());
-            this.IsPaid = cursor.Read().ToString() == "True";
+            string isPaid = cursor.Read().ToString();
+            this.IsPaid = isPaid == "True" || isPaid == "1";
             this.PaidAmount = Convert.ToSingle(cursor.Read().ToString());
         }
 

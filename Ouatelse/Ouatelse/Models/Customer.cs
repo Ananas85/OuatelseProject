@@ -310,24 +310,32 @@ namespace Ouatelse.Models
         }
         #endregion
 
+        /// <summary>
+        /// Retourne le nombre de fois qu'un produit a été acheté par le client
+        /// Clé : le produit
+        /// Valeur : le nombre de fois dont il a été acheté
+        /// </summary>
         public Dictionary<Product, int> PreferedProdcuts
         {
             get
             {
                 Dictionary<Product, int> res = new Dictionary<Product, int>();
+                // On récupère les factures du client
                 Invoices.Reload();
 
                 foreach (Invoice invoice in Invoices.Items)
                 {
+                    // On parcourt les produits acheté dans cette facture
                     invoice.Products.Reload();
                     foreach (InvoiceProduct product in invoice.Products.Items)
                     {
-                        if (!res.ContainsKey(product.Product))
+                        if (!res.ContainsKey(product.Product))      // Si ce produit n'est pas encore dans le dict, on l'ajoute
                             res.Add(product.Product, 0);
-                        res[product.Product] += product.Quantity;
+                        res[product.Product] += product.Quantity;   // En on incrémente le nombre d'achat pour ce produit
+                                                                    // par la quantité achetée dans cette facture
                     }
                 }
-
+                // On retourne le dict en triant sur la valeur (les produits les plus achétés en premier)
                 return res.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
             }
         }

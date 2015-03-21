@@ -84,6 +84,7 @@ namespace Ouatelse
                 products.SubItems.Add(p.SellPrice.ToString());
                 products.SubItems.Add(p.TVA.ToString());
                 products.SubItems.Add(p.EANCode.ToString());
+                products.SubItems.Add(Stock.getCurrentStock(p, Properties.Settings.Default.CurrentStore).ToString());
 
                 //Liaison de la ligne à l'objet
                 products.Tag = p;

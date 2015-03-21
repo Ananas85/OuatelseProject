@@ -51,6 +51,7 @@
             this.customerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductsNumber = new System.Windows.Forms.Label();
+            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rightClickProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -142,7 +143,8 @@
             this.pixAchat,
             this.prixVente,
             this.tva,
-            this.ean});
+            this.ean,
+            this.stock});
             this.productListView.ContextMenuStrip = this.rightClickProduct;
             this.productListView.FullRowSelect = true;
             this.productListView.GridLines = true;
@@ -166,7 +168,7 @@
             // nom
             // 
             this.nom.Text = "Nom";
-            this.nom.Width = 150;
+            this.nom.Width = 143;
             // 
             // designation
             // 
@@ -191,7 +193,7 @@
             // ean
             // 
             this.ean.Text = "Code EAN";
-            this.ean.Width = 193;
+            this.ean.Width = 136;
             // 
             // rightClickProduct
             // 
@@ -267,6 +269,11 @@
             this.ProductsNumber.Text = "--";
             this.ProductsNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // stock
+            // 
+            this.stock.Text = "Stock";
+            this.stock.Width = 74;
+            // 
             // ManageProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +329,7 @@
         private System.Windows.Forms.ContextMenuStrip rightClickProduct;
         private System.Windows.Forms.ToolStripMenuItem modifierCeProduitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerCeProduitToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader stock;
 
     }
 }

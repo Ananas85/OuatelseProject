@@ -20,7 +20,6 @@ namespace Ouatelse.Forms
         /// </summary>
         Product product = null;
         List<Store> storeList = null;
-        List<Stock> stockList = null;
         int action = 0;
         Stock obj = new Stock();
 
@@ -85,14 +84,10 @@ namespace Ouatelse.Forms
             {
                 this.City.Text = ((Store)this.Address.SelectedItem).City.Name;
                 this.IdStore.Text = ((Store)this.Address.SelectedItem).Id.ToString();
-                this.stockList = new List<Stock>(StockManager.Instance.Filter("WHERE produits_id = " + this.product.Id + " AND magasin_id = " + ((Store)this.Address.SelectedItem).Id + ";"));
+                //this.stockList = new List<Stock>(StockManager.Instance.Filter("WHERE produits_id = " + this.product.Id + " AND magasin_id = " + ((Store)this.Address.SelectedItem).Id + ";"));
                 this.obj.Store = (Store)this.Address.SelectedItem;
                 this.obj.Quantity = 0;
-                foreach (Stock s in stockList)
-                {
-                    this.obj.Quantity += s.Quantity;
-                }
-                this.stockLabel.Text = "En stock : " + this.obj.Quantity;
+                this.stockLabel.Text = "En stock : " + Stock.getCurrentStock(this.product, (Store)this.Address.SelectedItem);
                 return;
             }
             this.City.Text = String.Empty;

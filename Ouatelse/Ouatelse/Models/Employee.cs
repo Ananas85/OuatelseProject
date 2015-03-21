@@ -196,5 +196,10 @@ namespace Ouatelse.Models
         {
             return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
         }
+
+        public string FullName
+        {
+            get { return string.Format("{0} {1}", FirstName, LastName); }
+        }
     }
 }
