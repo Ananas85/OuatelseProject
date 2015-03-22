@@ -45,14 +45,16 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("date", Date.ToString("yyyy-MM-dd"));
-            res.Add("pourcentage_remise", DiscountPercent.ToString());
-            res.Add("salaries_id", Employee.Id.ToString());
-            res.Add("clients_id", Customer == null ? "0" : Customer.Id.ToString());
-            res.Add("moyen_de_paiements_id", Payment.Id.ToString());
-            res.Add("estPaye", IsPaid ? "1" : "0");
-            res.Add("montantPaye", PaidAmount.ToString(CultureInfo.InvariantCulture));
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"date", Date.ToString("yyyy-MM-dd")},
+                {"pourcentage_remise", DiscountPercent.ToString(CultureInfo.CurrentCulture)},
+                {"salaries_id", Employee.Id.ToString()},
+                {"clients_id", Customer == null ? "0" : Customer.Id.ToString()},
+                {"moyen_de_paiements_id", Payment.Id.ToString()},
+                {"estPaye", IsPaid ? "1" : "0"},
+                {"montantPaye", PaidAmount.ToString(CultureInfo.InvariantCulture)}
+            };
             return res;
         }
 
@@ -108,6 +110,11 @@ namespace Ouatelse.Models
                 List<string> res = Products.Items.Select(invoiceProduct => string.Format("{0}x {1}", invoiceProduct.Quantity, invoiceProduct.Product.Name)).ToList();
                 return String.Join(@", ", res);
             }
+        }
+
+        public bool isValid
+        {
+            get { return Customer != null; }
         }
     }
 }

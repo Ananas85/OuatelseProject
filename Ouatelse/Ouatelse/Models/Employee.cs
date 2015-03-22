@@ -160,12 +160,12 @@ namespace Ouatelse.Models
 
         public int NumberOfCompleteInvoices()
         {
-            return Invoices.Items.Count(invoice => invoice.IsPaid);
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.isValid);
         }
 
         public double NumberOfSellCompleteTotal()
         {
-            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.isValid).Sum(invoice => invoice.TotalTTC);
         }
 
         public int NumberOfInCompleteInvoices()
@@ -185,27 +185,27 @@ namespace Ouatelse.Models
 
         public double NumberOfSellTotal()
         {
-            return Invoices.Items.Sum(invoice => invoice.TotalTTC);
+            return Invoices.Items.Where(invoice => invoice.isValid).Sum(invoice => invoice.TotalTTC);
         }
 
         public int NumberOfInvoicesCompleteInMonth()
         {
-            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month);
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month && invoice.isValid);
         }
 
         public double NumberOfSellInMonth()
         {
-            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month).Sum(invoice => invoice.TotalTTC);
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.isValid && invoice.Date.Month == DateTime.Now.Month).Sum(invoice => invoice.TotalTTC);
         }
 
         public int NumberOfInvoicesCompleteInYear()
         {
-            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year);
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.isValid && invoice.Date.Year == DateTime.Now.Year);
         }
 
         public double NumberOfSellInYear()
         {
-            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.isValid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
         }
 
         public string FullName
