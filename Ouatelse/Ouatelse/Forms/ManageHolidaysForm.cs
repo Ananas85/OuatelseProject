@@ -584,12 +584,12 @@ namespace Ouatelse.Forms
         public void customEnabledStyle(Button b)
         {
             b.Enabled = true;
-            if (b.Tag == "ACCEPT" || b.Tag == "NEW")
+            if ((string) b.Tag == "ACCEPT" || (string) b.Tag == "NEW")
                 b.BackColor = Color.MediumSeaGreen;
-            else if (b.Tag == "DISMISS" || b.Tag == "DELETE")
+            else if ((string) b.Tag == "DISMISS" || (string) b.Tag == "DELETE")
                 b.BackColor = Color.IndianRed;
             else
-                b.BackColor = Color.DarkOrange;
+                b.BackColor = Color.DodgerBlue;
             b.ForeColor = SystemColors.ButtonFace;
         }
 

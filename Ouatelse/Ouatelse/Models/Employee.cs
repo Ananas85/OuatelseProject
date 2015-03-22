@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -162,9 +163,19 @@ namespace Ouatelse.Models
             return Invoices.Items.Count(invoice => invoice.IsPaid);
         }
 
+        public double NumberOfSellCompleteTotal()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+        }
+
         public int NumberOfInCompleteInvoices()
         {
             return Invoices.Items.Count(invoice => !invoice.IsPaid);
+        }
+
+        public double NumberOfSellUnCompleteTotal()
+        {
+            return Invoices.Items.Where(invoice => !invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
         }
 
         public int NumberOfTotalInvoices()
@@ -172,12 +183,17 @@ namespace Ouatelse.Models
             return Invoices.Items.Length;
         }
 
+        public double NumberOfSellTotal()
+        {
+            return Invoices.Items.Sum(invoice => invoice.TotalTTC);
+        }
+
         public int NumberOfInvoicesCompleteInMonth()
         {
             return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month);
         }
 
-        public double NumberOfExpenseInMonth()
+        public double NumberOfSellInMonth()
         {
             return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month).Sum(invoice => invoice.TotalTTC);
         }
@@ -190,11 +206,6 @@ namespace Ouatelse.Models
         public double NumberOfSellInYear()
         {
             return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
-        }
-
-        public double NumberOfSellTotal()
-        {
-            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
         }
 
         public string FullName

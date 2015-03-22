@@ -16,6 +16,6 @@ namespace Ouatelse
         /// <summary>
         /// Libère les ressources ( ici ferme la connexion ) 
         /// </summary>
-        void Dispose();
+        new void Dispose();
     }
 }

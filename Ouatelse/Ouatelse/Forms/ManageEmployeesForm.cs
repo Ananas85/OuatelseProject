@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace Ouatelse.Forms
 
             // Chargement des salariés dans la liste
             Reload(EmployeeManager.Instance.All());
+            ReloadStats();
+
         }
         #endregion
 
@@ -44,6 +47,28 @@ namespace Ouatelse.Forms
         {
             //Si c'est vide ça recharge tous les clients
             Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';"));
+        }
+
+
+        private void ReloadStats()
+        {
+            Employee[] currentStoreEmployee =
+                EmployeeManager.Instance.Filter("WHERE magasin_id = " + AuthManager.Instance.User.Store.Id);
+            Employee bestEmployee = currentStoreEmployee[0];
+            Employee bestEmployeeOfMonth = currentStoreEmployee[0];
+            Employee bestEmployeeOfYear = currentStoreEmployee[0];
+            foreach (Employee e in currentStoreEmployee)
+            {
+                e.Invoices.Reload();
+                Utils.Info(e.NumberOfSellTotal().ToString(CultureInfo.CurrentCulture));
+                if (e.NumberOfSellTotal() >= bestEmployee.NumberOfSellTotal())
+                {
+                    bestEmployee = e;
+                }
+            }
+            this.bestEmployee.Text = bestEmployee.FullName;
+            this.bestEmployeeMonth.Text = bestEmployeeOfMonth.FullName;
+            this.bestEmployeeOfTheYear.Text = bestEmployeeOfYear.FullName;
         }
         #endregion
 

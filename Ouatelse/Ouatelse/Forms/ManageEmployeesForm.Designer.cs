@@ -48,6 +48,13 @@
             this.employeeLabel = new System.Windows.Forms.Label();
             this.employeesNumber = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bestEmployee = new System.Windows.Forms.Label();
+            this.bestEmployeeMonth = new System.Windows.Forms.Label();
+            this.bestEmployeeOfTheYear = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.rightClickEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -232,10 +239,87 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.label1.Location = new System.Drawing.Point(597, -2);
+            this.label1.Location = new System.Drawing.Point(580, -2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(338, 119);
             this.label1.TabIndex = 34;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(541, 34);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(136, 20);
+            this.label.TabIndex = 35;
+            this.label.Text = "Meilleur employé : ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(534, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(193, 20);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Meilleur employé du mois : ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(526, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(208, 20);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Meilleur employé de l\'année : ";
+            // 
+            // bestEmployee
+            // 
+            this.bestEmployee.AutoSize = true;
+            this.bestEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.bestEmployee.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bestEmployee.Location = new System.Drawing.Point(733, 34);
+            this.bestEmployee.Name = "bestEmployee";
+            this.bestEmployee.Size = new System.Drawing.Size(50, 20);
+            this.bestEmployee.TabIndex = 38;
+            this.bestEmployee.Text = "label4";
+            // 
+            // bestEmployeeMonth
+            // 
+            this.bestEmployeeMonth.AutoSize = true;
+            this.bestEmployeeMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.bestEmployeeMonth.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bestEmployeeMonth.Location = new System.Drawing.Point(733, 65);
+            this.bestEmployeeMonth.Name = "bestEmployeeMonth";
+            this.bestEmployeeMonth.Size = new System.Drawing.Size(50, 20);
+            this.bestEmployeeMonth.TabIndex = 39;
+            this.bestEmployeeMonth.Text = "label5";
+            // 
+            // bestEmployeeOfTheYear
+            // 
+            this.bestEmployeeOfTheYear.AutoSize = true;
+            this.bestEmployeeOfTheYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.bestEmployeeOfTheYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bestEmployeeOfTheYear.Location = new System.Drawing.Point(733, 95);
+            this.bestEmployeeOfTheYear.Name = "bestEmployeeOfTheYear";
+            this.bestEmployeeOfTheYear.Size = new System.Drawing.Size(50, 20);
+            this.bestEmployeeOfTheYear.TabIndex = 40;
+            this.bestEmployeeOfTheYear.Text = "label6";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(630, 1);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(184, 25);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "Statistiques magasin";
             // 
             // ManageEmployeesForm
             // 
@@ -245,7 +329,13 @@
             this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(913, 505);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.bestEmployeeOfTheYear);
+            this.Controls.Add(this.bestEmployeeMonth);
+            this.Controls.Add(this.bestEmployee);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.employeesNumber);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.DeleteEmployeeButton);
@@ -254,6 +344,7 @@
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.listView_employees);
+            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(929, 544);
@@ -287,5 +378,12 @@
         private System.Windows.Forms.ToolStripMenuItem deleteThisEmployee;
         private System.Windows.Forms.ColumnHeader reference;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label bestEmployee;
+        private System.Windows.Forms.Label bestEmployeeMonth;
+        private System.Windows.Forms.Label bestEmployeeOfTheYear;
+        private System.Windows.Forms.Label label7;
     }
 }

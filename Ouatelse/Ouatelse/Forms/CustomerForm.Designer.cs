@@ -784,7 +784,6 @@
         private System.Windows.Forms.CheckBox EmailOnUpdate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ListView invoices;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader adresse;
         private System.Windows.Forms.ColumnHeader code_postal;
         private System.Windows.Forms.ColumnHeader pays;
