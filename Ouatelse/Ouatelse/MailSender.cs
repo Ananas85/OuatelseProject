@@ -307,6 +307,7 @@ namespace Ouatelse
             body = body.Replace("FIRSTNAME", cust.FirstName);
             sendMail(cust.Email, "Ouatelse : Envoi de facture", body, attachement);
         }
+        #endregion
 
         #region Mail en cas de demande d'assistance
         /// <summary>
