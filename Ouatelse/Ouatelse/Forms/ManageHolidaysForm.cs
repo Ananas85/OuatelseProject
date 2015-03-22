@@ -477,6 +477,17 @@ namespace Ouatelse.Forms
             }
             else
             {
+                if (this.listView.SelectedItems.Count == 0)
+                {
+                    Utils.Error("Veuillez sélectionner un congé à l'aide de la liste de droite");
+                    return;
+                }
+                if (this.listView.SelectedItems[0].BackColor != Color.Orange)
+                {
+                    Utils.Error("Le congé sélectionné est déja validé");
+                    return;
+                }
+
                 date = new DateTime(currentYear, this.holidays.SelectedCells[0].RowIndex + 1, this.holidays.SelectedCells[0].ColumnIndex + 1);
                 holiday = HolidayManager.Instance.FilterAllByDate(date)[0];
             }
