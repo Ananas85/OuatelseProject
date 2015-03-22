@@ -302,9 +302,8 @@ namespace Ouatelse
         public void sendInvoice(Customer cust, Attachment attachement)
         {
             string htmlContent = Ouatelse.Properties.Resources.invoiceDone;
-            string body = htmlContent.Replace("GENDER", cust.Gender.Name);
-            body = body.Replace("LASTNAME", cust.LastName);
-            body = body.Replace("FIRSTNAME", cust.FirstName);
+            string body = htmlContent.Replace("CIVI", cust.Gender.Name);
+            body = body.Replace("NAME", cust.LastName);
             sendMail(cust.Email, "Ouatelse : Envoi de facture", body, attachement);
         }
         #endregion

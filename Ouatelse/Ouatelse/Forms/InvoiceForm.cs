@@ -164,6 +164,7 @@ namespace Ouatelse.Forms
             invoice.Payment = (Payment) this.PaymentMethods.SelectedItem;
 
             InvoiceManager.Instance.Save(invoice);
+           // MailSender.Instance.sendInvoice(invoice.Customer,) ** SEND MAIL IF CUSTOMER HAS MAIL ADDRESS + GENERATE .PDF => PARAMETER **
             DialogResult = DialogResult.OK;
         }
         #endregion
