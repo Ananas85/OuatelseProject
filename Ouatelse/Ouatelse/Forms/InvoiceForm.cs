@@ -329,6 +329,7 @@ namespace Ouatelse.Forms
             }
 
             product.Quantity = qte;
+            InvoiceProductManager.Instance.Save(product);
             ReloadProducts();
         }
         #endregion
