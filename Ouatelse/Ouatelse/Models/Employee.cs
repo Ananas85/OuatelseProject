@@ -113,8 +113,6 @@ namespace Ouatelse.Models
                     if (EmployeeManager.Instance.Filter("WHERE identifiant = \"" + this.Username + "\"").Length >= 1)
                         response.Add(ValidationResult.ALREADY_USED_USERNAME);
                 }
-                else
-                    response.Add(ValidationResult.WRONG_USERNAME);
             }
             else
                 response.Add(ValidationResult.WRONG_USERNAME);

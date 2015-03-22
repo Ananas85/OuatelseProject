@@ -202,8 +202,9 @@ namespace Ouatelse
         /// <param name="emp">L'utilisateur à modifier</param>
         public void modifyEmployee(Employee emp)
         {
-            string htmlContent = Ouatelse.Properties.Resources.modifiedCustomer;
+            string htmlContent = Ouatelse.Properties.Resources.modifiedEmployee;
             string body = htmlContent.Replace("GENDER", emp.Gender.Name);
+            body = body.Replace("ID", emp.Username);
             body = body.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
             if (String.IsNullOrWhiteSpace(emp.Address2))
