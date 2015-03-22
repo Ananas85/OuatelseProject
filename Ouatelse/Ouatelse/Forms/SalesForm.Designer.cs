@@ -234,7 +234,7 @@
             this.Controls.Add(this.searchBox);
             this.Name = "SalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "SalesForm";
+            this.Text = "Ouatelse - Gestion des ventes";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

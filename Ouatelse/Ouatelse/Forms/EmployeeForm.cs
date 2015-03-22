@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -73,8 +74,43 @@ namespace Ouatelse.Forms
             b.Populate();
             this.currentUser = this.Username.Text;
             this.currentMail = this.Email.Text;
+
+            ReloadInvoices();
         }
         #endregion
+
+        private void ReloadInvoices()
+        {
+            this.obj.Invoices.Reload();
+            foreach (Invoice invoice in this.obj.Invoices.Items)
+            {
+                ListViewItem item = this.invoices.Items.Add(invoice.Id.ToString());
+                item.UseItemStyleForSubItems = false;
+                item.SubItems.Add(invoice.Date.ToShortDateString());
+                item.SubItems.Add(invoice.ProductsString);
+                item.SubItems.Add(invoice.TotalTTC.ToString("C"));
+                item.SubItems.Add(invoice.PaidAmount.ToString("C"));
+                item.SubItems[0].BackColor = invoice.IsPaid ? Color.LimeGreen : Color.Orange;
+                item.SubItems[0].ForeColor = invoice.IsPaid ? Color.White : Color.Black;
+                item.Tag = invoice;
+            }
+
+            ReloadStats();
+        }
+
+        private void ReloadStats()
+        {
+            this.NumberTotalOfInvoice.Text = obj.NumberOfTotalInvoices().ToString();
+            this.ExpenseTotalOfInvoice.Text = obj.NumberOfSellTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfPaidInvoices.Text = obj.NumberOfCompleteInvoices().ToString();
+            this.ExpenseTotalOfPaidInvoices.Text = obj.NumberOfSellCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfUnpaidInvoices.Text = obj.NumberOfInCompleteInvoices().ToString();
+            this.ExpenseTotalOfUnpaidInvoices.Text = obj.NumberOfSellUnCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInMonth.Text = obj.NumberOfInvoicesCompleteInMonth().ToString();
+            this.ExpenseOfCompleteInvoiceInMonth.Text = obj.NumberOfSellInMonth().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInYear.Text = obj.NumberOfInvoicesCompleteInYear().ToString();
+            this.ExpenseOfCompleteInvoiceInYear.Text = obj.NumberOfSellInYear().ToString(CultureInfo.CurrentCulture);
+        }
 
         #region Méthode d'évenement du clic sur le bouton de validation
         /// <summary>

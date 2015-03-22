@@ -43,6 +43,7 @@
             this.prixVente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tva = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ean = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rightClickProduct = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifierCeProduitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerCeProduitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +52,6 @@
             this.customerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductsNumber = new System.Windows.Forms.Label();
-            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rightClickProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button3.BackColor = System.Drawing.Color.DarkCyan;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,7 +118,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button4.BackColor = System.Drawing.Color.DarkOrange;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,6 +195,11 @@
             this.ean.Text = "Code EAN";
             this.ean.Width = 136;
             // 
+            // stock
+            // 
+            this.stock.Text = "Stock";
+            this.stock.Width = 74;
+            // 
             // rightClickProduct
             // 
             this.rightClickProduct.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -268,11 +273,6 @@
             this.ProductsNumber.TabIndex = 48;
             this.ProductsNumber.Text = "--";
             this.ProductsNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // stock
-            // 
-            this.stock.Text = "Stock";
-            this.stock.Width = 74;
             // 
             // ManageProductsForm
             // 

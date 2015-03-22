@@ -77,20 +77,11 @@ namespace Ouatelse.Forms
             b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
 
-            this.NumberTotalOfInvoice.Text = obj.NumberOfTotalInvoices().ToString();
-            this.ExpenseTotalOfInvoice.Text = obj.NumberOfExpenseTotal().ToString(CultureInfo.CurrentCulture);
-            this.NumberTotalOfPaidInvoices.Text = obj.NumberOfCompleteInvoices().ToString();
-            this.ExpenseTotalOfPaidInvoices.Text = obj.NumberOfExpenseCompleteTotal().ToString(CultureInfo.CurrentCulture);
-            this.NumberTotalOfUnpaidInvoices.Text = obj.NumberOfInCompleteInvoices().ToString();
-            this.ExpenseTotalOfUnpaidInvoices.Text = obj.NumberOfExpenseUnCompleteTotal().ToString(CultureInfo.CurrentCulture);
-            this.numberOfCompleteInvoiceInMonth.Text = obj.NumberOfInvoicesCompleteInMonth().ToString();
-            this.ExpenseOfCompleteInvoiceInMonth.Text = obj.NumberOfExpenseInMonth().ToString(CultureInfo.CurrentCulture);
-            this.numberOfCompleteInvoiceInYear.Text = obj.NumberOfInvoicesCompleteInYear().ToString();
-            this.ExpenseOfCompleteInvoiceInYear.Text = obj.NumberOfExpenseInYear().ToString(CultureInfo.CurrentCulture);
-
+           
             // Chargement des factures
             ReloadInvoices();
         }
+        #endregion
 
         private void ReloadInvoices()
         {
@@ -107,9 +98,23 @@ namespace Ouatelse.Forms
                 item.SubItems[0].ForeColor = invoice.IsPaid ? Color.White : Color.Black;
                 item.Tag = invoice;
             }
+            
+            ReloadStats();
         }
 
-        #endregion
+        private void ReloadStats()
+        {
+            this.NumberTotalOfInvoice.Text = obj.NumberOfTotalInvoices().ToString();
+            this.ExpenseTotalOfInvoice.Text = obj.NumberOfExpenseTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfPaidInvoices.Text = obj.NumberOfCompleteInvoices().ToString();
+            this.ExpenseTotalOfPaidInvoices.Text = obj.NumberOfExpenseCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfUnpaidInvoices.Text = obj.NumberOfInCompleteInvoices().ToString();
+            this.ExpenseTotalOfUnpaidInvoices.Text = obj.NumberOfExpenseUnCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInMonth.Text = obj.NumberOfInvoicesCompleteInMonth().ToString();
+            this.ExpenseOfCompleteInvoiceInMonth.Text = obj.NumberOfExpenseInMonth().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInYear.Text = obj.NumberOfInvoicesCompleteInYear().ToString();
+            this.ExpenseOfCompleteInvoiceInYear.Text = obj.NumberOfExpenseInYear().ToString(CultureInfo.CurrentCulture);
+        }
 
         #region Gestion de la validation du formulaire
         private void validateButton_Click_1(object sender, EventArgs e)
