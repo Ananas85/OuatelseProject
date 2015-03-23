@@ -328,5 +328,16 @@ namespace Ouatelse.Forms
         }
         #endregion
 
+        private void invoices_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = this.invoices.GetItemAt(e.X, e.Y);
+            if (item == null)
+                return;
+
+            Invoice invoice = (Invoice)item.Tag;
+            if (new InvoiceForm(invoice).ShowDialog() == DialogResult.OK)
+                ReloadInvoices();
+        }
+
     }
 }

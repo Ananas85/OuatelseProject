@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
+using Codaxy.WkHtmlToPdf;
 using Ouatelse.Managers;
 using Ouatelse.Models;
+using Pechkin;
 
 namespace Ouatelse.Forms
 {
@@ -164,6 +168,12 @@ namespace Ouatelse.Forms
             invoice.Payment = (Payment) this.PaymentMethods.SelectedItem;
 
             InvoiceManager.Instance.Save(invoice);
+            if (invoice.Customer.Email != null)
+            {
+                byte[] pdfBuf = new SimplePechkin(new GlobalConfig()).Convert(this.InvoiceHTML());
+                Attachment att = new Attachment(new MemoryStream(pdfBuf), "Invoice-" + invoice.Id.ToString() + "-" + DateTime.Now.ToShortDateString()+".pdf");
+                MailSender.Instance.sendInvoice(invoice.Customer, att);
+            }
             DialogResult = DialogResult.OK;
         }
         #endregion
@@ -334,12 +344,12 @@ namespace Ouatelse.Forms
         }
         #endregion
 
-        private void button4_Click(object sender, EventArgs e)
+        private string InvoiceHTML()
         {
             StringBuilder html = new StringBuilder();
             Store store = Properties.Settings.Default.CurrentStore;
             CultureInfo fr = CultureInfo.GetCultureInfo("fr");
-            
+
             html.Append("<html>");
             html.Append("<head>");
             html.Append("<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>");
@@ -442,7 +452,17 @@ namespace Ouatelse.Forms
             html.Append("</body>");
             html.Append("</html>");
 
-            this.webBrowser1.DocumentText = html.ToString();
+            return html.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (invoice.Customer == null)
+            {
+                Utils.Error("Vous n'avez pas selectionné de client");
+                return;
+            }
+            this.webBrowser1.DocumentText = InvoiceHTML();
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

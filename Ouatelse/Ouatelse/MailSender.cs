@@ -88,6 +88,44 @@ namespace Ouatelse
         }
         #endregion
 
+        #region Envoi de mail avec attachement
+        /// <summary>
+        /// La méthode qui permet d'envoyer des mail
+        /// </summary>
+        /// <param name="to">L'adresse destinataire</param>
+        /// <param name="subject">Le sujet du mail</param>
+        /// <param name="body">Le contenu du mail</param>
+        public void sendMail(string to, string subject, string body, Attachment attachment)
+        {
+            MailMessage message = new MailMessage();
+            SmtpClient smtpClient = new SmtpClient();
+            try
+            {
+                MailAddress fromAddress = new MailAddress(SendersAddress);
+                message.From = fromAddress;
+                message.To.Add(new MailAddress(to));
+                message.To.Add(new MailAddress(SendersAddress));
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = body;
+                message.Attachments.Add(attachment);
+                // We use gmail as our smtp client
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.EnableSsl = false;
+                smtpClient.Host = MailCredentials.SMTPServer;
+                smtpClient.Port = MailCredentials.Port;
+                smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
+                smtpClient.Send(message);
+                Utils.Notify("Mail envoyé avec succès");
+            }
+            catch
+            {
+                Utils.Error("Mail non envoyé ");
+            }
+        }
+        #endregion
+
         #region Mail en cas de perte de mot de passe
         /// <summary>
         /// Mail à envoyer en cas de perte de mot de passe
@@ -202,8 +240,9 @@ namespace Ouatelse
         /// <param name="emp">L'utilisateur à modifier</param>
         public void modifyEmployee(Employee emp)
         {
-            string htmlContent = Ouatelse.Properties.Resources.modifiedCustomer;
+            string htmlContent = Ouatelse.Properties.Resources.modifiedEmployee;
             string body = htmlContent.Replace("GENDER", emp.Gender.Name);
+            body = body.Replace("ID", emp.Username);
             body = body.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
             if (String.IsNullOrWhiteSpace(emp.Address2))
@@ -256,6 +295,16 @@ namespace Ouatelse
             string body = htmlContent.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
             sendMail(emp.Email, "Ouatelse  : Suppression de compte utilisateur", body);
+        }
+        #endregion
+
+        #region Mail pour la facture
+        public void sendInvoice(Customer cust, Attachment attachement)
+        {
+            string htmlContent = Ouatelse.Properties.Resources.invoiceDone;
+            string body = htmlContent.Replace("CIVI", cust.Gender.Name);
+            body = body.Replace("NAME", cust.LastName);
+            sendMail(cust.Email, "Ouatelse : Envoi de facture", body, attachement);
         }
         #endregion
 

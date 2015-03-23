@@ -70,7 +70,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Suppression client&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt; [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot; [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string deleteCustomer {
             get {
@@ -88,7 +88,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Suppression salarié&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content= [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string deleteEmployee {
             get {
@@ -107,7 +107,7 @@ namespace Ouatelse.Properties {
         ///&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; conten [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string forgottenPassword {
             get {
@@ -122,6 +122,24 @@ namespace Ouatelse.Properties {
             get {
                 object obj = ResourceManager.GetObject("group", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+        ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+        ///&lt;title&gt;Suppression client&lt;/title&gt;
+        ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
+        ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot; [le reste de la chaîne a été tronqué]&quot;;.
+        /// </summary>
+        internal static string invoiceDone {
+            get {
+                return ResourceManager.GetString("invoiceDone", resourceCulture);
             }
         }
         
@@ -155,7 +173,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Modification d&apos;un client&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE= [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; con [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string modifiedCustomer {
             get {
@@ -173,7 +191,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Modification d&apos;un salarié&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; co [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string modifiedEmployee {
             get {
@@ -191,8 +209,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Nouveau client&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;  
-        ///&lt; [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=e [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string newCustomer {
             get {
@@ -210,8 +227,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Nouveau salarié&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;  
-        /// [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE= [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string newEmployee {
             get {
@@ -329,8 +345,7 @@ namespace Ouatelse.Properties {
         ///&lt;title&gt;Assistance&lt;/title&gt;
         ///&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;  
         ///&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;  
-        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;  
-        ///&lt;meta [le reste de la chaîne a été tronqué]&quot;;.
+        ///&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string support {
             get {

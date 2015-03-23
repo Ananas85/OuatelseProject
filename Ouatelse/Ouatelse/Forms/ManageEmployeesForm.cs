@@ -54,16 +54,31 @@ namespace Ouatelse.Forms
         {
             Employee[] currentStoreEmployee =
                 EmployeeManager.Instance.Filter("WHERE magasin_id = " + AuthManager.Instance.User.Store.Id);
+            foreach (Employee e in currentStoreEmployee)
+            {
+                e.Invoices.Reload();
+                foreach (Invoice i in e.Invoices.Items)
+                {
+                    i.Products.Reload();
+                }
+                
+            }
             Employee bestEmployee = currentStoreEmployee[0];
             Employee bestEmployeeOfMonth = currentStoreEmployee[0];
             Employee bestEmployeeOfYear = currentStoreEmployee[0];
             foreach (Employee e in currentStoreEmployee)
             {
-                e.Invoices.Reload();
-                Utils.Info(e.NumberOfSellTotal().ToString(CultureInfo.CurrentCulture));
                 if (e.NumberOfSellTotal() >= bestEmployee.NumberOfSellTotal())
                 {
                     bestEmployee = e;
+                }
+                if (e.NumberOfSellInYear() >= bestEmployeeOfYear.NumberOfSellInYear())
+                {
+                    bestEmployeeOfYear = e;
+                }
+                if (e.NumberOfSellInMonth() >= bestEmployeeOfMonth.NumberOfSellInMonth())
+                {
+                    bestEmployeeOfMonth = e;
                 }
             }
             this.bestEmployee.Text = bestEmployee.FullName;
