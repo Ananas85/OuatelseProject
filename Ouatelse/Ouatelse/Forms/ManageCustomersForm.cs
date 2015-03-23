@@ -65,10 +65,6 @@ namespace Ouatelse
             else
                 this.CustomersNumber.Text += " client";
 
-            //Recherche du nombre total de client
-            //this.CustomersNumber.Text += " " + CustomerManager.Instance.Count().ToString();
-
-
             //Gestion de la couleur alternée entre les lignes
             bool alternativeColor = false;
 

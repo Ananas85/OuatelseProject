@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing.Design;
 using System.Runtime.Remoting;
+using System.Web.Hosting;
 
 
 namespace Ouatelse.Models
@@ -74,6 +76,11 @@ namespace Ouatelse.Models
         /// Si le client veut un mail en cas de modification de sa fiche
         /// </summary>
         public bool EmailOnUpdate { get; set; }
+
+        /// <summary>
+        /// Représente la relation récupérant les factures du client
+        /// </summary>
+        public ManyCollection<Invoice> Invoices { get; set; } 
         
 
         /// <summary>
@@ -90,6 +97,8 @@ namespace Ouatelse.Models
         {
             //Par défaut le client est né aujourd'hui
             DateOfBirth = DateTime.Now;
+
+            Invoices = new ManyCollection<Invoice>(this, InvoiceManager.Instance, "clients_id", "Customer");
         }
         #endregion
 
@@ -113,7 +122,7 @@ namespace Ouatelse.Models
             this.Comments = cursor.Read().ToString();
             this.City = CityManager.Instance.Find(cursor.Read().ToString());
             this.Gender = GenderManager.Instance.Find(cursor.Read().ToString());
-            this.EmailOnUpdate = bool.Parse(cursor.Read().ToString());
+            this.EmailOnUpdate = Convert.ToBoolean(cursor.Read());
 
         }
         #endregion
@@ -239,5 +248,107 @@ namespace Ouatelse.Models
                    " Gender : " + this.Gender.Name + Environment.NewLine;
         }
         #endregion
+
+        public int NumberOfCompleteInvoices()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid);
+        }
+
+        public double NumberOfExpenseCompleteTotal()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public int NumberOfInCompleteInvoices()
+        {
+            return Invoices.Items.Count(invoice => !invoice.IsPaid);
+        }
+
+        public double NumberOfExpenseUnCompleteTotal()
+        {
+            return Invoices.Items.Where(invoice => !invoice.IsPaid).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public int NumberOfTotalInvoices()
+        {
+            return Invoices.Items.Length;
+        }
+
+        public double NumberOfExpenseTotal()
+        {
+            return Invoices.Items.Sum(invoice => invoice.TotalTTC);
+        }
+
+        public int NumberOfInvoicesCompleteInMonth()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month);
+        }
+
+        public double NumberOfExpenseInMonth()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Month == DateTime.Now.Month).Sum(invoice => invoice.TotalTTC);
+        }
+
+        public int NumberOfInvoicesCompleteInYear()
+        {
+            return Invoices.Items.Count(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year);
+        }
+
+        public double NumberOfExpenseInYear()
+        {
+            return Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date.Year == DateTime.Now.Year).Sum(invoice => invoice.TotalTTC);
+        }
+
+        #region Le client peut prétendre à une réduction si depuis la dernière facture avec réduction il y'a eu au moins 100€ de dépenser
+        public bool ReductionAvailable()
+        {
+            if (Invoices.Items.Where(i => i.IsPaid && i.DiscountPercent > 0)
+                .OrderByDescending(i => i.Date).ToList().Count == 0)
+            {
+
+                if (this.NumberOfExpenseCompleteTotal() >= 100)
+                    return true;
+                else
+                    return false;
+            }
+                
+
+            return
+                Invoices.Items.Where(invoice => invoice.IsPaid && invoice.Date >=
+                                                Invoices.Items.Where(i => i.IsPaid && i.DiscountPercent > 0)
+                                                    .OrderByDescending(i => i.Date).First().Date)
+                    .Sum(invoice => invoice.TotalTTC) >= 100;
+        }
+        #endregion
+
+        /// <summary>
+        /// Retourne le nombre de fois qu'un produit a été acheté par le client
+        /// Clé : le produit
+        /// Valeur : le nombre de fois dont il a été acheté
+        /// </summary>
+        public Dictionary<Product, int> PreferedProdcuts
+        {
+            get
+            {
+                Dictionary<Product, int> res = new Dictionary<Product, int>();
+                // On récupère les factures du client
+                Invoices.Reload();
+
+                foreach (Invoice invoice in Invoices.Items)
+                {
+                    // On parcourt les produits acheté dans cette facture
+                    invoice.Products.Reload();
+                    foreach (InvoiceProduct product in invoice.Products.Items)
+                    {
+                        if (!res.ContainsKey(product.Product))      // Si ce produit n'est pas encore dans le dict, on l'ajoute
+                            res.Add(product.Product, 0);
+                        res[product.Product] += product.Quantity;   // En on incrémente le nombre d'achat pour ce produit
+                                                                    // par la quantité achetée dans cette facture
+                    }
+                }
+                // On retourne le dict en triant sur la valeur (les produits les plus achétés en premier)
+                return res.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+            }
+        }
     }
 }

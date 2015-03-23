@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,6 +22,8 @@ namespace Ouatelse.Forms
         List<City> cities = null;
         List<Role> roles = null;
         List<Store> stores = null;
+        string currentUser;
+        string currentMail;
         #endregion
 
         #region Constructeur
@@ -69,8 +72,45 @@ namespace Ouatelse.Forms
 
             b.Bind(this.EmailOnUpdate, "Checked", obj, "EmailOnUpdate");
             b.Populate();
+            this.currentUser = this.Username.Text;
+            this.currentMail = this.Email.Text;
+
+            ReloadInvoices();
         }
         #endregion
+
+        private void ReloadInvoices()
+        {
+            this.obj.Invoices.Reload();
+            foreach (Invoice invoice in this.obj.Invoices.Items)
+            {
+                ListViewItem item = this.invoices.Items.Add(invoice.Id.ToString());
+                item.UseItemStyleForSubItems = false;
+                item.SubItems.Add(invoice.Date.ToShortDateString());
+                item.SubItems.Add(invoice.ProductsString);
+                item.SubItems.Add(invoice.TotalTTC.ToString("C"));
+                item.SubItems.Add(invoice.PaidAmount.ToString("C"));
+                item.SubItems[0].BackColor = invoice.IsPaid ? Color.LimeGreen : Color.Orange;
+                item.SubItems[0].ForeColor = invoice.IsPaid ? Color.White : Color.Black;
+                item.Tag = invoice;
+            }
+
+            ReloadStats();
+        }
+
+        private void ReloadStats()
+        {
+            this.NumberTotalOfInvoice.Text = obj.NumberOfTotalInvoices().ToString();
+            this.ExpenseTotalOfInvoice.Text = obj.NumberOfSellTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfPaidInvoices.Text = obj.NumberOfCompleteInvoices().ToString();
+            this.ExpenseTotalOfPaidInvoices.Text = obj.NumberOfSellCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.NumberTotalOfUnpaidInvoices.Text = obj.NumberOfInCompleteInvoices().ToString();
+            this.ExpenseTotalOfUnpaidInvoices.Text = obj.NumberOfSellUnCompleteTotal().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInMonth.Text = obj.NumberOfInvoicesCompleteInMonth().ToString();
+            this.ExpenseOfCompleteInvoiceInMonth.Text = obj.NumberOfSellInMonth().ToString(CultureInfo.CurrentCulture);
+            this.numberOfCompleteInvoiceInYear.Text = obj.NumberOfInvoicesCompleteInYear().ToString();
+            this.ExpenseOfCompleteInvoiceInYear.Text = obj.NumberOfSellInYear().ToString(CultureInfo.CurrentCulture);
+        }
 
         #region Méthode d'évenement du clic sur le bouton de validation
         /// <summary>
@@ -84,7 +124,18 @@ namespace Ouatelse.Forms
             obj.Gender = (Gender)this.GenderName.SelectedItem;
             obj.City = (City)this.CityName.SelectedItem;
             obj.Store = (Store)this.Store.SelectedItem;
-            obj.Role = (Role)this.Role.SelectedItem; 
+            obj.Role = (Role)this.Role.SelectedItem;
+
+            if (currentUser == this.Username.Text)
+                EmployeeManager.Instance.UserChanged = false;
+            else
+                EmployeeManager.Instance.UserChanged = true;
+
+            if (currentMail == this.Email.Text)
+                EmployeeManager.Instance.MailChanged = false;
+            else
+                EmployeeManager.Instance.MailChanged = true;
+
             if (obj.validate().Count != 0)
             {
                 string error = String.Empty;
@@ -116,7 +167,6 @@ namespace Ouatelse.Forms
                             error += "Erreur dans la saisie du magasin ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_ROLE:
-
                             error += "Erreur dans la saisie du rôle ( elle doit obligatoirement être rempli )" + Environment.NewLine;
                             break;
                         case Employee.ValidationResult.WRONG_EMAIL:
@@ -277,6 +327,17 @@ namespace Ouatelse.Forms
             return obj;
         }
         #endregion
+
+        private void invoices_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = this.invoices.GetItemAt(e.X, e.Y);
+            if (item == null)
+                return;
+
+            Invoice invoice = (Invoice)item.Tag;
+            if (new InvoiceForm(invoice).ShowDialog() == DialogResult.OK)
+                ReloadInvoices();
+        }
 
     }
 }

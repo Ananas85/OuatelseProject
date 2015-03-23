@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageCustomersForm));
             this.customerLabel = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.customerListView = new System.Windows.Forms.ListView();
@@ -47,29 +47,19 @@
             this.modify = new System.Windows.Forms.Button();
             this.nouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CustomersNumber = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.rightClickCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(-27, -12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(953, 142);
-            this.label1.TabIndex = 4;
             // 
             // customerLabel
             // 
             this.customerLabel.AutoSize = true;
+            this.customerLabel.BackColor = System.Drawing.Color.Transparent;
             this.customerLabel.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerLabel.Location = new System.Drawing.Point(151, 44);
+            this.customerLabel.ForeColor = System.Drawing.Color.White;
+            this.customerLabel.Location = new System.Drawing.Point(191, 32);
             this.customerLabel.Name = "customerLabel";
             this.customerLabel.Size = new System.Drawing.Size(327, 47);
             this.customerLabel.TabIndex = 6;
@@ -232,16 +222,6 @@
             this.pictureBox2.TabIndex = 24;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Ouatelse.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // CustomersNumber
             // 
             this.CustomersNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -252,11 +232,23 @@
             this.CustomersNumber.Text = "--";
             this.CustomersNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.label1.Location = new System.Drawing.Point(630, -1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(306, 118);
+            this.label1.TabIndex = 4;
+            // 
             // ManageCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(913, 505);
             this.Controls.Add(this.CustomersNumber);
             this.Controls.Add(this.pictureBox2);
@@ -266,15 +258,14 @@
             this.Controls.Add(this.customerListView);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.customerLabel);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(929, 544);
             this.Name = "ManageCustomersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ouatelse : Gestion des clients";
             this.rightClickCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,8 +273,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label customerLabel;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.ListView customerListView;
@@ -302,6 +291,7 @@
         private System.Windows.Forms.ContextMenuStrip rightClickCustomer;
         private System.Windows.Forms.ToolStripMenuItem modifierCeClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerCeClientToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
 
 
     }

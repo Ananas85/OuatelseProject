@@ -15,6 +15,6 @@ namespace Ouatelse.Managers
         T Find(object id);
 
         bool Save(BaseModel model);
-
+        bool Truncate();
     }
 }

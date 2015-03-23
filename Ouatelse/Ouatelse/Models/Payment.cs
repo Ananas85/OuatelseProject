@@ -28,8 +28,7 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("type", Type);
+            Dictionary<string, string> res = new Dictionary<string, string> {{"type", Type}};
             return res;
         }
     }

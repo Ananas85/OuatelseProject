@@ -43,8 +43,8 @@ namespace Ouatelse
                 if (_instance == null)
                 {
                     _instance = new MailSender();
-                    SendersAddress = "ouatelse.contact@gmail.com";
-                    SendersPassword = "ouatelse";
+                    SendersAddress = MailCredentials.Username;
+                    SendersPassword = MailCredentials.Password;
                 }
                 return _instance;
             }
@@ -74,12 +74,50 @@ namespace Ouatelse
                 // We use gmail as our smtp client
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.UseDefaultCredentials = false;
-                smtpClient.EnableSsl = true;
-                smtpClient.Host = "smtp.gmail.com";
-                smtpClient.Port = 587;
+                smtpClient.EnableSsl = false;
+                smtpClient.Host = MailCredentials.SMTPServer;
+                smtpClient.Port = MailCredentials.Port;
                 smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
                 smtpClient.Send(message);
-                //Utils.Info("Mail envoyé avec succès");
+                Utils.Notify("Mail envoyé avec succès");
+            }
+            catch
+            {
+                Utils.Error("Mail non envoyé ");
+            }
+        }
+        #endregion
+
+        #region Envoi de mail avec attachement
+        /// <summary>
+        /// La méthode qui permet d'envoyer des mail
+        /// </summary>
+        /// <param name="to">L'adresse destinataire</param>
+        /// <param name="subject">Le sujet du mail</param>
+        /// <param name="body">Le contenu du mail</param>
+        public void sendMail(string to, string subject, string body, Attachment attachment)
+        {
+            MailMessage message = new MailMessage();
+            SmtpClient smtpClient = new SmtpClient();
+            try
+            {
+                MailAddress fromAddress = new MailAddress(SendersAddress);
+                message.From = fromAddress;
+                message.To.Add(new MailAddress(to));
+                message.To.Add(new MailAddress(SendersAddress));
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = body;
+                message.Attachments.Add(attachment);
+                // We use gmail as our smtp client
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.EnableSsl = false;
+                smtpClient.Host = MailCredentials.SMTPServer;
+                smtpClient.Port = MailCredentials.Port;
+                smtpClient.Credentials = new System.Net.NetworkCredential(SendersAddress, SendersPassword);
+                smtpClient.Send(message);
+                Utils.Notify("Mail envoyé avec succès");
             }
             catch
             {
@@ -128,13 +166,15 @@ namespace Ouatelse
             string body = htmlContent.Replace("GENDER", cust.Gender.Name);
             body = body.Replace("LASTNAME",cust.LastName);
             body = body.Replace("FIRSTNAME",cust.FirstName);
-            if (!String.IsNullOrWhiteSpace(cust.Address2))
+            if (String.IsNullOrWhiteSpace(cust.Address2))
             {
-                body = body.Replace("ADDRESS", cust.Address1 + "<br/>" + cust.Address2);
+                body = body.Replace("ADDRESS", cust.Address1);
+                body = body.Replace("COMPL", "Aucun");
             }
             else
             {
                 body = body.Replace("ADDRESS", cust.Address1);
+                body = body.Replace("COMPL", cust.Address2);
 
             }
             body = body.Replace("CITY", cust.City.Name);
@@ -200,17 +240,20 @@ namespace Ouatelse
         /// <param name="emp">L'utilisateur à modifier</param>
         public void modifyEmployee(Employee emp)
         {
-            string htmlContent = Ouatelse.Properties.Resources.modifiedCustomer;
+            string htmlContent = Ouatelse.Properties.Resources.modifiedEmployee;
             string body = htmlContent.Replace("GENDER", emp.Gender.Name);
+            body = body.Replace("ID", emp.Username);
             body = body.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
-            if (!String.IsNullOrWhiteSpace(emp.Address2))
+            if (String.IsNullOrWhiteSpace(emp.Address2))
             {
-                body = body.Replace("ADDRESS", emp.Address1 + "<br/>" + emp.Address2);
+                body = body.Replace("ADDRESS", emp.Address1);
+                body = body.Replace("COMPL", "Aucun");
             }
             else
             {
                 body = body.Replace("ADDRESS", emp.Address1);
+                body = body.Replace("COMPL", emp.Address2);
 
             }
             body = body.Replace("CITY", emp.City.Name);
@@ -252,6 +295,16 @@ namespace Ouatelse
             string body = htmlContent.Replace("LASTNAME", emp.LastName);
             body = body.Replace("FIRSTNAME", emp.FirstName);
             sendMail(emp.Email, "Ouatelse  : Suppression de compte utilisateur", body);
+        }
+        #endregion
+
+        #region Mail pour la facture
+        public void sendInvoice(Customer cust, Attachment attachement)
+        {
+            string htmlContent = Ouatelse.Properties.Resources.invoiceDone;
+            string body = htmlContent.Replace("CIVI", cust.Gender.Name);
+            body = body.Replace("NAME", cust.LastName);
+            sendMail(cust.Email, "Ouatelse : Envoi de facture", body, attachement);
         }
         #endregion
 

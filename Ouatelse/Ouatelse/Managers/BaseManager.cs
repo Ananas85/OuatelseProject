@@ -1,10 +1,9 @@
-﻿using Ouatelse.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Ouatelse.Models;
 
 namespace Ouatelse.Managers
 {
@@ -15,15 +14,11 @@ namespace Ouatelse.Managers
     public abstract class BaseManager<T> : IManager<T>
     {
         #region Les attributs de la classe
-        /// <summary>
-        /// l'instance du pattern singleton
-        /// </summary>
-        Database db = Database.Instance;
 
         /// <summary>
         /// Le nom de la table dans la base de données
         /// </summary>
-        protected string tableName = "";
+        protected string TableName = "";
         #endregion
 
         #region Récupération de toutes les entités présentes dans la table
@@ -34,7 +29,7 @@ namespace Ouatelse.Managers
         public T[] All()
         {
             // On récupère le DataSet
-            DataSet ds =  db.GetDataSet("SELECT * FROM " + tableName);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName);
             if (ds == null)
             {
                 return default(T[]);
@@ -66,7 +61,7 @@ namespace Ouatelse.Managers
         /// <returns>Un Tableau d'objets</returns>
         public T[] Filter(string filter)
         {
-            DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " " + filter);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName + " " + filter);
             if (ds == null)
             {
                 return default(T[]);
@@ -97,7 +92,7 @@ namespace Ouatelse.Managers
         /// <returns>Le premier objet trouvé dans la table</returns>
         public T First(string filter)
         {
-            DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " " + filter);
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName + " " + filter);
             if (ds == null)
             {
                 return default(T);
@@ -127,8 +122,8 @@ namespace Ouatelse.Managers
         /// <returns>Le nomre d'entité</returns>
         public int Count(string filter = "")
         {
-            object resp = db.ExecuteScalar("SELECT count(*) FROM " + tableName + " " + filter);
-            if ( (bool)resp == false || resp == null )
+            object resp = DatabaseInjector.Database.ExecuteScalar("SELECT count(*) FROM " + TableName + " " + filter);
+            if (resp == null)
                 return 0;
             return Int32.Parse(resp.ToString());
         }
@@ -142,7 +137,7 @@ namespace Ouatelse.Managers
         /// <returns>L'entité désirée</returns>
         public T Find(object id)
         {
-            DataSet ds = db.GetDataSet("SELECT * FROM " + tableName + " WHERE id=" + id.ToString());
+            DataSet ds = DatabaseInjector.Database.GetDataSet("SELECT * FROM " + TableName + " WHERE id=" + id);
             if (ds == null)
             {
                 return default(T);
@@ -174,15 +169,15 @@ namespace Ouatelse.Managers
             StringBuilder query = new StringBuilder();
             if (!model.Exists)
             {
-                query.AppendFormat("INSERT INTO {0} (", tableName);
+                query.AppendFormat("INSERT INTO {0} (id,", TableName);
                 query.Append(String.Join(", ", ((IModel)model).Fetch().Keys));
-                query.Append(") VALUES('");
+                query.Append(") VALUES(NULL,'");
                 query.Append(String.Join("', '", ((IModel)model).Fetch().Values.Select(value => value.Replace(@"'", @"\'"))));
                 query.Append("')");
             }
             else
             {
-                query.AppendFormat("UPDATE {0} SET", tableName);
+                query.AppendFormat("UPDATE {0} SET", TableName);
                 Dictionary<string, string> dict = ((IModel)model).Fetch();
                 bool first = true;
                 foreach (string key in dict.Keys)
@@ -195,15 +190,34 @@ namespace Ouatelse.Managers
 
                 query.AppendFormat(" WHERE id={0}", model.Id);
             }
-            bool res = Database.Instance.Execute(query.ToString());
+            bool res = DatabaseInjector.Database.Execute(query.ToString());
             if (!model.Exists && res)
             {
                 model.MakeExistant();
-                model.Id = Int32.Parse(Database.Instance.LastInsertId.ToString());
+                if (!DatabaseInjector.IsInUnitTest)
+                {
+                    Database mySqlDb = (Database) DatabaseInjector.Database;
+                    model.Id = Int32.Parse(mySqlDb.LastInsertId.ToString());
+                }
+                else
+                {
+                    TestDatabase sqliteDatabase = (TestDatabase) DatabaseInjector.Database;
+                    object result = sqliteDatabase.ExecuteScalar("SELECT id FROM " + TableName + " ORDER BY id LIMIT 1");
+                    model.Id = Int32.Parse(result.ToString());
+                }
             }
             return res;
 
         }
+
+        public bool Truncate()
+        {
+            IDatabase db = DatabaseInjector.Database;
+            return DatabaseInjector.IsInUnitTest
+                ? db.Execute("DELETE FROM " + TableName)
+                : db.Execute("TRUNCATE TABLE " + TableName);
+        }
+
         #endregion
 
         #region Suppression d'une entité dans la base de données
@@ -218,9 +232,11 @@ namespace Ouatelse.Managers
                 Utils.Error("Impossible de supprimer cette entité, elle n'est pas persisté dans la base");
                 return false;
             }
-            string query = String.Format("DELETE FROM {0} WHERE id={1}", tableName, model.Id);
-            return Database.Instance.Execute(query.ToString());
+            string query = String.Format("DELETE FROM {0} WHERE id={1}", TableName, model.Id);
+            return DatabaseInjector.Database.Execute(query);
         }
         #endregion
+
+
     }
 }

@@ -36,6 +36,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data.SQLite, Version=1.0.95.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,14 +55,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IModelTest.cs" />
+    <Compile Include="BaseManagerTest.cs" />
+    <Compile Include="ManyCollectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseTest.cs" />
+    <Compile Include="AuthManagerTest.cs" />
+    <Compile Include="ManageDateTest.cs" />
+    <Compile Include="ArrayCursorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ouatelse\Ouatelse.csproj">
       <Project>{fb39ed67-23cf-4c42-84fa-18ecec4fa79d}</Project>
       <Name>Ouatelse</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

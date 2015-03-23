@@ -32,7 +32,18 @@ namespace Ouatelse.Managers
         public bool Login(string username, string password)
         {
             User = EmployeeManager.Instance.First("WHERE identifiant='" + username + "' AND mot_de_passe='" + password + "'");
-            return User != null;
+            if (User == null)
+                return false;
+
+            if (User.Role.Name != "Administrateur" && User.Store.Id != Properties.Settings.Default.CurrentStore.Id)
+                return false;
+
+            return true;
+        }
+
+        public void Logout()
+        {
+            User = null;
         }
     }
 }

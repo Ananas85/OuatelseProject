@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ouatelse;
+using Ouatelse.Managers;
+using Ouatelse.Models;
 
 namespace OuatelseTests
 {
@@ -8,9 +10,9 @@ namespace OuatelseTests
     public class DatabaseTest
     {
         [TestMethod]
-        public void DatabaseConnection()
+        public void TestDatabase()
         {
-            Database db = Database.Instance;
+            Assert.AreEqual(true, DatabaseInjector.IsInUnitTest);
         }
     }
 }

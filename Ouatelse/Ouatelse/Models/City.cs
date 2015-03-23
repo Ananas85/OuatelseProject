@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Ouatelse.Models
 {
@@ -24,10 +26,12 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("libelle", Name);
-            res.Add("code_postal", PostalCode);
-            res.Add("pays_id", Country.Id.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"libelle", Name},
+                {"code_postal", PostalCode},
+                {"pays_id", Country.Id.ToString()}
+            };
             return res;
         }
     }

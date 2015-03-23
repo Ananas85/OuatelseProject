@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace Ouatelse.Models
 {
@@ -19,8 +20,7 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("libelle", Name);
+            Dictionary<string, string> res = new Dictionary<string, string> {{"nom", Name}};
             return res;
         }
     }

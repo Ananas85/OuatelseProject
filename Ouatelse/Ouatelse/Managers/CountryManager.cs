@@ -1,7 +1,10 @@
 ﻿using Ouatelse.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +29,23 @@ namespace Ouatelse.Managers
 
         public CountryManager()
         {
-            this.tableName = "pays";
+            this.TableName = "pays";
         }
+
+        public static string CreationQuery()
+        {
+            string query = " DROP TABLE IF EXISTS \"pays\"; " + Environment.NewLine;
+            query += "CREATE TABLE \"pays\" ( " + Environment.NewLine;
+            query += " \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + Environment.NewLine;
+            query += "\"libelle\" TEXT(255,0) NOT NULL);";
+            return query;
+        }
+
+        public static string Fixtures()
+        {
+            return "INSERT INTO pays VALUES (1,'France');";
+        }
+
+
     }
 }

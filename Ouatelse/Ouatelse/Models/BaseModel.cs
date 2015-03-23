@@ -44,5 +44,40 @@ namespace Ouatelse.Models
             this.exists = true;
         }
 
+        #region surcharge de la méthode GetHashCode pour pouvoir correctement utiliser Equals
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
+        #endregion
+
+        #region surcharge de la méthode equals
+        public override bool Equals(object obj)
+        {
+            return obj is BaseModel && this == (BaseModel)obj;
+        }
+        #endregion
+
+        #region sucharge de l'opérateur ==
+        public static bool operator ==(BaseModel x, BaseModel y)
+        {
+            if ((Object)x == null && (Object)y == null)
+                return true;
+            if ((Object)y != null)
+            {
+                return x.Id == y.Id;
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region surcharge de l'opérateur !=
+        public static bool operator !=(BaseModel x, BaseModel y)
+        {
+            return !(x == y);
+        }
+        #endregion
+
     }
 }

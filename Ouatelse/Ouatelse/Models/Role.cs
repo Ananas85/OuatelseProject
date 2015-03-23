@@ -1,6 +1,7 @@
 ﻿using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,11 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("libelle_role", Name);
-            res.Add("parent_role_id", ParentRole.Id.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"libelle_role", Name},
+                {"parent_role_id", ParentRole.Id.ToString()}
+            };
             return res;
         }
     }

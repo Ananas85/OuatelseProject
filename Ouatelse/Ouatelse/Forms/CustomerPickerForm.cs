@@ -12,16 +12,20 @@ using Ouatelse.Models;
 
 namespace Ouatelse.Forms
 {
-    public partial class CustomerPickerForm : Form
+    public partial class CustomerPickerForm : Form 
     {
+        #region Les attributs
         private Customer currentCustomer = null;
-        
+        #endregion
+
+        #region Le constructeur
         public CustomerPickerForm()
         {
             InitializeComponent();
             //Appelle de la méthode pour remplir les données dans le listView
             Reload(CustomerManager.Instance.All());
         }
+        #endregion
 
         #region Pour pouvoir créer un nouveau client
         private void nouveau_Click(object sender, EventArgs e)

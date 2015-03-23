@@ -1,9 +1,12 @@
-﻿using Ouatelse.Managers;
+using Ouatelse.Managers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace Ouatelse.Models
 {
@@ -14,6 +17,8 @@ namespace Ouatelse.Models
         public Employee Employee { get; set; }
         public Customer Customer { get; set; }
         public Payment Payment { get; set; }
+        public bool IsPaid { get; set; }
+        public float PaidAmount { get; set; }
 
         public ManyCollection<InvoiceProduct> Products;
 
@@ -33,16 +38,23 @@ namespace Ouatelse.Models
             this.Employee = EmployeeManager.Instance.Find(cursor.Read().ToString());
             this.Customer = CustomerManager.Instance.Find(cursor.Read().ToString());
             this.Payment = PaymentManager.Instance.Find(cursor.Read().ToString());
+            string isPaid = cursor.Read().ToString();
+            this.IsPaid = isPaid == "True" || isPaid == "1";
+            this.PaidAmount = Convert.ToSingle(cursor.Read().ToString());
         }
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("date", Date.ToString("yyyy-MM-dd"));
-            res.Add("pourcentage_remise", DiscountPercent.ToString());
-            res.Add("salaries_id", Employee.Id.ToString());
-            res.Add("clients_id", Customer == null ? "0" : Customer.Id.ToString());
-            res.Add("moyen_de_paiements_id", Payment.Id.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"date", Date.ToString("yyyy-MM-dd")},
+                {"pourcentage_remise", DiscountPercent.ToString(CultureInfo.CurrentCulture)},
+                {"salaries_id", Employee.Id.ToString()},
+                {"clients_id", Customer == null ? "0" : Customer.Id.ToString()},
+                {"moyen_de_paiements_id", Payment.Id.ToString()},
+                {"estPaye", IsPaid ? "1" : "0"},
+                {"montantPaye", PaidAmount.ToString(CultureInfo.InvariantCulture)}
+            };
             return res;
         }
 
@@ -66,7 +78,7 @@ namespace Ouatelse.Models
         {
             get
             {
-                return Products.Items.Aggregate<InvoiceProduct, double>(0, (current, invoiceProduct) => current + (invoiceProduct.Price + ((invoiceProduct.Product.TVA / 100) * invoiceProduct.Price)));
+                return Products.Items.Aggregate<InvoiceProduct, double>(0, (current, item) => current + ((item.Product.TVA/100)*item.Price));
             }
         }
 
@@ -78,6 +90,31 @@ namespace Ouatelse.Models
                 double total= TotalHT + TotalTVA;
                 return total - ((DiscountPercent / 100) * total); 
             }
+        }
+
+        public double Reste
+        {
+            get { return TotalTTC - PaidAmount; }
+        }
+
+        public double Arendre
+        {
+            get { return PaidAmount - TotalTTC; }
+        }
+
+        public string ProductsString
+        {
+            get
+            {
+                Products.Reload();
+                List<string> res = Products.Items.Select(invoiceProduct => string.Format("{0}x {1}", invoiceProduct.Quantity, invoiceProduct.Product.Name)).ToList();
+                return String.Join(@", ", res);
+            }
+        }
+
+        public bool isValid
+        {
+            get { return Customer != null; }
         }
     }
 }

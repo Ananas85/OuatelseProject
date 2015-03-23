@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,12 @@ namespace Ouatelse.Forms
 {
     public partial class ManageEmployeesForm : Form
     {
+        #region Attributs de la classe
         Employee currentEmployee = null;
         string lastColumnClicked = string.Empty;
         string order = string.Empty;
-
-        
+        private static int PASSWORD_LENGTH = 5;
+        #endregion
 
         #region Constructeur de la classe
         /// <summary>
@@ -27,7 +29,13 @@ namespace Ouatelse.Forms
         public ManageEmployeesForm()
         {
             InitializeComponent();
+            this.NewEmployeeButton.Enabled =
+                this.ModifyEmployeeButton.Enabled =
+                    this.DeleteEmployeeButton.Enabled = AuthManager.Instance.User.Role.Name == "Adminsitrateur";
+            // Chargement des salariés dans la liste
             Reload(EmployeeManager.Instance.All());
+            ReloadStats();
+
         }
         #endregion
 
@@ -42,6 +50,43 @@ namespace Ouatelse.Forms
             //Si c'est vide ça recharge tous les clients
             Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%';"));
         }
+
+
+        private void ReloadStats()
+        {
+            Employee[] currentStoreEmployee =
+                EmployeeManager.Instance.Filter("WHERE magasin_id = " + Properties.Settings.Default.CurrentStore.Id);
+            foreach (Employee e in currentStoreEmployee)
+            {
+                e.Invoices.Reload();
+                foreach (Invoice i in e.Invoices.Items)
+                {
+                    i.Products.Reload();
+                }
+                
+            }
+            Employee bestEmployee = currentStoreEmployee[0];
+            Employee bestEmployeeOfMonth = currentStoreEmployee[0];
+            Employee bestEmployeeOfYear = currentStoreEmployee[0];
+            foreach (Employee e in currentStoreEmployee)
+            {
+                if (e.NumberOfSellTotal() >= bestEmployee.NumberOfSellTotal())
+                {
+                    bestEmployee = e;
+                }
+                if (e.NumberOfSellInYear() >= bestEmployeeOfYear.NumberOfSellInYear())
+                {
+                    bestEmployeeOfYear = e;
+                }
+                if (e.NumberOfSellInMonth() >= bestEmployeeOfMonth.NumberOfSellInMonth())
+                {
+                    bestEmployeeOfMonth = e;
+                }
+            }
+            this.bestEmployee.Text = bestEmployee.FullName;
+            this.bestEmployeeMonth.Text = bestEmployeeOfMonth.FullName;
+            this.bestEmployeeOfTheYear.Text = bestEmployeeOfYear.FullName;
+        }
         #endregion
 
         #region Méthode pour le rechargement de la ListView (avec un tableau en paramètre)
@@ -51,15 +96,19 @@ namespace Ouatelse.Forms
         /// <param name="employeeArray">Liste d'employés à afficher</param>
         private void Reload(Employee[] employeeArray)
         {
+            // Nettoyage de la liste
             this.listView_employees.Items.Clear();
 
+            // Récupération du nombre de salariés
             this.employeesNumber.Text = employeeArray.Length.ToString();
 
+            // Condition d'affichage en fonction du nombre de salarié
             if (employeeArray.Length > 1)
                 this.employeesNumber.Text += " salariés";
             else
                 this.employeesNumber.Text += " salarié";
 
+            // Remplissage de la liste
             bool alternativeColor = false;
             foreach (Employee e in employeeArray)
             {
@@ -71,6 +120,7 @@ namespace Ouatelse.Forms
                 employee.SubItems.Add(e.Store.Name);
                 employee.Tag = e;
 
+                // Alternance de couleur à chaque ligne
                 if (alternativeColor)
                 {
                     employee.BackColor = Color.WhiteSmoke;
@@ -95,25 +145,28 @@ namespace Ouatelse.Forms
                 currentEmployee = null;
                 return;
             }
+
+            // Attribution via son Tag
             currentEmployee = (Employee)item.Tag;
         }
         #endregion
 
-        #region Création d'un employé
+        #region Création d'un salarié
         /// <summary>
-        /// Méthode de création d'un nouvel employé
+        /// Méthode de création d'un nouveau salarié
         /// </summary>
         private void NewEmployee()
         {
+            // Ouverture de la fenêtre de création d'un salarié
             EmployeeForm ef = new EmployeeForm(new Employee());
             if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
 
             // Génération du compte utilisateur
             Employee currentEmployee = ef.getEmployee();
-            currentEmployee.Password = Utils.generatePassword(5);
+            currentEmployee.Password = Utils.GeneratePassword(PASSWORD_LENGTH); // 5 caractères
 
-
+            // Sauvegarde en base
             EmployeeManager.Instance.Save(currentEmployee);
             Reload(EmployeeManager.Instance.All());
             Utils.Info("Salarié enregistré avec succès.");
@@ -140,12 +193,17 @@ namespace Ouatelse.Forms
         /// </summary>
         private void EditEmployee()
         {
+            // Si l'on a bien sélectionné un salarié
             if (currentEmployee != null)
             {
+
+                // Ouverture de la fenêtre d'édition
                 EmployeeForm ef = new EmployeeForm(currentEmployee);
                 if (ef.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                     return;
-                EmployeeManager.Instance.Save(ef.getEmployee());
+
+                // Sauvegarde en base
+                EmployeeManager.Instance.Modify(ef.getEmployee());
                 Reload(EmployeeManager.Instance.All());
                 Utils.Info("Salarié enregistré avec succès");
             }
@@ -182,17 +240,25 @@ namespace Ouatelse.Forms
         /// </summary>
         private void DeleteEmployee()
         {
+            // Si l'on a bien sélectionné un salarié
             if (currentEmployee != null)
             {
+                // Vérification de la demande
                 if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentEmployee.LastName + " " + currentEmployee.FirstName + " ? "))
+                {
+                    // Suppression en base
                     if (EmployeeManager.Instance.Delete(currentEmployee))
                     {
+                        // On recharge la liste avec la modification
                         Reload(EmployeeManager.Instance.All());
                         Utils.Info("Client supprimé avec succès");
+
+                        // Envoi du mail de suppression à l'utilisateur
                         if (!String.IsNullOrWhiteSpace(currentEmployee.Email))
                             MailSender.Instance.deleteEmployee(currentEmployee);
                         currentEmployee = null;
                     }
+                }
             }
         }
 
@@ -207,24 +273,33 @@ namespace Ouatelse.Forms
         }
         #endregion
 
+        #region Méthode appellée lors de l'activation d'un item de la liste
         private void listView_employees_ItemActivate(object sender, EventArgs e)
         {
+            // Récupération de l'item sélectionné
             ListViewItem item = ((ListView)sender).SelectedItems[0];
             if (item == null)
             {
                 currentEmployee = null;
                 return;
             }
+
+            // Attribution via le Tag
             currentEmployee = (Employee)item.Tag;
         }
+        #endregion
 
+        #region Méthode de tri quand on clique sur une colonne
         private void listView_employees_ColumnClick(object sender, ColumnClickEventArgs e)
         {
+            // Récupération du nom de la colonne
             switch (this.listView_employees.Columns[e.Column].Name)
             {
                 case "reference":
+                    // Si elle a déja été cliqué
                     if (this.lastColumnClicked == "reference")
                     {
+                        // Alors on inverse (ASC -> DESC OU DESC -> ASC)
                         if (this.order == "ASC")
                             this.order = "DESC";
                         else
@@ -234,7 +309,11 @@ namespace Ouatelse.Forms
                     {
                         this.order = "ASC";
                     }
+
+                    // On effectue le tri
                     this.Reload(EmployeeManager.Instance.Filter("WHERE nom LIKE '" + searchBox.Text + "%' OR prenom LIKE '" + searchBox.Text + "%' ORDER BY id " + this.order));
+                    
+                    // Attribution de la dernière colonne cliquée
                     this.lastColumnClicked = "id";
                     break;
                 case "firstname":
@@ -314,5 +393,18 @@ namespace Ouatelse.Forms
                     break;
             }
         }
+        #endregion
+
+        #region Méthodes du Clic droit (menu contextuel)
+        private void editThisEmployeeMenuItem_Click(object sender, EventArgs e)
+        {
+            EditEmployee();
+        }
+
+        private void deleteThisEmployeeMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteEmployee();
+        }
+        #endregion
     }
 }

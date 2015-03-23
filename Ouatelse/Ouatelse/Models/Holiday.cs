@@ -33,7 +33,7 @@ namespace Ouatelse.Models
         public List<DateTime> ConcernedDays()
         {
             List<DateTime> concerned = new List<DateTime>();
-            for (DateTime i = StartingDate.Date; i.Date <= EndingDate.Date; i.AddDays(1))
+            for (DateTime i = StartingDate.Date; i.Date <= EndingDate.Date; i = i.AddDays(1))
             {
                 concerned.Add(i);
             }
@@ -60,11 +60,13 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("date_debut", StartingDate.ToString("yyyy-MM-dd"));
-            res.Add("date_fin", EndingDate.ToString("yyyy-MM-dd"));
-            res.Add("salaries_id", Employee.Id.ToString());
-            res.Add("accepte", Convert.ToInt16(Accepted).ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"date_debut", StartingDate.ToString("yyyy-MM-dd")},
+                {"date_fin", EndingDate.ToString("yyyy-MM-dd")},
+                {"salaries_id", Employee.Id.ToString()},
+                {"accepte", Convert.ToInt16(Accepted).ToString()}
+            };
             return res;
         }
     }

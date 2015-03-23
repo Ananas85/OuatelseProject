@@ -25,10 +25,28 @@ namespace Ouatelse.Models
 
         public Dictionary<string, string> Fetch()
         {
-            Dictionary<string, string> res = new Dictionary<string, string>();
-            res.Add("quantite", Quantity.ToString());
-            res.Add("produits_id", Product.Id.ToString());
-            res.Add("magasin_id", Store.Id.ToString());
+            Dictionary<string, string> res = new Dictionary<string, string>
+            {
+                {"quantite", Quantity.ToString()},
+                {"produits_id", Product.Id.ToString()},
+                {"magasin_id", Store.Id.ToString()}
+            };
+            return res;
+        }
+
+        /// <summary>
+        /// Permet de récupérer le stock d'un produit dans le magasin fourni en paramètre
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="store"></param>
+        /// <returns>Le stock courant du produit product dans le magasin store</returns>
+        public static int getCurrentStock(Product product, Store store){
+            int res = new int();
+            List<Stock> stockList = new List<Stock>(StockManager.Instance.Filter("WHERE produits_id = " + product.Id + " AND magasin_id = " + store.Id + ";"));
+            foreach (Stock stock in stockList)
+            {
+                res += stock.Quantity;
+            }
             return res;
         }
     }
