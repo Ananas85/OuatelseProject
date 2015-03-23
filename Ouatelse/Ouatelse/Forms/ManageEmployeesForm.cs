@@ -31,7 +31,7 @@ namespace Ouatelse.Forms
             InitializeComponent();
             this.NewEmployeeButton.Enabled =
                 this.ModifyEmployeeButton.Enabled =
-                    this.DeleteEmployeeButton.Enabled = AuthManager.Instance.User.Role.Name == "Adminsitrateur";
+                    this.DeleteEmployeeButton.Enabled = AuthManager.Instance.User.Role.Name == "Administrateur";
             // Chargement des salariés dans la liste
             Reload(EmployeeManager.Instance.All());
             ReloadStats();
@@ -169,7 +169,7 @@ namespace Ouatelse.Forms
             // Sauvegarde en base
             EmployeeManager.Instance.Save(currentEmployee);
             Reload(EmployeeManager.Instance.All());
-            Utils.Info("Salarié enregistré avec succès.");
+            Utils.Notify("Salarié enregistré avec succès.");
 
             //Envoi du mail au nouveau salarié
             if (currentEmployee.Email != null)
@@ -205,7 +205,7 @@ namespace Ouatelse.Forms
                 // Sauvegarde en base
                 EmployeeManager.Instance.Modify(ef.getEmployee());
                 Reload(EmployeeManager.Instance.All());
-                Utils.Info("Salarié enregistré avec succès");
+                Utils.Notify("Salarié enregistré avec succès");
             }
             else
             {
@@ -243,6 +243,12 @@ namespace Ouatelse.Forms
             // Si l'on a bien sélectionné un salarié
             if (currentEmployee != null)
             {
+                if (currentEmployee.Id == AuthManager.Instance.User.Id)
+                {
+                    Utils.Warning("Impossible de vous supprimer");
+                    return;
+                }
+                
                 // Vérification de la demande
                 if (Utils.Prompt("Voulez-vous vraiment supprimer " + currentEmployee.LastName + " " + currentEmployee.FirstName + " ? "))
                 {
@@ -251,7 +257,7 @@ namespace Ouatelse.Forms
                     {
                         // On recharge la liste avec la modification
                         Reload(EmployeeManager.Instance.All());
-                        Utils.Info("Client supprimé avec succès");
+                        Utils.Notify("Client supprimé avec succès");
 
                         // Envoi du mail de suppression à l'utilisateur
                         if (!String.IsNullOrWhiteSpace(currentEmployee.Email))

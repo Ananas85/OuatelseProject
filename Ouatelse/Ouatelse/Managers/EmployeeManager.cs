@@ -51,9 +51,6 @@ namespace Ouatelse.Managers
             //Enregistrement dans la base de données
             EmployeeManager.Instance.Save(emp);
 
-            //Message d'information
-            //Utils.Info("Salarié enregistré avec succès");
-
             //Envoi du mail au nouveau salarié
             if (!String.IsNullOrWhiteSpace(emp.Email))
                 MailSender.Instance.newEmployee(emp);

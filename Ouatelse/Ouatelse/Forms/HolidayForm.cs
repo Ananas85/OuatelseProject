@@ -146,7 +146,6 @@ namespace Ouatelse.Forms
             CurrentHoliday.EndingDate = this.end.Value;
             CurrentHoliday.StartingDate = this.start.Value;
             this.nbHolidays = holidaysSelected.Count;
-            Utils.Info(nbHolidays.ToString());
             this.nbDay.Text = nbHolidays.ToString();
             this.amplitude.Text = (CurrentHoliday.numberOfDays() + 1).ToString();
             this.rest.Text = (30 - nbHolidays - alreadyPresent).ToString();

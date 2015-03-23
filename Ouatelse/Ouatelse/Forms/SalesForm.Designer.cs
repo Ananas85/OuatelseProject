@@ -82,6 +82,7 @@
             this.deleteBtn.TabIndex = 129;
             this.deleteBtn.Text = "Supprimer une Facture";
             this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Visible = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // editBtn

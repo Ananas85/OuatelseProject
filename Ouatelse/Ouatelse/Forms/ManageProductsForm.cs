@@ -141,7 +141,7 @@ namespace Ouatelse
                 ProductManager.Instance.Save(p.getProduct());
                 Reload(ProductManager.Instance.All());
                 currentProduct = p.getProduct();
-                Utils.Info("Nouveau produit ajouté");
+                Utils.Notify("Nouveau produit ajouté");
                 return;
         }
         #endregion
@@ -227,7 +227,7 @@ namespace Ouatelse
                 return;
             StockManager.Instance.Save(s.getStock());
             Reload(ProductManager.Instance.All());
-            Utils.Info("Stock du produit modifié");
+            Utils.Notify("Stock du produit modifié");
             return;
         }
         #endregion
@@ -296,7 +296,7 @@ namespace Ouatelse
                     if (DeleteProduct())
                     {
                         Reload(ProductManager.Instance.All());
-                        Utils.Info("Produit supprimé avec succès");
+                        Utils.Notify("Produit supprimé avec succès");
                     }
             }
         }
@@ -428,7 +428,7 @@ namespace Ouatelse
                     if (DeleteProduct())
                     {
                         Reload(ProductManager.Instance.All());
-                        Utils.Info("Produit supprimé avec succès");
+                        Utils.Notify("Produit supprimé avec succès");
                     }
             }
         }
