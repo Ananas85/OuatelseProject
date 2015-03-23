@@ -53,7 +53,7 @@ namespace Ouatelse.Forms
         private void ReloadStats()
         {
             Employee[] currentStoreEmployee =
-                EmployeeManager.Instance.Filter("WHERE magasin_id = " + AuthManager.Instance.User.Store.Id);
+                EmployeeManager.Instance.Filter("WHERE magasin_id = " + Properties.Settings.Default.CurrentStore.Id);
             foreach (Employee e in currentStoreEmployee)
             {
                 e.Invoices.Reload();
