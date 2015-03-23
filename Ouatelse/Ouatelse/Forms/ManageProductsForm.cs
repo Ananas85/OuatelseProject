@@ -96,6 +96,27 @@ namespace Ouatelse
                 }
                 alternativeColor = !alternativeColor;
             }
+
+
+            Product[] allP
+                = ProductManager.Instance.All();
+
+            Product best = allP[0];
+            Product worst = allP[0];
+
+            foreach (Product p in allP.Where(p => p.Sells > best.Sells))
+            {
+                best = p;
+            }
+
+            foreach (Product p in allP.Where(p => p.Sells < worst.Sells))
+            {
+                worst = p;
+            }
+            this.bestProduct.Text = best.Name;
+            this.lessProduct.Text = worst.Name;
+
+
         }
         #endregion
 

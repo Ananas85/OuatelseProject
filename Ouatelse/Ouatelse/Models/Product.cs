@@ -182,5 +182,10 @@ namespace Ouatelse.Models
         {
             get { return Stock.getCurrentStock(this, Properties.Settings.Default.CurrentStore); }
         }
+
+        public int Sells
+        {
+            get { return InvoiceProductManager.Instance.Filter("WHERE produits_id = " + this.Id).Sum(p => p.Quantity); }
+        }
     }
 }

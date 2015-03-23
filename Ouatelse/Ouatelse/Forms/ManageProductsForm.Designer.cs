@@ -52,6 +52,11 @@
             this.customerLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductsNumber = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lessProduct = new System.Windows.Forms.Label();
+            this.bestProduct = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.rightClickProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -151,7 +156,7 @@
             this.productListView.Location = new System.Drawing.Point(5, 244);
             this.productListView.Margin = new System.Windows.Forms.Padding(2);
             this.productListView.Name = "productListView";
-            this.productListView.Size = new System.Drawing.Size(823, 254);
+            this.productListView.Size = new System.Drawing.Size(897, 254);
             this.productListView.TabIndex = 37;
             this.productListView.UseCompatibleStateImageBehavior = false;
             this.productListView.View = System.Windows.Forms.View.Details;
@@ -224,7 +229,7 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::Ouatelse.Properties.Resources.search;
-            this.pictureBox2.Location = new System.Drawing.Point(558, 198);
+            this.pictureBox2.Location = new System.Drawing.Point(632, 198);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 31);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,7 +240,7 @@
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBox.Location = new System.Drawing.Point(597, 200);
+            this.searchBox.Location = new System.Drawing.Point(671, 200);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(231, 26);
             this.searchBox.TabIndex = 43;
@@ -261,18 +266,73 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.label1.Location = new System.Drawing.Point(567, -25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(403, 142);
+            this.label1.Size = new System.Drawing.Size(477, 142);
             this.label1.TabIndex = 46;
             // 
             // ProductsNumber
             // 
             this.ProductsNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductsNumber.Location = new System.Drawing.Point(702, 500);
+            this.ProductsNumber.Location = new System.Drawing.Point(776, 500);
             this.ProductsNumber.Name = "ProductsNumber";
             this.ProductsNumber.Size = new System.Drawing.Size(126, 22);
             this.ProductsNumber.TabIndex = 48;
             this.ProductsNumber.Text = "--";
             this.ProductsNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(580, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(304, 25);
+            this.label7.TabIndex = 55;
+            this.label7.Text = "Statistiques ensemble des magasin";
+            // 
+            // lessProduct
+            // 
+            this.lessProduct.AutoSize = true;
+            this.lessProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.lessProduct.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lessProduct.Location = new System.Drawing.Point(745, 88);
+            this.lessProduct.Name = "lessProduct";
+            this.lessProduct.Size = new System.Drawing.Size(50, 20);
+            this.lessProduct.TabIndex = 53;
+            this.lessProduct.Text = "label5";
+            // 
+            // bestProduct
+            // 
+            this.bestProduct.AutoSize = true;
+            this.bestProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.bestProduct.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bestProduct.Location = new System.Drawing.Point(745, 57);
+            this.bestProduct.Name = "bestProduct";
+            this.bestProduct.Size = new System.Drawing.Size(50, 20);
+            this.bestProduct.TabIndex = 52;
+            this.bestProduct.Text = "label4";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(546, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(172, 20);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "Produit le moins vendu : ";
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(553, 57);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(159, 20);
+            this.label.TabIndex = 49;
+            this.label.Text = "Produit le plus vendu : ";
             // 
             // ManageProductsForm
             // 
@@ -281,7 +341,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Ouatelse.Properties.Resources.Ouatelse_073;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(839, 516);
+            this.ClientSize = new System.Drawing.Size(913, 516);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lessProduct);
+            this.Controls.Add(this.bestProduct);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.ProductsNumber);
             this.Controls.Add(this.customerLabel);
             this.Controls.Add(this.label1);
@@ -330,6 +395,11 @@
         private System.Windows.Forms.ToolStripMenuItem modifierCeProduitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supprimerCeProduitToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader stock;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lessProduct;
+        private System.Windows.Forms.Label bestProduct;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label;
 
     }
 }
