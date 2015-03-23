@@ -29,6 +29,13 @@ namespace Ouatelse
         public ManageProductsForm()
         {
             InitializeComponent();
+            this.button3.Enabled =
+                this.button4.Enabled =
+                    this.newProductButton.Enabled =
+                        this.modifyProductButton.Enabled =
+                            this.deleteProductButton.Enabled =
+                                (AuthManager.Instance.User.Role.Name == "Administrateur" ||
+                                 AuthManager.Instance.User.Role.Name == "Responsable des stocks" );
             //Appelle de la méthode pour remplir les données dans le listView
             Reload(ProductManager.Instance.All());
         }
