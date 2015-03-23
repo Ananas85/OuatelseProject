@@ -203,7 +203,7 @@ namespace Ouatelse
                     if (CustomerManager.Instance.Delete(currentCustomer))
                     {
                         Reload(CustomerManager.Instance.All());
-                        Utils.Info("Client supprimé avec succès");
+                        Utils.Notify("Client supprimé avec succès");
                         if (!String.IsNullOrWhiteSpace(currentCustomer.Email))
                             MailSender.Instance.deleteCustomer(currentCustomer);
                         currentCustomer = null;
@@ -340,7 +340,7 @@ namespace Ouatelse
                     if (CustomerManager.Instance.Delete(currentCustomer))
                     {
                         Reload(CustomerManager.Instance.All());
-                        Utils.Info("Client supprimé avec succès");
+                        Utils.Notify("Client supprimé avec succès");
                         if (!String.IsNullOrWhiteSpace(currentCustomer.Email))
                             MailSender.Instance.deleteCustomer(currentCustomer);
                         currentCustomer = null;

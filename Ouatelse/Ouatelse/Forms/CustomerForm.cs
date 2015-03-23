@@ -223,7 +223,7 @@ namespace Ouatelse.Forms
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                Utils.Info("Uniquement les chiffres sont autorisés");
+                Utils.Warning("Uniquement les chiffres sont autorisés");
                 e.Handled = true;
             }
         }
@@ -234,7 +234,7 @@ namespace Ouatelse.Forms
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                Utils.Info("Uniquement les chiffres sont autorisés");
+                Utils.Warning("Uniquement les chiffres sont autorisés");
                 e.Handled = true;
             }
         }
@@ -244,7 +244,7 @@ namespace Ouatelse.Forms
         private void CityPostalCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)) return;
-            Utils.Info("Uniquement les chiffres sont autorisés");
+            Utils.Warning("Uniquement les chiffres sont autorisés");
             e.Handled = true;
         }
         #endregion
@@ -253,7 +253,7 @@ namespace Ouatelse.Forms
         private void FirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || e.KeyChar == '-') return;
-            Utils.Info("Uniquement les lettres ou - sont autorisés");
+            Utils.Warning("Uniquement les lettres ou - sont autorisés");
             e.Handled = true;
         }
         #endregion
@@ -263,7 +263,7 @@ namespace Ouatelse.Forms
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != ' ')
             {
-                Utils.Info("Uniquement les lettres ou - sont autorisés");
+                Utils.Warning("Uniquement les lettres ou - sont autorisés");
                 e.Handled = true;
             }
         }

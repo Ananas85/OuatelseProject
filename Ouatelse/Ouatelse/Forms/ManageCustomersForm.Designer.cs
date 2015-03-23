@@ -150,7 +150,7 @@
             this.modifierCeClientToolStripMenuItem,
             this.supprimerCeClientToolStripMenuItem});
             this.rightClickCustomer.Name = "rightClickCustomer";
-            this.rightClickCustomer.Size = new System.Drawing.Size(177, 48);
+            this.rightClickCustomer.Size = new System.Drawing.Size(177, 70);
             // 
             // modifierCeClientToolStripMenuItem
             // 
@@ -164,6 +164,7 @@
             this.supprimerCeClientToolStripMenuItem.Name = "supprimerCeClientToolStripMenuItem";
             this.supprimerCeClientToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.supprimerCeClientToolStripMenuItem.Text = "Supprimer ce client";
+            this.supprimerCeClientToolStripMenuItem.Visible = false;
             this.supprimerCeClientToolStripMenuItem.Click += new System.EventHandler(this.supprimerCeClientToolStripMenuItem_Click);
             // 
             // deletecustomer
@@ -179,6 +180,7 @@
             this.deletecustomer.TabIndex = 23;
             this.deletecustomer.Text = "Supprimer un client";
             this.deletecustomer.UseVisualStyleBackColor = false;
+            this.deletecustomer.Visible = false;
             this.deletecustomer.Click += new System.EventHandler(this.deletecustomer_Click);
             // 
             // modify

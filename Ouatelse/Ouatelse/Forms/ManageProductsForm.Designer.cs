@@ -104,6 +104,7 @@
             this.deleteProductButton.TabIndex = 40;
             this.deleteProductButton.Text = "Supprimer un produit";
             this.deleteProductButton.UseVisualStyleBackColor = false;
+            this.deleteProductButton.Visible = false;
             this.deleteProductButton.Click += new System.EventHandler(this.DeleteProduct_Click);
             // 
             // modifyProductButton
@@ -211,7 +212,7 @@
             this.modifierCeProduitToolStripMenuItem,
             this.supprimerCeProduitToolStripMenuItem});
             this.rightClickProduct.Name = "rightClickCustomer";
-            this.rightClickProduct.Size = new System.Drawing.Size(187, 48);
+            this.rightClickProduct.Size = new System.Drawing.Size(187, 70);
             // 
             // modifierCeProduitToolStripMenuItem
             // 
@@ -224,6 +225,7 @@
             this.supprimerCeProduitToolStripMenuItem.Name = "supprimerCeProduitToolStripMenuItem";
             this.supprimerCeProduitToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.supprimerCeProduitToolStripMenuItem.Text = "Supprimer ce produit";
+            this.supprimerCeProduitToolStripMenuItem.Visible = false;
             // 
             // pictureBox2
             // 
