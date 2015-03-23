@@ -161,7 +161,7 @@ namespace Ouatelse.Models
                 response.Add(ValidationResult.WRONG_EANCODE);
             }
 
-            else if (this.EANCode.Length != 13)
+            else if (this.EANCode.Length > 13 || this.EANCode.Length < 8)
             {
                 response.Add(ValidationResult.WRONG_EANCODE);
             }

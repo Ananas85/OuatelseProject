@@ -91,7 +91,7 @@ namespace Ouatelse.Forms
                             error += "Erreur dans la saisie de la TVA ( elle doit obligatoirement être remplie )" + Environment.NewLine;
                             break;
                         case Product.ValidationResult.WRONG_EANCODE:
-                            error += "Erreur dans la saisie du code EAN ( 13 caractères obligatoire )" + Environment.NewLine;
+                            error += "Erreur dans la saisie du code EAN ( entre 8 et 13 caractères )" + Environment.NewLine;
                             break;
                     }
                 }
