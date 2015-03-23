@@ -29,7 +29,9 @@ namespace Ouatelse.Forms
         public ManageEmployeesForm()
         {
             InitializeComponent();
-
+            this.NewEmployeeButton.Enabled =
+                this.ModifyEmployeeButton.Enabled =
+                    this.DeleteEmployeeButton.Enabled = AuthManager.Instance.User.Role.Name == "Adminsitrateur";
             // Chargement des salariés dans la liste
             Reload(EmployeeManager.Instance.All());
             ReloadStats();

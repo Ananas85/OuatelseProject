@@ -19,6 +19,11 @@ namespace Ouatelse.Forms
         public SalesForm()
         {
             InitializeComponent();
+            this.addBtn.Enabled =
+                this.deleteBtn.Enabled =
+                    this.editBtn.Enabled =
+                        (AuthManager.Instance.User.Role.Name == "Administrateur" ||
+                         AuthManager.Instance.User.Role.Name == "Responsable des ventes");
             Reload();
         }
 
