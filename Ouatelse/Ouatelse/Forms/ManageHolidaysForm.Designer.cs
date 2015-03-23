@@ -412,24 +412,24 @@
             // 
             // year
             // 
-            this.year.AutoSize = true;
             this.year.BackColor = System.Drawing.Color.White;
             this.year.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.year.Location = new System.Drawing.Point(696, 154);
+            this.year.Location = new System.Drawing.Point(707, 151);
             this.year.Name = "year";
-            this.year.Size = new System.Drawing.Size(38, 20);
+            this.year.Size = new System.Drawing.Size(54, 29);
             this.year.TabIndex = 30;
             this.year.Text = "Year";
+            this.year.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // previousYear
             // 
             this.previousYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.previousYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousYear.Location = new System.Drawing.Point(648, 149);
+            this.previousYear.Image = global::Ouatelse.Properties.Resources.bullet_arrow_left;
+            this.previousYear.Location = new System.Drawing.Point(659, 151);
             this.previousYear.Name = "previousYear";
-            this.previousYear.Size = new System.Drawing.Size(42, 30);
+            this.previousYear.Size = new System.Drawing.Size(42, 29);
             this.previousYear.TabIndex = 31;
-            this.previousYear.Text = "<-";
             this.previousYear.UseVisualStyleBackColor = false;
             this.previousYear.Click += new System.EventHandler(this.previousYear_Click);
             // 
@@ -437,11 +437,11 @@
             // 
             this.nextYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
             this.nextYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextYear.Location = new System.Drawing.Point(740, 149);
+            this.nextYear.Image = global::Ouatelse.Properties.Resources.bullet_arrow_right;
+            this.nextYear.Location = new System.Drawing.Point(767, 151);
             this.nextYear.Name = "nextYear";
-            this.nextYear.Size = new System.Drawing.Size(42, 30);
+            this.nextYear.Size = new System.Drawing.Size(42, 29);
             this.nextYear.TabIndex = 32;
-            this.nextYear.Text = "->";
             this.nextYear.UseVisualStyleBackColor = false;
             this.nextYear.Click += new System.EventHandler(this.nextYear_Click);
             // 
@@ -450,7 +450,7 @@
             this.holidayLabel.AutoSize = true;
             this.holidayLabel.BackColor = System.Drawing.Color.White;
             this.holidayLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.holidayLabel.Location = new System.Drawing.Point(800, 128);
+            this.holidayLabel.Location = new System.Drawing.Point(919, 134);
             this.holidayLabel.Name = "holidayLabel";
             this.holidayLabel.Size = new System.Drawing.Size(221, 25);
             this.holidayLabel.TabIndex = 33;
@@ -461,7 +461,7 @@
             this.nbPut.AutoSize = true;
             this.nbPut.BackColor = System.Drawing.Color.White;
             this.nbPut.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nbPut.Location = new System.Drawing.Point(1044, 128);
+            this.nbPut.Location = new System.Drawing.Point(1163, 134);
             this.nbPut.Name = "nbPut";
             this.nbPut.Size = new System.Drawing.Size(67, 25);
             this.nbPut.TabIndex = 34;
@@ -472,7 +472,7 @@
             this.nbRest.AutoSize = true;
             this.nbRest.BackColor = System.Drawing.Color.White;
             this.nbRest.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nbRest.Location = new System.Drawing.Point(1044, 153);
+            this.nbRest.Location = new System.Drawing.Point(1163, 159);
             this.nbRest.Name = "nbRest";
             this.nbRest.Size = new System.Drawing.Size(73, 25);
             this.nbRest.TabIndex = 36;
@@ -483,7 +483,7 @@
             this.remainingHolidayLabel.AutoSize = true;
             this.remainingHolidayLabel.BackColor = System.Drawing.Color.White;
             this.remainingHolidayLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.remainingHolidayLabel.Location = new System.Drawing.Point(798, 153);
+            this.remainingHolidayLabel.Location = new System.Drawing.Point(917, 159);
             this.remainingHolidayLabel.Name = "remainingHolidayLabel";
             this.remainingHolidayLabel.Size = new System.Drawing.Size(234, 25);
             this.remainingHolidayLabel.TabIndex = 35;

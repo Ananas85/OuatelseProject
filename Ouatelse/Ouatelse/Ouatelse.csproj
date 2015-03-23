@@ -393,6 +393,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="OuatelseIcon.ico" />
+    <None Include="Resources\bullet_arrow_right.png" />
+    <None Include="Resources\bullet_arrow_left.png" />
     <Content Include="ssleay32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
